@@ -1,0 +1,8 @@
+.boldHeader {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 12px;
+
+    /* custom properties */
+    color: var(--header-color, #333);
+}

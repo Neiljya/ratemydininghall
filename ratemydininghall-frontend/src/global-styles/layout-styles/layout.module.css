@@ -1,0 +1,5 @@
+.alignRight {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-right: 20px !important
+}
