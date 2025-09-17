@@ -1,10 +1,10 @@
-import globalContainerStyles from '../../../global-styles/container-styles/globalContainer.module.css';
+import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 
 function ImageContainer({ imageUrl, alt = "Image" }: { imageUrl: string, alt?: string }) {
   return (
     <div className={globalContainerStyles.roundImageContainer}>
-      <img 
-        src={imageUrl} 
+      <img
+        src={imageUrl}
         alt={alt}
         style={{
           width: '100%',

@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import BoldHeader from '../text-components/custom-headers/BoldHeader';
-import ImageContainer from '../image-components/imageContainer';
-import CardDescription from '../text-components/custom-labels/CardDescription';
+import BoldHeader from '@textComponents/custom-headers/BoldHeader';
+import ImageContainer from '../../image-components/imageContainer';
+import CardDescription from '../../text-components/custom-labels/CardDescription';
 import ReviewModal from './review-modal/ReviewModal';
-import globalContainerStyles from '../../../global-styles/container-styles/globalContainer.module.css';
+import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 
 const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewCard({ headerText, description }: {headerText?: string, description?: string}) {
+function ReviewCard({ headerText, description }: { headerText?: string, description?: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -19,16 +19,16 @@ function ReviewCard({ headerText, description }: {headerText?: string, descripti
   }
   return (
     <>
-      <div 
+      <div
         className={`${globalContainerStyles.roundContainer} ${globalContainerStyles.containerEffect}`}
         onClick={handleOpenModal}
       >
         <ImageContainer imageUrl={placeholderUrl} alt="Dining Hall" />
         <BoldHeader text={headerText} />
-        <CardDescription text={description}/>
+        <CardDescription text={description} />
       </div>
       {/* Creates a popup modal when the card is clicked */}
-      <ReviewModal 
+      <ReviewModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         headerText={headerText}

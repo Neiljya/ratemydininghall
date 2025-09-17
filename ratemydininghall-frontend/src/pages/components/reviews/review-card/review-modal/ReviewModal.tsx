@@ -1,5 +1,7 @@
 import ReviewForm from '../../review-form/ReviewForm';
-import globalContainerStyles from '../../../../global-styles/container-styles/globalContainer.module.css';
+import ReviewItem from '../../review-item/ReviewItem';
+import Stars from '@stars/Stars';
+import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import styles from './review-modal.module.css';
 
 interface ReviewModalProps {
@@ -16,12 +18,12 @@ function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalPr
 
   return (
     <div className={styles.modal} onClick={onClose}>
-      <div 
+      <div
         className={`${globalContainerStyles.roundContainer} ${styles.modalContent}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button className={styles.closeButton} onClick={onClose}>✕</button>
-        
+
         {/* Header Section */}
         <div className={styles.header}>
           <img src={placeholderUrl} alt="Dining Hall" className={styles.headerImage} />
@@ -29,11 +31,8 @@ function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalPr
             <h1 className={styles.title}>{headerText || "Harvest Kitchen"}</h1>
             <div className={styles.rating}>
               <div className={styles.stars}>
-                <span className={styles.star}>★</span>
-                <span className={styles.star}>★</span>
-                <span className={styles.star}>★</span>
-                <span className={styles.star}>★</span>
-                <span className={styles.star}>★</span>
+                {/* TODO: replace with an avg rating count */}
+                <Stars starCount={4} />
                 <span className={styles.ratingBadge}>5</span>
               </div>
             </div>
@@ -44,21 +43,12 @@ function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalPr
         {/* Reviews Section */}
         <div className={styles.reviewsSection}>
           <h2 className={styles.sectionTitle}>Reviews</h2>
-          
+
           {/* Sample Review */}
-          <div className={styles.review}>
-            <div className={styles.reviewStars}>
-              <span className={styles.star}>★</span>
-              <span className={styles.star}>★</span>
-              <span className={styles.star}>★</span>
-              <span className={styles.star}>★</span>
-              <span className={styles.star}>★</span>
-            </div>
-            <div className={styles.reviewMeta}>
-              <span className={styles.reviewDate}>9/6/2025, 4:47:11 PM</span>
-            </div>
-            <p className={styles.reviewText}>Tasty vegetarian options.</p>
-          </div>
+          <ReviewItem
+            starCount={3}
+            reviewText="This is great!"
+          />
 
           {/* Add Review Form */}
           <ReviewForm />

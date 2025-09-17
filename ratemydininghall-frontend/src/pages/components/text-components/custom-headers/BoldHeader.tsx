@@ -2,16 +2,18 @@ import headerStyles from '../../../../global-styles/text-styles/headers.module.c
 
 type HeaderVars = {
     '--header-color'?: string;
-    '--header-bg'?: string;
+    '--header-align'?: string;
 }
-function BoldHeader({ text, color }: {text?: string, color?: string}) {
+function BoldHeader({ text, color, align }: { text?: string, color?: string, align?: 'left' | 'center' | 'right' }) {
 
     const style: React.CSSProperties & HeaderVars = {
-        "--header-color": color,
+        '--header-color': color,
+        '--header-align': align,
+
     };
 
     return (
-        <div 
+        <div
             className={headerStyles.boldHeader}
             style={style}
         >

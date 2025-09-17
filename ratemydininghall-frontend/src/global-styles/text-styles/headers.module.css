@@ -5,4 +5,7 @@
 
     /* custom properties */
     color: var(--header-color, #333);
+
+    /* custom alignment param */
+    text-align: var(--header-align, left);
 }

@@ -1,11 +1,16 @@
-/* topbar.module.css */
-
 :root {
   --bg: #fff;
   --muted: #6b6b6b;
   --card: #fafafa;
   --accent: #111;
   --radius: 10px;
+  --border-soft: #eee;
+  --border-softer: #e6e6e6;
+  --border-muted: #ddd;
+  --button-bg: #fff;
+  --button-primary-bg: #111;
+  --button-primary-text: #fff;
+
   font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color-scheme: light;
 }
@@ -23,7 +28,7 @@ body {
 }
 
 .appHeader {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-soft);
   background: transparent;
 }
 
@@ -55,22 +60,22 @@ body {
 .select {
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid #e6e6e6;
-  background: #fff;
+  border: 1px solid var(--border-softer);
+  background: var(--button-bg);
   font-family: inherit;
 }
 
 .btn {
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #fff;
+  border: 1px solid var(--border-muted);
+  background: var(--button-bg);
   cursor: pointer;
   font-family: inherit;
 }
 
 .btnPrimary {
-  background: #111;
-  color: #fff;
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
   border-color: transparent;
 }

@@ -1,24 +1,24 @@
-import ReviewCard from './components/review-card/ReviewCard'; 
+import ReviewCard from './components/reviews/review-card/ReviewCard';
 import TopBar from './components/topbar/Topbar';
-import layoutStyles from '../global-styles/layout-styles/layout.module.css';
+import layoutStyles from '@layoutStyles/layout.module.css';
 
 /*
 get dining hall name from state or props + description
 */
 
-function ReviewPage(){ 
-    return ( 
+function ReviewPage() {
+    return (
         <div>
             <TopBar header="RateMyDiningHall @ UCSD" />
             <div className={layoutStyles.alignLeft}>
-                <ReviewCard 
+                <ReviewCard
                     headerText="The Bistro At Seventh"
                     description="Good dining hall"
                 />
-            </div> 
-        </div> 
-    ) 
-} 
+            </div>
+        </div>
+    )
+}
 
 
 export default ReviewPage;
