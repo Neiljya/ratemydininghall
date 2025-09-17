@@ -2,7 +2,7 @@ import globalContainerStyles from '../../../global-styles/container-styles/globa
 
 function ImageContainer({ imageUrl, alt = "Image" }: { imageUrl: string, alt?: string }) {
   return (
-    <div className={globalContainerStyles.roundContainer}>
+    <div className={globalContainerStyles.roundImageContainer}>
       <img 
         src={imageUrl} 
         alt={alt}

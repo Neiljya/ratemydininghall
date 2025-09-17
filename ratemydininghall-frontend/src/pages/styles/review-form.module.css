@@ -1,0 +1,48 @@
+.addReviewSection {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111;
+  font-size: 14px;
+}
+
+.reviewTextarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.reviewTextarea::placeholder {
+  color: #999;
+}
+
+.submitButton {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  float: right;
+}
+
+.submitButton:hover {
+  background: #333;
+}

@@ -3,3 +3,9 @@
   justify-content: flex-end !important;
   margin-right: 20px !important
 }
+
+.alignLeft {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-left: 20% !important;
+}

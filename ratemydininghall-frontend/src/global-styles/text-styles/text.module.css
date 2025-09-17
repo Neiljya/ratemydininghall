@@ -1,0 +1,8 @@
+.cardDescription {
+    padding-top: 0px;
+    font-size: 18px;
+    padding: 12px;
+
+    /* custom properties */
+    color: var(--text-color, #656464);
+}

@@ -5,9 +5,28 @@
   padding: 24px; 
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  max-width: 600px; 
+  max-width: 300px; 
   min-width: 500px; 
   margin: 10px 0;
   display: block;
   text-align: left; 
+}
+
+/* Optional hover effects for review cards and other potential interactables */
+
+.containerEffect {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.containerEffect:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.06);
+}
+
+.roundImageContainer {
+  border-radius: 12px;
+  overflow: hidden;  /* makes inner content respect the rounding */
+  padding: 0;        /* remove padding so no background shows around the img */
+  background: none;  /* or transparent if you don’t want white behind */
 }
