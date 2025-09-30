@@ -7,7 +7,7 @@ import globalContainerStyles from '../../../global-styles/container-styles/globa
 
 const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewCard({ headerText, description }: {headerText?: string, description?: string}) {
+function ReviewCard({ headerText, description, imageUrl }: {headerText?: string, description?: string, imageUrl?: string}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -23,7 +23,7 @@ function ReviewCard({ headerText, description }: {headerText?: string, descripti
         className={`${globalContainerStyles.roundContainer} ${globalContainerStyles.containerEffect}`}
         onClick={handleOpenModal}
       >
-        <ImageContainer imageUrl={placeholderUrl} alt="Dining Hall" />
+        <ImageContainer imageUrl={imageUrl ? imageUrl : placeholderUrl} alt="Dining Hall" />
         <BoldHeader text={headerText} />
         <CardDescription text={description}/>
       </div>
