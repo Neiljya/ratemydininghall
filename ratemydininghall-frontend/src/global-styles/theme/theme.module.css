@@ -1,0 +1,29 @@
+/* src/global-styles/theme/theme.module.css */
+:global(:root) {
+    /* Text */
+    --color-bg-overlay: rgba(10, 10, 10, 0.35);
+    --color-text-strong: #111;
+    --color-text: #6b6b6b;
+  
+    /* Brand / accents */
+    --color-star: #f5b400;
+    --color-badge-bg: #111;
+    --color-badge-text: #fff;
+  
+    /* Borders */
+    --color-border-soft: #eee;
+    --color-border-softer: #f0f0f0;
+  
+    /* Misc */
+    --color-close: #666;
+    --color-close-hover: #000;
+
+    /* Buttons */
+    --color-button-bg: #111;
+    --color-button-bg-hover: #333;
+    --color-button-text: #fff;
+
+    /* Close button */
+    --color-close: #666;
+    --color-close-hover: #000;
+}

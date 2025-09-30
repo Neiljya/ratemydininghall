@@ -1,0 +1,8 @@
+.reviewStars {
+    margin-bottom: 8px;
+}
+    
+.star {
+    color: var(--color-star);
+    font-size: 18px;
+}

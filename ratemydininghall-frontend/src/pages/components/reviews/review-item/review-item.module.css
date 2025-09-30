@@ -1,0 +1,22 @@
+.review {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border-softer);
+}
+
+.reviewMeta {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.reviewDate {
+    color: var(--color-text);
+    font-size: 13px;
+}
+  
+.reviewText {
+    color: var(--color-text-strong);
+    margin: 0;
+    font-size: 16px;
+}

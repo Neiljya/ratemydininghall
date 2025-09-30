@@ -4,6 +4,7 @@ import './index.css'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import ReviewPage from './pages/ReviewPage.tsx';
+import '@globalStyles/theme/theme.module.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
