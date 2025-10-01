@@ -14,7 +14,10 @@ export default defineConfig({
       '@layoutStyles': path.resolve(__dirname, 'src/global-styles/layout-styles'),
       '@textStyles': path.resolve(__dirname, 'src/global-styles/text-styles'),
       '@textComponents': path.resolve(__dirname, './src/pages/components/text-components'),
-      '@stars': path.resolve(__dirname, './src/pages/components/stars')
+      '@stars': path.resolve(__dirname, './src/pages/components/stars'),
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@redux': path.resolve(__dirname, './src/redux'),
+      '@state': path.resolve(__dirname, './src/redux/store.tsx'),
     },
   },
 })

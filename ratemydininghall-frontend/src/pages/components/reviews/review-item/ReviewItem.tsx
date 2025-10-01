@@ -1,23 +1,23 @@
 import Stars from '@stars/Stars';
 import styles from './review-item.module.css';
+import { formatReviewDate } from '@utils/dateUtils';
 
 interface ReviewItemProps {
-    starCount?: number;
-    date?: string;
-    time?: string;
-    reviewText?: string;
+    rating?: number;
+    date?: number;
+    description?: string;
 }
 
-function ReviewItem({ starCount = 0, date, time, reviewText }: ReviewItemProps) {
-    // Either need to format date/time prior to passing in or in function
+function ReviewItem({ rating = 0, date, description }: ReviewItemProps) {
+    const formattedDate = date ? formatReviewDate(date) : '';
 
     return (
         <div className={styles.review}>
-            <Stars starCount={4} />
+            <Stars starCount={rating} />
             <div className={styles.reviewMeta}>
-                <span className={styles.reviewDate}>9/6/2025, 4:47:11 PM</span>
+                <span className={styles.reviewDate}>{formattedDate}</span>
             </div>
-            <p className={styles.reviewText}>{reviewText}</p>
+            <p className={styles.reviewText}>{description}</p>
         </div>
 
     )

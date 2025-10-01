@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { selectReviewsByDiningHallId } from '@redux/review-slice/reviewSliceSelectors';
 import ReviewForm from '../../review-form/ReviewForm';
 import ReviewItem from '../../review-item/ReviewItem';
 import Stars from '@stars/Stars';
@@ -5,6 +7,7 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import styles from './review-modal.module.css';
 
 interface ReviewModalProps {
+  diningHallId: string;
   isOpen: boolean;
   onClose: () => void;
   headerText?: string;
@@ -13,10 +16,11 @@ interface ReviewModalProps {
 
 const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalProps) {
+function ReviewModal({ diningHallId, isOpen, onClose, headerText, description }: ReviewModalProps) {
+  const reviews = useSelector(selectReviewsByDiningHallId(diningHallId));
   if (!isOpen) return null;
 
-  return (
+  return ( 
     <div className={styles.modal} onClick={onClose}>
       <div
         className={`${globalContainerStyles.roundContainer} ${styles.modalContent}`}
@@ -33,7 +37,7 @@ function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalPr
               <div className={styles.stars}>
                 {/* TODO: replace with an avg rating count */}
                 <Stars starCount={4} />
-                <span className={styles.ratingBadge}>5</span>
+                <span className={styles.ratingBadge}>4</span>
               </div>
             </div>
             <p className={styles.description}>{description || "Build-your-own bowls, fresh ingredients."}</p>
@@ -44,11 +48,15 @@ function ReviewModal({ isOpen, onClose, headerText, description }: ReviewModalPr
         <div className={styles.reviewsSection}>
           <h2 className={styles.sectionTitle}>Reviews</h2>
 
-          {/* Sample Review */}
-          <ReviewItem
-            starCount={3}
-            reviewText="This is great!"
-          />
+          {/* List of Reviews from the state */}
+          {!!reviews && reviews.map(review => (
+            <ReviewItem
+              key={review?.id}
+              rating={review?.rating}
+              description={review?.description}
+              date={review?.date}
+            />
+          ))}
 
           {/* Add Review Form */}
           <ReviewForm />

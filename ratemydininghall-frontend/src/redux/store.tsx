@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import diningHallReducer from "./dining-hall/diningHallSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import diningHallReducer from './dining-hall-slice/diningHallSlice';
+import reviewSliceReducer from './review-slice/reviewSlice';
 
 /**
  * The main logic for the redux store, which holds the global state of the application
@@ -16,6 +17,7 @@ import diningHallReducer from "./dining-hall/diningHallSlice";
 export const store = configureStore({
     reducer: {
         diningHall: diningHallReducer,
+        reviewSlice: reviewSliceReducer,
     },
 });
 
