@@ -11,8 +11,6 @@ get dining hall name from state or props + description
 function ReviewPage() {
     const halls = useSelector(selectDiningHalls);
 
-    console.log('halls: ', halls);
-
     return (
         <div>
             <TopBar header="RateMyDiningHall @ UCSD" />
