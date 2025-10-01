@@ -21,7 +21,24 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "types": ["node"],
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/pages/components/*"],
+      "@styles/*": ["src/pages/styles/*"],
+      "@globalStyles/*": ["src/global-styles/*"],
+      "@containerStyles/*": ["src/global-styles/container-styles/*"],
+      "@layoutStyles/*": ["src/global-styles/layout-styles/*"],
+      "@textStyles/*": ["src/global-styles/text-styles/*"],
+      "@textComponents/*": ["src/pages/components/text-components/*"],
+      "@stars/*": ["src/pages/components/stars/*"],
+      "@utils/*": ["src/utils/*"],
+      "@redux/*": ["src/redux/*"],
+      "@state": ["src/redux/store.tsx"]    // file target (no /*)
+    },
   },
   "include": ["src"]
 }

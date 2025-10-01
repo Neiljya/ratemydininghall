@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectDiningHalls } from '@redux/dining-hall-slice/diningHallSelectors';
+import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice';
 import ReviewCard from './components/reviews/review-card/ReviewCard';
 import TopBar from './components/topbar/Topbar';
 import layoutStyles from '@layoutStyles/layout.module.css';
@@ -9,8 +10,8 @@ get dining hall name from state or props + description
 */
 
 function ReviewPage() {
-    const halls = useSelector(selectDiningHalls);
-
+    const halls: DiningHall[] = useSelector(selectDiningHalls);
+    
     return (
         <div>
             <TopBar header="RateMyDiningHall @ UCSD" />
