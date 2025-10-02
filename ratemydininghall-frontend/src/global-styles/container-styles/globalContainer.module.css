@@ -12,6 +12,58 @@
   text-align: left; 
 }
 
+/* Scrollable Container */
+.scrollableContainer {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.scrollableContent {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-behavior: smooth;
+  
+  /* Hide scrollbar for cleaner look, but keep functionality */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-container-bg-alt) transparent;
+}
+
+.scrollableContent::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollableContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollableContent::-webkit-scrollbar-thumb {
+  background: var(--color-container-bg-alt);
+  border-radius: 3px;
+}
+
+.scrollableContent::-webkit-scrollbar-thumb:hover {
+  background: var(--color-container-bg-alt);
+}
+
+/* Overrides roundContainer sizing for scrollable container */
+.scrollableContent .roundContainer {
+  background-color: var(--color-container-bg-alt);
+  flex-shrink: 0;
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+  padding: 8px;
+  margin: 0;
+}
+
+.selectedCard {
+  border: 2px solid #007bff;
+  background-color: var(--color-container-bg-selected);
+}
+
 /* Optional hover effects for review cards and other potential interactables */
 
 .containerEffect {

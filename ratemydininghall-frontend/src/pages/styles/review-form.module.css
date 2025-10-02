@@ -46,3 +46,14 @@
 .submitButton:hover {
   background: var(--color-button-bg-hover);
 }
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}

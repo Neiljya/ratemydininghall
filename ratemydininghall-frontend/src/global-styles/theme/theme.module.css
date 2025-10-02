@@ -26,4 +26,8 @@
     /* Close button */
     --color-close: #666;
     --color-close-hover: #000;
+
+    /* Containers */
+    --color-container-bg-alt: #f8f4f4;
+    --color-container-bg-selected: #e7f3ff;
 }
