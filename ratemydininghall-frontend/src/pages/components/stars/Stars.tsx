@@ -4,7 +4,7 @@ interface StarsProps {
     starCount?: number;
 }
 
-function Stars({ starCount }: StarsProps) {
+function Stars({ starCount = 0 }: StarsProps) {
     return (
         <div className={styles.reviewStars}>
             {Array.from({ length: 5 }, (_, i) => (

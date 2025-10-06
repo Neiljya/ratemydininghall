@@ -6,3 +6,17 @@
     color: var(--color-star);
     font-size: 18px;
 }
+
+/* Styles for selectable stars (used in rating forms) */
+.starSelectable {
+    color: #d3d3d3;
+    font-size: 22px;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.starSelectable.active {
+    color: var(--color-star);
+    opacity: 1;
+}

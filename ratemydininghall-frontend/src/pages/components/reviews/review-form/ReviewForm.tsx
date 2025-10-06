@@ -4,6 +4,7 @@ import styles from '../../../styles/review-form.module.css'
 import containerStyles from '@containerStyles/globalContainer.module.css';
 import ImageContainer from '@components/image-components/ImageContainer';
 import BoldHeader from '@components/text-components/custom-headers/BoldHeader';
+import StarSelector from '@components/stars/StarSelector';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
@@ -30,6 +31,12 @@ function ReviewForm({
     onClose,
     showClose = false,
 }: ReviewFormProps) {
+    const [rating, setRating] = useState<number>(0);
+
+    // eventually, once accounts are implemented, we can get the user's name from state
+    const [reviewerName, setReviewerName] = useState<string>('');
+    const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
+
     const [selectedHall, setSelectedHall] = useState<string>(diningHallId);
     const shouldShowCloseBtn = Boolean(onClose) || showClose;
 
@@ -69,14 +76,39 @@ function ReviewForm({
 
                 <div className={styles.formGroup}>
                     <label className={styles.label}>Rating</label>
-                    <select className={styles.ratingSelect}>
-                        <option>Choose...</option>
-                        <option value="5">5 Stars</option>
-                        <option value="4">4 Stars</option>
-                        <option value="3">3 Stars</option>
-                        <option value="2">2 Stars</option>
-                        <option value="1">1 Star</option>
-                    </select>
+                    <StarSelector value={rating} onChange={setRating} />
+                </div>
+                
+                {/* Reviewer Name Input (optional) */}
+                <div className={styles.formGroup}>
+                    <label className={styles.label} htmlFor="reviewerName">Name (optional)</label>
+                    <input
+                        id="reviewerName"
+                        type="text"
+                        className={styles.reviewerNameInput}
+                        placeholder={!isAnonymous ? "Your display name" : "Anonymous User"}
+                        value={isAnonymous ? '' : reviewerName}
+                        onChange={(e) => setReviewerName(e.target.value)}
+                        disabled={isAnonymous}
+                    />
+                </div>
+
+                {/* Anonymous checkbox */}
+                <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="anonymousToggle" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <input
+                    id="anonymousToggle"
+                    type="checkbox"
+                    checked={isAnonymous}
+                    onChange={(e) => {
+                        const checked = e.target.checked;
+                        setIsAnonymous(checked);
+                        if (checked) setReviewerName('');
+                    }}
+                    style={{ marginRight: 8 }}
+                    />
+                    Post as Anonymous
+                </label>
                 </div>
 
                 <div className={styles.formGroup}>
