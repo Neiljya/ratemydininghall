@@ -53,6 +53,7 @@ function ReviewModal({ diningHallId, isOpen, onClose, headerText, description }:
             <ReviewItem
               key={review?.id}
               rating={review?.rating}
+              author={review?.author}
               description={review?.description}
               date={review?.date}
             />

@@ -6,8 +6,17 @@
 
 .reviewMeta {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+.reviewAuthorText {
+    color: var(--color-text);
+    padding-left: 2px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .reviewDate {
