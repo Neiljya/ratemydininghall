@@ -1,4 +1,5 @@
 /* src/global-styles/theme/theme.module.css */
+.themeVars{}
 :global(:root) {
     /* Text */
     --color-bg-overlay: rgba(10, 10, 10, 0.35);
