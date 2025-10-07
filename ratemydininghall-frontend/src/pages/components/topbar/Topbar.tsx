@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { selectDiningHalls } from '@redux/dining-hall-slice/diningHallSelectors';
 import { useSelector } from 'react-redux';
-import styles from './Topbar.module.css';
+import styles from './topbar.module.css';
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import popupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
