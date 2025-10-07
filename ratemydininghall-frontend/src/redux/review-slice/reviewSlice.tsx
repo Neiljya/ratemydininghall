@@ -52,7 +52,7 @@ const reviewSlice = createSlice({
     name: 'reviewSlice',
     initialState,
     reducers: {
-        setReviews(state, action: PayloadAction<ReviewState>) {
+        setReviews(_, action: PayloadAction<ReviewState>) {
             // replace state in Redux store
             return action.payload; 
         },
