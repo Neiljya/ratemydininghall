@@ -4,11 +4,12 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { diningHallType } from '../src/schema/diningHallType';
 import { reviewType } from '../src/schema/reviewType';
 import { queryType } from '../src/schema/queryType';
+import { queryResolvers } from '../src/resolvers/queries';
 
 
 // Combine all type definitions into a single schema
 const typeDefs = [diningHallType, reviewType, queryType];
-
+const resolvers = [queryResolvers];
 /**
  * Creates the graphQL server instance
  * 
@@ -28,7 +29,7 @@ const typeDefs = [diningHallType, reviewType, queryType];
  * its environment 
  */
 const yoga = createYoga<VercelRequest, VercelResponse>({
-    schema: createSchema({ typeDefs }),
+    schema: createSchema({ typeDefs, resolvers }),
     graphqlEndpoint: '/api/graphql',
 });
 
