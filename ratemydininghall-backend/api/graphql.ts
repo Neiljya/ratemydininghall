@@ -1,5 +1,8 @@
 import { createYoga, createSchema } from 'graphql-yoga';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { Db } from 'mongodb';
+
+import { getDb } from '../src/db/mongo';
 
 import { diningHallType } from '../src/schema/diningHallType';
 import { reviewType } from '../src/schema/reviewType';
@@ -10,6 +13,12 @@ import { queryResolvers } from '../src/resolvers/queries';
 // Combine all type definitions into a single schema
 const typeDefs = [diningHallType, reviewType, queryType];
 const resolvers = [queryResolvers];
+
+type YogaContext = {
+    req: VercelRequest;
+    res: VercelResponse;
+    db: Db;
+}
 /**
  * Creates the graphQL server instance
  * 
@@ -28,9 +37,14 @@ const resolvers = [queryResolvers];
  * In production, when deployed to vercel, it will automatically read from 
  * its environment 
  */
-const yoga = createYoga<VercelRequest, VercelResponse>({
+const yoga = createYoga<YogaContext>({
     schema: createSchema({ typeDefs, resolvers }),
     graphqlEndpoint: '/api/graphql',
+
+    context: async ({req, res}) => {
+        const db = await getDb('ratemydininghall-ucsd');
+        return { req, res, db };
+    }
 });
 
 /**
@@ -40,4 +54,4 @@ const yoga = createYoga<VercelRequest, VercelResponse>({
  * => yoga handles the request (parses GraphQL query, runs resolvers, and writes JSON back)
  * => Vercel returns the response
  */
-export default (req: VercelRequest, res: VercelResponse) => yoga(req, res);
+export default yoga;
