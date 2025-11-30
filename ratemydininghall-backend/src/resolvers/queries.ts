@@ -35,6 +35,7 @@ export const queryResolvers = {
 
             return docs.map((doc: any) => ({
                 id: doc._id.toString(),
+                slug: doc.slug,
                 name: doc.name,
                 description: doc.description,
                 imageUrl: doc.imageUrl
