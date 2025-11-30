@@ -32,7 +32,7 @@ const initialState: DiningHallState = {
 };
 
 const graphQLEndpoint = 
-    import.meta.env.DEV ? 'http://localhost:3000/api/graphql' : '/api/graphql';
+    import.meta.env.DEV ? 'http://localhost:3000/api/graphql' : import.meta.env.VITE_GRAPHQL_ENDPOINT;
 
 export const fetchDiningHalls = createAsyncThunk<DiningHall[]>(
     'diningHall/fetchDiningHalls',
