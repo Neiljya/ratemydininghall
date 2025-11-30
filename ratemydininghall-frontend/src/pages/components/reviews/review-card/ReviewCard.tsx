@@ -4,6 +4,8 @@ import ImageContainer from '../../image-components/ImageContainer';
 import CardDescription from '../../text-components/custom-labels/CardDescription';
 import ReviewModal from './review-modal/ReviewModal';
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
+import globalLayoutStyles from '@layoutStyles/layout.module.css';
+import Stars from '@stars/Stars';
 
 const placeholderUrl: string =
 "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
@@ -32,6 +34,9 @@ function ReviewCard({ diningHallId='', headerText, description, imageUrl }: Revi
       >
         <ImageContainer imageUrl={imageUrl ? imageUrl : placeholderUrl} alt="Dining Hall" />
         <BoldHeader text={headerText} />
+        <div className={globalLayoutStyles.headerSection}>
+          <Stars starCount={4} size={30} />
+        </div>
         <CardDescription text={description} />
       </div>
       {/* Creates a popup modal when the card is clicked */}

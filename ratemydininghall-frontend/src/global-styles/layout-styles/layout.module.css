@@ -9,3 +9,11 @@
     justify-content: flex-start !important;
     margin-left: 20% !important;
 }
+
+.headerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  gap: 2px;
+}
