@@ -14,7 +14,9 @@ function Stars({ starCount = 0, size = 18 }: StarsProps) {
                 <span
                     key={i}
                     className={styles.star}
-                    style={{ color: i < starCount ? '#f5b400' : '#ccc' }}
+                    style={{ 
+                        color: i < starCount ? '#f5b400' : '#ccc',
+                        fontSize: size }}
                 >
                     ★
                 </span>
