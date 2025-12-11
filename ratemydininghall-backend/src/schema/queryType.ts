@@ -24,6 +24,6 @@ export const queryType = `
         diningHalls: [DiningHall!]!
         review(id: ID!): Review
         reviews: [Review!]!
-        reviewsByHall(hallId: ID!): [Review!]!
+        reviewsByHall(hallSlug: String!): [Review!]!
     }
 `;

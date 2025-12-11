@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { graphQLRequest } from '@graphQL/graphQLClient';
+import { getDiningHallsQuery } from '@graphQL/queries/diningHallQueries';
 
 export interface DiningHall {
     id: string;
@@ -31,38 +33,12 @@ const initialState: DiningHallState = {
     error: null
 };
 
-const graphQLEndpoint = 
-    import.meta.env.DEV ? 'http://localhost:3000/api/graphql' : import.meta.env.VITE_GRAPHQL_ENDPOINT;
-
 export const fetchDiningHalls = createAsyncThunk<DiningHall[]>(
-    'diningHall/fetchDiningHalls',
-    async () => {
-        const res = await fetch(graphQLEndpoint, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                query: `
-                    query GetDiningHalls {
-                        diningHalls {
-                            id
-                            slug
-                            name
-                            description
-                            imageUrl
-                        }
-                    }
-                `,
-            }),
-        });
-
-        const json = await res.json();
-
-        if (json.errors) {
-            throw new Error(json.errors[0].message ?? 'Failed to fetch dining halls');
-        }
-
-        return json.data.diningHalls as DiningHall[];
-    }
+  'diningHall/fetchDiningHalls',
+  async () => {
+    const data = await graphQLRequest<{ diningHalls: DiningHall[] }>(getDiningHallsQuery);
+    return data.diningHalls;
+  }
 );
 
 /**

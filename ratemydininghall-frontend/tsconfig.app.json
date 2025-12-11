@@ -37,7 +37,10 @@
       "@stars/*": ["src/pages/components/stars/*"],
       "@utils/*": ["src/utils/*"],
       "@redux/*": ["src/redux/*"],
-      "@state": ["src/redux/store.tsx"]    // file target (no /*)
+      "@state": ["src/redux/store.tsx"],    // file target (no /*)
+      "@hooks/*": ["src/hooks/*"],
+      "@graphQL/*": ["src/graphQL/*"]
+
     },
   },
   "include": ["src"]

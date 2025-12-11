@@ -70,7 +70,7 @@ export const queryResolvers = {
             const docs = await db.collection('reviews').find({}).sort({createdAt: -1 }).toArray();
             return docs.map((doc: any) => ({
                 id: doc._id.toString(),
-                diningHallId: doc.diningHallId?.toString() ?? doc.diningHalLId,
+                diningHallSlug: doc.diningHallSlug?.toString() ?? doc.diningHalLSlug,
                 author: doc.author,
                 description: doc.description,
                 rating: doc.rating,

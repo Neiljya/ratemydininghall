@@ -1,12 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { graphQLRequest } from '@graphQL/graphQLClient';
+import { getAllReviewsQuery, getReviewsByHallQuery } from '@graphQL/queries/reviewQueries';
 
 export interface Review {
     id: string;
+    diningHallSlug?: string;
     author: string;
     description: string;
-    date: number;
-    rating: number
+    createdAt: string;
+    rating: number;
 }
 
 export type ReviewState = {
@@ -33,13 +36,66 @@ const initialState: ReviewState = {
     bistro: [
         {
             id: 'bistro-r1a',
+            diningHallSlug: 'bistro',
             author: 'John',
             description: 'Great food and atmosphere!',
-            date: new Date('2023-10-01T20:25:00').getTime(),
+            createdAt: String(new Date('2023-10-01T20:25:00').getTime()),
             rating: 4
         }
     ]
 }
+
+export const fetchReviews = createAsyncThunk<ReviewState>(
+  'review/fetchReviews',
+  async () => {
+    const data = await graphQLRequest<{ reviews: Review[] }>(getAllReviewsQuery);
+    
+    const hallsToReviewsArr: ReviewState = {};
+
+    for (const review of data.reviews) {
+        const key = review.diningHallSlug || '';
+
+        if (!hallsToReviewsArr[key]){
+            hallsToReviewsArr[key] = [];
+        }
+
+        hallsToReviewsArr[key].push({
+            id: review.id,
+            diningHallSlug: review.diningHallSlug,
+            author: review.author,
+            description: review.description,
+            rating: review.rating,
+            createdAt: String(new Date(review.createdAt).getTime()),
+        });
+    }
+
+    return hallsToReviewsArr;
+  }
+);
+
+export const fetchReviewsByHall = createAsyncThunk<
+  { diningHallSlug: string; reviews: Review[] },
+  string
+>(
+  'review/fetchReviewsByHall',
+  async (diningHallSlug: string) => {
+    const data = await graphQLRequest<{ reviewsByHall: Review[] }>(
+      getReviewsByHallQuery,
+      { diningHallSlug }
+    );
+
+    const reviews: Review[] = data.reviewsByHall.map((review) => ({
+      id: review.id,
+      diningHallSlug: review.diningHallSlug,
+      author: review.author,
+      description: review.description,
+      rating: review.rating,
+      createdAt: String(new Date(review.createdAt).getTime()),
+    }));
+
+    return { diningHallSlug, reviews };
+  }
+);
 
 // /**
 //  * Final version with empty initial state
@@ -57,13 +113,34 @@ const reviewSlice = createSlice({
             return action.payload; 
         },
 
-        addReview(state, action: PayloadAction<{ diningHallId: string; review: Review }>) {
-            const { diningHallId, review } = action.payload;
-            if (!!state[diningHallId]) {
-                state[diningHallId].push(review);
-            }
+        setReviewsForHall(
+            state,
+            action: PayloadAction<{ diningHallSlug: string; reviews: Review[] }>
+        ) {
+            const { diningHallSlug, reviews } = action.payload;
+            state[diningHallSlug] = reviews;
+
         },
-    }
+
+        addReview(state, action: PayloadAction<{ diningHallSlug: string; review: Review }>) {
+            const { diningHallSlug, review } = action.payload;
+            if (!state[diningHallSlug]) {
+                state[diningHallSlug] = [];
+            }
+            state[diningHallSlug].push(review);
+        },
+    },
+
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchReviews.fulfilled, (_, action) => {
+            return action.payload;
+        })
+        .addCase(fetchReviewsByHall.fulfilled, (state, action) => {
+            const { diningHallSlug, reviews } = action.payload;
+            state[diningHallSlug] = reviews;
+        })
+    },
 });
 
 export const { addReview, setReviews } = reviewSlice.actions;

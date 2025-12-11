@@ -3,7 +3,7 @@ import type { Review, ReviewState } from './reviewSlice';
 
 export const selectReviews = (state: RootState): ReviewState => state?.reviewSlice;
 
-export const selectReviewsByDiningHallId = (diningHallId: string) => (state: RootState): Review[] => {
+export const selectReviewsByDiningHallSlug = (diningHallSlug: string) => (state: RootState): Review[] => {
     const reviews = selectReviews(state);
-    return reviews ? reviews[diningHallId] || [] : [];
+    return reviews ? reviews[diningHallSlug] || [] : [];
 };

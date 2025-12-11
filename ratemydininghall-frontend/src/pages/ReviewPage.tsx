@@ -1,7 +1,7 @@
 import ReviewCard from './components/reviews/review-card/ReviewCard';
 import TopBar from './components/topbar/Topbar';
 import layoutStyles from '@layoutStyles/layout.module.css';
-import { useDiningHalls } from '../hooks/useDiningHalls';
+import { useDiningHalls } from '@hooks/useDiningHalls';
 
 /*
 get dining hall name from state or props + description
@@ -27,7 +27,7 @@ function ReviewPage() {
                 {halls.map(hall => (
                     <ReviewCard
                         key={hall?.id} // React lists require a unique key prop
-                        diningHallId={hall?.slug}
+                        diningHallSlug={hall?.slug}
                         headerText={hall?.name}
                         description={hall?.description}
                         imageUrl={hall?.imageUrl}

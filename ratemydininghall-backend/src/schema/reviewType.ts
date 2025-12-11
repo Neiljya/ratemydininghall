@@ -1,7 +1,7 @@
 export const reviewType = `
     type Review {
         id: ID!
-        diningHallId: String!
+        diningHallSlug: String!
         author: String!
         description: String!
         createdAt: String!

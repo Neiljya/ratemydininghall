@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectReviewsByDiningHallId } from '@redux/review-slice/reviewSliceSelectors';
+import { selectReviewsByDiningHallSlug } from '@redux/review-slice/reviewSliceSelectors';
 import ReviewForm from '../../review-form/ReviewForm';
 import ReviewItem from '../../review-item/ReviewItem';
 import Stars from '@stars/Stars';
@@ -7,7 +7,7 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import styles from './review-modal.module.css';
 
 interface ReviewModalProps {
-  diningHallId: string;
+  diningHallSlug: string;
   isOpen: boolean;
   onClose: () => void;
   headerText?: string;
@@ -16,8 +16,8 @@ interface ReviewModalProps {
 
 const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewModal({ diningHallId, isOpen, onClose, headerText, description }: ReviewModalProps) {
-  const reviews = useSelector(selectReviewsByDiningHallId(diningHallId));
+function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
+  const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
   if (!isOpen) return null;
 
   return ( 
@@ -55,7 +55,7 @@ function ReviewModal({ diningHallId, isOpen, onClose, headerText, description }:
               rating={review?.rating}
               author={review?.author}
               description={review?.description}
-              date={review?.date}
+              date={Number(review?.createdAt)}
             />
           ))}
 

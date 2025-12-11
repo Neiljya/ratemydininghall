@@ -12,6 +12,7 @@ export const mutationType = `
     type Mutation {
         createReview(
             hallId: ID!
+            hallSlug: String!
             author: String!
             description: String!
             rating: Int!
