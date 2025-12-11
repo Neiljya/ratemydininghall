@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { fetchReviewsByHall, type Review } from '@redux/review-slice/reviewSlice';
+import { fetchReviewsByHall } from '@redux/review-slice/reviewSlice';
 import { selectReviewsByDiningHallSlug } from '@redux/review-slice/reviewSliceSelectors';
 
 export function useReviewsForDiningHallBootstrap(diningHallSlug: string) {
