@@ -8,11 +8,12 @@ import { diningHallType } from '../src/schema/diningHallType';
 import { reviewType } from '../src/schema/reviewType';
 import { queryType } from '../src/schema/queryType';
 import { queryResolvers } from '../src/resolvers/queries';
-
+import { mutationType } from '../src/schema/mutationType';
+import { mutationResolvers } from '../src/resolvers/mutations';
 
 // Combine all type definitions into a single schema
-const typeDefs = [diningHallType, reviewType, queryType];
-const resolvers = [queryResolvers];
+const typeDefs = [diningHallType, reviewType, queryType, mutationType];
+const resolvers = [queryResolvers, mutationResolvers];
 
 type YogaContext = {
     req: VercelRequest;
@@ -40,6 +41,7 @@ type YogaContext = {
 const yoga = createYoga<YogaContext>({
     schema: createSchema({ typeDefs, resolvers }),
     graphqlEndpoint: '/api/graphql',
+    maskedErrors: false,
 
     context: async ({req, res}) => {
         const db = await getDb('ratemydininghall-ucsd');

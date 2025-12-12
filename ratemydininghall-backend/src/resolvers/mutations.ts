@@ -1,4 +1,6 @@
 import { put, del } from '@vercel/blob';
+import type { Db } from 'mongodb';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
 type CreateReviewArgs = {
     diningHallId: string;
@@ -17,6 +19,22 @@ type CreateReviewUploadUrlArgs = {
 type DeleteReviewArgs = {
     hallId: string;
     id: string;
+};
+
+type YogaContext = {
+    req: VercelRequest;
+    res: VercelResponse;
+    db: Db;
+};
+
+type SubmitPendingReviewArgs = {
+    input: {
+        diningHallSlug: string;
+        author: string;
+        description: string;
+        rating: number;
+        imageUrl?: string | null;
+    };
 };
 
 const vercelBlobAPI = 'https://api.vercel.com/v2/blob/upload-url';
@@ -79,7 +97,8 @@ export const mutationResolvers = {
 
             return review;
         },
-            async deleteReview(
+
+        async deleteReview(
                 _parent: unknown,
                 { hallId, id }: DeleteReviewArgs
             ) {
@@ -90,6 +109,41 @@ export const mutationResolvers = {
                     console.error('deleteReview failed: ', error);
                     return false;
                 }
-            },
         },
-    };
+
+        async submitPendingReview(
+            _parent: unknown,
+            { input }: SubmitPendingReviewArgs,
+            { db }: YogaContext
+        ) {
+            const { diningHallSlug, author, description, rating, imageUrl } = input;
+
+            if ( !diningHallSlug || !author || !description || typeof rating !== 'number') {
+                throw new Error('Missing required fields');
+            }
+
+            if (rating < 1 || rating > 5) {
+                throw new Error('Rating must be between 1 and 5');
+            }
+
+            const doc = {
+                diningHallSlug,
+                author,
+                description,
+                rating,
+                imageUrl: imageUrl || null,
+                createdAt: new Date(),
+                status: 'pending',
+            };
+
+            const result = await db.collection('pendingReviews').insertOne(doc);
+
+            return { ok: true, id: result.insertedId.toString() };
+        },
+        
+    
+    },
+
+
+
+};

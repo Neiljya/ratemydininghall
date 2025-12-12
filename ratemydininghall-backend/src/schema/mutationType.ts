@@ -10,6 +10,12 @@
  */
 export const mutationType = `
     type Mutation {
+        createReviewUploadUrl(
+            diningHallId: ID!
+            filename: String!
+            contentType: String!
+        ): ReviewUploadUrl!
+        
         createReview(
             hallId: ID!
             hallSlug: String!
@@ -20,4 +26,7 @@ export const mutationType = `
         ): Review!
 
         deleteReview(id: ID!): Boolean!
-        `
+
+        submitPendingReview(input: SubmitPendingReviewInput!): PendingReviewResult!
+    }   
+`;
