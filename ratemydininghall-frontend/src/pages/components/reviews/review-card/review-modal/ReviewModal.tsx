@@ -60,7 +60,7 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
           ))}
 
           {/* Add Review Form */}
-          <ReviewForm />
+          <ReviewForm diningHallSlug={diningHallSlug}/>
         </div>
       </div>
     </div>

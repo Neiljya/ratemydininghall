@@ -39,7 +39,8 @@
       "@redux/*": ["src/redux/*"],
       "@state": ["src/redux/store.tsx"],    // file target (no /*)
       "@hooks/*": ["src/hooks/*"],
-      "@graphQL/*": ["src/graphQL/*"]
+      "@graphQL/*": ["src/graphQL/*"],
+      "@api/*": ["src/api/*"]
 
     },
   },

@@ -21,3 +21,12 @@ export const getReviewsByHallQuery = `
             rating
         }
 }`;
+
+export const submitPendingReviewMutation = `
+  mutation SubmitPendingReview($input: SubmitPendingReviewInput!) {
+    submitPendingReview(input: $input) {
+      ok
+      id
+    }
+  }
+`;

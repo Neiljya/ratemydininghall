@@ -1,70 +1,59 @@
-/* Contains the styling for different container types */
-
 .roundContainer {
-  border-radius: 12px;
-  padding: 24px; 
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  max-width: 300px; 
-  min-width: 500px; 
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  background-color: var(--color-container-bg);
+  box-shadow: var(--shadow-sm);
+
+  max-width: 300px;
+  min-width: 500px;
   margin: 10px 0;
+
   display: block;
-  text-align: left; 
+  text-align: left;
 }
 
-/* Scrollable Container */
 .scrollableContainer {
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--color-border-soft);
 }
 
 .scrollableContent {
   display: flex;
-  gap: 16px;
+  gap: var(--space-4);
   overflow-x: auto;
-  padding: 12px 0;
+  padding: var(--space-3) 0;
   scroll-behavior: smooth;
-  
-  /* Hide scrollbar for cleaner look, but keep functionality */
+
   scrollbar-width: thin;
   scrollbar-color: var(--color-container-bg-alt) transparent;
 }
 
-.scrollableContent::-webkit-scrollbar {
-  height: 6px;
-}
-
-.scrollableContent::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+.scrollableContent::-webkit-scrollbar { height: 6px; }
+.scrollableContent::-webkit-scrollbar-track { background: transparent; }
 .scrollableContent::-webkit-scrollbar-thumb {
   background: var(--color-container-bg-alt);
   border-radius: 3px;
 }
-
 .scrollableContent::-webkit-scrollbar-thumb:hover {
   background: var(--color-container-bg-alt);
 }
 
-/* Overrides roundContainer sizing for scrollable container */
+/* Override "card" in the scroll list */
 .scrollableContent .roundContainer {
   background-color: var(--color-container-bg-alt);
   flex-shrink: 0;
   width: 140px;
   min-width: 140px;
   max-width: 140px;
-  padding: 8px;
+  padding: var(--space-2);
   margin: 0;
 }
 
 .selectedCard {
-  border: 2px solid #007bff;
+  border: 2px solid var(--color-selected-border);
   background-color: var(--color-container-bg-selected);
 }
-
-/* Optional hover effects for review cards and other potential interactables */
 
 .containerEffect {
   cursor: pointer;
@@ -73,12 +62,12 @@
 
 .containerEffect:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.06);
+  box-shadow: var(--shadow-hover);
 }
 
 .roundImageContainer {
-  border-radius: 12px;
-  overflow: hidden;  /* makes inner content respect the rounding */
-  padding: 0;        /* remove padding so no background shows around the img */
-  background: none;  /* or transparent if you don’t want white behind */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: 0;
+  background: none;
 }

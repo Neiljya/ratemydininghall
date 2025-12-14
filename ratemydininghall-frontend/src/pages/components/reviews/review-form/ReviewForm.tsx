@@ -5,11 +5,13 @@ import containerStyles from '@containerStyles/globalContainer.module.css';
 import ImageContainer from '@components/image-components/ImageContainer';
 import BoldHeader from '@components/text-components/custom-headers/BoldHeader';
 import StarSelector from '@components/stars/StarSelector';
+import { submitPendingReview } from '@graphQL/mutations/submitPendingReview';
+import Notification, { type NotificationVariant } from '@components/notifications/Notification';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
 interface ReviewFormProps {
-    diningHallId?: string;
+    diningHallSlug?: string;
     diningHalls?: DiningHall[];
     source?: ReviewFormSource;
     onClose?: () => void;
@@ -25,7 +27,7 @@ interface ReviewFormProps {
 // ];
 
 function ReviewForm({
-    diningHallId = '',
+    diningHallSlug = '',
     diningHalls = [],
     source,
     onClose,
@@ -36,12 +38,79 @@ function ReviewForm({
     // eventually, once accounts are implemented, we can get the user's name from state
     const [reviewerName, setReviewerName] = useState<string>('');
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
-
-    const [selectedHall, setSelectedHall] = useState<string>(diningHallId);
+    const [selectedHall, setSelectedHall] = useState<string>(diningHallSlug);
+    const [description, setDescription] = useState<string>('');
     const shouldShowCloseBtn = Boolean(onClose) || showClose;
+
+    // vars for handling submission state
+    const [submitting, setSubmitting] = useState<boolean>(false);
+    const [notif, setNotif] = useState<{ show: boolean; message: string; variant: NotificationVariant }>({
+        show: false,
+        message: '',
+        variant: 'info',
+    });
+
+    const showNotif = (variant: NotificationVariant, message: string) => {
+        setNotif({ show: true, variant, message });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        console.log('test');
+        // prevent refreshing the page
+        e.preventDefault();
+        setSubmitting(true);
+
+        const hallSlugToUse = source === 'topbar' ? selectedHall : diningHallSlug;
+
+        if (!hallSlugToUse) {
+            showNotif('error', 'Please select a dining hall to review.');
+            setSubmitting(false);
+            return;
+        }
+
+        if (rating < 1 || rating > 5) {
+            showNotif('error', 'Please provide a rating between 1 and 5 stars.');
+            setSubmitting(false);
+            return;
+        }
+
+        if (!description.trim()) {
+            showNotif('error', 'Please provide a description for your review.');
+            setSubmitting(false);
+            return;
+        }
+
+        const authorToUse = isAnonymous ? 'Anonymous' : (reviewerName.trim() || 'Anonymous');
+        console.log('submiting..');
+        try {
+            // //disabling in prod for now
+            // await submitPendingReview({
+            //     diningHallSlug: hallSlugToUse,
+            //     author: authorToUse,
+            //     description: description.trim(),
+            //     rating
+            // });
+
+            showNotif('success', 'Review submitted for approval ✅');
+            setDescription('')
+            setRating(0);
+        } catch (error: any) {
+            console.error(error);
+            showNotif('error', error.message ?? 'Failed to submit review');
+        } finally {
+            setSubmitting(false);
+        }
+    };
 
     return (
         <div>
+            <Notification
+                show={notif.show}
+                variant={notif.variant}
+                message={notif.message}
+                durationMs={2600}
+                onClose={() => setNotif((n) => ({ ...n, show: false }))}
+            />
             {shouldShowCloseBtn && (
                 <button
                     type="button"
@@ -63,7 +132,7 @@ function ReviewForm({
                                 className={`${containerStyles.roundContainer} ${containerStyles.containerEffect} ${
                                     selectedHall === hall?.id ? containerStyles.selectedCard : ''
                                 }`}
-                                onClick={() => setSelectedHall(hall.id)}
+                                onClick={() => setSelectedHall(hall.slug)}
                             >
                             <ImageContainer imageUrl={hall?.imageUrl} alt={hall.name} />
                                 <p className={containerStyles.cardText}>{hall.name}</p>
@@ -72,7 +141,7 @@ function ReviewForm({
                     </div>
                 </div>
             )}
-            <form className={styles.addReviewSection}>
+            <form className={styles.addReviewSection} onSubmit={handleSubmit}>
 
                 <div className={styles.formGroup}>
                     <label className={styles.label}>Rating</label>
@@ -117,10 +186,14 @@ function ReviewForm({
                         className={styles.reviewTextarea}
                         placeholder="Short note about your experience"
                         rows={4}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
 
-                <button className={styles.submitButton}>Submit Review</button>
+                <button type="submit" className={styles.submitButton} disabled={submitting}>
+                    {submitting ? 'Submitting...' : 'Submit Review'}
+                </button>
             </form>
         </div>
     )

@@ -12,6 +12,8 @@ export interface Review {
     rating: number;
 }
 
+export type NewReviewInput = Omit<Review, 'id' | 'createdAt'>;
+
 export type ReviewState = {
     [diningHallId: string]: Review[];
 };

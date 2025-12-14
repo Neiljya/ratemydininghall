@@ -1,0 +1,89 @@
+.wrapper {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translate(-50%, -18px);
+  width: min(520px, calc(100vw - 24px));
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+
+  padding: var(--space-3) 14px;
+  border-radius: var(--radius-lg);
+
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-notif-border);
+
+  opacity: 0;
+  pointer-events: auto;
+
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.in {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.out {
+  opacity: 0;
+  transform: translate(-50%, -18px);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+}
+
+.message {
+  font-size: 13px;
+  opacity: 0.92;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.close {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.75;
+  line-height: 1;
+  padding: 6px 8px;
+  border-radius: 10px;
+  color: inherit;
+}
+
+.close:hover {
+  opacity: 1;
+  background: var(--color-notif-close-hover-bg);
+}
+
+/* Variants pulled from theme */
+.success {
+  color: var(--color-notif-success-text);
+  background: var(--color-notif-success-bg);
+}
+
+.error {
+  color: var(--color-notif-error-text);
+  background: var(--color-notif-error-bg);
+}
+
+.info {
+  color: var(--color-notif-info-text);
+  background: var(--color-notif-info-bg);
+}
