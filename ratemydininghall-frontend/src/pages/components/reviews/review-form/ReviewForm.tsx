@@ -55,7 +55,6 @@ function ReviewForm({
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        console.log('test');
         // prevent refreshing the page
         e.preventDefault();
         setSubmitting(true);
@@ -81,17 +80,18 @@ function ReviewForm({
         }
 
         const authorToUse = isAnonymous ? 'Anonymous' : (reviewerName.trim() || 'Anonymous');
-        console.log('submiting..');
         try {
-            // //disabling in prod for now
-            // await submitPendingReview({
-            //     diningHallSlug: hallSlugToUse,
-            //     author: authorToUse,
-            //     description: description.trim(),
-            //     rating
-            // });
+            //disabling in prod for now
+            if (!import.meta.env.PROD) {
+                await submitPendingReview({
+                    diningHallSlug: hallSlugToUse,
+                    author: authorToUse,
+                    description: description.trim(),
+                    rating
+                });
+            }
 
-            showNotif('success', 'Review submitted for approval ✅');
+            showNotif('success', 'Review submitted for approval!');
             setDescription('')
             setRating(0);
         } catch (error: any) {
