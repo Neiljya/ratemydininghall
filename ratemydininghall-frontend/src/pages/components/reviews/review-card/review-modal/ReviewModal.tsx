@@ -21,7 +21,6 @@ const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57
 function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
   const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
   
-  const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
