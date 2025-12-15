@@ -4,6 +4,8 @@ import ReviewForm from '../../review-form/ReviewForm';
 import ReviewItem from '../../review-item/ReviewItem';
 import Stars from '@stars/Stars';
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
+import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
+import { useState, useEffect } from 'react';
 import styles from './review-modal.module.css';
 
 interface ReviewModalProps {
@@ -18,15 +20,44 @@ const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57
 
 function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
   const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
+  
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+      if (isOpen) {
+        setIsClosing(false);
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+  }, [isOpen]);
+  
+  const handleClose = () => {
+    if (isClosing) return;
+
+    setIsClosing(true);
+
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
+
   if (!isOpen) return null;
 
   return ( 
-    <div className={styles.modal} onClick={onClose}>
+    <div className={`
+      ${styles.modal}
+      ${globalPopupStyles.popupBackground}
+      ${isClosing ? globalPopupStyles.closing : ''}
+      `} 
+    
+      onClick={handleClose}>
       <div
         className={`${globalContainerStyles.roundContainer} ${styles.modalContent}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={onClose}>✕</button>
+        <button className={styles.closeButton} onClick={handleClose}>✕</button>
 
         {/* Header Section */}
         <div className={styles.header}>

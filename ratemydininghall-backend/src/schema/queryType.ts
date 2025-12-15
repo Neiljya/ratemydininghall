@@ -26,4 +26,5 @@ export const queryType = `
         reviews: [Review!]!
         reviewsByHall(hallSlug: String!): [Review!]!
     }
+
 `;

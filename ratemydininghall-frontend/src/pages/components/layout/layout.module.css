@@ -1,0 +1,16 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.header {
+  flex-shrink: 0; 
+}
+
+.content {
+  flex: 1; 
+  overflow-y: auto; 
+  position: relative;
+}

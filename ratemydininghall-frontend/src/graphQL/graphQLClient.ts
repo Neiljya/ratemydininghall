@@ -23,6 +23,7 @@ export async function graphQLRequest<TData>(
         const response = await fetch(GRAPHQL_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // for cookies
             body: JSON.stringify({ query, variables }),
         });
 

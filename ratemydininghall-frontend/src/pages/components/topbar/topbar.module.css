@@ -33,14 +33,13 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 2200px;
   margin: 0 auto;
   padding: 28px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 300px;
 }
 
 .title {
@@ -78,4 +77,18 @@ body {
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   border-color: transparent;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }

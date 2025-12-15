@@ -8,6 +8,7 @@ import StarSelector from '@components/stars/StarSelector';
 import { submitPendingReview } from '@graphQL/mutations/submitPendingReview';
 import Notification, { type NotificationVariant } from '@components/notifications/Notification';
 
+
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
 interface ReviewFormProps {
@@ -128,9 +129,9 @@ function ReviewForm({
                     <div className={containerStyles.scrollableContent}>
                         {diningHalls.map((hall) => (
                             <div
-                                key={hall?.id}
+                                key={hall?.slug}
                                 className={`${containerStyles.roundContainer} ${containerStyles.containerEffect} ${
-                                    selectedHall === hall?.id ? containerStyles.selectedCard : ''
+                                    selectedHall === hall?.slug ? containerStyles.selectedCard : ''
                                 }`}
                                 onClick={() => setSelectedHall(hall.slug)}
                             >

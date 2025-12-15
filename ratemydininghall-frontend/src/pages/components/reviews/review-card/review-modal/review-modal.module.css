@@ -1,5 +1,4 @@
 /* review-modal.module.css */
-
 .modal {
   position: fixed;
   top: 0;
@@ -10,8 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+
+  /* flexbox centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 20px; /* Prevents modal from touching edges on mobile */
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .modalContent {

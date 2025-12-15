@@ -21,6 +21,7 @@
 
     /* Buttons */
     --color-button-bg: #111;
+    --color-button-bg-alt: #fff;
     --color-button-bg-hover: #333;
     --color-button-text: #fff;
 

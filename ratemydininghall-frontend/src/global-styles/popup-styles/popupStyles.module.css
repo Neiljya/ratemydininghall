@@ -4,12 +4,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-bg-overlay);
+  background: var(--color-bg-overlay); 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* for safari */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   z-index: 1000;
+  animation: fadeIn 0.25s ease-out forwards; 
 }
 
 .popupContent {
@@ -22,6 +25,14 @@
   animation: slideIn 0.25s ease-out forwards;
 }
 
+.closing.popupContent {
+  animation: slideOut 0.2s ease-in forwards;
+}
+
+.closing.popupBackground {
+  animation: fadeOut 0.2s ease-in forwards;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -31,4 +42,25 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }

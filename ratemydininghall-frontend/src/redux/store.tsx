@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import diningHallReducer from './dining-hall-slice/diningHallSlice';
 import reviewSliceReducer from './review-slice/reviewSlice';
+import authReducer from './auth-slice/authSlice';
 
 /**
  * The main logic for the redux store, which holds the global state of the application
@@ -18,6 +19,7 @@ export const store = configureStore({
     reducer: {
         diningHall: diningHallReducer,
         reviewSlice: reviewSliceReducer,
+        auth: authReducer,
     },
 });
 
