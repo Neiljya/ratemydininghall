@@ -24,7 +24,6 @@ function ReviewPage() {
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         <ReviewCard
-                            diningHallSlug={hall?.slug}
                             headerText={hall?.name}
                             description={hall?.description}
                             imageUrl={hall?.imageUrl}
