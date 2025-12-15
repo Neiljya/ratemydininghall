@@ -13,14 +13,14 @@ import Layout from '@components/layout/Layout';
 import ReviewPage from './pages/review-page/ReviewPage';
 import LoginPage from './pages/auth/LoginPage';
 
-function RequireAdmin({ children }: { children: React.ReactNode }) {
-  const isAdmin = useAppSelector(selectIsAdmin);
-  const loading = useAppSelector(selectAuthLoading);
+// function RequireAdmin({ children }: { children: React.ReactNode }) {
+//   const isAdmin = useAppSelector(selectIsAdmin);
+//   const loading = useAppSelector(selectAuthLoading);
 
-  if (loading) return null;
-  if (!isAdmin) return <Navigate to="/login" replace />;
-  return <>{children}</>;
-}
+//   if (loading) return null;
+//   if (!isAdmin) return <Navigate to="/login" replace />;
+//   return <>{children}</>;
+// }
 
 function App() {
   useDiningHallsBootstrap();
