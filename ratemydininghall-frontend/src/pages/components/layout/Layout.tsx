@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import TopBar from '../topbar/Topbar'; 
-import styles from './Layout.module.css';
+import styles from './layout.module.css';
 
 export default function Layout() {
   return (
