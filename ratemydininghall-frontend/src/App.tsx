@@ -1,10 +1,10 @@
 import { useDiningHallsBootstrap } from '@hooks/useDiningHallsBootstrap';
 import { useReviewsBootstrap } from '@hooks/useReviewsBootstrap';
-import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { selectAuthLoading, selectIsAdmin } from '@redux/auth-slice/authSelectors';
+import { useAppDispatch } from '@redux/hooks';
+// import { selectAuthLoading, selectIsAdmin } from '@redux/auth-slice/authSelectors';
 import { useEffect } from 'react';
 import { fetchMe } from '@redux/auth-slice/authSlice';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // components
 import Layout from '@components/layout/Layout';
