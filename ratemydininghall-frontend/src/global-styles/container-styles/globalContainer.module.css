@@ -73,3 +73,17 @@
   padding: 0;
   background: none;
 }
+
+.cardText {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-strong);
+  
+  /* Optional: Ensure it handles long names gracefully */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}

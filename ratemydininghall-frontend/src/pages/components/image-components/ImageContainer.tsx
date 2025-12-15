@@ -1,17 +1,34 @@
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 
-function ImageContainer({ imageUrl, alt = "Image" }: { imageUrl: string, alt?: string }) {
+interface ImageContainerProps {
+  imageUrl: string;
+  alt?: string;
+  width?: string | number;
+  height?: string | number;
+}
+function ImageContainer({ 
+  imageUrl, 
+  alt = "Image",
+  width = '100%',
+  height = '100%' 
+  }: ImageContainerProps) {
   return (
-    <div className={globalContainerStyles.roundImageContainer}>
+    <div className={globalContainerStyles.roundImageContainer}
+    style={{
+      width: width,
+      height: height,
+    }}
+    
+    >
       <img
         src={imageUrl}
         alt={alt}
         style={{
-          width: '100%',
-          height: '100%',
+          width: width,
+          height: height,
           borderRadius: '8px',
           objectFit: 'cover',
-          display: 'block'
+          display: 'block',
         }}
       />
     </div>

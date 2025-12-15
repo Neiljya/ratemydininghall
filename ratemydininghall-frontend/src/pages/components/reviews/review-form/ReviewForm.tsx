@@ -135,7 +135,7 @@ function ReviewForm({
                                 }`}
                                 onClick={() => setSelectedHall(hall.slug)}
                             >
-                            <ImageContainer imageUrl={hall?.imageUrl} alt={hall.name} />
+                            <ImageContainer imageUrl={hall?.imageUrl} alt={hall.name} height={'80%'} />
                                 <p className={containerStyles.cardText}>{hall.name}</p>
                             </div>
                         ))}
