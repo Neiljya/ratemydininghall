@@ -2,7 +2,7 @@ import { serialize } from 'cookie';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const sameSite: 'lax' | 'strict' = 'lax';
+const sameSite = isProd ? 'none' : 'lax';
 
 export function setAuthCookies(res: any, accessToken: string, refreshToken: string) {
     const accessCookie = serialize('access_token', accessToken, {
