@@ -1,8 +1,10 @@
 .reviewsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 7.5%;
+  grid-template-columns: repeat(auto-fill, 420px);
+  gap: 30px;
   padding: 24px;
+  padding-left: 20%;
+  justify-content: center;
 }
 
 .cardWrapper {

@@ -8,9 +8,10 @@ function ImageContainer({ imageUrl, alt = "Image" }: { imageUrl: string, alt?: s
         alt={alt}
         style={{
           width: '100%',
-          height: 'auto',
+          height: '100%',
           borderRadius: '8px',
-          objectFit: 'cover'
+          objectFit: 'cover',
+          display: 'block'
         }}
       />
     </div>

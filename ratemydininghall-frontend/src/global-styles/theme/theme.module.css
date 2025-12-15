@@ -63,4 +63,7 @@
     --space-3: 12px;
     --space-4: 16px;
     --space-6: 24px;
+
+    /* gradients */
+    --color-card-gradient: linear-gradient(145deg, #ffffff 50%, #efe3e3 100%);
 }
