@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import BoldHeader from '@textComponents/custom-headers/BoldHeader';
 import ImageContainer from '../../image-components/ImageContainer';
 import CardDescription from '../../text-components/custom-labels/CardDescription';
-import ReviewModal from './review-modal/ReviewModal';
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import globalLayoutStyles from '@layoutStyles/layout.module.css';
 import Stars from '@stars/Stars';
@@ -15,39 +13,34 @@ interface ReviewCardTypes {
     headerText?: string;
     description?: string;
     imageUrl?: string;
+    onClick?: () => void; // onclick propr
 }
-function ReviewCard({ diningHallSlug='', headerText, description, imageUrl }: ReviewCardTypes) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  }
+function ReviewCard({ headerText, description, imageUrl, onClick }: ReviewCardTypes) {
+  
   return (
-    <>
       <div
         className={`${globalContainerStyles.roundContainer} ${globalContainerStyles.containerEffect}`}
-        onClick={handleOpenModal}
+        onClick={onClick} // pass the click up to the parent
+        style={{
+          cursor: 'pointer',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start'
+        }}
       >
         <ImageContainer imageUrl={imageUrl ? imageUrl : placeholderUrl} alt="Dining Hall" />
-        <BoldHeader text={headerText} />
-        <div className={globalLayoutStyles.headerSection}>
-          <Stars starCount={4} size={30} />
+        
+        {/* Helper div to push content down if needed */}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <BoldHeader text={headerText} />
+            <div className={globalLayoutStyles.headerSection}>
+            <Stars starCount={4} size={30} />
+            </div>
+            <CardDescription text={description} />
         </div>
-        <CardDescription text={description} />
       </div>
-      {/* Creates a popup modal when the card is clicked */}
-      <ReviewModal
-        diningHallSlug={diningHallSlug}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        headerText={headerText}
-        description={description}
-      />
-    </>
   );
 }
 

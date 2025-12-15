@@ -1,31 +1,25 @@
+import { useState } from 'react'; // Import useState
 import ReviewCard from '@components/reviews/review-card/ReviewCard';
-import layoutStyles from '@layoutStyles/layout.module.css';
-import styles from './review-page.module.css'
+import ReviewModal from '@components/reviews/review-card/review-modal/ReviewModal'; // Import the Modal here
 import { useDiningHalls } from '@hooks/useDiningHalls';
-
-/*
-get dining hall name from state or props + description
-*/
+import styles from './review-page.module.css';
+import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice'; // Assuming you have this type, or use 'any'
 
 function ReviewPage() {
     const { halls, loading, error } = useDiningHalls();
-
-    // TODO: Change loading and error screens to nicer components
-    if (loading && halls.length === 0) {
-        return <div> Loading dining halls... </div>
-    }
-
-    if (error && halls.length === 0) {
-        return <div> Error loading dining halls: {error} </div>
-    }
     
+    // State to track which dining hall is currently selected
+    const [selectedHall, setSelectedHall] = useState<DiningHall | null>(null);
+
+    if (loading && halls.length === 0) return <div>Loading...</div>;
+    if (error && halls.length === 0) return <div>Error: {error}</div>;
     
     return (
         <div>
-            <div className={layoutStyles.alignLeft}>
+            <div className={styles.reviewsGrid}>
                 {halls.map((hall, index) => (
-                    <div
-                        key={hall?.id} // React lists require a unique key prop
+                    <div 
+                        key={hall?.id}
                         className={styles.cardWrapper}
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
@@ -34,13 +28,23 @@ function ReviewPage() {
                             headerText={hall?.name}
                             description={hall?.description}
                             imageUrl={hall?.imageUrl}
+                            // When clicked, set this hall as the active one
+                            onClick={() => setSelectedHall(hall)} 
                         />
                     </div>
                 ))}
             </div>
+
+            {/* render the modal outside the grid, so it covers everything */}
+            <ReviewModal
+                diningHallSlug={selectedHall?.slug || ''}
+                isOpen={!!selectedHall} // Open if a hall is selected
+                onClose={() => setSelectedHall(null)} // Clear selection on close
+                headerText={selectedHall?.name}
+                description={selectedHall?.description}
+            />
         </div>
     )
 }
-
 
 export default ReviewPage;

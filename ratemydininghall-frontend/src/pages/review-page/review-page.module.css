@@ -1,7 +1,15 @@
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 7.5%;
+  padding: 24px;
+}
+
 .cardWrapper {
   position: relative;
   opacity: 0;
   animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  height: 100%;
 }
 
 @keyframes slideUp {
