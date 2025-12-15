@@ -66,4 +66,5 @@
 
     /* gradients */
     --color-card-gradient: linear-gradient(145deg, #ffffff 50%, #efe3e3 100%);
+    --color-card-gradient-form: linear-gradient(170deg, #ffffff 70%, #edebeb 100%);
 }
