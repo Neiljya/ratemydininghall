@@ -1,6 +1,7 @@
 import { put, del } from '@vercel/blob';
 import type { Db } from 'mongodb';
 import { VercelRequest, VercelResponse } from '@vercel/node';
+import { authResolvers } from './auth';
 
 type CreateReviewArgs = {
     diningHallId: string;
@@ -140,6 +141,8 @@ export const mutationResolvers = {
 
             return { ok: true, id: result.insertedId.toString() };
         },
+
+        ...authResolvers.Mutation,
         
     
     },

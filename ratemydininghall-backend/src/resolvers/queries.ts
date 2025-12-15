@@ -1,6 +1,7 @@
 import type { Db } from "mongodb";
 import { ObjectId } from "mongodb";
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { authResolvers } from "./auth";
 
 type YogaContext = {
     req: VercelRequest;
@@ -79,28 +80,30 @@ export const queryResolvers = {
             }));
         },
 
-    async reviewsByHall(
-        _parent: unknown,
-        { diningHallId }: { diningHallId: string },
-        { db }: YogaContext
-    ) {
-        const docs = await db
-            .collection('reviews')
-            .find({ diningHallId })
-            .sort({ createdAt: -1 })
-            .toArray();
+        async reviewsByHall(
+            _parent: unknown,
+            { diningHallId }: { diningHallId: string },
+            { db }: YogaContext
+        ) {
+            const docs = await db
+                .collection('reviews')
+                .find({ diningHallId })
+                .sort({ createdAt: -1 })
+                .toArray();
 
-        return docs.map((doc: any) => ({
-            id: doc._id.toString(),
-            diningHallId: doc.diningHallId?.toString?.() ?? doc.diningHallId,
-            author: doc.author,
-            description: doc.description,
-            rating: doc.rating,
-            createdAt: doc.createdAt instanceof Date
-                ? doc.createdAt.toISOString()
-                : doc.createdAt,
-            imageUrl: doc.imageUrl ?? null,
-        }));
-    },
+            return docs.map((doc: any) => ({
+                id: doc._id.toString(),
+                diningHallId: doc.diningHallId?.toString?.() ?? doc.diningHallId,
+                author: doc.author,
+                description: doc.description,
+                rating: doc.rating,
+                createdAt: doc.createdAt instanceof Date
+                    ? doc.createdAt.toISOString()
+                    : doc.createdAt,
+                imageUrl: doc.imageUrl ?? null,
+            }));
+        },
+
+        ...authResolvers.Query,
     },
 };

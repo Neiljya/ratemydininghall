@@ -7,6 +7,7 @@ export const reviewType = `
         createdAt: String!
         rating: Int!
         status: String
+        userId: ID
     }
 
     input SubmitPendingReviewInput {
@@ -26,5 +27,20 @@ export const reviewType = `
         uploadUrl: String!
         key: String!
         publicUrl: String
+    }
+
+    extend type Mutation {
+        submitPendingReview(input: SubmitPendingReviewInput!): PendingReviewResult!
+
+        # moderation actions (will be admin only, implemented through resolver checks)
+        approvePendingReview(id: ID!): Boolean!
+        rejectPendingReview(id: ID!): Boolean!
+        moveAcceptedToPending(id: ID!): Boolean!
+        deleteReview(id: ID!): Boolean!
+    }
+
+    extend type Query {
+        pendingReviews: [Review!]!
+        acceptedReviews: [Review!]!
     }
 `;

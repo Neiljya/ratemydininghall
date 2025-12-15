@@ -1,4 +1,5 @@
 import { createYoga, createSchema } from 'graphql-yoga';
+import { YogaContext } from '../src/types/yogaContext';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import type { Db } from 'mongodb';
 
@@ -10,16 +11,17 @@ import { queryType } from '../src/schema/queryType';
 import { queryResolvers } from '../src/resolvers/queries';
 import { mutationType } from '../src/schema/mutationType';
 import { mutationResolvers } from '../src/resolvers/mutations';
+import { authResolvers } from '../src/resolvers/auth';
+
+import { verifyAccessToken } from '../src/auth/jwt';
+import { parse } from 'cookie';
+import { authType } from '../src/schema/authType';
 
 // Combine all type definitions into a single schema
-const typeDefs = [diningHallType, reviewType, queryType, mutationType];
-const resolvers = [queryResolvers, mutationResolvers];
+const typeDefs = [diningHallType, reviewType, queryType, authType, mutationType];
+const resolvers = [queryResolvers, mutationResolvers, authResolvers];
+const schema = createSchema<YogaContext>({ typeDefs, resolvers })
 
-type YogaContext = {
-    req: VercelRequest;
-    res: VercelResponse;
-    db: Db;
-}
 /**
  * Creates the graphQL server instance
  * 
@@ -39,13 +41,25 @@ type YogaContext = {
  * its environment 
  */
 const yoga = createYoga<YogaContext>({
-    schema: createSchema({ typeDefs, resolvers }),
+    schema,
     graphqlEndpoint: '/api/graphql',
     maskedErrors: false,
 
     context: async ({req, res}) => {
         const db = await getDb('ratemydininghall-ucsd');
-        return { req, res, db };
+
+        const cookies = parse(req.headers.cookie ?? '');
+        const access = cookies['access_token'];
+
+        let user: YogaContext['user'] = null;
+        if (access) {
+            try {
+                user = verifyAccessToken(access)
+            } catch {
+                user = null;
+            }
+        }
+        return { req, res, db, user };
     }
 });
 
@@ -56,4 +70,4 @@ const yoga = createYoga<YogaContext>({
  * => yoga handles the request (parses GraphQL query, runs resolvers, and writes JSON back)
  * => Vercel returns the response
  */
-export default yoga;
+export default (req: VercelRequest, res: VercelResponse) => yoga(req, res);
