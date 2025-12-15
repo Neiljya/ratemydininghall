@@ -28,6 +28,10 @@
   max-width: 600px;
   width: 100%;
   text-align: left;
+
+  
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .closeButton {
@@ -121,6 +125,16 @@
   margin-bottom: 6px;
   color: var(--color-text-strong);
   font-size: 14px;
+}
+
+.reviewsListContainer {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 4px;
+  margin-bottom: 24px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 @keyframes slideIn {

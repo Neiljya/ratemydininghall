@@ -79,15 +79,24 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
           <h2 className={styles.sectionTitle}>Reviews</h2>
 
           {/* List of Reviews from the state */}
-          {!!reviews && reviews.map(review => (
-            <ReviewItem
-              key={review?.id}
-              rating={review?.rating}
-              author={review?.author}
-              description={review?.description}
-              date={Number(review?.createdAt)}
-            />
-          ))}
+          <div className={styles.reviewsListContainer}>
+            {!!reviews && reviews.map(review => (
+              <ReviewItem
+                key={review?.id}
+                rating={review?.rating}
+                author={review?.author}
+                description={review?.description}
+                date={Number(review?.createdAt)}
+              />
+            ))}
+            {(!reviews || reviews.length === 0) && (
+              <p style={{ color: 'var(--color-text)', opacity: 0.7, fontStyle: 'italic'}}>
+                No reviews yet. Be the first to add one!
+              </p>
+            )}
+
+          </div>
+
 
           {/* Add Review Form */}
           <ReviewForm diningHallSlug={diningHallSlug}/>

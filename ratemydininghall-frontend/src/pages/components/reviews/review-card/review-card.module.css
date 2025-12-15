@@ -85,6 +85,11 @@
   margin-bottom: 8px;
 }
 
+.header > * {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
 .starsWrapper {
   display: flex;
   align-items: center;
