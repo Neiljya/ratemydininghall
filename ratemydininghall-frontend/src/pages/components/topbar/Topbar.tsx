@@ -6,6 +6,9 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import popupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { logout } from '@redux/auth-slice/authSlice';
+import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-slice/authSelectors';
 
 function Topbar({ header }: { header?: string }) {
     // Fetch dining halls from redux store, we only need to fetch it once here and pass it down
@@ -13,6 +16,11 @@ function Topbar({ header }: { header?: string }) {
     const navigate = useNavigate();
     const [isReviewFormOpen, setReviewFormOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+
+    const dispatch = useAppDispatch();
+    const isAuthed = useAppSelector(selectIsAuthed);
+    const isAdmin = useAppSelector(selectIsAdmin);
+    const authLoading = useAppSelector(selectAuthLoading);
 
     const handleOpenReviewForm = () => {
         setReviewFormOpen(true);
@@ -29,6 +37,19 @@ function Topbar({ header }: { header?: string }) {
             setIsClosing(false);
         }, 200);
     }
+
+    const handleAuthButton = async () => {
+        if (!isAuthed) {
+            navigate('/login');
+            return;
+        }
+
+        try {
+            await dispatch(logout()).unwrap();
+        } finally {
+            navigate('/');
+        }
+    };
 
     return (
     <>
@@ -60,14 +81,22 @@ function Topbar({ header }: { header?: string }) {
                 >
                     Back to All Halls
                 </button>
+
+                {/* admin only button */}
+                {isAdmin && (
+                    <button className={styles.btn} onClick={() => navigate('/admin')}>
+                        Admin Panel
+                    </button>
+                )}
             </div>
         </div>
         <div className={styles.right}>
             <button
                 className={`${styles.btn} ${styles.btnGhost}`}
-                onClick={() => navigate('/login')}
+                onClick={handleAuthButton}
+                disabled={authLoading}
             >
-                Login
+                {isAuthed ? (authLoading ? '...' : 'Logout') : 'Login'}
             </button>
         </div>
         </div>

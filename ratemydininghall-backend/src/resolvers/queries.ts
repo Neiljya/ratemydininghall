@@ -1,13 +1,8 @@
 import type { Db } from "mongodb";
 import { ObjectId } from "mongodb";
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { YogaContext } from '../types/yogaContext'
 import { authResolvers } from "./auth";
-
-type YogaContext = {
-    req: VercelRequest;
-    res: VercelResponse;
-    db: Db;
-}
 
 // export const queryResolvers = {
 //     Query: {
@@ -25,6 +20,11 @@ type YogaContext = {
 //     }
 // };
 
+function requireAdmin(ctx: YogaContext) {
+    if (!ctx.user || ctx.user.role !== 'admin'){
+        throw new Error('Unauthorized');
+    }
+}
 export const queryResolvers = {
     Query: {
         async diningHalls(
@@ -101,6 +101,48 @@ export const queryResolvers = {
                     ? doc.createdAt.toISOString()
                     : doc.createdAt,
                 imageUrl: doc.imageUrl ?? null,
+            }));
+        },
+
+        async pendingReviews(_p: unknown, _a: unknown, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const docs = await ctx.db
+                .collection('pendingReviews')
+                .find({})
+                .sort({ createdAt: -1 })
+                .toArray();
+            
+            return docs.map((doc: any) => ({
+                id: doc._id.toString(),
+                diningHallSlug: doc.diningHallSlug,
+                author: doc.author,
+                description: doc.description,
+                rating: doc.rating,
+                createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
+                status: doc.status ?? 'pending',
+                userId: doc.userId?.toString?.() ?? null
+            }));
+        },
+
+        async acceptedReviews(_p: unknown, _a: unknown, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const docs = await ctx.db
+                .collection('reviews')
+                .find({})
+                .sort({ createdAt: -1 })
+                .toArray();
+            
+            return docs.map((doc: any) => ({
+                id: doc._id.toString(),
+                diningHallSlug: doc.diningHallSlug,
+                author: doc.author,
+                description: doc.description,
+                rating: doc.rating,
+                createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
+                status: doc.status ?? 'accepted',
+                userId: doc.userId?.toString?.() ?? null,
             }));
         },
 

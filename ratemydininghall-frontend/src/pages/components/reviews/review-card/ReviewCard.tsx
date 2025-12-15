@@ -27,13 +27,14 @@ function ReviewCard({ headerText, description, imageUrl, onClick }: ReviewCardTy
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start'
+          justifyContent: 'flex-start',
+          overflow: 'hidden'
         }}
       >
         <ImageContainer imageUrl={imageUrl ? imageUrl : placeholderUrl} alt="Dining Hall" />
         
         {/* Helper div to push content down if needed */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ height: '200px', width: '100%', flex: 1, display: 'flex', flexDirection: 'column', flexShrink: 0, position: 'relative' }}>
             <BoldHeader text={headerText} />
             <div className={globalLayoutStyles.headerSection}>
             <Stars starCount={4} size={30} />

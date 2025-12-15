@@ -1,0 +1,261 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-text-strong);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 920px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.panel {
+  max-width: none; /* override roundContainer max-width */
+  min-width: 0;   /* override roundContainer min-width */
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.h3 {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text-strong);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-size: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid var(--color-border-soft);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.meta {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.line1 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--color-text-strong);
+}
+
+.slug { font-weight: 700; }
+.author { color: var(--color-text); }
+.dot { opacity: 0.35; }
+.rating { font-weight: 700; }
+
+.desc {
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.time {
+  font-size: 12px;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-soft);
+  background: #fff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btnPrimary {
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+}
+
+.btnDanger {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 196, 196, 0.92);
+  background: rgba(255, 196, 196, 0.35);
+  cursor: pointer;
+}
+
+.empty {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--color-container-bg-alt);
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.error {
+  margin-bottom: 12px;
+  color: var(--color-error-text, #4a0c0c);
+  background: var(--color-error-bg, rgba(255, 196, 196, 0.92));
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.headerActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.headerActions button:not(:first-child) {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.notice {
+  margin: 12px 0 18px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-container-bg-alt);
+  color: var(--color-text-strong);
+  font-size: 13px;
+}
+
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-soft);
+  background: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  transition: transform 0.1s ease, filter 0.2s ease, background-color 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btnPrimary {
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.1);
+}
+
+.btnApprove {
+  background: #e6f4ea; 
+  color: #137333;      
+  border: 1px solid #ceead6;
+}
+
+.btnApprove:hover {
+  background: #d7f0dd;
+}
+
+.btnWarning {
+  background: #fef7e0; 
+  color: #b06000;      
+  border: 1px solid #fce8b2;
+}
+
+.btnWarning:hover {
+  background: #fef0cd;
+}
+
+/* Updated Danger Button */
+.btnDanger {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 196, 196, 0.92);
+  background: rgba(255, 196, 196, 0.35);
+  color: #c5221f;
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.1s ease, background-color 0.2s;
+}
+
+.btnDanger:hover {
+  background: rgba(255, 196, 196, 0.5);
+}
+
+.btnDanger:active {
+  transform: scale(0.97);
+}
+
+/* --- Animations --- */
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

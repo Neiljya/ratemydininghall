@@ -1,6 +1,6 @@
 import { put, del } from '@vercel/blob';
-import type { Db } from 'mongodb';
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import { ObjectId } from 'mongodb';
+import { YogaContext } from '../types/yogaContext';
 import { authResolvers } from './auth';
 
 type CreateReviewArgs = {
@@ -22,11 +22,6 @@ type DeleteReviewArgs = {
     id: string;
 };
 
-type YogaContext = {
-    req: VercelRequest;
-    res: VercelResponse;
-    db: Db;
-};
 
 type SubmitPendingReviewArgs = {
     input: {
@@ -39,6 +34,10 @@ type SubmitPendingReviewArgs = {
 };
 
 const vercelBlobAPI = 'https://api.vercel.com/v2/blob/upload-url';
+
+function requireAdmin(ctx: YogaContext) {
+    if (!ctx.user || ctx.user.role !== 'admin') throw new Error('Unauthorized');
+}
 
 export const mutationResolvers = {
     Mutation: {
@@ -99,19 +98,6 @@ export const mutationResolvers = {
             return review;
         },
 
-        async deleteReview(
-                _parent: unknown,
-                { hallId, id }: DeleteReviewArgs
-            ) {
-                try {
-                    await del(`reviews/${hallId}/${id}.json`);
-                    return true;
-                } catch (error) {
-                    console.error('deleteReview failed: ', error);
-                    return false;
-                }
-        },
-
         async submitPendingReview(
             _parent: unknown,
             { input }: SubmitPendingReviewArgs,
@@ -142,11 +128,75 @@ export const mutationResolvers = {
             return { ok: true, id: result.insertedId.toString() };
         },
 
+        async approvePendingReview(_p: unknown, { id }: {id: string}, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const _id = new ObjectId(id);
+            const pending = await ctx.db.collection('pendingReviews').findOne({ _id });
+            if (!pending) return false;
+
+            const acceptedDoc = {
+                diningHallSlug: pending.diningHallSlug,
+                author: pending.author,
+                description: pending.description,
+                rating: pending.rating,
+                imageUrl: pending.imageUrl ?? null,
+                createdAt: pending.createdAt ?? new Date(),
+                status: 'accepted',
+                userId: pending.userId ?? null,
+            };
+
+            await ctx.db.collection('reviews').insertOne(acceptedDoc);
+            await ctx.db.collection('pendingReviews').deleteOne({ _id });
+
+            return true;
+        },
+
+        async rejectPendingReview(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
+            requireAdmin(ctx);
+            const _id = new ObjectId(id);
+            const res = await ctx.db.collection('pendingReviews').deleteOne({ _id });
+            return res.deletedCount === 1;
+        },
+
+        async moveAcceptedToPending(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const _id = new ObjectId(id);
+            const accepted = await ctx.db.collection('reviews').findOne({ _id });
+            if (!accepted) return false;
+
+            const pendingDoc = {
+                diningHallSlug: accepted.diningHallSlug,
+                author: accepted.author,
+                description: accepted.description,
+                rating: accepted.rating,
+                imageUrl: accepted.imageUrl ?? null,
+                createdAt: accepted.createdAt ?? new Date(),
+                status: 'pending',
+                userId: accepted.userId ?? null
+            };
+
+            await ctx.db.collection('pendingReviews').insertOne(pendingDoc);
+            await ctx.db.collection('reviews').deleteOne({ _id });
+
+            return true;
+        },
+
+        async deleteReview(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
+            requireAdmin(ctx);
+            const _id = new ObjectId(id);
+            const res = await ctx.db.collection('reviews').deleteOne({ _id });
+            return res.deletedCount === 1;
+        },
+
         ...authResolvers.Mutation,
-        
-    
     },
 
 
-
+        
+    
 };
+
+
+

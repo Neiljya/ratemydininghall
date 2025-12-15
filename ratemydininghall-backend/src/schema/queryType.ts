@@ -25,6 +25,9 @@ export const queryType = `
         review(id: ID!): Review
         reviews: [Review!]!
         reviewsByHall(hallSlug: String!): [Review!]!
-    }
 
+        # admin/moderation
+        pendingReviews: [Review!]!
+        acceptedReviews: [Review!]!
+    }
 `;

@@ -7,18 +7,20 @@ export const getAllReviewsQuery = `
         description
         createdAt
         rating
+        status
     }
 }`;
 
 export const getReviewsByHallQuery = `
-    query GetReviewsByHall($diningHallId: String!) {
-        reviewsByHall(diningHallId: $diningHallId) {
+    query GetReviewsByHall($hallSlug: String!) {
+        reviewsByHall(hallSlug: $hallSlug) {
             id
             diningHallSlug
             author
             description
             createdAt
             rating
+            status
         }
 }`;
 

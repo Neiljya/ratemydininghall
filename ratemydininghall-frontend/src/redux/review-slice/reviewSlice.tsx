@@ -10,6 +10,7 @@ export interface Review {
     description: string;
     createdAt: string;
     rating: number;
+    status?: string | null;
 }
 
 export type NewReviewInput = Omit<Review, 'id' | 'createdAt'>;
@@ -34,18 +35,19 @@ export type ReviewState = {
  * 
  * 
  */
-const initialState: ReviewState = {
-    bistro: [
-        {
-            id: 'bistro-r1a',
-            diningHallSlug: 'bistro',
-            author: 'John',
-            description: 'Great food and atmosphere!',
-            createdAt: String(new Date('2023-10-01T20:25:00').getTime()),
-            rating: 4
-        }
-    ]
-}
+// const initialState: ReviewState = {
+//     bistro: [
+//         {
+//             id: 'bistro-r1a',
+//             diningHallSlug: 'bistro',
+//             author: 'John',
+//             description: 'Great food and atmosphere!',
+//             createdAt: String(new Date('2023-10-01T20:25:00').getTime()),
+//             rating: 4
+//         }
+//     ]
+// }
+const initialState: ReviewState = {};
 
 export const fetchReviews = createAsyncThunk<ReviewState>(
   'review/fetchReviews',
