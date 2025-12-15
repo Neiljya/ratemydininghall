@@ -1,0 +1,65 @@
+.btn-fill-anim {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
+  background-color: transparent;
+  color: var(--color-text-strong);
+}
+
+.btn-fill-anim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-button-bg, #007bff);
+  z-index: -1; /* Sits behind the text */
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+
+.btn-fill-anim:hover::before {
+  width: 100%;
+}
+
+.btn-fill-anim:hover {
+  color: var(--color-button-text, #ffffff) !important;
+  border-color: transparent; 
+}
+
+.btn-dark-fill-anim {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: var(--color-bg-surface-dark, #333333); 
+  color: var(--color-text-white, #ffffff);
+  border: 1px solid transparent;
+  
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-dark-fill-anim::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-button-bg, #007bff); 
+  
+  z-index: -1; 
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.btn-dark-fill-anim:hover {
+  color: var(--color-button-text, #ffffff); 
+}
+
+.btn-dark-fill-anim:hover::before {
+  width: 100%;
+}
+
+.btn-dark-fill-anim:active {
+    transform: scale(0.98);
+}
