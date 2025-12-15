@@ -1,9 +1,9 @@
-import { useState } from 'react'; // Import useState
+import { useState } from 'react'; 
 import ReviewCard from '@components/reviews/review-card/ReviewCard';
-import ReviewModal from '@components/reviews/review-card/review-modal/ReviewModal'; // Import the Modal here
+import ReviewModal from '@components/reviews/review-card/review-modal/ReviewModal'; 
 import { useDiningHalls } from '@hooks/useDiningHalls';
 import styles from './review-page.module.css';
-import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice'; // Assuming you have this type, or use 'any'
+import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice'; 
 
 function ReviewPage() {
     const { halls, loading, error } = useDiningHalls();
