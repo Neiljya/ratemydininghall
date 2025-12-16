@@ -107,7 +107,7 @@ export const queryResolvers = {
             requireAdmin(ctx);
 
             const docs = await ctx.db
-                .collection(COLLECTIONS.REVIEWS)
+                .collection(COLLECTIONS.PENDING_REVIEWS)
                 .find({})
                 .sort({ createdAt: -1 })
                 .toArray();
