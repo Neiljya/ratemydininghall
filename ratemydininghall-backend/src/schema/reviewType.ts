@@ -1,4 +1,9 @@
 export const reviewType = `
+    enum ReviewTargetType {
+        DINING_HALL
+        MENU_ITEM
+    }
+
     type Review {
         id: ID!
         diningHallSlug: String!
@@ -8,6 +13,10 @@ export const reviewType = `
         rating: Int!
         status: String
         userId: ID
+
+        # for selecting if its a dining hall rating or menu item rating
+        targetType: ReviewTargetType!
+        menuItemId: ID
     }
 
     input SubmitPendingReviewInput {
@@ -16,6 +25,10 @@ export const reviewType = `
         description: String!
         rating: Int!
         imageUrl: String
+
+        # for selecting if its a dining hall rating or menu item rating
+        targetType: ReviewTargetType!
+        menuItem: ID
     }
 
     type PendingReviewResult {

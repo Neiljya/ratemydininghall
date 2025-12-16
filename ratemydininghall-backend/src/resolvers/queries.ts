@@ -1,8 +1,7 @@
-import type { Db } from "mongodb";
 import { ObjectId } from "mongodb";
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import type { YogaContext } from '../types/yogaContext'
 import { authResolvers } from "./auth";
+import { COLLECTIONS } from "../db/collections";
 
 // export const queryResolvers = {
 //     Query: {
@@ -48,7 +47,7 @@ export const queryResolvers = {
             { id }: { id: string },
             { db }: YogaContext
         ) {
-            const doc = await db.collection('reviews').findOne({_id: new ObjectId(id)});
+            const doc = await db.collection(COLLECTIONS.REVIEWS).findOne({_id: new ObjectId(id)});
 
             if (!doc) return null;
 
@@ -68,7 +67,7 @@ export const queryResolvers = {
             _args: unknown,
             { db }: YogaContext
         ) {
-            const docs = await db.collection('reviews').find({}).sort({createdAt: -1 }).toArray();
+            const docs = await db.collection(COLLECTIONS.REVIEWS).find({}).sort({createdAt: -1 }).toArray();
             return docs.map((doc: any) => ({
                 id: doc._id.toString(),
                 diningHallSlug: doc.diningHallSlug?.toString() ?? doc.diningHalLSlug,
@@ -86,7 +85,7 @@ export const queryResolvers = {
             { db }: YogaContext
         ) {
             const docs = await db
-                .collection('reviews')
+                .collection(COLLECTIONS.REVIEWS)
                 .find({ diningHallId })
                 .sort({ createdAt: -1 })
                 .toArray();
@@ -108,7 +107,7 @@ export const queryResolvers = {
             requireAdmin(ctx);
 
             const docs = await ctx.db
-                .collection('pendingReviews')
+                .collection(COLLECTIONS.REVIEWS)
                 .find({})
                 .sort({ createdAt: -1 })
                 .toArray();
@@ -129,7 +128,7 @@ export const queryResolvers = {
             requireAdmin(ctx);
 
             const docs = await ctx.db
-                .collection('reviews')
+                .collection(COLLECTIONS.REVIEWS)
                 .find({})
                 .sort({ createdAt: -1 })
                 .toArray();

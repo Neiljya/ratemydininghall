@@ -2,6 +2,7 @@ import { put, del } from '@vercel/blob';
 import { ObjectId } from 'mongodb';
 import { YogaContext } from '../types/yogaContext';
 import { authResolvers } from './auth';
+import { COLLECTIONS } from '../db/collections';
 
 type CreateReviewArgs = {
     diningHallId: string;
@@ -30,10 +31,35 @@ type SubmitPendingReviewArgs = {
         description: string;
         rating: number;
         imageUrl?: string | null;
+        menuItemId?: string | null;
     };
 };
 
 const vercelBlobAPI = 'https://api.vercel.com/v2/blob/upload-url';
+
+type ReviewTargetType = 'DINING_HALL' | 'MENU_ITEM';
+
+const assertValidTarget = (input: any): ReviewTargetType => {
+  const hasMenuItem = !!input.menuItemId;
+
+  // infer target type
+  const targetType: ReviewTargetType = hasMenuItem ? 'MENU_ITEM' : 'DINING_HALL';
+
+  if (targetType === 'MENU_ITEM' && !input.menuItemId) {
+    throw new Error('menuItemId is required when targetType is MENU_ITEM');
+  }
+
+  return targetType;
+};
+
+function normalizeTargetFromDoc(doc: any): { targetType: ReviewTargetType; menuItemId: string | null } {
+  const menuItemId = doc.menuItemId ?? null;
+  const targetType: ReviewTargetType =
+    doc.targetType ??
+    (menuItemId ? 'MENU_ITEM' : 'DINING_HALL');
+
+  return { targetType, menuItemId: targetType === 'MENU_ITEM' ? menuItemId : null };
+}
 
 function requireAdmin(ctx: YogaContext) {
     if (!ctx.user || ctx.user.role !== 'admin') throw new Error('Unauthorized');
@@ -103,7 +129,14 @@ export const mutationResolvers = {
             { input }: SubmitPendingReviewArgs,
             { db }: YogaContext
         ) {
-            const { diningHallSlug, author, description, rating, imageUrl } = input;
+            const { 
+                diningHallSlug, 
+                author, 
+                description, 
+                rating, 
+                imageUrl,
+                menuItemId
+            } = input;
 
             if ( !diningHallSlug || !author || !description || typeof rating !== 'number') {
                 throw new Error('Missing required fields');
@@ -113,6 +146,8 @@ export const mutationResolvers = {
                 throw new Error('Rating must be between 1 and 5');
             }
 
+            const targetType = assertValidTarget(input);
+
             const doc = {
                 diningHallSlug,
                 author,
@@ -121,9 +156,11 @@ export const mutationResolvers = {
                 imageUrl: imageUrl || null,
                 createdAt: new Date(),
                 status: 'pending',
+                targetType,
+                menuItemId: targetType === 'MENU_ITEM' ? menuItemId : null,
             };
 
-            const result = await db.collection('pendingReviews').insertOne(doc);
+            const result = await db.collection(COLLECTIONS.PENDING_REVIEWS).insertOne(doc);
 
             return { ok: true, id: result.insertedId.toString() };
         },
@@ -132,8 +169,10 @@ export const mutationResolvers = {
             requireAdmin(ctx);
 
             const _id = new ObjectId(id);
-            const pending = await ctx.db.collection('pendingReviews').findOne({ _id });
+            const pending = await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).findOne({ _id });
             if (!pending) return false;
+
+            const { targetType, menuItemId } = normalizeTargetFromDoc(pending);
 
             const acceptedDoc = {
                 diningHallSlug: pending.diningHallSlug,
@@ -144,10 +183,12 @@ export const mutationResolvers = {
                 createdAt: pending.createdAt ?? new Date(),
                 status: 'accepted',
                 userId: pending.userId ?? null,
+                targetType,
+                menuItemId,
             };
 
-            await ctx.db.collection('reviews').insertOne(acceptedDoc);
-            await ctx.db.collection('pendingReviews').deleteOne({ _id });
+            await ctx.db.collection(COLLECTIONS.REVIEWS).insertOne(acceptedDoc);
+            await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).deleteOne({ _id });
 
             return true;
         },
@@ -155,7 +196,7 @@ export const mutationResolvers = {
         async rejectPendingReview(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
             requireAdmin(ctx);
             const _id = new ObjectId(id);
-            const res = await ctx.db.collection('pendingReviews').deleteOne({ _id });
+            const res = await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).deleteOne({ _id });
             return res.deletedCount === 1;
         },
 
@@ -163,8 +204,10 @@ export const mutationResolvers = {
             requireAdmin(ctx);
 
             const _id = new ObjectId(id);
-            const accepted = await ctx.db.collection('reviews').findOne({ _id });
+            const accepted = await ctx.db.collection(COLLECTIONS.REVIEWS).findOne({ _id });
             if (!accepted) return false;
+
+            const { targetType, menuItemId } = normalizeTargetFromDoc(accepted);
 
             const pendingDoc = {
                 diningHallSlug: accepted.diningHallSlug,
@@ -174,11 +217,13 @@ export const mutationResolvers = {
                 imageUrl: accepted.imageUrl ?? null,
                 createdAt: accepted.createdAt ?? new Date(),
                 status: 'pending',
-                userId: accepted.userId ?? null
+                userId: accepted.userId ?? null,
+                targetType,
+                menuItemId,
             };
 
-            await ctx.db.collection('pendingReviews').insertOne(pendingDoc);
-            await ctx.db.collection('reviews').deleteOne({ _id });
+            await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).insertOne(pendingDoc);
+            await ctx.db.collection(COLLECTIONS.REVIEWS).deleteOne({ _id });
 
             return true;
         },
@@ -186,7 +231,7 @@ export const mutationResolvers = {
         async deleteReview(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
             requireAdmin(ctx);
             const _id = new ObjectId(id);
-            const res = await ctx.db.collection('reviews').deleteOne({ _id });
+            const res = await ctx.db.collection(COLLECTIONS.REVIEWS).deleteOne({ _id });
             return res.deletedCount === 1;
         },
 

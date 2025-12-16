@@ -1,25 +1,26 @@
 import { createYoga, createSchema } from 'graphql-yoga';
 import { YogaContext } from '../src/types/yogaContext';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import type { Db } from 'mongodb';
-
 import { getDb } from '../src/db/mongo';
 
 import { diningHallType } from '../src/schema/diningHallType';
 import { reviewType } from '../src/schema/reviewType';
 import { queryType } from '../src/schema/queryType';
+import { menuItemType } from '../src/schema/menuItemType';
+
 import { queryResolvers } from '../src/resolvers/queries';
 import { mutationType } from '../src/schema/mutationType';
 import { mutationResolvers } from '../src/resolvers/mutations';
 import { authResolvers } from '../src/resolvers/auth';
+import { menuItemResolvers } from '../src/resolvers/menuItemResolvers';
 
 import { verifyAccessToken } from '../src/auth/jwt';
 import { parse } from 'cookie';
 import { authType } from '../src/schema/authType';
 
 // Combine all type definitions into a single schema
-const typeDefs = [diningHallType, reviewType, queryType, authType, mutationType];
-const resolvers = [queryResolvers, mutationResolvers, authResolvers];
+const typeDefs = [diningHallType, reviewType, queryType, authType, mutationType, menuItemType];
+const resolvers = [queryResolvers, mutationResolvers, authResolvers, menuItemResolvers];
 const schema = createSchema<YogaContext>({ typeDefs, resolvers })
 
 /**
