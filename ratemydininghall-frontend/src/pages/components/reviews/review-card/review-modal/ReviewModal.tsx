@@ -7,7 +7,7 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import { useState, useEffect } from 'react';
 import styles from './review-modal.module.css';
-import { selectAvgRatingByHallSlug, selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
+import {  selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
 import { useAppSelector } from '@redux/hooks';
 
 interface ReviewModalProps {

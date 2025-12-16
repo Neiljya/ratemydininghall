@@ -11,3 +11,4 @@ export const selectRatingCountByHallSlug =
     (hallSlug: string) =>
     (state: RootState): number =>
         state.ratings.byHall[hallSlug]?.count ?? 0;
+
