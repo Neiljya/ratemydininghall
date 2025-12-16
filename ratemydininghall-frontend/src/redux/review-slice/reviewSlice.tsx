@@ -57,6 +57,8 @@ export const fetchReviews = createAsyncThunk<ReviewState>(
     const hallsToReviewsArr: ReviewState = {};
 
     for (const review of data.reviews) {
+        if (!review.diningHallSlug) continue;
+        
         const key = review.diningHallSlug || '';
 
         if (!hallsToReviewsArr[key]){

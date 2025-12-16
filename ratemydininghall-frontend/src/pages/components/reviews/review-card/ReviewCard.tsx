@@ -13,10 +13,11 @@ interface ReviewCardTypes {
     headerText?: string;
     description?: string;
     imageUrl?: string;
+    rating?: number;
     onClick?: () => void;
 }
 
-function ReviewCard({ headerText, description, imageUrl, onClick }: ReviewCardTypes) {
+function ReviewCard({ headerText, description, imageUrl, rating = 0, onClick }: ReviewCardTypes) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
@@ -69,7 +70,7 @@ function ReviewCard({ headerText, description, imageUrl, onClick }: ReviewCardTy
 
             <div className={styles.starsWrapper}>
               {/* hardcoded for now */}
-                <Stars starCount={4} size={22} />
+                <Stars starCount={rating} size={22} />
             </div>
             
             <div className={styles.description}>

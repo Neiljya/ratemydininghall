@@ -4,20 +4,29 @@ import ReviewModal from '@components/reviews/review-card/review-modal/ReviewModa
 import { useDiningHalls } from '@hooks/useDiningHalls';
 import styles from './review-page.module.css';
 import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice'; 
+import { useAppSelector } from '@redux/hooks';
+import { selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
 
 function ReviewPage() {
     const { halls, loading, error } = useDiningHalls();
     
     // State to track which dining hall is currently selected
     const [selectedHall, setSelectedHall] = useState<DiningHall | null>(null);
-
+    const byHall = useAppSelector(selectRatingsByHall)
     if (loading && halls.length === 0) return <div>Loading...</div>;
     if (error && halls.length === 0) return <div>Error: {error}</div>;
     
+
+
     return (
         <div>
             <div className={styles.reviewsGrid}>
-                {halls.map((hall, index) => (
+                {halls.map((hall, index) => {
+                    const agg = byHall[hall.slug];
+                    const avg = agg?.avg ?? 0;
+                    // const count = agg?.count ?? 0;
+                
+                return (
                     <div 
                         key={hall?.id}
                         className={styles.cardWrapper}
@@ -27,11 +36,14 @@ function ReviewPage() {
                             headerText={hall?.name}
                             description={hall?.description}
                             imageUrl={hall?.imageUrl}
+                            rating={avg}
                             // When clicked, set this hall as the active one
                             onClick={() => setSelectedHall(hall)} 
                         />
                     </div>
-                ))}
+                );
+                
+            })}
             </div>
 
             {/* render the modal outside the grid, so it covers everything */}

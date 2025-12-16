@@ -7,6 +7,8 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import { useState, useEffect } from 'react';
 import styles from './review-modal.module.css';
+import { selectAvgRatingByHallSlug, selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
+import { useAppSelector } from '@redux/hooks';
 
 interface ReviewModalProps {
   diningHallSlug: string;
@@ -20,6 +22,11 @@ const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57
 
 function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
   const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
+  const byHall = useAppSelector(selectRatingsByHall);
+  const agg = byHall[diningHallSlug];
+
+  const avg = agg?.avg ?? 0;
+  const count = agg?.count ?? 0;
   
   const [isClosing, setIsClosing] = useState(false);
 
@@ -66,8 +73,8 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
             <div className={styles.rating}>
               <div className={styles.stars}>
                 {/* TODO: replace with an avg rating count */}
-                <Stars starCount={4} />
-                <span className={styles.ratingBadge}>4</span>
+                <Stars starCount={avg} />
+                <span className={styles.ratingBadge}>{avg}</span>
               </div>
             </div>
             <p className={styles.description}>{description || "Build-your-own bowls, fresh ingredients."}</p>
@@ -76,7 +83,9 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
 
         {/* Reviews Section */}
         <div className={styles.reviewsSection}>
-          <h2 className={styles.sectionTitle}>Reviews</h2>
+          <h2 className={styles.sectionTitle}>Reviews ({count})</h2> 
+          
+
 
           {/* List of Reviews from the state */}
           <div className={styles.reviewsListContainer}>
