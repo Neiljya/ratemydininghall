@@ -8,6 +8,8 @@ export const getAllReviewsQuery = `
         createdAt
         rating
         status
+        targetType
+        menuItemId
     }
 }`;
 
@@ -21,6 +23,8 @@ export const getReviewsByHallQuery = `
             createdAt
             rating
             status
+            targetType
+            menuItemId
         }
 }`;
 

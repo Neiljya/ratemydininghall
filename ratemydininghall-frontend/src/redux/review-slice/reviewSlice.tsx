@@ -3,6 +3,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { graphQLRequest } from '@graphQL/graphQLClient';
 import { getAllReviewsQuery, getReviewsByHallQuery } from '@graphQL/queries/reviewQueries';
 
+export type ReviewTargetType = 'DINING_HALL' | 'MENU_ITEM';
+
 export interface Review {
     id: string;
     diningHallSlug?: string;
@@ -11,6 +13,8 @@ export interface Review {
     createdAt: string;
     rating: number;
     status?: string | null;
+    targetType?: ReviewTargetType;
+    menuItemId?: string | null;
 }
 
 export type NewReviewInput = Omit<Review, 'id' | 'createdAt'>;
@@ -72,6 +76,8 @@ export const fetchReviews = createAsyncThunk<ReviewState>(
             description: review.description,
             rating: review.rating,
             createdAt: String(new Date(review.createdAt).getTime()),
+            targetType: review.targetType ?? (review.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
+            menuItemId: review.menuItemId ?? null,
         });
     }
 
@@ -97,6 +103,8 @@ export const fetchReviewsByHall = createAsyncThunk<
       description: review.description,
       rating: review.rating,
       createdAt: String(new Date(review.createdAt).getTime()),
+      targetType: review.targetType ?? (review.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
+      menuItemId: review.menuItemId ?? null,
     }));
 
     return { diningHallSlug, reviews };

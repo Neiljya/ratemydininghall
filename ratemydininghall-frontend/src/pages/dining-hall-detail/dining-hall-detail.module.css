@@ -1,0 +1,214 @@
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  height: 100%;
+  box-sizing: border-box;
+  animation: glideIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes glideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 24px;
+  height: 100%;
+  max-height: calc(100vh - 48px - var(--header-height, 64px)); 
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: #fff; 
+  border-radius: 20px;
+  border: 1px solid var(--color-border-soft);
+  overflow: hidden; 
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  padding: 24px;
+  background: var(--color-card-gradient, linear-gradient(145deg, #ffffff, #f5f7fa));
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.02);
+  overflow: hidden; 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-shrink: 0; 
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text-strong);
+}
+
+.ghostBtn {
+  border: 1px solid var(--color-border-soft);
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text-strong);
+  transition: all 0.2s ease;
+}
+
+.ghostBtn:hover {
+  background: var(--color-bg-hover, #f0f2f5);
+  border-color: var(--color-border-hover, #d0d7de);
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: var(--color-text-strong);
+  flex-shrink: 0;
+}
+
+.menuListContainer {
+  flex: 1; 
+  overflow-y: auto;
+  padding-right: 4px; 
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-soft) transparent;
+}
+
+.menuListContainer::-webkit-scrollbar {
+    width: 6px;
+}
+.menuListContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+.menuListContainer::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-soft);
+    border-radius: 10px;
+}
+
+.menuList {
+  display: grid;
+  /* 2 columns for menu items if space permits, otherwise 1 */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+
+.panelHeader {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--color-border-soft);
+    padding-bottom: 16px;
+}
+
+.panelTitle {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.panelSubtitle {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
+.formContainer {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.reviewListContainer {
+  flex: 1; 
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-soft) transparent;
+}
+.reviewListContainer::-webkit-scrollbar { width: 6px; }
+.reviewListContainer::-webkit-scrollbar-track { background: transparent; }
+.reviewListContainer::-webkit-scrollbar-thumb { background-color: var(--color-border-soft); border-radius: 10px; }
+
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewCard {
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviewCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.reviewTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reviewAuthor {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text-strong);
+}
+
+.starRating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    color: var(--color-text-strong);
+}
+
+.starIcon {
+    color: #FFC107;
+    font-size: 16px;
+}
+
+.reviewBody {
+  color: var(--color-text);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+
+.muted {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-text);
+  opacity: 0.7;
+  font-style: italic;
+}

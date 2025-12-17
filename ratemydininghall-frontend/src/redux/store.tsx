@@ -3,6 +3,7 @@ import diningHallReducer from './dining-hall-slice/diningHallSlice';
 import reviewSliceReducer from './review-slice/reviewSlice';
 import authReducer from './auth-slice/authSlice';
 import ratingsReducer from '@redux/ratings-slice/ratingsSlice';
+import menuItemReducer from '@redux/menu-item-slice/menuItemSlice';
 
 /**
  * The main logic for the redux store, which holds the global state of the application
@@ -22,6 +23,7 @@ export const store = configureStore({
         reviewSlice: reviewSliceReducer,
         ratings: ratingsReducer,
         auth: authReducer,
+        menuItems: menuItemReducer,
     },
 });
 

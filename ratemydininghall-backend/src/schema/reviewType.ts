@@ -27,8 +27,7 @@ export const reviewType = `
         imageUrl: String
 
         # for selecting if its a dining hall rating or menu item rating
-        targetType: ReviewTargetType!
-        menuItem: ID
+        menuItemId: ID
     }
 
     type PendingReviewResult {

@@ -13,6 +13,7 @@ import Layout from '@components/layout/Layout';
 import ReviewPage from './pages/review-page/ReviewPage';
 import LoginPage from './pages/auth/LoginPage';
 import AdminPanelPage from './pages/admin/AdminPanelPage';
+import DiningHallDetailPage from './pages/dining-hall-detail/DiningHallDetailPage';
 
 function RequireAdmin({ children }: { children: React.ReactNode }) {
   const isAdmin = useAppSelector(selectIsAdmin);
@@ -40,6 +41,7 @@ function App() {
 
             {/* universal login */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/dining-hall/:slug" element={<DiningHallDetailPage />} />
 
             {/* admin-only area */}
             <Route

@@ -17,6 +17,7 @@ interface ReviewFormProps {
     source?: ReviewFormSource;
     onClose?: () => void;
     showClose?: boolean;
+    menuItemId?: string | null;
 }
 
 // // Placeholder dining halls data for test
@@ -33,6 +34,7 @@ function ReviewForm({
     source,
     onClose,
     showClose = false,
+    menuItemId = null
 }: ReviewFormProps) {
     const [rating, setRating] = useState<number>(0);
 
@@ -88,7 +90,8 @@ function ReviewForm({
                     diningHallSlug: hallSlugToUse,
                     author: authorToUse,
                     description: description.trim(),
-                    rating
+                    rating,
+                    menuItemId: menuItemId ?? null,
                 });
             }
 
