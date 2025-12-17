@@ -7,7 +7,7 @@ import BoldHeader from '@components/text-components/custom-headers/BoldHeader';
 import StarSelector from '@components/stars/StarSelector';
 import { submitPendingReview } from '@graphQL/mutations/submitPendingReview';
 import Notification, { type NotificationVariant } from '@components/notifications/Notification';
-
+import { useNavigate } from 'react-router-dom';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
@@ -53,8 +53,25 @@ function ReviewForm({
         variant: 'info',
     });
 
+    const navigate = useNavigate();
     const showNotif = (variant: NotificationVariant, message: string) => {
         setNotif({ show: true, variant, message });
+    };
+
+    const canViewMenu =
+    source === 'modal'
+        ? Boolean(diningHallSlug)
+        : source === 'topbar'
+        ? Boolean(selectedHall)
+        : Boolean(diningHallSlug);
+
+    const viewMenuSlug =
+    source === 'topbar' ? selectedHall : diningHallSlug;
+
+    const handleViewMenu = () => {
+    if (!viewMenuSlug) return;
+    onClose?.(); // close modal if provided
+    navigate(`/dining-hall/${viewMenuSlug}`);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -199,9 +216,27 @@ function ReviewForm({
                     />
                 </div>
 
-                <button type="submit" className={styles.submitButton} disabled={submitting}>
+
+            <div className={styles.buttonRow}>
+                <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={submitting}
+                >
                     {submitting ? 'Submitting...' : 'Submit Review'}
                 </button>
+
+                {canViewMenu && (
+                    <button
+                    type="button"
+                    className={styles.viewMenuButton}
+                    onClick={handleViewMenu}
+                    disabled={submitting}
+                    >
+                    View Menu
+                    </button>
+                )}
+            </div>
             </form>
         </div>
     )

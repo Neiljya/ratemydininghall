@@ -11,6 +11,7 @@ import { selectReviews } from '@redux/review-slice/reviewSliceSelectors';
 import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
 import { MenuItemCard } from '@components/menu-items/menu-item-card/MenuItemCard';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
+import ReviewItem from '@components/reviews/review-item/ReviewItem';
 
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
@@ -23,16 +24,17 @@ export default function DiningHallDetailPage() {
   // accepted review list in store;
   const hallReviews = useMemo(() => {
     const list = reviewsByHall[slug] ?? [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return list.filter((r: any) => !r.menuItemId);   
   }, [reviewsByHall, slug]);
 
   const menuItemReviews = useMemo(() => {
     if (!selected) return [];
     const list = reviewsByHall[slug] ?? [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return list.filter((r: any) => r.menuItemId === selected.id); 
   }, [reviewsByHall, slug, selected]);
 
-  console.log(reviewsByHall[slug]?.[0]);
   const activeReviews = selected ? menuItemReviews : hallReviews;
 
   const formatTitle = (s: string) => s.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -81,7 +83,7 @@ export default function DiningHallDetailPage() {
           </div>
         </aside>
 
-        {/* Right Panel: Review Form & Review List */}
+        {/* Right Panel: Reviews & Form */}
         <main className={styles.rightPanel}>
           <div className={styles.panelHeader}>
             <h2 className={styles.panelTitle}>
@@ -92,30 +94,18 @@ export default function DiningHallDetailPage() {
             </p>
           </div>
 
-          {/* Review Form sits at the top of the panel */}
-          <div className={styles.formContainer}>
-            <ReviewForm
-              diningHallSlug={slug}
-              menuItemId={selected?.id ?? null}
-            />
-          </div>
-
-          {/* Scrollable container for past reviews */}
+          {/* Scrollable container for past reviews (MOVED ABOVE FORM) */}
           <div className={styles.reviewListContainer}>
             <div className={styles.reviewList}>
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {activeReviews.map((r: any) => (
-                // TODO: replace with review items component
-                <div key={r.id} className={styles.reviewCard}>
-                  <div className={styles.reviewTop}>
-                    <div className={styles.reviewAuthor}>{r.author}</div>
-                    <div className={styles.starRating}>
-                      <span className={styles.starIcon}>★</span>
-                      <span>{r.rating}</span>
-                    </div>
-                  </div>
-                  <div className={styles.reviewBody}>{r.description}</div>
-                </div>
+                <ReviewItem
+                    key={r.id}
+                    rating={r.rating}
+                    author={r.author}
+                    description={r.description}
+                    date={Number(r.createdAt)}
+                />
               ))}
 
               {activeReviews.length === 0 ? (
@@ -124,6 +114,14 @@ export default function DiningHallDetailPage() {
                 </div>
               ) : null}
             </div>
+          </div>
+
+          {/* Review Form sits at the BOTTOM of the panel */}
+          <div className={styles.formContainer}>
+            <ReviewForm
+              diningHallSlug={slug}
+              menuItemId={selected?.id ?? null}
+            />
           </div>
         </main>
       </div>
