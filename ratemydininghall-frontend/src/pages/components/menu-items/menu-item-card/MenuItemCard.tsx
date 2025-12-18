@@ -1,6 +1,5 @@
 import styles from './menu-item-card.module.css';
 import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
-// Rename this import to your existing star/rating component:
 import Stars from '@components/stars/Stars';
 
 type Props = {

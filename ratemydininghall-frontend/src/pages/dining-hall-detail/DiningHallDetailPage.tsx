@@ -12,6 +12,8 @@ import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
 import { MenuItemCard } from '@components/menu-items/menu-item-card/MenuItemCard';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
 import ReviewItem from '@components/reviews/review-item/ReviewItem';
+import CustomSelect from '@components/ui/custom-select/CustomSelect'; 
+import MacroWidget from '@components/menu-items/macro-widget/MacroWidget';
 
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
@@ -20,8 +22,33 @@ export default function DiningHallDetailPage() {
 
   const reviewsByHall = useAppSelector(selectReviews);
   const [selected, setSelected] = useState<MenuItem | null>(null);
+  
+  // state for the filtering dropdown
+  const [sortBy, setSortBy] = useState<string>('default');
 
-  // accepted review list in store;
+  // Filtering logic
+  const sortedItems = useMemo(() => {
+    if (!items) return [];
+    // creating a copy to not modify the state itself
+    const list = [...items];
+
+    switch (sortBy) {
+        case 'protein-desc':
+            return list.sort((a, b) => (b.macros?.protein || 0) - (a.macros?.protein || 0));
+        case 'calories-asc':
+            return list.sort((a, b) => (a.macros?.calories || 0) - (b.macros?.calories || 0));
+        case 'calories-desc':
+            return list.sort((a, b) => (b.macros?.calories || 0) - (a.macros?.calories || 0));
+        case 'carbs-desc':
+            return list.sort((a, b) => (b.macros?.carbs || 0) - (a.macros?.carbs || 0));
+        case 'fat-asc':
+            return list.sort((a, b) => (a.macros?.fat || 0) - (b.macros?.fat || 0));
+        default:
+            return list;
+    }
+  }, [items, sortBy]);
+
+  // --- Review Filtering ---
   const hallReviews = useMemo(() => {
     const list = reviewsByHall[slug] ?? [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,21 +81,40 @@ export default function DiningHallDetailPage() {
                 onClick={() => setSelected(null)}
                 type="button"
               >
-                ← Back to Hall Overview
+                ← Back
               </button>
             )}
           </div>
 
-          <div className={styles.sectionTitle}>Today's Menu</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+             <div className={styles.sectionTitle} style={{ margin: 0 }}>Today's Menu</div>
+             
+             {/* Filter / Sort Widget */}
+             <div style={{ width: '170px' }}>
+                <CustomSelect 
+                    placeholder="Sort items..."
+                    value={sortBy}
+                    onChange={setSortBy}
+                    options={[
+                        { value: 'default', label: 'Default' },
+                        { value: 'protein-desc', label: 'Highest Protein' },
+                        { value: 'calories-asc', label: 'Lowest Calories' },
+                        { value: 'calories-desc', label: 'Highest Calories' },
+                        { value: 'carbs-desc', label: 'Highest Carbs' },
+                        { value: 'fat-asc', label: 'Lowest Fat' },
+                    ]}
+                />
+             </div>
+          </div>
 
           {status === 'loading' ? (
             <div className={styles.muted} style={{ textAlign: 'left', padding: 0 }}>Loading menu items…</div>
           ) : null}
 
-          {/* Scrollable container for menu items */}
           <div className={styles.menuListContainer}>
             <div className={styles.menuList}>
-              {items.map((item) => (
+              {/* Use sortedItems map */}
+              {sortedItems.map((item) => (
                 <MenuItemCard
                   key={item.id}
                   item={item}
@@ -76,7 +122,7 @@ export default function DiningHallDetailPage() {
                   onClick={() => setSelected(item)}
                 />
               ))}
-              {status === 'succeeded' && items.length === 0 && (
+              {status === 'succeeded' && sortedItems.length === 0 && (
                  <div className={styles.muted}>No menu items found for today.</div>
               )}
             </div>
@@ -94,7 +140,11 @@ export default function DiningHallDetailPage() {
             </p>
           </div>
 
-          {/* Scrollable container for past reviews (MOVED ABOVE FORM) */}
+          {/* NEW: Macro Widget (Only shows when an item is selected) */}
+          {selected && selected.macros && (
+             <MacroWidget macros={selected.macros} />
+          )}
+
           <div className={styles.reviewListContainer}>
             <div className={styles.reviewList}>
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -116,7 +166,6 @@ export default function DiningHallDetailPage() {
             </div>
           </div>
 
-          {/* Review Form sits at the BOTTOM of the panel */}
           <div className={styles.formContainer}>
             <ReviewForm
               diningHallSlug={slug}
