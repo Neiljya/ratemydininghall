@@ -1,4 +1,5 @@
 export const COLLECTIONS = {
+    DINING_HALLS: 'diningHalls',
     REVIEWS: 'reviews',
     PENDING_REVIEWS: 'pendingReviews',
     MENU_ITEMS: 'menuItems',

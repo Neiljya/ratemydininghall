@@ -1,31 +1,52 @@
-.review {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--color-border-softer);
-}
-
-.reviewMeta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    margin-top: 4px;
-}
-
-.reviewAuthorText {
-    color: var(--color-text);
-    padding-left: 2px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.reviewDate {
-    color: var(--color-text);
-    font-size: 13px;
-}
+.container {
+  /* A. The Gradient Background */
+  background: var(--color-card-gradient);
   
-.reviewText {
-    color: var(--color-text-strong);
-    margin: 0;
-    font-size: 16px;
+  /* B. Clean Layout Styling (matches Admin Panel cards) */
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  
+  /* Subtle depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.metaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text-strong);
+}
+
+.date {
+  font-size: 12px;
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Preserves paragraphs/line breaks in review */
 }

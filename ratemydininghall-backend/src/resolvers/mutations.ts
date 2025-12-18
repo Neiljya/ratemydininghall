@@ -4,6 +4,54 @@ import { YogaContext } from '../types/yogaContext';
 import { authResolvers } from './auth';
 import { COLLECTIONS } from '../db/collections';
 
+// ADMIN ONLY 
+
+type CreateDiningHallArgs = {
+  input: {
+    name: string;
+    slug: string;
+    imageUrl?: string | null;
+    description?: string | null;
+  };
+};
+
+type UpdateDiningHallArgs = {
+  input: {
+    id: string;
+    name?: string | null;
+    slug?: string | null;
+    imageUrl?: string | null;
+    description?: string | null;
+  };
+};
+
+type DeleteDiningHallArgs = {
+  id: string;
+};
+
+type CreateMenuItemArgs = {
+  input: {
+    diningHallSlug: string;
+    name: string;
+    description?: string | null;
+    imageUrl?: string | null;
+    macros?: {
+      calories?: number | null;
+      protein?: number | null;
+      carbs?: number | null;
+      fat?: number | null;
+    } | null;
+  };
+};
+
+type CreateMenuItemsBatchArgs = {
+  input: {
+    diningHallSlug: string;
+    items: Array<CreateMenuItemArgs['input']>;
+  };
+};
+
+// ****************************************** //
 type CreateReviewArgs = {
     diningHallId: string;
     author: string;
@@ -64,6 +112,27 @@ function normalizeTargetFromDoc(doc: any): { targetType: ReviewTargetType; menuI
 function requireAdmin(ctx: YogaContext) {
     if (!ctx.user || ctx.user.role !== 'admin') throw new Error('Unauthorized');
 }
+
+async function cascadeDiningHallSlug(db: any, oldSlug: string, newSlug: string) {
+  if (oldSlug === newSlug) return;
+
+  await db.collection(COLLECTIONS.MENU_ITEMS).updateMany(
+    { diningHallSlug: oldSlug },
+    { $set: { diningHallSlug: newSlug } }
+  );
+
+  await db.collection(COLLECTIONS.REVIEWS).updateMany(
+    { diningHallSlug: oldSlug },
+    { $set: { diningHallSlug: newSlug } }
+  );
+
+  await db.collection(COLLECTIONS.PENDING_REVIEWS).updateMany(
+    { diningHallSlug: oldSlug },
+    { $set: { diningHallSlug: newSlug } }
+  );
+}
+
+
 
 export const mutationResolvers = {
     Mutation: {
@@ -234,6 +303,145 @@ export const mutationResolvers = {
             const res = await ctx.db.collection(COLLECTIONS.REVIEWS).deleteOne({ _id });
             return res.deletedCount === 1;
         },
+
+        async createDiningHall(_p: unknown, { input }: CreateDiningHallArgs, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const name = input.name?.trim();
+            const slug = input.slug?.trim();
+
+            if (!name || !slug) throw new Error('name and slug are required');
+
+            const existing = await ctx.db.collection(COLLECTIONS.DINING_HALLS).findOne({ slug });
+            if (existing) throw new Error('Dining hall slug already exists');
+
+            const doc = {
+                name,
+                slug,
+                imageUrl: input.imageUrl?.trim() || null,
+                description: input.description?.trim() || null,
+                createdAt: new Date(),
+            };
+
+            const res = await ctx.db.collection(COLLECTIONS.DINING_HALLS).insertOne(doc);
+
+            return {
+                id: res.insertedId.toString(),
+                name: doc.name,
+                slug: doc.slug,
+                imageUrl: doc.imageUrl,
+                description: doc.description,
+            };
+        },
+
+        async updateDiningHall(_p: unknown, { input }: UpdateDiningHallArgs, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const _id = new ObjectId(input.id);
+            const hall = await ctx.db.collection(COLLECTIONS.DINING_HALLS).findOne({ _id });
+            if (!hall) throw new Error('Dining hall not found');
+
+            const patch: Record<string, any> = {};
+
+            if (typeof input.name === 'string') patch.name = input.name.trim();
+            if (typeof input.imageUrl === 'string') patch.imageUrl = input.imageUrl.trim() || null;
+            if (typeof input.description === 'string') patch.description = input.description.trim() || null;
+
+            let newSlug: string | null = null;
+            if (typeof input.slug === 'string') {
+                newSlug = input.slug.trim();
+                if (!newSlug) throw new Error('slug cannot be empty');
+
+                const conflict = await ctx.db.collection(COLLECTIONS.DINING_HALLS).findOne({
+                slug: newSlug,
+                _id: { $ne: _id },
+                });
+                if (conflict) throw new Error('Slug already in use');
+
+                patch.slug = newSlug;
+            }
+
+            if (Object.keys(patch).length === 0) return true;
+
+            await ctx.db.collection(COLLECTIONS.DINING_HALLS).updateOne({ _id }, { $set: patch });
+
+            // cascade if slug changed
+            if (newSlug && newSlug !== hall.slug) {
+                await cascadeDiningHallSlug(ctx.db, hall.slug, newSlug);
+            }
+
+            return true;
+        },
+
+        async deleteDiningHall(_p: unknown, { id }: DeleteDiningHallArgs, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const _id = new ObjectId(id);
+            const hall = await ctx.db.collection(COLLECTIONS.DINING_HALLS).findOne({ _id });
+            if (!hall) return false;
+
+            // delete hall
+            const res = await ctx.db.collection(COLLECTIONS.DINING_HALLS).deleteOne({ _id });
+
+            // cleanup related docs (recommended)
+            await ctx.db.collection(COLLECTIONS.MENU_ITEMS).deleteMany({ diningHallSlug: hall.slug });
+            await ctx.db.collection(COLLECTIONS.REVIEWS).deleteMany({ diningHallSlug: hall.slug });
+            await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).deleteMany({ diningHallSlug: hall.slug });
+
+            return res.deletedCount === 1;
+        },
+
+        async createMenuItem(_p: unknown, { input }: CreateMenuItemArgs, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const diningHallSlug = input.diningHallSlug?.trim();
+            const name = input.name?.trim();
+            if (!diningHallSlug || !name) throw new Error('diningHallSlug and name are required');
+
+            const doc = {
+                diningHallSlug,
+                name,
+                description: input.description?.trim() || null,
+                imageUrl: input.imageUrl?.trim() || null,
+                macros: input.macros ?? null,
+                createdAt: new Date(),
+            };
+
+            const res = await ctx.db.collection(COLLECTIONS.MENU_ITEMS).insertOne(doc);
+
+            return {
+                id: res.insertedId.toString(),
+                diningHallSlug: doc.diningHallSlug,
+                name: doc.name,
+                description: doc.description,
+                imageUrl: doc.imageUrl,
+                macros: doc.macros,
+            };
+        },
+
+        async createMenuItemsBatch(_p: unknown, { input }: CreateMenuItemsBatchArgs, ctx: YogaContext) {
+            requireAdmin(ctx);
+
+            const diningHallSlug = input.diningHallSlug?.trim();
+            if (!diningHallSlug) throw new Error('diningHallSlug is required');
+
+            const items = (input.items ?? []).map((it) => ({
+                diningHallSlug,
+                name: it.name?.trim(),
+                description: it.description?.trim() || null,
+                imageUrl: it.imageUrl?.trim() || null,
+                macros: it.macros ?? null,
+                createdAt: new Date(),
+            }));
+
+            const valid = items.filter((x) => x.name);
+            if (valid.length === 0) throw new Error('No valid items');
+
+            const res = await ctx.db.collection(COLLECTIONS.MENU_ITEMS).insertMany(valid);
+
+            return { ok: true, createdIds: Object.values(res.insertedIds).map((x) => x.toString()) };
+        },
+
 
         ...authResolvers.Mutation,
     },

@@ -131,5 +131,75 @@ export const menuItemResolvers = {
             const res = await db.collection(COLLECTIONS.MENU_ITEMS).deleteOne({ _id });
             return res.deletedCount === 1;  
         },
+
+        async updateMenuItem(
+        _p: unknown,
+        {
+            id,
+            input,
+        }: {
+            id: string;
+            input: {
+            diningHallSlug?: string | null;
+            name?: string | null;
+            description?: string | null;
+            imageUrl?: string | null;
+            macros?: {
+                calories?: number | null;
+                protein?: number | null;
+                carbs?: number | null;
+                fat?: number | null;
+            } | null;
+            };
+        },
+        { db, user }: YogaContext
+        ) {
+        if (!user || user.role !== "admin") throw new Error("Unauthorized");
+
+        const _id = new ObjectId(id);
+
+        const existing = await db.collection(COLLECTIONS.MENU_ITEMS).findOne({ _id });
+        if (!existing) throw new Error("Menu item not found");
+
+        // compute next values 
+        const nextDiningHallSlug = (input.diningHallSlug ?? existing.diningHallSlug)?.trim();
+        const nextName = (input.name ?? existing.name)?.trim();
+
+        if (!nextDiningHallSlug || !nextName) throw new Error("Missing required fields");
+
+        const nextNormalizedName = normalizeName(nextName);
+
+        // prevents duplicates per hall IF hall/name changes
+        const hallChanged = nextDiningHallSlug !== existing.diningHallSlug;
+        const nameChanged = nextNormalizedName !== (existing.normalizedName ?? normalizeName(existing.name));
+
+        if (hallChanged || nameChanged) {
+            const dupe = await db.collection(COLLECTIONS.MENU_ITEMS).findOne({
+            _id: { $ne: _id },
+            diningHallSlug: nextDiningHallSlug,
+            normalizedName: nextNormalizedName,
+            });
+
+            if (dupe) {
+            throw new Error("A menu item with this name already exists for that dining hall");
+            }
+        }
+
+        const $set: any = {
+            diningHallSlug: nextDiningHallSlug,
+            name: nextName,
+            normalizedName: nextNormalizedName,
+        };
+
+        // only set fields if provided otherwise keep existing ones
+        if ("description" in input) $set.description = input.description ?? null;
+        if ("imageUrl" in input) $set.imageUrl = input.imageUrl ?? null;
+        if ("macros" in input) $set.macros = input.macros ?? null;
+
+        await db.collection(COLLECTIONS.MENU_ITEMS).updateOne({ _id }, { $set });
+
+        const updated = await db.collection(COLLECTIONS.MENU_ITEMS).findOne({ _id });
+        return toMenuItem(updated);
+        },
     },
 };

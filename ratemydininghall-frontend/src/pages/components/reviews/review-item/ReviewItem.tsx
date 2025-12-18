@@ -13,16 +13,17 @@ function ReviewItem({ rating = 0, author, date, description }: ReviewItemProps) 
     const formattedDate = date ? formatReviewDate(date) : '';
 
     return (
-        <div className={styles.review}>
-            <Stars starCount={rating} />
-            <div className={styles.reviewMeta}>
-                {author && <span className={styles.reviewAuthorText}>{author}</span>}
-                <span className={styles.reviewDate}>{formattedDate}</span>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.metaInfo}>
+                    <span className={styles.author}>{author || 'Anonymous'}</span>
+                    <span className={styles.date}>{formattedDate}</span>
+                </div>
+                <Stars starCount={rating} size={16} />
             </div>
-            <p className={styles.reviewText}>{description}</p>
+            <p className={styles.description}>{description}</p>
         </div>
-
-    )
+    );
 }
 
 export default ReviewItem;

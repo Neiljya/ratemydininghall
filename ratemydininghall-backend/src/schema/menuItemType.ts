@@ -34,6 +34,14 @@ export const menuItemType = `
         macros: MacrosInput
     }
 
+    input UpdateMenuItemInput {
+        diningHallSlug: String
+        name: String
+        description: String
+        imageUrl: String
+        macros: MacrosInput
+    }
+
     extend type Query {
         menuItemsByHall(diningHallSlug: String!): [MenuItem!]!
         menuItem(id: ID!): MenuItem
@@ -42,6 +50,7 @@ export const menuItemType = `
 
     extend type Mutation {
         createMenuItem(input: CreateMenuItemInput!): MenuItem!
+        updateMenuItem(id: ID!, input: UpdateMenuItemInput!): MenuItem!
         deleteMenuItem(id: ID!): Boolean!
     }
 `;

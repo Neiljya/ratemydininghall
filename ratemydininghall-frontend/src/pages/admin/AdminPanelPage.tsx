@@ -11,6 +11,8 @@ import {
   deleteReviewMutation,
 } from "@graphQL/mutations/adminMutations";
 import type { Review } from "@redux/review-slice/reviewSlice";
+import AdminContentManager from './AdminContentManager';
+
 
 type ChangeOp =
   | { type: "APPROVE"; id: string }
@@ -49,7 +51,8 @@ function normalizeOps(ops: ChangeOp[]) {
 }
 
 export default function AdminPanelPage() {
-  // server truth
+  type AdminTab = 'moderation' | 'content';
+  const [tab, setTab] = useState<AdminTab>('moderation');
   const [serverPending, setServerPending] = useState<Review[]>([]);
   const [serverAccepted, setServerAccepted] = useState<Review[]>([]);
 
@@ -191,39 +194,79 @@ export default function AdminPanelPage() {
     return parts.join(" • ");
   }, [ops, hasUnsavedChanges]);
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.headerRow}>
-        <h2 className={styles.h2}>Moderation</h2>
+return (
+  <div className={styles.page}>
+    <div className={styles.headerRow}>
+      <h2 className={styles.h2}>{tab === 'moderation' ? 'Moderation' : 'Admin Content'}</h2>
 
-        <div className={styles.headerActions}>
-          <button className={styles.btn} onClick={load} disabled={loading || saving}>
-            {loading ? "Refreshing…" : "Refresh"}
-          </button>
-
-          {/* save/discard only appears when there are changes */}
-          {hasUnsavedChanges && (
-            <>
-              <button className={styles.btn} onClick={discardChanges} disabled={saving}>
-                Discard
-              </button>
-              <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={saveChanges} disabled={saving}>
-                {saving ? "Saving…" : "Save changes"}
-              </button>
-            </>
-          )}
-        </div>
+      <div className={styles.tabRow}>
+        <button
+          className={`${styles.tabBtn} ${tab === 'moderation' ? styles.tabActive : ''}`}
+          onClick={() => setTab('moderation')}
+          type="button"
+        >
+          Moderation
+        </button>
+        <button
+          className={`${styles.tabBtn} ${tab === 'content' ? styles.tabActive : ''}`}
+          onClick={() => setTab('content')}
+          type="button"
+        >
+          Content
+        </button>
       </div>
 
-      {/* Unsaved changes banner */}
-      {hasUnsavedChanges && (
-        <div className={styles.notice}>
-          <strong>Preview mode:</strong> {opSummary ?? "Unsaved changes"} — click <b>Save changes</b> to commit.
-        </div>
-      )}
+      <div className={styles.headerActions}>
+        <button
+          className={styles.btn}
+          onClick={load}
+          disabled={loading || saving}
+          type="button"
+        >
+          {loading ? 'Refreshing…' : 'Refresh'}
+        </button>
 
-      {err && <div className={styles.error}>{err}</div>}
+        {/* only show moderation save/discard if we're on moderation tab */}
+        {tab === 'moderation' && hasUnsavedChanges && (
+          <>
+            <button
+              className={styles.btn}
+              onClick={discardChanges}
+              disabled={saving}
+              type="button"
+            >
+              Discard
+            </button>
+            <button
+              className={`${styles.btn} ${styles.btnPrimary}`}
+              onClick={saveChanges}
+              disabled={saving}
+              type="button"
+            >
+              {saving ? 'Saving…' : 'Save changes'}
+            </button>
+          </>
+        )}
+      </div>
+    </div>
 
+    {/* moderation-only banners */}
+    {tab === 'moderation' && hasUnsavedChanges && (
+      <div className={styles.notice}>
+        <strong>Preview mode:</strong> {opSummary ?? 'Unsaved changes'} — click{' '}
+        <b>Save changes</b> to commit.
+      </div>
+    )}
+
+    {err && <div className={styles.error}>{err}</div>}
+
+    {/* CONTENT TAB */}
+    {tab === 'content' ? (
+      <div className={styles.contentGrid}>
+        <AdminContentManager />
+      </div>
+    ) : (
+      /* MODERATION TAB */
       <div className={styles.grid}>
         {/* Pending */}
         <section className={`${containerStyles.roundContainer} ${styles.panel}`}>
@@ -243,6 +286,12 @@ export default function AdminPanelPage() {
                     <span className={styles.dot}>•</span>
                     <span className={styles.rating}>{r.rating}★</span>
                   </div>
+
+                  {/* optional: show menu item context */}
+                  {r.menuItemId ? (
+                    <div className={styles.subMeta}>Menu item review • {r.menuItemId}</div>
+                  ) : null}
+
                   <div className={styles.desc}>{r.description}</div>
                   <div className={styles.time}>{new Date(r.createdAt).toLocaleString()}</div>
                 </div>
@@ -290,15 +339,21 @@ export default function AdminPanelPage() {
                     <span className={styles.dot}>•</span>
                     <span className={styles.rating}>{r.rating}★</span>
                   </div>
+
+                  {/* optional: show menu item context */}
+                  {r.menuItemId ? (
+                    <div className={styles.subMeta}>Menu item review • {r.menuItemId}</div>
+                  ) : null}
+
                   <div className={styles.desc}>{r.description}</div>
                   <div className={styles.time}>{new Date(r.createdAt).toLocaleString()}</div>
                 </div>
 
                 <div className={styles.actions}>
-                  <button 
-                    className={`${styles.btn} ${styles.btnWarning}`} 
-                    onClick={() => previewMoveBack(r.id)} 
-                    disabled={saving} 
+                  <button
+                    className={`${styles.btn} ${styles.btnWarning}`}
+                    onClick={() => previewMoveBack(r.id)}
+                    disabled={saving}
                     type="button"
                   >
                     Move to Pending
@@ -319,6 +374,8 @@ export default function AdminPanelPage() {
           </div>
         </section>
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
+
 }
