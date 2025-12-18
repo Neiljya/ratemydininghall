@@ -9,6 +9,7 @@ import styles from "./admin-content-manager.module.css";
 
 import type { MenuItem } from "@redux/menu-item-slice/menuItemTypes";
 import { useMenuItemsBootstrap } from "@hooks/useMenuItemsBootstrap";
+import { fetchMenuItemsByHall } from "@redux/menu-item-slice/menuItemSlice";
 import { useMenuItems } from "@hooks/useMenuItems";
 
 import {
@@ -226,7 +227,7 @@ export default function AdminContentManager() {
       await createMenuItemsBatch(slug, cleaned);
       showNotif("success", `Uploaded ${cleaned.length} menu item(s).`);
       setDrafts([{ name: "", description: "", imageUrl: "", calories: "", protein: "", carbs: "", fat: "" }]);
-      useMenuItemsBootstrap(slug);
+  dispatch(fetchMenuItemsByHall(slug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to upload menu items batch");
     } finally {
@@ -294,7 +295,7 @@ export default function AdminContentManager() {
       });
 
       showNotif("success", "Menu item updated.");
-      useMenuItemsBootstrap(itemsHallSlug);
+  dispatch(fetchMenuItemsByHall(itemsHallSlug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to update menu item");
     } finally {
@@ -312,7 +313,7 @@ export default function AdminContentManager() {
       await deleteMenuItem(editItemId);
       showNotif("success", "Menu item deleted.");
       setEditItemId("");
-      useMenuItemsBootstrap(itemsHallSlug);
+  dispatch(fetchMenuItemsByHall(itemsHallSlug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to delete menu item");
     } finally {

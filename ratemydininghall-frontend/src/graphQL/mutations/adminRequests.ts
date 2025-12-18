@@ -63,9 +63,6 @@ export async function deleteDiningHall(id: string) {
   return graphQLRequest(DELETE_DINING_HALL, { id });
 }
 
-// -------------------
-// ADD THESE TWO:
-// -------------------
 export type UpdateMenuItemInput = {
   name?: string;
   description?: string | null;

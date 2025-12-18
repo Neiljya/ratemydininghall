@@ -47,7 +47,7 @@ export const menuItemType = `
         menuItem(id: ID!): MenuItem
         searchMenuItems(diningHallSlug: String!, q: String!): [MenuItem!]!
     }
-
+        
     extend type Mutation {
         createMenuItem(input: CreateMenuItemInput!): MenuItem!
         updateMenuItem(id: ID!, input: UpdateMenuItemInput!): MenuItem!

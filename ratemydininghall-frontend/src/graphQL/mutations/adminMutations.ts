@@ -49,8 +49,10 @@ export const DELETE_DINING_HALL = `
 // for multiple menu items
 export const CREATE_MENU_ITEMS_BATCH = `
   mutation CreateMenuItemsBatch($input: CreateMenuItemsBatchInput!) {
-    ok
-    createdIds
+    createMenuItemsBatch(input: $input) {
+        ok
+        createdIds
+    }
   }
 `;
 
