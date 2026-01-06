@@ -23,6 +23,7 @@ export default function DiningHallDetailPage() {
   const reviewsByHall = useAppSelector(selectReviews);
   const [selected, setSelected] = useState<MenuItem | null>(null);
   
+  console.log('selectedtags: ', selected?.tags);
   // state for the filtering dropdown
   const [sortBy, setSortBy] = useState<string>('default');
 
@@ -140,9 +141,18 @@ export default function DiningHallDetailPage() {
             </p>
           </div>
 
-          {/* NEW: Macro Widget (Only shows when an item is selected) */}
           {selected && selected.macros && (
              <MacroWidget macros={selected.macros} />
+          )}
+
+          {selected && selected.tags && selected.tags.length > 0 && (
+            <div className={styles.tagRow}>
+                {selected.tags.map((tag) => (
+                  <span key={tag} className={styles.tagBadge}>
+                      {tag}
+                  </span>
+                ))}
+            </div>
           )}
 
           <div className={styles.reviewListContainer}>

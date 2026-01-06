@@ -215,3 +215,27 @@
   opacity: 0.7;
   font-style: italic;
 }
+
+/* Add to dining-hall-detail.module.css */
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;      /* Space between Macro Widget and Tags */
+  margin-bottom: 1.5rem; /* Space between Tags and Review List */
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-soft); /* Optional separator */
+}
+
+.tagBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px; /* Pill shape */
+  background-color: var(--color-bg-secondary, #f4f4f5);
+  color: var(--color-text-primary, #333);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize; /* "peanut" -> "Peanut" */
+  border: 1px solid var(--color-border-soft, #e4e4e7);
+}
