@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '@redux/hooks';
 import { logout } from '@redux/auth-slice/authSlice';
 import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-slice/authSelectors';
 import CustomSelect from '@components/ui/custom-select/CustomSelect';
+import logoucsd from '../../../assets/logoucsd.png';
 
 function Topbar({ header }: { header?: string }) {
     // Fetch dining halls from redux store, we only need to fetch it once here and pass it down
@@ -61,7 +62,6 @@ function Topbar({ header }: { header?: string }) {
         <header className={styles.appHeader}>
         <div className={styles.container}>
             <div className={styles.left}>
-                <h1 className={styles.title}>{header}</h1>
                 <div className={styles.controls}>
                 <CustomSelect
                     options={[
@@ -96,6 +96,12 @@ function Topbar({ header }: { header?: string }) {
                 )}
             </div>
         </div>
+        <img
+            src={logoucsd}
+            alt='RateMyDiningHall-UCSD'
+            className={styles.logo}
+            onClick={() => navigate('/')}
+        />
         <div className={styles.right}>
             <button
                 className={`${styles.btn} ${styles.btnGhost} ${buttonStyles['btn-fill-anim']}`}
