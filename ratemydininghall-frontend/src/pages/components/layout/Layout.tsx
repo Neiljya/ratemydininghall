@@ -8,7 +8,7 @@ export default function Layout() {
     <div className={styles.appContainer}>
     {/* Ensures the topbar always pinned to the top */}
       <div className={styles.header}>
-        <TopBar header="RateMyDiningHall @ UCSD" />
+        <TopBar/>
       </div>
 
       {/* Outlet renders the current page (Login, Review, etc.) */}

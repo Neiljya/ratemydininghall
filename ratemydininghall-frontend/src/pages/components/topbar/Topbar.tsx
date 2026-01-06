@@ -13,7 +13,7 @@ import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-sl
 import CustomSelect from '@components/ui/custom-select/CustomSelect';
 import logoucsd from '../../../assets/logoucsd.png';
 
-function Topbar({ header }: { header?: string }) {
+function Topbar() {
     // Fetch dining halls from redux store, we only need to fetch it once here and pass it down
     const diningHalls = useSelector(selectDiningHalls);
     const navigate = useNavigate();
