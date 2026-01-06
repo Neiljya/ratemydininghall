@@ -12,6 +12,7 @@ import { logout } from '@redux/auth-slice/authSlice';
 import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-slice/authSelectors';
 import CustomSelect from '@components/ui/custom-select/CustomSelect';
 import logoucsd from '../../../assets/logoucsd.png';
+import { clearCache } from '@utils/cache';
 
 function Topbar() {
     // Fetch dining halls from redux store, we only need to fetch it once here and pass it down
@@ -28,6 +29,11 @@ function Topbar() {
 
     // sort state
     const [sortValue, setSortValue] = useState('rating-desc');
+
+    const handleClearCache = () => {
+        clearCache();
+        window.location.reload();
+    }
 
     const handleOpenReviewForm = () => {
         setReviewFormOpen(true);
@@ -101,6 +107,7 @@ function Topbar() {
                     Back to All Halls
                 </button>
 
+
                 <button
                     className={`${styles.btn} ${styles.btnPrimary} ${buttonStyles['btn-dark-fill-anim']}`}
                     onClick={handleOpenReviewForm}
@@ -123,6 +130,13 @@ function Topbar() {
             onClick={() => navigate('/')}
         />
         <div className={styles.right}>
+            <button 
+                    className={`${styles.btn} ${buttonStyles['btn-fill-anim']}`}
+                    onClick={handleClearCache}
+                    title="Refresh data"
+                >
+                    Clear Cache
+            </button>
             <button
                 className={`${styles.btn} ${styles.btnGhost} ${buttonStyles['btn-fill-anim']}`}
                 onClick={handleAuthButton}
@@ -130,6 +144,7 @@ function Topbar() {
             >
                 {isAuthed ? (authLoading ? '...' : 'Logout') : 'Login'}
             </button>
+
         </div>
         </div>
         </header>
