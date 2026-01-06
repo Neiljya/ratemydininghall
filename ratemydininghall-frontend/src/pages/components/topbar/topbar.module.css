@@ -83,11 +83,13 @@ body {
 }
 
 .left {
+  z-index: 20;
   display: flex;
   align-items: center;
 }
 
 .right {
+  z-index: 20;
   margin-left: auto;
   display: flex;
   align-items: center;
