@@ -35,6 +35,7 @@ export const diningHallType = `
         description: String
         imageUrl: String
         macros: MacrosInput
+        tags: [String!]!
     }
 
     input CreateMenuItemsBatchInput {

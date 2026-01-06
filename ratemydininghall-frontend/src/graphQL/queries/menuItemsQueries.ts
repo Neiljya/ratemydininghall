@@ -9,6 +9,7 @@ export const MENU_ITEMS_BY_HALL = `
       macros { calories protein carbs fat }
       avgRating
       ratingCount
+      tags
     }
   }
 `;

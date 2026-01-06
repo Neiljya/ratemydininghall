@@ -14,6 +14,7 @@ function toMenuItem(doc: any) {
         macros: doc.macros ?? null,
         avgRating: doc.avgRating ?? 0,
         ratingCount: doc.ratingCount ?? 0,
+        tags: doc.tags ?? []
     };
 }
 
@@ -21,6 +22,22 @@ function normalizeName(name: string) {
     return name.trimEnd().toLowerCase();
 }
 
+/**
+ * a helper function that normalizes/cleans tag inputs and
+ * ensures a unique tag array to put inside the db
+ * 
+ * @param tags - an array of ingredient strings
+ * @returns an array of distinct tag strings
+ */
+function processTags(tags: string[] | null | undefined): string[] {
+    if (!tags || !Array.isArray(tags)) return [];
+
+    const cleanTags = tags
+        .map(tag => tag.trim().toLowerCase())
+        .filter(tag => tag.length > 0);
+    
+    return Array.from(new Set(cleanTags));
+}
 
 export const menuItemResolvers = {
     Query: {
@@ -80,6 +97,7 @@ export const menuItemResolvers = {
                     carbs?: number; 
                     fat?: number 
                 } | null;
+                tags?: string[] | null;
                 }},
             { db, user }: YogaContext
         ) {
@@ -101,13 +119,16 @@ export const menuItemResolvers = {
 
             if (existing) return toMenuItem(existing);
 
+            const uniqueTags = processTags(input.tags);
+
             const doc = {
                 diningHallSlug,
                 name,
                 normalizedName,
                 description: input.description ?? null,
                 imageUrl: input.imageUrl ?? null,
-                macros: input.macros ?? null
+                macros: input.macros ?? null,
+                tags: uniqueTags ?? null
             };
 
             try {
@@ -150,6 +171,7 @@ export const menuItemResolvers = {
                 carbs?: number | null;
                 fat?: number | null;
             } | null;
+            tags?: string[] | null;
             };
         },
         { db, user }: YogaContext
@@ -195,6 +217,10 @@ export const menuItemResolvers = {
         if ("description" in input) $set.description = input.description ?? null;
         if ("imageUrl" in input) $set.imageUrl = input.imageUrl ?? null;
         if ("macros" in input) $set.macros = input.macros ?? null;
+
+        if ("tags" in input) {
+            $set.tags = processTags(input.tags);
+        }
 
         await db.collection(COLLECTIONS.MENU_ITEMS).updateOne({ _id }, { $set });
 

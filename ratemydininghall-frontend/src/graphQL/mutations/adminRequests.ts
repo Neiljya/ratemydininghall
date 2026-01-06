@@ -31,6 +31,7 @@ export type CreateMenuItemInput = {
   description?: string | null;
   imageUrl?: string | null;
   macros?: MacrosInput | null;
+  tags?: string[] | null;
 };
 
 export type UpdateDiningHallInput = {
@@ -68,6 +69,7 @@ export type UpdateMenuItemInput = {
   description?: string | null;
   imageUrl?: string | null;
   macros?: MacrosInput | null;
+  tags?: string[] | null;
 };
 
 export async function updateMenuItem(id: string, input: UpdateMenuItemInput) {

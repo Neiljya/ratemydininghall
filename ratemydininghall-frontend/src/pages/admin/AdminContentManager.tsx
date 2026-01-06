@@ -4,7 +4,7 @@ import { selectDiningHalls } from "@redux/dining-hall-slice/diningHallSelectors"
 import { fetchDiningHalls } from "@redux/dining-hall-slice/diningHallSlice";
 
 import Notification, { type NotificationVariant } from "@components/notifications/Notification";
-import CustomSelect from "@components/ui/custom-select/CustomSelect"; // Import CustomSelect
+import CustomSelect from "@components/ui/custom-select/CustomSelect";
 import styles from "./admin-content-manager.module.css";
 
 import type { MenuItem } from "@redux/menu-item-slice/menuItemTypes";
@@ -28,6 +28,7 @@ type DraftMenuItem = {
   name: string;
   description: string;
   imageUrl: string;
+  tags: string; // ✅ ADDED
   calories: string;
   protein: string;
   carbs: string;
@@ -40,6 +41,11 @@ function toNullableNum(s: string): number | null {
   const n = Number(t);
   return Number.isFinite(n) ? n : null;
 }
+
+// Helper to process tags string -> array
+const parseTags = (str: string): string[] => {
+  return str.split(',').map(t => t.trim()).filter(t => t.length > 0);
+};
 
 export default function AdminContentManager() {
   const dispatch = useAppDispatch();
@@ -102,7 +108,6 @@ export default function AdminContentManager() {
     [halls, selectedHallId]
   );
 
-  // Prepare options for CustomSelect
   const hallOptions = useMemo(() => 
     halls.map((h: any) => ({ value: h.id, label: h.name })), 
     [halls]
@@ -177,18 +182,18 @@ export default function AdminContentManager() {
   useMenuItemsBootstrap(itemsHallSlug);
   const { items: hallItems, status: itemsStatus } = useMenuItems(itemsHallSlug);
 
-  // Prepare options for CustomSelect (Using Slug for this section)
   const hallSlugOptions = useMemo(() => 
     halls.map((h: any) => ({ value: h.slug, label: h.name })), 
     [halls]
   );
 
+  // ✅ ADDED tags to initial state
   const [drafts, setDrafts] = useState<DraftMenuItem[]>([
-    { name: "", description: "", imageUrl: "", calories: "", protein: "", carbs: "", fat: "" },
+    { name: "", description: "", imageUrl: "", tags: "", calories: "", protein: "", carbs: "", fat: "" },
   ]);
 
   const addDraftRow = () =>
-    setDrafts((prev) => [...prev, { name: "", description: "", imageUrl: "", calories: "", protein: "", carbs: "", fat: "" }]);
+    setDrafts((prev) => [...prev, { name: "", description: "", imageUrl: "", tags: "", calories: "", protein: "", carbs: "", fat: "" }]);
 
   const removeDraftRow = (idx: number) => setDrafts((prev) => prev.filter((_, i) => i !== idx));
 
@@ -208,6 +213,8 @@ export default function AdminContentManager() {
         name: d.name.trim(),
         description: d.description.trim() || null,
         imageUrl: d.imageUrl.trim() || null,
+        // Process tags string to array
+        tags: parseTags(d.tags),
         macros: {
           calories: toNullableNum(d.calories),
           protein: toNullableNum(d.protein),
@@ -226,8 +233,9 @@ export default function AdminContentManager() {
     try {
       await createMenuItemsBatch(slug, cleaned);
       showNotif("success", `Uploaded ${cleaned.length} menu item(s).`);
-      setDrafts([{ name: "", description: "", imageUrl: "", calories: "", protein: "", carbs: "", fat: "" }]);
-  dispatch(fetchMenuItemsByHall(slug));
+      // Reset form
+      setDrafts([{ name: "", description: "", imageUrl: "", tags: "", calories: "", protein: "", carbs: "", fat: "" }]);
+      dispatch(fetchMenuItemsByHall(slug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to upload menu items batch");
     } finally {
@@ -243,7 +251,6 @@ export default function AdminContentManager() {
     [hallItems, editItemId]
   );
 
-  // Prepare options for item selection
   const itemOptions = useMemo(() => 
     (hallItems ?? []).map((m: any) => ({ value: m.id, label: m.name })),
     [hallItems]
@@ -253,6 +260,7 @@ export default function AdminContentManager() {
     name: "",
     description: "",
     imageUrl: "",
+    tags: "", 
     calories: "",
     protein: "",
     carbs: "",
@@ -265,6 +273,8 @@ export default function AdminContentManager() {
       name: editItem.name ?? "",
       description: (editItem as any).description ?? "",
       imageUrl: (editItem as any).imageUrl ?? "",
+      // Convert array to string for input
+      tags: (editItem as any).tags?.join(", ") ?? "", 
       calories: String((editItem as any).macros?.calories ?? ""),
       protein: String((editItem as any).macros?.protein ?? ""),
       carbs: String((editItem as any).macros?.carbs ?? ""),
@@ -286,6 +296,8 @@ export default function AdminContentManager() {
         name: editItemForm.name.trim(),
         description: editItemForm.description.trim() || null,
         imageUrl: editItemForm.imageUrl.trim() || null,
+        // Process tags string to array
+        tags: parseTags(editItemForm.tags),
         macros: {
           calories: toNullableNum(editItemForm.calories),
           protein: toNullableNum(editItemForm.protein),
@@ -295,7 +307,7 @@ export default function AdminContentManager() {
       });
 
       showNotif("success", "Menu item updated.");
-  dispatch(fetchMenuItemsByHall(itemsHallSlug));
+      dispatch(fetchMenuItemsByHall(itemsHallSlug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to update menu item");
     } finally {
@@ -313,7 +325,7 @@ export default function AdminContentManager() {
       await deleteMenuItem(editItemId);
       showNotif("success", "Menu item deleted.");
       setEditItemId("");
-  dispatch(fetchMenuItemsByHall(itemsHallSlug));
+      dispatch(fetchMenuItemsByHall(itemsHallSlug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to delete menu item");
     } finally {
@@ -388,7 +400,6 @@ export default function AdminContentManager() {
 
           <div className={styles.field}>
             <label className={styles.label}>Select Hall</label>
-            {/* REPLACED: Custom Select */}
             <CustomSelect
               options={hallOptions}
               value={selectedHallId}
@@ -442,7 +453,6 @@ export default function AdminContentManager() {
 
           <div className={styles.field}>
             <label className={styles.label}>Select Dining Hall</label>
-            {/* REPLACED: Custom Select */}
             <CustomSelect
               options={hallSlugOptions}
               value={itemsHallSlug}
@@ -460,6 +470,13 @@ export default function AdminContentManager() {
                 <input className={styles.input} placeholder="Image URL (optional)" value={d.imageUrl} onChange={(e) => updateDraft(idx, { imageUrl: e.target.value })} />
               </div>
               <input className={styles.input} placeholder="Description" value={d.description} onChange={(e) => updateDraft(idx, { description: e.target.value })} />
+              
+              <input 
+                className={styles.input} 
+                placeholder="Tags (comma separated, e.g. vegan, spicy)" 
+                value={d.tags} 
+                onChange={(e) => updateDraft(idx, { tags: e.target.value })} 
+              />
 
               <div className={styles.macroRow}>
                 <input className={styles.input} placeholder="Cals" value={d.calories} onChange={(e) => updateDraft(idx, { calories: e.target.value })} />
@@ -496,7 +513,6 @@ export default function AdminContentManager() {
             <>
               <div className={styles.field}>
                 <label className={styles.label}>Select Item to Edit</label>
-                {/* REPLACED: Custom Select */}
                 <CustomSelect
                   options={itemOptions}
                   value={editItemId}
@@ -523,6 +539,17 @@ export default function AdminContentManager() {
                   <div className={styles.field}>
                     <label className={styles.label}>Description</label>
                     <textarea className={styles.textarea} rows={2} value={editItemForm.description} onChange={(e) => setEditItemForm((p) => ({ ...p, description: e.target.value }))} />
+                  </div>
+
+                  {/* ✅ ADDED Tags Input */}
+                  <div className={styles.field}>
+                    <label className={styles.label}>Tags</label>
+                    <input 
+                        className={styles.input} 
+                        value={editItemForm.tags} 
+                        placeholder="e.g. gluten-free, dairy"
+                        onChange={(e) => setEditItemForm((p) => ({ ...p, tags: e.target.value }))} 
+                    />
                   </div>
 
                   <div className={styles.macroRow2}>

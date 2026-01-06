@@ -15,6 +15,7 @@ export const menuItemType = `
         macros: Macros
         avgRating: Float!
         ratingCount: Int!
+        tags: [String!]!
     }
 
     # inputs are like parameters
@@ -32,6 +33,7 @@ export const menuItemType = `
         description: String
         imageUrl: String
         macros: MacrosInput
+        tags: [String!]!
     }
 
     input UpdateMenuItemInput {
@@ -40,6 +42,7 @@ export const menuItemType = `
         description: String
         imageUrl: String
         macros: MacrosInput
+        tags: [String!]!
     }
 
     extend type Query {

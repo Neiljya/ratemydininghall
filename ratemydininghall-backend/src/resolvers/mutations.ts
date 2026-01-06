@@ -44,6 +44,7 @@ type CreateMenuItemArgs = {
       carbs?: number | null;
       fat?: number | null;
     } | null;
+    tags?: string[] | null;
   };
 };
 
@@ -433,6 +434,7 @@ export const mutationResolvers = {
                 description: input.description?.trim() || null,
                 imageUrl: input.imageUrl?.trim() || null,
                 macros: input.macros ?? null,
+                tags: input.tags ?? null,
                 createdAt: new Date(),
             };
 
@@ -445,6 +447,7 @@ export const mutationResolvers = {
                 description: doc.description,
                 imageUrl: doc.imageUrl,
                 macros: doc.macros,
+                tags: doc.tags,
             };
         },
 
@@ -460,6 +463,7 @@ export const mutationResolvers = {
                 description: it.description?.trim() || null,
                 imageUrl: it.imageUrl?.trim() || null,
                 macros: it.macros ?? null,
+                tags: it.tags ?? null,
                 createdAt: new Date(),
             }));
 

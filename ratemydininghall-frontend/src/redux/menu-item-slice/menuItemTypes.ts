@@ -12,7 +12,7 @@ export type MenuItem = {
   description?: string | null;
   imageUrl?: string | null;
   macros?: Macros | null;
-
   avgRating: number;
   ratingCount: number;
+  tags?: string[] | null;
 };

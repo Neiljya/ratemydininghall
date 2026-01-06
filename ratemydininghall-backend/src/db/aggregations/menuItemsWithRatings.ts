@@ -10,6 +10,7 @@ export type MenuItemWithRatingsDoc = {
   macros?: any | null;
   avgRating: number;
   ratingCount: number;
+  tags?: string[] | null;
 };
 
 export async function getMenuItemsWithRatingsByHall(
