@@ -19,6 +19,7 @@ function Topbar() {
     const navigate = useNavigate();
     const [isReviewFormOpen, setReviewFormOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [isMobileHidden, setIsMobileHidden] = useState(false);
 
     const dispatch = useAppDispatch();
     const isAuthed = useAppSelector(selectIsAuthed);
@@ -59,7 +60,26 @@ function Topbar() {
 
     return (
     <>
-        <header className={styles.appHeader}>
+    <header className={`${styles.appHeader} ${isMobileHidden ? styles.hidden : ''}`}>
+        <button 
+            className={styles.mobileToggle}
+            onClick={() => setIsMobileHidden(!isMobileHidden)}
+            aria-label={isMobileHidden ? "Show Menu" : "Hide Menu"}
+        >
+            {/* Chevron Icon */}
+            <svg 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+            >
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
         <div className={styles.container}>
             <div className={styles.left}>
                 <div className={styles.controls}>

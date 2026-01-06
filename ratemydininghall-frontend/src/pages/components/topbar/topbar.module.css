@@ -30,6 +30,17 @@ body {
 .appHeader {
   border-bottom: 1px solid var(--border-soft);
   background: transparent;
+  position: relative; /* Ensure we can position the toggle button relative to this */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.appHeader.hidden {
+  transform: translateY(-100%);
+}
+
+.mobileToggle {
+  display: none;
 }
 
 .container {
@@ -112,6 +123,43 @@ body {
 }
 
 @media (max-width: 768px) {
+  .appHeader {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg);
+  }
+
+    .mobileToggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: -24px; 
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 24px;
+      background-color: var(--color-bg-primary, #ffffff);
+      border: 1px solid var(--color-border-soft, #e5e7eb);
+      border-top: none;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      z-index: 1001;
+      color: var(--color-text-secondary, #666);
+  }
+
+  .mobileToggle svg {
+    transition: transform 0.3s;
+  }
+
+  .appHeader.hidden .mobileToggle svg {
+    transform: rotate(180deg);
+  }
+
   .container {
     flex-direction: column;
     height: auto;
