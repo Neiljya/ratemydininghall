@@ -39,7 +39,6 @@
   background: var(--color-container-bg-alt);
 }
 
-/* Override "card" in the scroll list */
 .scrollableContent .roundContainer {
   background-color: var(--color-container-bg-alt);
   flex-shrink: 0;
@@ -80,10 +79,47 @@
   font-size: 16px;
   font-weight: 600;
   color: var(--color-text-strong);
-  
-  /* Optional: Ensure it handles long names gracefully */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
+}
+
+
+/* --- MOBILE LAYOUT --- */
+@media (max-width: 768px) {
+  
+  .roundContainer {
+    min-width: unset; 
+    max-width: 100%;
+    width: 100%;
+    margin: 8px 0;
+    padding: var(--space-4); 
+    box-sizing: border-box; 
+  }
+
+  .scrollableContent {
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
+    padding-right: var(--space-4); 
+  }
+  
+  .scrollableContent::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .scrollableContent .roundContainer {
+    width: 130px; 
+    min-width: 130px;
+    max-width: 130px;
+  }
+
+  .containerEffect:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm); 
+  }
+  
+  .containerEffect:active {
+    transform: scale(0.98);
+  }
 }

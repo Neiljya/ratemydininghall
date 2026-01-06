@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import styles from './review-modal.module.css';
 import {  selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
 import { useAppSelector } from '@redux/hooks';
+import CloseButton from '@components/ui/close-button/CloseButton';
 
 interface ReviewModalProps {
   diningHallSlug: string;
@@ -63,7 +64,10 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
         className={`${globalContainerStyles.roundContainer} ${styles.modalContent}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.closeButton} onClick={handleClose}>✕</button>
+        <div className={styles.closeButton}>
+          <CloseButton onClick={handleClose} />
+        </div>
+        
 
         {/* Header Section */}
         <div className={styles.header}>

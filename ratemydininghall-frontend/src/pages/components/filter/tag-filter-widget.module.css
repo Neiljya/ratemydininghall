@@ -95,3 +95,51 @@
     background-color: white;
     border-radius: 1px;
 }
+
+@media (max-width: 768px) {
+    
+    .widgetContainer {
+        width: 100%;        
+        margin-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border-soft);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        position: static;    
+    }
+
+    .tagList {
+        flex-direction: row;
+        overflow-x: auto;    
+        padding-bottom: 4px; 
+        gap: 8px;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;  
+    }
+
+    .tagList::-webkit-scrollbar { 
+        display: none; 
+    }
+    .tagRow {
+        width: auto;         
+        white-space: nowrap; 
+        background-color: var(--color-bg-secondary);
+        border: 1px solid var(--color-border-soft);
+        padding: 6px 12px;
+        border-radius: 20px; 
+    }
+
+    .tagRow.active {
+        background-color: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+    }
+
+    .checkbox {
+        display: none;
+    }
+
+    .tagRow.active .tagName {
+        color: white;
+    }
+}

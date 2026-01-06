@@ -1,0 +1,24 @@
+.closeIconBtn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary, #666);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    width: 40px; 
+    height: 40px;
+}
+
+.closeIconBtn:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-primary, #000);
+}
+
+.closeIconBtn:active {
+    background-color: rgba(0,0,0,0.1);
+    transform: scale(0.95);
+}
