@@ -53,7 +53,7 @@ export default function DiningHallDetailPage() {
       case 'calories-desc':
         return list.sort((a, b) => (b.macros?.calories || 0) - (a.macros?.calories || 0));
       case 'carbs-desc':
-        return list.sort((a, b) => (b.macros?.carbs || 0) - (b.macros?.carbs || 0));
+        return list.sort((a, b) => (b.macros?.carbs || 0) - (a.macros?.carbs || 0));
       case 'fat-asc':
         return list.sort((a, b) => (a.macros?.fat || 0) - (b.macros?.fat || 0));
       default:
@@ -176,7 +176,6 @@ export default function DiningHallDetailPage() {
           </div>
         </aside>
 
-        {/* ✅ MINIMAL ADD: mobile-only backdrop (shows only under @media) */}
         {selected && (
           <div
             className={`
