@@ -5,7 +5,13 @@ import { selectAuthLoading, selectIsAdmin } from '@redux/auth-slice/authSelector
 import { useEffect } from 'react';
 import { fetchMe } from '@redux/auth-slice/authSlice';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { setCachePolicies } from '@utils/cache';
 
+setCachePolicies({
+  diningHalls: { v: 2, ttlMs: 10 * 60 * 1000 },
+  reviews:     { v: 1, ttlMs: 2 * 60 * 1000 },
+  menuItems:   { v: 3, ttlMs: 5 * 60 * 1000 },
+});
 // components
 import Layout from '@components/layout/Layout';
 
