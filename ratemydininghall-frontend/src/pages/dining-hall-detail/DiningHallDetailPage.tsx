@@ -32,16 +32,19 @@ export default function DiningHallDetailPage() {
   const sortedItems = useMemo(() => {
     if (!items) return [];
 
-    let list = items;
+    let list = [...items];
 
     if (selectedTags.length > 0) {
       list = list.filter(item => {
-        if (!item.tags) return false;
-        return selectedTags.every(selectedTag => item.tags?.includes(selectedTag));
+        // if the item has no tags, it's safe (no excluded tags)
+        if (!item.tags || item.tags.length === 0) return true;
+
+        // exclude out items
+        const hasExcludedTag = item.tags.some(tag => selectedTags.includes(tag));
+
+        return !hasExcludedTag;
       });
     }
-    // creating a copy to not modify the state itself
-    list = [...list];
 
     switch (sortBy) {
         case 'protein-desc':

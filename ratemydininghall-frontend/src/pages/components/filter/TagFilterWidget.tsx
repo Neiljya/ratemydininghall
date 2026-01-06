@@ -19,7 +19,7 @@ export default function TagFilterWidget({
     return (
         <div className={styles.widgetContainer}>
             <div className={styles.headerRow}>
-                <h4 className={styles.title}>Filters</h4>
+                <h4 className={styles.title}>Filter Out</h4>
                 {selectedTags.length > 0 && (
                     <button onClick={onClear} className={styles.clearBtn}>
                         Clear
