@@ -106,14 +106,6 @@
     border-radius: 10px;
 }
 
-.menuList {
-  display: grid;
-  /* 2 columns for menu items if space permits, otherwise 1 */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-
 .panelHeader {
     margin-bottom: 20px;
     flex-shrink: 0;
@@ -238,4 +230,27 @@
   font-weight: 500;
   text-transform: capitalize; /* "peanut" -> "Peanut" */
   border: 1px solid var(--color-border-soft, #e4e4e7);
+}
+
+.controlsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+/* Container for Widget + List side by side */
+.contentSplit {
+  display: flex;
+  align-items: flex-start; /* Aligns them at the top */
+}
+
+/* Ensure list takes up remaining space */
+.menuList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }

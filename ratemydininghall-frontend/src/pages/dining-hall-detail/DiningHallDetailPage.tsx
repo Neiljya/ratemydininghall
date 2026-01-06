@@ -14,6 +14,7 @@ import ReviewForm from '@components/reviews/review-form/ReviewForm';
 import ReviewItem from '@components/reviews/review-item/ReviewItem';
 import CustomSelect from '@components/ui/custom-select/CustomSelect'; 
 import MacroWidget from '@components/menu-items/macro-widget/MacroWidget';
+import TagFilterWidget from '@components/filter/TagFilterWidget';
 
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
@@ -22,16 +23,25 @@ export default function DiningHallDetailPage() {
 
   const reviewsByHall = useAppSelector(selectReviews);
   const [selected, setSelected] = useState<MenuItem | null>(null);
-  
-  console.log('selectedtags: ', selected?.tags);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
   // state for the filtering dropdown
   const [sortBy, setSortBy] = useState<string>('default');
 
   // Filtering logic
   const sortedItems = useMemo(() => {
     if (!items) return [];
+
+    let list = items;
+
+    if (selectedTags.length > 0) {
+      list = list.filter(item => {
+        if (!item.tags) return false;
+        return selectedTags.every(selectedTag => item.tags?.includes(selectedTag));
+      });
+    }
     // creating a copy to not modify the state itself
-    const list = [...items];
+    list = [...list];
 
     switch (sortBy) {
         case 'protein-desc':
@@ -47,7 +57,7 @@ export default function DiningHallDetailPage() {
         default:
             return list;
     }
-  }, [items, sortBy]);
+  }, [items, sortBy, selectedTags]);
 
   // --- Review Filtering ---
   const hallReviews = useMemo(() => {
@@ -64,6 +74,19 @@ export default function DiningHallDetailPage() {
   }, [reviewsByHall, slug, selected]);
 
   const activeReviews = selected ? menuItemReviews : hallReviews;
+
+  const availableTags = useMemo(() => {
+    if (!items) return [];
+    const tags = new Set<string>();
+    items.forEach(item => item.tags?.forEach(tag => tags.add(tag)));
+    return Array.from(tags).sort();
+  }, [items]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag) ? prev.filter(target => target !== tag) : [...prev, tag]
+    )
+  }
 
   const formatTitle = (s: string) => s.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const displayTitle = formatTitle(slug);
@@ -112,7 +135,13 @@ export default function DiningHallDetailPage() {
             <div className={styles.muted} style={{ textAlign: 'left', padding: 0 }}>Loading menu items…</div>
           ) : null}
 
-          <div className={styles.menuListContainer}>
+          <div className={styles.contentSplit}>
+          <TagFilterWidget 
+                 availableTags={availableTags} 
+                 selectedTags={selectedTags} 
+                 onToggleTag={toggleTag}
+                 onClear={() => setSelectedTags([])}
+            />
             <div className={styles.menuList}>
               {/* Use sortedItems map */}
               {sortedItems.map((item) => (
