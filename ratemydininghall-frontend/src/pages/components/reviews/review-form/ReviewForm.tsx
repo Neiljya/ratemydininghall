@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice';
 import styles from '../../../styles/review-form.module.css'
 import containerStyles from '@containerStyles/globalContainer.module.css';
@@ -8,6 +8,7 @@ import StarSelector from '@components/stars/StarSelector';
 import { submitPendingReview } from '@graphQL/mutations/submitPendingReview';
 import Notification, { type NotificationVariant } from '@components/notifications/Notification';
 import { useNavigate } from 'react-router-dom';
+import CaptchaProtection, { type CaptchaRef } from '@components/captchas/CaptchaProtection';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
@@ -45,6 +46,10 @@ function ReviewForm({
     const [description, setDescription] = useState<string>('');
     const shouldShowCloseBtn = Boolean(onClose) || showClose;
 
+    // captchas
+    const [captchaToken, setCaptchaToken] = useState<string | null>('');
+    const captchaRef = useRef<CaptchaRef>(null)
+
     // vars for handling submission state
     const [submitting, setSubmitting] = useState<boolean>(false);
     const [notif, setNotif] = useState<{ show: boolean; message: string; variant: NotificationVariant }>({
@@ -79,6 +84,13 @@ function ReviewForm({
         e.preventDefault();
         setSubmitting(true);
 
+        // captcha needs to be filled before submitting
+        if (!captchaToken) {
+            showNotif('error', 'Please verify that you are a human');
+            setSubmitting(false);
+            return;
+        }
+
         const hallSlugToUse = source === 'topbar' ? selectedHall : diningHallSlug;
 
         if (!hallSlugToUse) {
@@ -101,20 +113,31 @@ function ReviewForm({
 
         const authorToUse = isAnonymous ? 'Anonymous' : (reviewerName.trim() || 'Anonymous');
         try {
-            //disabling in prod for now
-            if (!import.meta.env.PROD) {
-                await submitPendingReview({
-                    diningHallSlug: hallSlugToUse,
-                    author: authorToUse,
-                    description: description.trim(),
-                    rating,
-                    menuItemId: menuItemId ?? null,
-                });
-            }
+            // //disabling in prod for now
+            // if (!import.meta.env.PROD) {
+            //     await submitPendingReview({
+            //         diningHallSlug: hallSlugToUse,
+            //         author: authorToUse,
+            //         description: description.trim(),
+            //         rating,
+            //         menuItemId: menuItemId ?? null,
+            //         captchaToken
+            //     });
+            // }
+            await submitPendingReview({
+                diningHallSlug: hallSlugToUse,
+                author: authorToUse,
+                description: description.trim(),
+                rating,
+                menuItemId: menuItemId ?? null,
+                captchaToken
+            });
 
             showNotif('success', 'Review submitted for approval!');
             setDescription('')
             setRating(0);
+
+            captchaRef.current?.reset();
         } catch (error: any) {
             console.error(error);
             showNotif('error', error.message ?? 'Failed to submit review');
@@ -216,6 +239,10 @@ function ReviewForm({
                     />
                 </div>
 
+            <CaptchaProtection
+                actions={captchaRef}
+                onVerify={setCaptchaToken}
+            />
 
             <div className={styles.buttonRow}>
                 <button

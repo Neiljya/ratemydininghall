@@ -4,6 +4,9 @@ import { YogaContext } from '../types/yogaContext';
 import { authResolvers } from './auth';
 import { COLLECTIONS } from '../db/collections';
 
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
+const RECAPTCHA_VERIFY = 'https://www.google.com/recaptcha/api/siteverify'
+
 // ADMIN ONLY 
 
 type CreateDiningHallArgs = {
@@ -80,6 +83,7 @@ type SubmitPendingReviewArgs = {
         rating: number;
         imageUrl?: string | null;
         menuItemId?: string | null;
+        captchaToken: string;
     };
 };
 
@@ -198,14 +202,39 @@ export const mutationResolvers = {
             { input }: SubmitPendingReviewArgs,
             { db }: YogaContext
         ) {
-            const { 
+            const {
                 diningHallSlug, 
                 author, 
                 description, 
                 rating, 
                 imageUrl,
-                menuItemId
+                menuItemId,
+                captchaToken
             } = input;
+
+            // captcha verification before uploading/processing any data
+            if (!captchaToken) {
+                throw new Error('Captcha token is missing');
+            }
+
+            const params = new URLSearchParams({
+                secret: RECAPTCHA_SECRET_KEY as string,
+                response: captchaToken
+            })
+
+            const verifyResponse = await fetch(RECAPTCHA_VERIFY, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+                body: params.toString()
+            });
+
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyData.success) {
+                console.error('Captcha failed:', verifyData['error-codes']);
+                throw new Error('Captcha verification failed');
+            }
+            // ************************************************************
 
             if ( !diningHallSlug || !author || !description || typeof rating !== 'number') {
                 throw new Error('Missing required fields');

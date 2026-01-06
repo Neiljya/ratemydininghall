@@ -17,7 +17,9 @@ export interface Review {
     menuItemId?: string | null;
 }
 
-export type NewReviewInput = Omit<Review, 'id' | 'createdAt'>;
+export type NewReviewInput = Omit<Review, 'id' | 'createdAt'> & {
+    captchaToken: string;
+};
 
 export type ReviewState = {
     [diningHallId: string]: Review[];

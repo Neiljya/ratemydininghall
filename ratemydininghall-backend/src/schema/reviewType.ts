@@ -28,6 +28,9 @@ export const reviewType = `
 
         # for selecting if its a dining hall rating or menu item rating
         menuItemId: ID
+
+        # captcha verification
+        captchaToken: String!
     }
 
     type PendingReviewResult {
