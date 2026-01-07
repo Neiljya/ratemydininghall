@@ -14,6 +14,7 @@ import CustomSelect from '@components/ui/custom-select/CustomSelect';
 import MacroWidget from '@components/menu-items/macro-widget/MacroWidget';
 import TagFilterWidget from '@components/filter/TagFilterWidget';
 import CloseButton from '@components/ui/close-button/CloseButton';
+import { TAG_REGISTRY } from 'src/constants/tags';
 
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
@@ -78,8 +79,18 @@ export default function DiningHallDetailPage() {
   const availableTags = useMemo(() => {
     if (!items) return [];
     const tags = new Set<string>();
-    items.forEach(item => item.tags?.forEach(tag => tags.add(tag)));
-    return Array.from(tags).sort();
+
+    items.forEach(item => {
+      item.tags?.forEach(tagId => {
+        if (TAG_REGISTRY[tagId]) {
+          tags.add(tagId);
+        }
+      });
+    });
+
+    return Array.from(tags).sort((a, b) => {
+      return TAG_REGISTRY[a].localeCompare(TAG_REGISTRY[b]);
+    });
   }, [items]);
 
   const toggleTag = (tag: string) => {
@@ -213,10 +224,12 @@ export default function DiningHallDetailPage() {
 
           {selected && selected.tags && selected.tags.length > 0 && (
             <div className={styles.tagRow}>
-              {selected.tags.map(tag => (
-                <span key={tag} className={styles.tagBadge}>
-                  {tag}
-                </span>
+              {selected.tags
+                .filter(tagId => TAG_REGISTRY[tagId]) // only render tags that exist in registry
+                .map(tagId => (
+                  <span key={tagId} className={styles.tagBadge}>
+                    {TAG_REGISTRY[tagId]}
+                  </span>
               ))}
             </div>
           )}
