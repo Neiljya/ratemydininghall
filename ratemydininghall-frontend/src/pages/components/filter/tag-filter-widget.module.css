@@ -130,7 +130,7 @@
     }
 
     .tagRow.active {
-        background-color: var(--color-primary);
+        background-color: var(--color-button-active);
         color: white;
         border-color: var(--color-primary);
     }
