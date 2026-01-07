@@ -25,6 +25,7 @@
   font-size: 14px;
   resize: vertical;
   min-height: 80px;
+  max-height: 200px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 

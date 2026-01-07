@@ -12,6 +12,8 @@ import CaptchaProtection, { type CaptchaRef } from '@components/captchas/Captcha
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
+const MAX_CHARS = 500;
+
 interface ReviewFormProps {
     diningHallSlug?: string;
     diningHalls?: DiningHall[];
@@ -229,12 +231,18 @@ function ReviewForm({
                 </div>
 
                 <div className={styles.formGroup}>
-                    <label className={styles.label}>Review</label>
+                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
+                        <label className={styles.label} style={{ marginBottom: 0 }}>Review</label>
+                        <span style={{ fontSize: '12px', color: description.length >= MAX_CHARS ? 'red' : '#666' }}>
+                            {description.length} / {MAX_CHARS}
+                        </span>
+                    </div>
                     <textarea
                         className={styles.reviewTextarea}
                         placeholder="Short note about your experience"
                         rows={4}
                         value={description}
+                        maxLength={MAX_CHARS}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
