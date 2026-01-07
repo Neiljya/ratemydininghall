@@ -1,67 +1,67 @@
-:root {
-  --bg: #fff;
-  --muted: #6b6b6b;
-  --card: #fafafa;
-  --accent: #111;
-  --radius: 10px;
-  --border-soft: #eee;
-  --border-softer: #e6e6e6;
-  --border-muted: #ddd;
-  --button-bg: #fff;
-  --button-primary-bg: #111;
-  --button-primary-text: #fff;
-
-  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color-scheme: light;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--accent);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .appHeader {
-  border-bottom: 1px solid var(--border-soft);
-  background: transparent;
-  position: relative; /* Ensure we can position the toggle button relative to this */
+  --header-bg: #1a1a1a;
+  --header-text: #ffffff;
+  --header-border: #333;
+  --btn-border: rgba(255, 255, 255, 0.2);
+  --btn-hover-bg: rgba(255, 255, 255, 0.15);
+  
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  border-bottom: 1px solid var(--header-border);
+  position: relative;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .appHeader.hidden {
   transform: translateY(-100%);
 }
 
-.mobileToggle {
-  display: none;
+.appHeader input, 
+.appHeader select, 
+.appHeader textarea {
+  color: #333 !important; 
 }
 
 .container {
-  position: relative;
-  max-width: 2200px;
-  margin: 0 auto;
-  padding: 28px;
   max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
-  gap: 300px;
-  height: 100%;
-  margin: 0 auto;
+  justify-content: space-between;
+  height: 72px; 
 }
 
-.title {
-  flex: 1;
-  font-weight: 700;
-  margin: 0;
-  font-size: 20px;
-  text-align: left !important;
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 80px; 
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* --- SECTIONS --- */
+.left, .right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+}
+
+.right {
+  margin-left: auto;
+  gap: 16px; 
 }
 
 .controls {
@@ -70,127 +70,143 @@ body {
   align-items: center;
 }
 
-.select {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-softer);
-  background: var(--button-bg);
-  font-family: inherit;
+/* --- BUTTONS --- */
+.btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--btn-border);
+  background: transparent;
+  color: var(--header-text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border-muted);
-  background: var(--button-bg);
-  cursor: pointer;
-  font-family: inherit;
+.btn:hover {
+  background-color: var(--btn-hover-bg);
+  border-color: rgba(255,255,255,0.5);
 }
 
 .btnPrimary {
-  background: var(--button-primary-bg);
-  color: var(--button-primary-text);
-  border-color: transparent;
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  font-weight: 600;
 }
 
-.left {
-  z-index: 20;
-  display: flex;
-  align-items: center;
+.btnPrimary:hover {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
 }
 
-.right {
-  z-index: 20;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.btnGhost {
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
 }
 
-.logo {
-  position: absolute; 
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); 
-  
-  width: 1000px; 
-  height: auto; 
-  max-height: 100%;
-  
-  object-fit: contain;
-  cursor: pointer;
-  z-index: 10; 
-  /* filter: invert(1); */
+.btnGhost:hover {
+  color: #ffffff;
+  background: transparent;
 }
 
-@media (max-width: 768px) {
+.mobileToggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
   .appHeader {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--bg);
-  }
-
-    .mobileToggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      bottom: -24px; 
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 24px;
-      background-color: var(--color-bg-primary, #ffffff);
-      border: 1px solid var(--color-border-soft, #e5e7eb);
-      border-top: none;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      z-index: 1001;
-      color: var(--color-text-secondary, #666);
-  }
-
-  .mobileToggle svg {
-    transition: transform 0.3s;
-  }
-
-  .appHeader.hidden .mobileToggle svg {
-    transform: rotate(180deg);
+    height: auto;
+    max-height: 100vh;
+    overflow: visible; 
   }
 
   .container {
     flex-direction: column;
     height: auto;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 16px;
+    gap: 16px;
+    align-items: stretch;
   }
 
   .logo {
     position: static;
     transform: none;
-    margin: 0 auto; 
-    max-width: 200px; 
-    margin-bottom: 0.5rem;
+    height: 80px; 
+    margin: 0 auto 8px auto;
+    display: block;
   }
 
   .left, .right {
     width: 100%;
     justify-content: center;
-    position: static; 
+    position: static;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .right {
+    margin-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
   }
 
   .controls {
-    flex-direction: column; 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
     width: 100%;
-    gap: 0.75rem;
+    gap: 8px;
   }
 
   .btn {
+    flex: 1 1 auto;
+    min-width: 100px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .controls > div:first-child {
     width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .mobileToggle {
     display: flex;
+    align-items: center;
     justify-content: center;
+    
+    position: absolute;
+    bottom: -28px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 28px;
+    background-color: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    
+    border: 1px solid var(--header-border);
+    border-top: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .appHeader.hidden .mobileToggle svg {
+    transform: rotate(180deg);
   }
 }

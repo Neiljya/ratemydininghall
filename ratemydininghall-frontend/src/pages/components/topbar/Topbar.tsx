@@ -5,12 +5,10 @@ import styles from './topbar.module.css';
 import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import popupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
-import buttonStyles from '@containerStyles/buttons.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@redux/hooks';
 import { logout } from '@redux/auth-slice/authSlice';
 import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-slice/authSelectors';
-import CustomSelect from '@components/ui/custom-select/CustomSelect';
 import logoucsd from '../../../assets/logoucsd.png';
 import { clearCache } from '@utils/cache';
 
@@ -27,14 +25,11 @@ function Topbar() {
     const isAdmin = useAppSelector(selectIsAdmin);
     const authLoading = useAppSelector(selectAuthLoading);
 
-    // sort state
-    const [sortValue, setSortValue] = useState('rating-desc');
-
     const handleClearCache = () => {
         clearCache();
         window.location.reload();
     }
-
+    
     const handleOpenReviewForm = () => {
         setReviewFormOpen(true);
         setIsClosing(false);
@@ -44,7 +39,6 @@ function Topbar() {
     const handleCloseReviewForm = () => {
         setIsClosing(true);
         document.body.style.overflow = 'unset';
-
         setTimeout(() => {
             setReviewFormOpen(false);
             setIsClosing(false);
@@ -72,10 +66,9 @@ function Topbar() {
             onClick={() => setIsMobileHidden(!isMobileHidden)}
             aria-label={isMobileHidden ? "Show Menu" : "Hide Menu"}
         >
-            {/* Chevron Icon */}
             <svg 
-                width="16" 
-                height="16" 
+                width="20" 
+                height="20" 
                 viewBox="0 0 24 24" 
                 fill="none" 
                 stroke="currentColor" 
@@ -86,87 +79,78 @@ function Topbar() {
                 <polyline points="18 15 12 9 6 15"></polyline>
             </svg>
         </button>
+
         <div className={styles.container}>
+            
+            {/* Logo */}
+            <img
+                src={logoucsd}
+                alt='RateMyDiningHall-UCSD'
+                className={styles.logo}
+                onClick={() => navigate('/')}
+            />
+
             <div className={styles.left}>
                 <div className={styles.controls}>
-                <CustomSelect
-                    options={[
-                       { value: 'rating-desc', label: 'Highest rated' },
-                       { value: 'rating-asc', label: 'Lowest rated' },
-                    ]}
-                    value={sortValue}
-                    onChange={setSortValue}
-                />
-
-
-                <button 
-                    className={`${styles.btn} ${buttonStyles['btn-fill-anim']}`}
-                    onClick={() => navigate('/')}
-                
-                >
-                    Back to All Halls
-                </button>
-
-
-                <button
-                    className={`${styles.btn} ${styles.btnPrimary} ${buttonStyles['btn-dark-fill-anim']}`}
-                    onClick={handleOpenReviewForm}
-                >
-                    Add Review
-                </button>
-
-                {/* admin only button */}
-                {isAdmin && (
-                    <button className={`${styles.btn} ${buttonStyles['btn-fill-anim']}`} onClick={() => navigate('/admin')}>
-                        Admin Panel
+                    <button 
+                        className={styles.btn}
+                        onClick={() => navigate('/')}
+                    >
+                        All Halls
                     </button>
-                )}
+                    
+                    <button 
+                        className={styles.btn}
+                        onClick={handleClearCache}
+                        title="Refresh data"
+                    >
+                        Refresh
+                    </button>
+
+                    {isAdmin && (
+                        <button className={styles.btn} onClick={() => navigate('/admin')}>
+                            Admin
+                        </button>
+                    )}
+
+                    <button
+                        className={`${styles.btn} ${styles.btnPrimary}`}
+                        onClick={handleOpenReviewForm}
+                    >
+                        + Add Review
+                    </button>
+                </div>
+            </div>
+
+            <div className={styles.right}>
+                <button
+                    className={`${styles.btn} ${styles.btnGhost}`}
+                    onClick={handleAuthButton}
+                    disabled={authLoading}
+                >
+                    {isAuthed ? (authLoading ? '...' : 'Logout') : 'Login'}
+                </button>
             </div>
         </div>
-        <img
-            src={logoucsd}
-            alt='RateMyDiningHall-UCSD'
-            className={styles.logo}
-            onClick={() => navigate('/')}
-        />
-        <div className={styles.right}>
-            <button 
-                    className={`${styles.btn} ${buttonStyles['btn-fill-anim']}`}
-                    onClick={handleClearCache}
-                    title="Refresh data"
-                >
-                    Clear Cache
-            </button>
-            <button
-                className={`${styles.btn} ${styles.btnGhost} ${buttonStyles['btn-fill-anim']}`}
-                onClick={handleAuthButton}
-                disabled={authLoading}
-            >
-                {isAuthed ? (authLoading ? '...' : 'Logout') : 'Login'}
-            </button>
+    </header>
 
-        </div>
-        </div>
-        </header>
-
-        {isReviewFormOpen && (
+    {isReviewFormOpen && (
         <div 
             className={`${popupStyles.popupBackground} ${isClosing ? popupStyles.closing : ''}`}
             onClick={handleCloseReviewForm}
         >
             <div
-            className={`${globalContainerStyles.roundContainer} ${popupStyles.popupContent}`}
-            onClick={(e) => e.stopPropagation()}
+                className={`${globalContainerStyles.roundContainer} ${popupStyles.popupContent}`}
+                onClick={(e) => e.stopPropagation()}
             >
-            <ReviewForm 
-                source="topbar" 
-                onClose={handleCloseReviewForm}
-                diningHalls={diningHalls}
-            />
+                <ReviewForm 
+                    source="topbar" 
+                    onClose={handleCloseReviewForm}
+                    diningHalls={diningHalls}
+                />
             </div>
         </div>
-        )}
-
+    )}
     </>
     );
 }
