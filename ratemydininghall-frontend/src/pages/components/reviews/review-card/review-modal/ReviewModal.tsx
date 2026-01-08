@@ -12,6 +12,7 @@ import { useAppSelector } from '@redux/hooks';
 import CloseButton from '@components/ui/close-button/CloseButton';
 
 interface ReviewModalProps {
+  imageUrl: string;
   diningHallSlug: string;
   isOpen: boolean;
   onClose: () => void;
@@ -21,7 +22,7 @@ interface ReviewModalProps {
 
 const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
+function ReviewModal({ imageUrl = placeholderUrl, diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
   const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
   const byHall = useAppSelector(selectRatingsByHall);
   const agg = byHall[diningHallSlug];
@@ -71,7 +72,7 @@ function ReviewModal({ diningHallSlug, isOpen, onClose, headerText, description 
 
         {/* Header Section */}
         <div className={styles.header}>
-          <img src={placeholderUrl} alt="Dining Hall" className={styles.headerImage} />
+          <img src={imageUrl} alt="Dining Hall" className={styles.headerImage} />
           <div className={styles.headerInfo}>
             <h1 className={styles.title}>{headerText || "Harvest Kitchen"}</h1>
             <div className={styles.rating}>

@@ -110,6 +110,7 @@ function ReviewPage() {
             </div>
 
             <ReviewModal
+                imageUrl={selectedHall?.imageUrl || ''}
                 diningHallSlug={selectedHall?.slug || ''}
                 isOpen={!!selectedHall} 
                 onClose={() => setSelectedHall(null)} 
