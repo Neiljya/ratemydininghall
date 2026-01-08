@@ -59,3 +59,38 @@
     top: 0;
   }
 }
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.filterPill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-soft, #e5e7eb);
+  background-color: #ffffff;
+  color: var(--color-text-primary, #333);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterPill:hover {
+  background-color: #f4f4f5;
+  border-color: #d4d4d8;
+}
+
+.activePill {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.activePill:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
