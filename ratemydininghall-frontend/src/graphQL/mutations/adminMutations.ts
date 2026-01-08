@@ -30,6 +30,7 @@ export const CREATE_DINING_HALL = `
         name
         imageUrl
         description
+        parentHallSlug
       }
   }
 `;

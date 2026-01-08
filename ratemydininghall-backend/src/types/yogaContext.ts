@@ -9,3 +9,10 @@ export type YogaContext = {
   db: Db;
   user: AuthUser | null;
 };
+
+export type DiningHallInput = {
+  slug: string;
+  name: string;
+  description?: string | null;
+  imageUrl?: string | null;
+}

@@ -6,6 +6,7 @@ export const getDiningHallsQuery = `
           name
           description
           imageUrl
+          parentHallSlug
         }
       }
     `;

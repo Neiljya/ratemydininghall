@@ -38,7 +38,8 @@ export const queryResolvers = {
                 slug: doc.slug,
                 name: doc.name,
                 description: doc.description,
-                imageUrl: doc.imageUrl
+                imageUrl: doc.imageUrl,
+                parentHallSlug: doc.parentHallSlug
             }));
         },
 

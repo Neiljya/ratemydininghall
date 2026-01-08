@@ -15,6 +15,7 @@ type CreateDiningHallArgs = {
     slug: string;
     imageUrl?: string | null;
     description?: string | null;
+    parentHallSlug?: string | null;
   };
 };
 
@@ -25,6 +26,7 @@ type UpdateDiningHallArgs = {
     slug?: string | null;
     imageUrl?: string | null;
     description?: string | null;
+    parentHallSlug?: string | null;
   };
 };
 
@@ -339,6 +341,7 @@ export const mutationResolvers = {
 
             const name = input.name?.trim();
             const slug = input.slug?.trim();
+            const parentHallSlug = input.parentHallSlug?.trim();
 
             if (!name || !slug) throw new Error('name and slug are required');
 
@@ -350,6 +353,7 @@ export const mutationResolvers = {
                 slug,
                 imageUrl: input.imageUrl?.trim() || null,
                 description: input.description?.trim() || null,
+                parentHallSlug: parentHallSlug || null,
                 createdAt: new Date(),
             };
 
@@ -376,6 +380,11 @@ export const mutationResolvers = {
             if (typeof input.name === 'string') patch.name = input.name.trim();
             if (typeof input.imageUrl === 'string') patch.imageUrl = input.imageUrl.trim() || null;
             if (typeof input.description === 'string') patch.description = input.description.trim() || null;
+
+            if (typeof input.parentHallSlug === 'string') {
+                const v = input.parentHallSlug.trim();
+                patch.parentHallSlug = v ? v : null;
+            }
 
             let newSlug: string | null = null;
             if (typeof input.slug === 'string') {

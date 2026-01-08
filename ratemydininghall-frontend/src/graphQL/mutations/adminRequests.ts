@@ -16,6 +16,7 @@ export type CreateDiningHallInput = {
   slug: string;
   imageUrl?: string | null;
   description?: string | null;
+  parentHallSlug?: string | null;
 };
 
 export type MacrosInput = {
@@ -40,6 +41,7 @@ export type UpdateDiningHallInput = {
   slug?: string;
   imageUrl?: string | null;
   description?: string | null;
+  parentHallSlug?: string | null;
 };
 
 export async function createDiningHall(input: CreateDiningHallInput) {

@@ -9,6 +9,7 @@ export interface DiningHall {
     name: string;
     description: string;
     imageUrl: string;
+    parentHallSlug?: string | null;
 }
 
 interface DiningHallState {

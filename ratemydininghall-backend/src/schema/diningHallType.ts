@@ -5,6 +5,7 @@ export const diningHallType = `
         name: String!
         description: String!
         imageUrl: String!
+        parentHallSlug: String
     }
 
     input CreateDiningHallInput {
@@ -12,6 +13,7 @@ export const diningHallType = `
         slug: String!
         imageUrl: String
         description: String
+        parentHallSlug: String
     }
         
     input UpdateDiningHallInput {
@@ -20,6 +22,7 @@ export const diningHallType = `
         slug: String
         imageUrl: String
         description: String
+        parentHallSlug: String
     }
 
     input MacrosInput {
