@@ -53,7 +53,7 @@ function ReviewPage() {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.scrollContainer}>
-                <div style={{ padding: '0 20px 20px 20px', maxWidth: '300px' }}>
+                <div style={{ padding: '0 20px 20px 20px', maxWidth: '800px' }}>
 
                 <div className={styles.filterRow}>
                         <button
