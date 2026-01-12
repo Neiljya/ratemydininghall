@@ -11,7 +11,8 @@ export const TAG_REGISTRY: Record<string, string> = {
     "fish": "Fish",
     "shellfish": "Shellfish",
     "wheat": "Wheat",
-    "sesame": "Sesame"
+    "sesame": "Sesame",
+    "meat": "Meat"
 };
 
 /**
