@@ -11,6 +11,7 @@ export type MenuItemInput = {
     description?: string | null;
     imageUrl?: string | null;
     macros?: MacrosInput | null;
+    price?: number | null;
     tags?: string[] | null; // allergens/ingredients tags
 };
   

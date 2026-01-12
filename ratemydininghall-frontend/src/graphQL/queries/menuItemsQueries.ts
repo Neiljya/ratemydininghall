@@ -7,6 +7,7 @@ export const MENU_ITEMS_BY_HALL = `
       description
       imageUrl
       macros { calories protein carbs fat }
+      price
       avgRating
       ratingCount
       tags

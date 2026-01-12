@@ -69,10 +69,25 @@ export const CREATE_MENU_ITEM = `
 
 export const UPDATE_MENU_ITEM = `
   mutation UpdateMenuItem($id: ID!, $input: UpdateMenuItemInput!) {
-    updateMenuItem(id: $id, input: $input)
+    updateMenuItem(id: $id, input: $input) {
+      id
+      diningHallSlug
+      name
+      description
+      imageUrl
+      tags
+      price
+      macros {
+        calories
+        protein
+        carbs
+        fat
+      }
+      avgRating
+      ratingCount
+    }
   }
 `;
-
 export const DELETE_MENU_ITEM = `
   mutation DeleteMenuItem($id: ID!) {
     deleteMenuItem(id: $id)

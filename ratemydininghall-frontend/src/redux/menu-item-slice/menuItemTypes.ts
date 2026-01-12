@@ -14,5 +14,6 @@ export type MenuItem = {
   macros?: Macros | null;
   avgRating: number;
   ratingCount: number;
+  price: number | null;
   tags?: string[] | null;
 };

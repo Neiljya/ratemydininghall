@@ -47,6 +47,7 @@ type CreateMenuItemArgs = {
       fat?: number | null;
     } | null;
     tags?: string[] | null;
+    price?: number | null;
   };
 };
 
@@ -444,6 +445,7 @@ export const mutationResolvers = {
                 imageUrl: input.imageUrl?.trim() || null,
                 macros: input.macros ?? null,
                 tags: input.tags ?? null,
+                price: input.price ?? null,
                 createdAt: new Date(),
             };
 
@@ -456,6 +458,7 @@ export const mutationResolvers = {
                 description: doc.description,
                 imageUrl: doc.imageUrl,
                 macros: doc.macros,
+                price: doc.price,
                 tags: doc.tags,
             };
         },
@@ -473,6 +476,7 @@ export const mutationResolvers = {
                 imageUrl: it.imageUrl?.trim() || null,
                 macros: it.macros ?? null,
                 tags: it.tags ?? null,
+                price: it.price ?? null,
                 createdAt: new Date(),
             }));
 

@@ -38,6 +38,7 @@ export const diningHallType = `
         description: String
         imageUrl: String
         macros: MacrosInput
+        price: Float
         tags: [String!]!
     }
 

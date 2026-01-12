@@ -6,7 +6,6 @@ import {
   CREATE_MENU_ITEM,
   UPDATE_DINING_HALL,
   DELETE_DINING_HALL,
-  // ADD THESE (make sure they exist in adminMutations.ts)
   UPDATE_MENU_ITEM,
   DELETE_MENU_ITEM,
 } from "./adminMutations";
@@ -32,6 +31,7 @@ export type CreateMenuItemInput = {
   description?: string | null;
   imageUrl?: string | null;
   macros?: MacrosInput | null;
+  price?: number | null;
   tags?: string[] | null;
 };
 
@@ -71,6 +71,7 @@ export type UpdateMenuItemInput = {
   description?: string | null;
   imageUrl?: string | null;
   macros?: MacrosInput | null;
+  price?: number | null;
   tags?: string[] | null;
 };
 
