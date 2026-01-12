@@ -2,7 +2,7 @@ export const TAG_REGISTRY: Record<string, string> = {
     "peanut": "🥜 Peanut",
     "vegan": "🌱 Vegan",
     "vegetarian": "Vegetarian",
-    "gluten_free": "Gluten Free",
+    "gluten": "Gluten",
     "halal": "Halal",
     "dairy": "Dairy",
     "soy": "Soy",
