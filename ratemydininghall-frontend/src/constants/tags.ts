@@ -4,7 +4,7 @@ export const TAG_REGISTRY: Record<string, string> = {
     "vegetarian": "Vegetarian",
     "gluten_free": "Gluten Free",
     "halal": "Halal",
-    "dairy_free": "Dairy Free",
+    "dairy": "Dairy",
     "soy": "Soy",
     "egg": "Egg",
     "tree_nut": "Tree Nut",
