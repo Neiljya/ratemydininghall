@@ -213,13 +213,17 @@ export default function DiningHallDetailPage() {
             </div>
           )}
 
-          <div className={styles.panelHeader}>
-            <h2 className={styles.panelTitle}>{selected ? selected.name : 'Dining Hall Reviews'}</h2>
-            <p className={styles.panelSubtitle}>
-              {selected ? 'Share your thoughts on this item.' : `See what others are saying about ${displayTitle}.`}
-            </p>
-          </div>
-
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
+                <h2 className={styles.panelTitle}>
+                    {selected ? selected.name : 'Dining Hall Reviews'}
+                </h2>
+                
+                {selected?.price != null && (
+                    <span className={styles.priceBadge}>
+                        ${typeof selected.price === 'number' ? selected.price.toFixed(2) : selected.price}
+                    </span>
+                )}
+            </div>
           {selected && selected.macros && <MacroWidget macros={selected.macros} />}
 
           {selected && selected.tags && selected.tags.length > 0 && (

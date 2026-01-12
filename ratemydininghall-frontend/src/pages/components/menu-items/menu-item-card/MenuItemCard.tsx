@@ -25,8 +25,12 @@ export function MenuItemCard({ item, selected, onClick }: Props) {
       </div>
 
       {item.description ? <div className={styles.desc}>{item.description}</div> : null}
-
       <div className={styles.metaRow}>
+      {item.price != null ? (
+          <span className={styles.pill} style={{ fontWeight: 600, color: '#333' }}>
+            ${typeof item.price === 'number' ? item.price.toFixed(2) : item.price}
+          </span>
+        ) : null}
         {item.macros?.calories != null ? (
           <span className={styles.pill}>{item.macros.calories} cal</span>
         ) : null}
