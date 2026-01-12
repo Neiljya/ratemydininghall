@@ -10,7 +10,8 @@ export const TAG_REGISTRY: Record<string, string> = {
     "tree_nut": "Tree Nut",
     "fish": "Fish",
     "shellfish": "Shellfish",
-    "wheat": "Wheat"
+    "wheat": "Wheat",
+    "sesame": "Sesame"
 };
 
 /**
