@@ -16,6 +16,7 @@ export const menuItemType = `
         price: Float
         avgRating: Float!
         ratingCount: Int!
+        category: String
         tags: [String!]!
     }
 
@@ -35,6 +36,7 @@ export const menuItemType = `
         imageUrl: String
         macros: MacrosInput
         price: Float
+        category: String
         tags: [String!]!
     }
 
@@ -45,6 +47,7 @@ export const menuItemType = `
         imageUrl: String
         macros: MacrosInput
         price: Float
+        category: String
         tags: [String!]!
     }
 

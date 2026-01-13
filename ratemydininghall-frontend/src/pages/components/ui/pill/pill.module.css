@@ -1,0 +1,50 @@
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-border-soft, #e5e7eb);
+    background-color: var(--color-bg-secondary, #f4f4f5);
+    color: var(--color-text-primary, #333);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevents squishing in flex containers */
+  }
+  
+  .pill:hover {
+    background-color: #e4e4e7;
+    border-color: #d4d4d8;
+  }
+  
+  /* Selection State */
+  .selected {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-color: #1a1a1a;
+  }
+  
+  .selected:hover {
+    background-color: #333333;
+    border-color: #333333;
+  }
+  
+  /* Sizes */
+  .sm {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    height: 24px;
+  }
+  
+  .md {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    height: 32px;
+  }
+  
+  .lg {
+    padding: 8px 18px;
+    font-size: 1rem;
+    height: 40px;
+  }

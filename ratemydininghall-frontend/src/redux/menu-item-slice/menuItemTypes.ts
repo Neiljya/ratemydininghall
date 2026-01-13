@@ -15,5 +15,6 @@ export type MenuItem = {
   avgRating: number;
   ratingCount: number;
   price: number | null;
+  category: string | null;
   tags?: string[] | null;
 };

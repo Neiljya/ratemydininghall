@@ -32,6 +32,7 @@ type DraftMenuItem = {
   imageUrl: string;
   tags: string[];
   price: string; 
+  category: string; 
   calories: string;
   protein: string;
   carbs: string;
@@ -271,13 +272,13 @@ export default function AdminContentManager() {
   const hallSlugOptions = useMemo(() => halls.map((h: any) => ({ value: h.slug, label: h.name })), [halls]);
 
   const [drafts, setDrafts] = useState<DraftMenuItem[]>([
-    { name: "", description: "", imageUrl: "", tags: [], price: "", calories: "", protein: "", carbs: "", fat: "" }, // ✅ added
+    { name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" },
   ]);
 
   const addDraftRow = () =>
     setDrafts((prev) => [
       ...prev,
-      { name: "", description: "", imageUrl: "", tags: [], price: "", calories: "", protein: "", carbs: "", fat: "" }, // ✅ added
+      { name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" },
     ]);
 
   const removeDraftRow = (idx: number) => setDrafts((prev) => prev.filter((_, i) => i !== idx));
@@ -299,7 +300,8 @@ export default function AdminContentManager() {
         description: d.description.trim() || null,
         imageUrl: d.imageUrl.trim() || null,
         tags: d.tags,
-        price: toNullableNum(d.price), // ✅ added
+        price: toNullableNum(d.price),
+        category: d.category.trim() || null,
         macros: {
           calories: toNullableNum(d.calories),
           protein: toNullableNum(d.protein),
@@ -318,7 +320,7 @@ export default function AdminContentManager() {
     try {
       await createMenuItemsBatch(slug, cleaned);
       showNotif("success", `Uploaded ${cleaned.length} menu item(s).`);
-      setDrafts([{ name: "", description: "", imageUrl: "", tags: [], price: "", calories: "", protein: "", carbs: "", fat: "" }]); // ✅ added
+      setDrafts([{ name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" }]); 
       dispatch(fetchMenuItemsByHall(slug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to upload menu items batch");
@@ -341,7 +343,8 @@ export default function AdminContentManager() {
     description: string;
     imageUrl: string;
     tags: string[];
-    price: string; // ✅ added
+    price: string; 
+    category: string; 
     calories: string;
     protein: string;
     carbs: string;
@@ -351,7 +354,9 @@ export default function AdminContentManager() {
     description: "",
     imageUrl: "",
     tags: [],
-    price: "", // ✅ added
+    price: "", 
+    category: "", 
+    
     calories: "",
     protein: "",
     carbs: "",
@@ -365,7 +370,8 @@ export default function AdminContentManager() {
       description: (editItem as any).description ?? "",
       imageUrl: (editItem as any).imageUrl ?? "",
       tags: (editItem as any).tags ?? [],
-      price: String((editItem as any).price ?? ""), // ✅ added
+      price: String((editItem as any).price ?? ""),
+      category: (editItem as any).category ?? "",
       calories: String((editItem as any).macros?.calories ?? ""),
       protein: String((editItem as any).macros?.protein ?? ""),
       carbs: String((editItem as any).macros?.carbs ?? ""),
@@ -388,7 +394,8 @@ export default function AdminContentManager() {
         description: editItemForm.description.trim() || null,
         imageUrl: editItemForm.imageUrl.trim() || null,
         tags: editItemForm.tags,
-        price: toNullableNum(editItemForm.price), // ✅ added
+        price: toNullableNum(editItemForm.price),
+        category: editItemForm.category.trim() || null, 
         macros: {
           calories: toNullableNum(editItemForm.calories),
           protein: toNullableNum(editItemForm.protein),
@@ -558,8 +565,10 @@ export default function AdminContentManager() {
                 <input className={styles.input} placeholder="Image URL (optional)" value={d.imageUrl} onChange={(e) => updateDraft(idx, { imageUrl: e.target.value })} />
               </div>
 
-              {/* ✅ price field added for batch */}
-              <input className={styles.input} placeholder="Price (e.g. 4.99)" value={d.price} onChange={(e) => updateDraft(idx, { price: e.target.value })} />
+              <div className={styles.grid2}>
+                <input className={styles.input} placeholder="Price (e.g. 4.99)" value={d.price} onChange={(e) => updateDraft(idx, { price: e.target.value })} />
+                <input className={styles.input} placeholder="Category (e.g. Entree)" value={d.category} onChange={(e) => updateDraft(idx, { category: e.target.value })} /> {/* ✅ Added */}
+              </div>
 
               <input className={styles.input} placeholder="Description" value={d.description} onChange={(e) => updateDraft(idx, { description: e.target.value })} />
               <div className={styles.field}>
@@ -623,15 +632,25 @@ export default function AdminContentManager() {
                     </div>
                   </div>
 
-                  {/* ✅ price field added for edit */}
-                  <div className={styles.field}>
-                    <label className={styles.label}>Price</label>
-                    <input
-                      className={styles.input}
-                      placeholder="e.g. 4.99"
-                      value={editItemForm.price}
-                      onChange={(e) => setEditItemForm((p) => ({ ...p, price: e.target.value }))}
-                    />
+                  <div className={styles.grid2}>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Price</label>
+                      <input
+                        className={styles.input}
+                        placeholder="e.g. 4.99"
+                        value={editItemForm.price}
+                        onChange={(e) => setEditItemForm((p) => ({ ...p, price: e.target.value }))}
+                      />
+                    </div>
+                    <div className={styles.field}>
+                      <label className={styles.label}>Category</label>
+                      <input
+                        className={styles.input}
+                        placeholder="e.g. Entree"
+                        value={editItemForm.category}
+                        onChange={(e) => setEditItemForm((p) => ({ ...p, category: e.target.value }))}
+                      />
+                    </div>
                   </div>
 
                   <div className={styles.field}>

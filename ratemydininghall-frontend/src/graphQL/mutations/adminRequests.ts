@@ -32,6 +32,7 @@ export type CreateMenuItemInput = {
   imageUrl?: string | null;
   macros?: MacrosInput | null;
   price?: number | null;
+  category?: string | null;
   tags?: string[] | null;
 };
 
@@ -72,6 +73,7 @@ export type UpdateMenuItemInput = {
   imageUrl?: string | null;
   macros?: MacrosInput | null;
   price?: number | null;
+  category?: string | null;
   tags?: string[] | null;
 };
 

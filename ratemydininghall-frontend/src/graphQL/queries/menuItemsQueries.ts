@@ -8,6 +8,7 @@ export const MENU_ITEMS_BY_HALL = `
       imageUrl
       macros { calories protein carbs fat }
       price
+      category
       avgRating
       ratingCount
       tags

@@ -12,6 +12,7 @@ export type MenuItemWithRatingsDoc = {
   ratingCount: number;
   tags?: string[] | null;
   price?: number | null;
+  category?: string | null;
 };
 
 // acts like a whitelist 
@@ -69,7 +70,8 @@ export async function getMenuItemsWithRatingsByHall(
         avgRating: 1,
         ratingCount: 1,
         tags: 1,
-        price: 1
+        price: 1,
+        category: 1
       },
     },
 

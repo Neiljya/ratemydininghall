@@ -1,0 +1,29 @@
+.priceBadge {
+    background-color: var(--color-bg-secondary, #f4f4f5);
+    color: var(--color-text-strong, #111);
+    border-radius: 20px;
+    font-weight: 700;
+    border: 1px solid var(--color-border-soft, #e5e7eb);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sm {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    min-width: 40px;
+  }
+  
+  .md {
+    padding: 6px 12px;
+    font-size: 1.1rem;
+    min-width: 50px;
+  }
+  
+  .lg {
+    padding: 8px 16px;
+    font-size: 1.25rem;
+    min-width: 60px;
+  }

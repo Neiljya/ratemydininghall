@@ -12,6 +12,7 @@ export type MenuItemInput = {
     imageUrl?: string | null;
     macros?: MacrosInput | null;
     price?: number | null;
+    category?: string | null;
     tags?: string[] | null; // allergens/ingredients tags
 };
   

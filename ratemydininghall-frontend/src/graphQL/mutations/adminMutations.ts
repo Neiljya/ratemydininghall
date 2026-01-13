@@ -77,6 +77,7 @@ export const UPDATE_MENU_ITEM = `
       imageUrl
       tags
       price
+      category
       macros {
         calories
         protein

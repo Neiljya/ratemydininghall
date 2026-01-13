@@ -15,7 +15,8 @@ function toMenuItem(doc: any) {
         avgRating: doc.avgRating ?? 0,
         ratingCount: doc.ratingCount ?? 0,
         tags: doc.tags ?? [],
-        price: doc.price ?? 0
+        price: doc.price ?? 0,
+        category: doc.category ?? null
     };
 }
 
@@ -100,6 +101,7 @@ export const menuItemResolvers = {
                 } | null;
                 tags?: string[] | null;
                 price?: number | null;
+                category?: string | null;
                 }},
             { db, user }: YogaContext
         ) {
@@ -132,6 +134,7 @@ export const menuItemResolvers = {
                 macros: input.macros ?? null,
                 tags: uniqueTags ?? null,
                 price: input.price ?? null,
+                category: input.category ?? null,
             };
 
             try {
@@ -176,6 +179,7 @@ export const menuItemResolvers = {
             } | null;
             tags?: string[] | null;
             price?: number | null;
+            category?: string | null;
             };
         },
         { db, user }: YogaContext
@@ -221,6 +225,7 @@ export const menuItemResolvers = {
         if ("description" in input) $set.description = input.description ?? null;
         if ("imageUrl" in input) $set.imageUrl = input.imageUrl ?? null;
         if ("macros" in input) $set.macros = input.macros ?? null;
+        if ("category" in input) $set.category = input.category ?? null;
         
         if ("price" in input) {
             $set.price = input.price ?? null;

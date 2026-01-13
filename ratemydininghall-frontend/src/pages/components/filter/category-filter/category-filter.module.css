@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  .scrollArea {
+    display: flex;
+    flex-direction: row;
+    gap: 8px; 
+    overflow-x: auto;
+    padding: 4px 2px; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scrollArea::-webkit-scrollbar {
+    display: none;
+  }

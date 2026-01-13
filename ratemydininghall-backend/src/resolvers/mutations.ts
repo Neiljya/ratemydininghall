@@ -48,6 +48,7 @@ type CreateMenuItemArgs = {
     } | null;
     tags?: string[] | null;
     price?: number | null;
+    category?: string | null;
   };
 };
 
@@ -446,6 +447,7 @@ export const mutationResolvers = {
                 macros: input.macros ?? null,
                 tags: input.tags ?? null,
                 price: input.price ?? null,
+                category: input.category ?? null,
                 createdAt: new Date(),
             };
 
@@ -459,6 +461,7 @@ export const mutationResolvers = {
                 imageUrl: doc.imageUrl,
                 macros: doc.macros,
                 price: doc.price,
+                category: doc.category,
                 tags: doc.tags,
             };
         },
@@ -477,6 +480,7 @@ export const mutationResolvers = {
                 macros: it.macros ?? null,
                 tags: it.tags ?? null,
                 price: it.price ?? null,
+                category: it.category ?? null,
                 createdAt: new Date(),
             }));
 
