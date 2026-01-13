@@ -165,7 +165,7 @@ export default function DiningHallDetailPage() {
                 <h2 className={styles.panelTitle}>
                     {selected ? selected.name : 'Dining Hall Reviews'}
                 </h2>
-                {selected?.price != null && <PriceTag price={selected.price} size="md" />}
+                {selected?.price != null && <PriceTag price={selected.price} size="sm" />}
             </div>
             <p className={styles.panelSubtitle}>
               {selected ? 'Share your thoughts on this item.' : `See what others are saying about ${formatTitle(slug)}.`}
