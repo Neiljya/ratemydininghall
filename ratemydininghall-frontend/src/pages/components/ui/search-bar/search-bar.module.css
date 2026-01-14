@@ -1,0 +1,36 @@
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-text-secondary, #666);
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px 12px 10px 42px; 
+    border-radius: 999px; 
+    border: 1px solid var(--color-border-soft, #e5e7eb);
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    color: var(--color-text-strong, #111);
+    transition: all 0.2s ease;
+    outline: none;
+  }
+  
+  .input:focus {
+    border-color: #1a1a1a; 
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .input::placeholder {
+    color: #9ca3af;
+  }

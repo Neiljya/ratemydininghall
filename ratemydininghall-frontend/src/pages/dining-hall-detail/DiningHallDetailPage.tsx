@@ -5,29 +5,31 @@ import { useMenuItemsBootstrap } from '@hooks/useMenuItemsBootstrap';
 import { useMenuItems } from '@hooks/useMenuItems';
 import { useAppSelector } from '@redux/hooks';
 import { selectReviews } from '@redux/review-slice/reviewSliceSelectors';
-import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
-import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
 import ReviewItem from '@components/reviews/review-item/ReviewItem';
-import CustomSelect from '@components/ui/custom-select/CustomSelect';
 import MacroWidget from '@components/menu-items/macro-widget/MacroWidget';
-import TagFilterWidget from '@components/filter/TagFilterWidget';
 import CloseButton from '@components/ui/close-button/CloseButton';
 import PriceTag from '@components/ui/price-tag/PriceTag';
-import CategoryFilter from '@components/filter/category-filter/CategoryFilter';
 import Pill from '@components/ui/pill/Pill';
+import SearchBar from '@components/ui/search-bar/SearchBar';
+import CustomSelect from '@components/ui/custom-select/CustomSelect';
+import CategoryFilter from '@components/filter/category-filter/CategoryFilter';
+import TagFilterWidget from '@components/filter/TagFilterWidget';
 import MenuItemList from '@components/menu-items/menu-item-list/MenuItemList';
+import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
 import { TAG_REGISTRY } from 'src/constants/tags';
+import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
   
-
   useMenuItemsBootstrap(slug);
+  // generates filter options (categories/tags) for the UI
   const { items } = useMenuItems(slug);
   const reviewsByHall = useAppSelector(selectReviews);
   const [isClosing, setIsClosing] = useState(false);
   const [selected, setSelected] = useState<MenuItem | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [sortBy, setSortBy] = useState<string>('default');
@@ -35,9 +37,7 @@ export default function DiningHallDetailPage() {
   const availableCategories = useMemo(() => {
     if (!items) return ['All'];
     const cats = new Set<string>(['All']);
-    items.forEach(item => {
-      if (item.category) cats.add(item.category);
-    });
+    items.forEach(item => { if (item.category) cats.add(item.category); });
     return Array.from(cats);
   }, [items]);
 
@@ -45,13 +45,9 @@ export default function DiningHallDetailPage() {
     if (!items) return [];
     const tags = new Set<string>();
     items.forEach(item => {
-      item.tags?.forEach(tagId => {
-        if (TAG_REGISTRY[tagId]) tags.add(tagId);
-      });
+      item.tags?.forEach(tagId => { if (TAG_REGISTRY[tagId]) tags.add(tagId); });
     });
-    return Array.from(tags).sort((a, b) => 
-      TAG_REGISTRY[a].localeCompare(TAG_REGISTRY[b])
-    );
+    return Array.from(tags).sort((a, b) => TAG_REGISTRY[a].localeCompare(TAG_REGISTRY[b]));
   }, [items]);
 
   const hallReviews = useMemo(() => {
@@ -68,22 +64,17 @@ export default function DiningHallDetailPage() {
   const activeReviews = selected ? menuItemReviews : hallReviews;
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
-    );
+    setSelectedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
   };
 
   const handleCloseMobile = () => {
     setIsClosing(true);
-    setTimeout(() => {
-      setSelected(null);
-      setIsClosing(false);
-    }, 200);
+    setTimeout(() => { setSelected(null); setIsClosing(false); }, 200);
   };
 
   const formatTitle = (s: string) =>
     s.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.layout}>
@@ -99,27 +90,38 @@ export default function DiningHallDetailPage() {
             )}
           </div>
 
+          {/* Search Bar */}
+          <div style={{ marginBottom: '16px' }}>
+            <SearchBar 
+              value={searchQuery} 
+              onChange={setSearchQuery} 
+              placeholder="Search food..." 
+            />
+          </div>
+
+          {/* Title + Sort */}
           <div className={styles.controlsRow}>
             <div className={styles.sectionTitle} style={{ margin: 0 }}>
               Today's Menu
             </div>
-            <div style={{ width: '170px' }}>
+            <div style={{ width: '160px' }}>
               <CustomSelect
-                placeholder="Sort items..."
+                placeholder="Sort..."
                 value={sortBy}
                 onChange={setSortBy}
                 options={[
                   { value: 'default', label: 'Default' },
-                  { value: 'protein-desc', label: 'Highest Protein' },
-                  { value: 'calories-asc', label: 'Lowest Calories' },
-                  { value: 'calories-desc', label: 'Highest Calories' },
-                  { value: 'carbs-desc', label: 'Highest Carbs' },
-                  { value: 'fat-asc', label: 'Lowest Fat' },
+                  { value: 'protein-desc', label: 'High Protein' },
+                  { value: 'calories-asc', label: 'Low Cal' },
+                  { value: 'calories-desc', label: 'High Cal' },
+                  { value: 'carbs-desc', label: 'High Carbs' },
+                  { value: 'fat-asc', label: 'Low Fat' },
                 ]}
               />
             </div>
           </div>
 
+          {/* Category Tabs */}
           <CategoryFilter 
             categories={availableCategories} 
             selectedCategory={selectedCategory} 
@@ -127,25 +129,27 @@ export default function DiningHallDetailPage() {
           />
 
           <div className={styles.contentSplit}>
+            {/* Tag Filters */}
             <TagFilterWidget
               availableTags={availableTags}
               selectedTags={selectedTags}
               onToggleTag={toggleTag}
               onClear={() => setSelectedTags([])}
             />
-            
+
             <MenuItemList 
               diningHallSlug={slug}
               selectedId={selected?.id}
               onSelect={setSelected}
-              sortBy={sortBy}
+              searchQuery={searchQuery}
               selectedCategory={selectedCategory}
               selectedTags={selectedTags}
+              sortBy={sortBy}
             />
           </div>
         </aside>
 
-        {/* ... (Mobile Backdrop & Right Panel Logic remains identical) ... */}
+        {/* ================= MOBILE & RIGHT PANEL ================= */}
         {selected && (
           <div
             className={`${styles.mobileBackdrop} ${globalPopupStyles.popupBackground} ${isClosing ? globalPopupStyles.closing : ''}`}
