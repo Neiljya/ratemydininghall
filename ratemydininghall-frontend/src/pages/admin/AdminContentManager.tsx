@@ -11,6 +11,8 @@ import type { MenuItem } from "@redux/menu-item-slice/menuItemTypes";
 import { useMenuItemsBootstrap } from "@hooks/useMenuItemsBootstrap";
 import { fetchMenuItemsByHall } from "@redux/menu-item-slice/menuItemSlice";
 import { useMenuItems } from "@hooks/useMenuItems";
+import { useRef } from "react";
+
 
 import {
   createDiningHall,
@@ -31,8 +33,8 @@ type DraftMenuItem = {
   description: string;
   imageUrl: string;
   tags: string[];
-  price: string; 
-  category: string; 
+  price: string;
+  category: string;
   calories: string;
   protein: string;
   carbs: string;
@@ -143,8 +145,119 @@ export default function AdminContentManager() {
     variant: "info",
   });
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const showNotif = (variant: NotificationVariant, message: string) => setNotif({ show: true, variant, message });
 
+  const mapToCreateMenuItemInput = (slug: string, item: any): CreateMenuItemInput => {
+    const info = item || {};
+    const macros = item.macros || {};
+
+    return {
+      diningHallSlug: slug,
+      name: info.name?.trim(),
+      description: info.description || null,
+      price: typeof info.price === 'number' ? info.price : null,
+      imageUrl: info.imageUrl || null,
+      category: 'Entree',
+      tags: Array.isArray(info.tags) ? info.tags : [],
+      macros: {
+        calories: typeof macros.calories === 'number' ? Math.round(macros.calories) : null,
+        protein: typeof macros.protein === 'number' ? Math.round(macros.protein) : null,
+        carbs: typeof macros.carbs === 'number' ? Math.round(macros.carbs) : null,
+        fat: typeof macros.fat === 'number' ? Math.round(macros.fat) : null
+      }
+    }
+  }
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    console.log('file: ', file);
+
+    reader.onload = async (e) => {
+      console.log('reader loaded');
+      try {
+        const jsonContent = e.target?.result;
+        if (typeof jsonContent !== 'string') return;
+
+        const data = JSON.parse(jsonContent);
+
+        if (!Array.isArray(data)) {
+          showNotif("error", "Invalid file format. Expected a JSON array.");
+          return;
+        }
+
+        const confirm = window.confirm(`Found ${data.length} items, upload?`);
+        const validSlugs = new Set(halls.map((h: any) => h.slug));
+
+        if (!confirm) return;
+
+        setSaving(true);
+
+        const itemsByHall: Record<string, any[]> = {};
+
+        data.forEach((item: any) => {
+          const slug = item?.diningHallSlug;
+
+          if (!slug || !validSlugs.has(slug)) {
+            return;
+          }
+
+          if (!itemsByHall[slug]) {
+            itemsByHall[slug] = [];
+          }
+
+          const toUpload = mapToCreateMenuItemInput(slug, item);
+
+          itemsByHall[slug].push(toUpload);
+        })
+
+
+        // using for of to await for the uploads sequentially
+        // not using forEach because it doesn't wait for promises
+        for (const slug of Object.keys(itemsByHall)) {
+          try {
+            const res = await dispatch(fetchMenuItemsByHall(slug)).unwrap();
+            const existingItems = res?.items;
+
+            const existingNames = new Set(
+              (existingItems || []).map((item: any) => item.name.toLowerCase().trim())
+            );
+
+            const filteredItems = itemsByHall[slug].filter((newItem) => {
+              const normalizedName = newItem.name.toLowerCase().trim();
+
+              // skip already existing items so we dont override them
+              if (existingNames.has(normalizedName)) {
+                return false;
+              }
+
+              return true;
+            });
+
+            await createMenuItemsBatch(slug, filteredItems);
+          } catch (e: any) {
+            console.log(`${slug} had an error when creating menu items batch`, e);
+          }
+        }
+
+        console.log('itemsByHall: ', itemsByHall);
+
+        showNotif("success", "Successfully updated batch JSON");
+
+      } catch (e: any) {
+        console.error(e);
+        showNotif("error", e?.message || "Error occurred while updating batch JSON");
+      } finally {
+        setSaving(false);
+        event.target.value = '';
+      }
+    }
+
+    reader.readAsText(file);
+  }
   // -------------------------
   // ADD HALL
   // -------------------------
@@ -320,7 +433,7 @@ export default function AdminContentManager() {
     try {
       await createMenuItemsBatch(slug, cleaned);
       showNotif("success", `Uploaded ${cleaned.length} menu item(s).`);
-      setDrafts([{ name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" }]); 
+      setDrafts([{ name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" }]);
       dispatch(fetchMenuItemsByHall(slug));
     } catch (e: any) {
       showNotif("error", e?.message ?? "Failed to upload menu items batch");
@@ -343,8 +456,8 @@ export default function AdminContentManager() {
     description: string;
     imageUrl: string;
     tags: string[];
-    price: string; 
-    category: string; 
+    price: string;
+    category: string;
     calories: string;
     protein: string;
     carbs: string;
@@ -354,9 +467,9 @@ export default function AdminContentManager() {
     description: "",
     imageUrl: "",
     tags: [],
-    price: "", 
-    category: "", 
-    
+    price: "",
+    category: "",
+
     calories: "",
     protein: "",
     carbs: "",
@@ -395,7 +508,7 @@ export default function AdminContentManager() {
         imageUrl: editItemForm.imageUrl.trim() || null,
         tags: editItemForm.tags,
         price: toNullableNum(editItemForm.price),
-        category: editItemForm.category.trim() || null, 
+        category: editItemForm.category.trim() || null,
         macros: {
           calories: toNullableNum(editItemForm.calories),
           protein: toNullableNum(editItemForm.protein),
@@ -599,6 +712,31 @@ export default function AdminContentManager() {
             </button>
             <button className={styles.primaryBtn} type="button" disabled={saving || !itemsHallSlug} onClick={saveBatchMenuItems}>
               {saving ? "Saving..." : "Upload Batch"}
+            </button>
+          </div>
+
+          <div style={{ marginTop: '40px', borderTop: '2px dashed #eee', paddingTop: '20px' }}>
+            <h4 className={styles.subTitle}>Bulk Upload from Scraper JSON</h4>
+            <p className={styles.muted} style={{ textAlign: 'left', marginBottom: '10px' }}>
+              Upload a <code>menu_items.json</code> file generated by the scraper. This will validate slugs and auto-assign items to the correct dining hall.
+            </p>
+
+            <input
+              type="file"
+              accept=".json"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileUpload}
+            />
+
+            <button
+              className={styles.primaryBtn}
+              style={{ backgroundColor: '#7c3aed', borderColor: '#7c3aed' }}
+              type="button"
+              disabled={saving}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              {saving ? "Uploading..." : "Select JSON File"}
             </button>
           </div>
 
