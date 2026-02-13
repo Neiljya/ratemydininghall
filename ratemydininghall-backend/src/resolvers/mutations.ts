@@ -3,119 +3,48 @@ import { ObjectId } from 'mongodb';
 import { YogaContext } from '../types/yogaContext';
 import { authResolvers } from './auth';
 import { COLLECTIONS } from '../db/collections';
+import { ReviewDataService } from '../services/data-access/ReviewDataService';
+import { verifyCaptcha } from '../utils/verifyCaptcha';
+import { validateReviewInput } from '../utils/validateReviewInput';
 
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
-const RECAPTCHA_VERIFY = 'https://www.google.com/recaptcha/api/siteverify'
+// DINING HALL TYPES
+import type { CreateDiningHallArgs } from '../types/diningHall';
+import type { UpdateDiningHallArgs } from '../types/diningHall';
+import type { DeleteDiningHallArgs } from '../types/diningHall';
 
-// ADMIN ONLY 
+// MENU ITEM TYPES
+import type { CreateMenuItemArgs } from '../types/menu';
+import type { CreateMenuItemsBatchArgs } from '../types/menu';
 
-type CreateDiningHallArgs = {
-  input: {
-    name: string;
-    slug: string;
-    imageUrl?: string | null;
-    description?: string | null;
-    parentHallSlug?: string | null;
-  };
-};
-
-type UpdateDiningHallArgs = {
-  input: {
-    id: string;
-    name?: string | null;
-    slug?: string | null;
-    imageUrl?: string | null;
-    description?: string | null;
-    parentHallSlug?: string | null;
-  };
-};
-
-type DeleteDiningHallArgs = {
-  id: string;
-};
-
-type CreateMenuItemArgs = {
-  input: {
-    diningHallSlug: string;
-    name: string;
-    description?: string | null;
-    imageUrl?: string | null;
-    macros?: {
-      calories?: number | null;
-      protein?: number | null;
-      carbs?: number | null;
-      fat?: number | null;
-    } | null;
-    tags?: string[] | null;
-    price?: number | null;
-    category?: string | null;
-  };
-};
-
-type CreateMenuItemsBatchArgs = {
-  input: {
-    diningHallSlug: string;
-    items: Array<CreateMenuItemArgs['input']>;
-  };
-};
-
-// ****************************************** //
-type CreateReviewArgs = {
-    diningHallId: string;
-    author: string;
-    description: string;
-    rating: number;
-    imageUrl?: string | null;
-};
-
-type CreateReviewUploadUrlArgs = {
-    diningHallId: string;
-    filename: string;
-    contentType: string;
-};
-
-type DeleteReviewArgs = {
-    hallId: string;
-    id: string;
-};
-
-
-type SubmitPendingReviewArgs = {
-    input: {
-        diningHallSlug: string;
-        author: string;
-        description: string;
-        rating: number;
-        imageUrl?: string | null;
-        menuItemId?: string | null;
-        captchaToken: string;
-    };
-};
+// REVIEW TYPES
+import type { CreateReviewArgs } from '../types/review';
+import type { CreateReviewUploadUrlArgs } from '../types/review';
+import type { SubmitPendingReviewArgs } from '../types/review';
 
 const vercelBlobAPI = 'https://api.vercel.com/v2/blob/upload-url';
 
 type ReviewTargetType = 'DINING_HALL' | 'MENU_ITEM';
 
 const assertValidTarget = (input: any): ReviewTargetType => {
-  const hasMenuItem = !!input.menuItemId;
+    const hasMenuItem = !!input.menuItemId;
 
-  // infer target type
-  const targetType: ReviewTargetType = hasMenuItem ? 'MENU_ITEM' : 'DINING_HALL';
+    // infer target type
+    const targetType: ReviewTargetType = hasMenuItem ? 'MENU_ITEM' : 'DINING_HALL';
 
-  if (targetType === 'MENU_ITEM' && !input.menuItemId) {
-    throw new Error('menuItemId is required when targetType is MENU_ITEM');
-  }
+    if (targetType === 'MENU_ITEM' && !input.menuItemId) {
+        throw new Error('menuItemId is required when targetType is MENU_ITEM');
+    }
 
-  return targetType;
+    return targetType;
 };
 
 function normalizeTargetFromDoc(doc: any): { targetType: ReviewTargetType; menuItemId: string | null } {
-  const menuItemId = doc.menuItemId ?? null;
-  const targetType: ReviewTargetType =
-    doc.targetType ??
-    (menuItemId ? 'MENU_ITEM' : 'DINING_HALL');
+    const menuItemId = doc.menuItemId ?? null;
+    const targetType: ReviewTargetType =
+        doc.targetType ??
+        (menuItemId ? 'MENU_ITEM' : 'DINING_HALL');
 
-  return { targetType, menuItemId: targetType === 'MENU_ITEM' ? menuItemId : null };
+    return { targetType, menuItemId: targetType === 'MENU_ITEM' ? menuItemId : null };
 }
 
 function requireAdmin(ctx: YogaContext) {
@@ -123,22 +52,22 @@ function requireAdmin(ctx: YogaContext) {
 }
 
 async function cascadeDiningHallSlug(db: any, oldSlug: string, newSlug: string) {
-  if (oldSlug === newSlug) return;
+    if (oldSlug === newSlug) return;
 
-  await db.collection(COLLECTIONS.MENU_ITEMS).updateMany(
-    { diningHallSlug: oldSlug },
-    { $set: { diningHallSlug: newSlug } }
-  );
+    await db.collection(COLLECTIONS.MENU_ITEMS).updateMany(
+        { diningHallSlug: oldSlug },
+        { $set: { diningHallSlug: newSlug } }
+    );
 
-  await db.collection(COLLECTIONS.REVIEWS).updateMany(
-    { diningHallSlug: oldSlug },
-    { $set: { diningHallSlug: newSlug } }
-  );
+    await db.collection(COLLECTIONS.REVIEWS).updateMany(
+        { diningHallSlug: oldSlug },
+        { $set: { diningHallSlug: newSlug } }
+    );
 
-  await db.collection(COLLECTIONS.PENDING_REVIEWS).updateMany(
-    { diningHallSlug: oldSlug },
-    { $set: { diningHallSlug: newSlug } }
-  );
+    await db.collection(COLLECTIONS.PENDING_REVIEWS).updateMany(
+        { diningHallSlug: oldSlug },
+        { $set: { diningHallSlug: newSlug } }
+    );
 }
 
 
@@ -176,99 +105,33 @@ export const mutationResolvers = {
             };
         },
 
-        async createReview(
-            _parent: unknown,
-            { diningHallId, author, description, rating, imageUrl }: CreateReviewArgs
-        ) {
-            const id = crypto.randomUUID();
-            const createdAt = new Date().toISOString();
-
-            const review = {
-                id,
-                diningHallId: diningHallId,
-                author,
-                description,
-                rating,
-                createdAt,
-                imageUrl: imageUrl ?? null
-            };
-
-            const key = `reviews/${diningHallId}/${id}.json`;
-            await put(key, JSON.stringify(review), {
-                access: 'public',
-                contentType: 'application/json',
-            });
-
-            return review;
-        },
-
         async submitPendingReview(
             _parent: unknown,
             { input }: SubmitPendingReviewArgs,
             { db }: YogaContext
         ) {
             const {
-                diningHallSlug, 
-                author, 
-                description, 
-                rating, 
-                imageUrl,
-                menuItemId,
-                captchaToken
+                captchaToken,
+                ...reviewData
             } = input;
 
-            // captcha verification before uploading/processing any data
-            if (!captchaToken) {
-                throw new Error('Captcha token is missing');
-            }
+            await verifyCaptcha(captchaToken);
 
-            const params = new URLSearchParams({
-                secret: RECAPTCHA_SECRET_KEY as string,
-                response: captchaToken
-            })
-
-            const verifyResponse = await fetch(RECAPTCHA_VERIFY, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-                body: params.toString()
-            });
-
-            const verifyData = await verifyResponse.json();
-
-            if (!verifyData.success) {
-                console.error('Captcha failed:', verifyData['error-codes']);
-                throw new Error('Captcha verification failed');
-            }
-            // ************************************************************
-
-            if ( !diningHallSlug || !author || !description || typeof rating !== 'number') {
-                throw new Error('Missing required fields');
-            }
-
-            if (rating < 1 || rating > 5) {
-                throw new Error('Rating must be between 1 and 5');
-            }
-
-            const targetType = assertValidTarget(input);
+            const { targetType } = validateReviewInput(reviewData);
 
             const doc = {
-                diningHallSlug,
-                author,
-                description,
-                rating,
-                imageUrl: imageUrl || null,
+                ...reviewData,
                 createdAt: new Date(),
                 status: 'pending',
                 targetType,
-                menuItemId: targetType === 'MENU_ITEM' ? menuItemId : null,
+                menuItemId: targetType === 'MENU_ITEM' ? reviewData.menuItemId : null,
             };
 
-            const result = await db.collection(COLLECTIONS.PENDING_REVIEWS).insertOne(doc);
-
-            return { ok: true, id: result.insertedId.toString() };
+            const id = await ReviewDataService.submitPendingReview(db, doc);
+            return { ok: true, id };
         },
 
-        async approvePendingReview(_p: unknown, { id }: {id: string}, ctx: YogaContext) {
+        async approvePendingReview(_p: unknown, { id }: { id: string }, ctx: YogaContext) {
             requireAdmin(ctx);
 
             const _id = new ObjectId(id);
@@ -394,8 +257,8 @@ export const mutationResolvers = {
                 if (!newSlug) throw new Error('slug cannot be empty');
 
                 const conflict = await ctx.db.collection(COLLECTIONS.DINING_HALLS).findOne({
-                slug: newSlug,
-                _id: { $ne: _id },
+                    slug: newSlug,
+                    _id: { $ne: _id },
                 });
                 if (conflict) throw new Error('Slug already in use');
 
@@ -497,8 +360,8 @@ export const mutationResolvers = {
     },
 
 
-        
-    
+
+
 };
 
 

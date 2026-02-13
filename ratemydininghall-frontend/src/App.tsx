@@ -7,6 +7,7 @@ import { fetchMe } from '@redux/auth-slice/authSlice';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { setCachePolicies } from '@utils/cache';
 
+
 setCachePolicies({
   diningHalls: { v: 2, ttlMs: 10 * 60 * 1000 },
   reviews:     { v: 1, ttlMs: 2 * 60 * 1000 },
@@ -20,6 +21,17 @@ import ReviewPage from './pages/review-page/ReviewPage';
 import LoginPage from './pages/auth/LoginPage';
 import AdminPanelPage from './pages/admin/AdminPanelPage';
 import DiningHallDetailPage from './pages/dining-hall-detail/DiningHallDetailPage';
+
+// clerk
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  RedirectToSignIn,
+  useAuth,
+  useUser,
+} from "@clerk/react-router";
+
 
 function RequireAdmin({ children }: { children: React.ReactNode }) {
   const isAdmin = useAppSelector(selectIsAdmin);

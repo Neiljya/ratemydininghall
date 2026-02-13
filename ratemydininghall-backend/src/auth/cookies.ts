@@ -16,7 +16,7 @@ export function setAuthCookies(res: any, accessToken: string, refreshToken: stri
     const refreshCookie = serialize('refresh_token', refreshToken, {
         httpOnly: true,
         secure: isProd,
-        sameSite,
+        sameSite, 
         path: '/',
         maxAge: 60 * 60 * 24 * 7, // 7 days
     });
