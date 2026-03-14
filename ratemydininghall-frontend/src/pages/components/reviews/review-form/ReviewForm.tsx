@@ -42,7 +42,7 @@ function ReviewForm({
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
     const [selectedHall, setSelectedHall] = useState<string>(diningHallSlug);
     const [description, setDescription] = useState<string>('');
-    const [reviewImages, setReviewImages] = useState<File[]>([]);
+    const [reviewImages] = useState<File[]>([]);
     const shouldShowCloseBtn = Boolean(onClose) || showClose;
     
     // captchas
