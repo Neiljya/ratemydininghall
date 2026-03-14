@@ -58,7 +58,8 @@ export const queryResolvers = {
                 description: doc.description,
                 rating: doc.rating,
                 createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
-                imageUrl: doc.imageUrl ?? null
+                imageUrl: doc.imageUrl ?? null,
+                userId: doc.userId ?? null,
             };
         },
 
@@ -77,6 +78,7 @@ export const queryResolvers = {
                 createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
                 imageUrl: doc.imageUrl ?? null,
                 targetType: doc.targetType ?? (doc.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
+                userId: doc.userId ?? null,
                 menuItemId: doc.menuItemId?.toString?.() ?? doc.menuItemId ?? null,
             }));
         },
@@ -104,6 +106,7 @@ export const queryResolvers = {
                 imageUrl: doc.imageUrl ?? null,
                 targetType: doc.targetType ?? (doc.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
                 menuItemId: doc.menuItemId?.toString?.() ?? doc.menuItemId ?? null,
+                userId: doc.userId ?? null,
             }));
         },
 
@@ -124,7 +127,7 @@ export const queryResolvers = {
                 rating: doc.rating,
                 createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
                 status: doc.status ?? 'pending',
-                userId: doc.userId?.toString?.() ?? null
+                userId: doc.userId ?? null
                 
             }));
         },
@@ -146,7 +149,7 @@ export const queryResolvers = {
                 rating: doc.rating,
                 createdAt: doc.createdAt instanceof Date ? doc.createdAt.toISOString() : doc.createdAt,
                 status: doc.status ?? 'accepted',
-                userId: doc.userId?.toString?.() ?? null,
+                userId: doc.userId ?? null,
                 targetType: doc.targetType ?? (doc.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
                 menuItemId: doc.menuItemId?.toString?.() ?? doc.menuItemId ?? null,
             }));

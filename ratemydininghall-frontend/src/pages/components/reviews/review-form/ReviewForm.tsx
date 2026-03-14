@@ -10,6 +10,7 @@ import Notification, { type NotificationVariant } from '@components/notification
 import { useNavigate } from 'react-router-dom';
 import CaptchaProtection, { type CaptchaRef } from '@components/captchas/CaptchaProtection';
 import { useUser, useAuth } from '@clerk/react-router';
+import { createReviewUploadUrl } from '@graphQL/mutations/createReviewUploadUrl';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
@@ -41,8 +42,9 @@ function ReviewForm({
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
     const [selectedHall, setSelectedHall] = useState<string>(diningHallSlug);
     const [description, setDescription] = useState<string>('');
+    const [reviewImages, setReviewImages] = useState<File[]>([]);
     const shouldShowCloseBtn = Boolean(onClose) || showClose;
-
+    
     // captchas
     const [captchaToken, setCaptchaToken] = useState<string | null>('');
     const captchaRef = useRef<CaptchaRef>(null)
@@ -54,6 +56,59 @@ function ReviewForm({
         message: '',
         variant: 'info',
     });
+
+    // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const files = Array.from(e.target.files || []);
+    //     setReviewImages(files.slice(0, 2)); // optional max of 2
+    // };
+
+    
+
+    const uploadReviewImages = async (
+        files: File[],
+        diningHallSlug: string
+    ): Promise<string[]> => {
+        if (!files.length) return [];
+
+        const token = await getToken();
+        const uploadedUrls: string[] = [];
+
+        for (const file of files) {
+            const uploadData = await createReviewUploadUrl(
+                {
+                    diningHallId: diningHallSlug,
+                    filename: file.name,
+                    contentType: file.type,
+                },
+                token
+            ) as { uploadUrl: string; publicUrl?: string; key?: string } | null;
+
+            if (!uploadData || !uploadData.uploadUrl) {
+                throw new Error(`Invalid upload data for image: ${file.name}`);
+            }
+
+            const uploadRes = await fetch(uploadData.uploadUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': file.type,
+                },
+                body: file,
+            });
+
+            if (!uploadRes.ok) {
+                throw new Error(`Failed to upload image: ${file.name}`);
+            }
+
+            const publicUrl = uploadData.publicUrl ?? uploadData.key;
+            if (!publicUrl) {
+                throw new Error(`No public URL returned for image: ${file.name}`);
+            }
+
+            uploadedUrls.push(publicUrl);
+        }
+
+        return uploadedUrls;
+    };
 
     const showNotif = (variant: NotificationVariant, message: string) => {
         setNotif({ show: true, variant, message });
@@ -120,6 +175,7 @@ function ReviewForm({
         
         try {
             const token = await getToken();
+            const uploadedImageUrls = await uploadReviewImages(reviewImages, hallSlugToUse);
 
             await submitPendingReview({
                 diningHallSlug: hallSlugToUse,
@@ -127,7 +183,8 @@ function ReviewForm({
                 description: description.trim(),
                 rating,
                 menuItemId: menuItemId ?? null,
-                captchaToken
+                captchaToken,
+                imageUrls: uploadedImageUrls,
             }, token);
 
             showNotif('success', 'Review submitted for approval!');
@@ -242,11 +299,30 @@ function ReviewForm({
                         disabled={!isSignedIn}
                     />
                 </div>
+            
+            {isSignedIn && (
+                <CaptchaProtection
+                    actions={captchaRef}
+                    onVerify={setCaptchaToken}
+                />
+            )}
 
-            <CaptchaProtection
-                actions={captchaRef}
-                onVerify={setCaptchaToken}
-            />
+            {/* <div className={styles.formGroup}>
+                <label className={styles.label} htmlFor="reviewImages">Photos</label>
+                <input
+                    id="reviewImages"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    disabled={!isSignedIn || submitting}
+                />
+                {reviewImages.length > 0 && (
+                    <p className={styles.helperText}>
+                        {reviewImages.length} image{reviewImages.length === 1 ? '' : 's'} selected
+                    </p>
+                )}
+            </div> */}
 
             <div className={styles.buttonRow}>
                 {isSignedIn ? (

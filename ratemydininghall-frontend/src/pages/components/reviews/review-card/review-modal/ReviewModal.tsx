@@ -7,9 +7,13 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import { useState, useEffect } from 'react';
 import styles from './review-modal.module.css';
-import {  selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
+import { selectRatingsByHall } from '@redux/ratings-slice/ratingsSelectors';
 import { useAppSelector } from '@redux/hooks';
 import CloseButton from '@components/ui/close-button/CloseButton';
+import { useAuth } from '@clerk/react-router';
+import { deleteReview } from '@graphQL/mutations/adminRequests';
+import { removeReview } from '@redux/review-slice/reviewSlice';
+import { useAppDispatch } from '@redux/hooks';
 
 interface ReviewModalProps {
   imageUrl: string;
@@ -20,27 +24,37 @@ interface ReviewModalProps {
   description?: string;
 }
 
-const placeholderUrl: string = "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
 
-function ReviewModal({ imageUrl = placeholderUrl, diningHallSlug, isOpen, onClose, headerText, description }: ReviewModalProps) {
+const placeholderUrl: string =
+  "https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior";
+
+function ReviewModal({
+  imageUrl = placeholderUrl,
+  diningHallSlug,
+  isOpen,
+  onClose,
+  headerText,
+  description
+}: ReviewModalProps) {
   const reviews = useSelector(selectReviewsByDiningHallSlug(diningHallSlug));
   const byHall = useAppSelector(selectRatingsByHall);
   const agg = byHall[diningHallSlug];
+  const { getToken } = useAuth();
 
   const avg = agg?.avg ?? 0;
   const count = agg?.count ?? 0;
-  
+  const dispatch = useAppDispatch();
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-      if (isOpen) {
-        setIsClosing(false);
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = 'unset';
-      }
+    if (isOpen) {
+      setIsClosing(false);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
   }, [isOpen]);
-  
+
   const handleClose = () => {
     if (isClosing) return;
 
@@ -51,16 +65,28 @@ function ReviewModal({ imageUrl = placeholderUrl, diningHallSlug, isOpen, onClos
     }, 200);
   };
 
+const handleDeleteReview = async (reviewId: string) => {
+    try {
+      const token = await getToken();
+      await deleteReview(reviewId, token);;
+      dispatch(removeReview(reviewId));
+      
+    } catch (error) {
+      console.error('Failed to delete review:', error);
+    }
+  };
+
   if (!isOpen) return null;
 
-  return ( 
-    <div className={`
-      ${styles.modal}
-      ${globalPopupStyles.popupBackground}
-      ${isClosing ? globalPopupStyles.closing : ''}
-      `} 
-    
-      onClick={handleClose}>
+  return (
+    <div
+      className={`
+        ${styles.modal}
+        ${globalPopupStyles.popupBackground}
+        ${isClosing ? globalPopupStyles.closing : ''}
+      `}
+      onClick={handleClose}
+    >
       <div
         className={`${globalContainerStyles.roundContainer} ${styles.modalContent}`}
         onClick={(e) => e.stopPropagation()}
@@ -68,52 +94,49 @@ function ReviewModal({ imageUrl = placeholderUrl, diningHallSlug, isOpen, onClos
         <div className={styles.closeButton}>
           <CloseButton onClick={handleClose} />
         </div>
-        
 
-        {/* Header Section */}
         <div className={styles.header}>
           <img src={imageUrl} alt="Dining Hall" className={styles.headerImage} />
           <div className={styles.headerInfo}>
             <h1 className={styles.title}>{headerText || "Harvest Kitchen"}</h1>
             <div className={styles.rating}>
               <div className={styles.stars}>
-                {/* TODO: replace with an avg rating count */}
                 <Stars starCount={avg} />
                 <span className={styles.ratingBadge}>{avg}</span>
               </div>
             </div>
-            <p className={styles.description}>{description || "Build-your-own bowls, fresh ingredients."}</p>
+            <p className={styles.description}>
+              {description || "Build-your-own bowls, fresh ingredients."}
+            </p>
           </div>
         </div>
 
-        {/* Reviews Section */}
         <div className={styles.reviewsSection}>
-          <h2 className={styles.sectionTitle}>Reviews ({count})</h2> 
-          
+          <h2 className={styles.sectionTitle}>Reviews ({count})</h2>
 
-
-          {/* List of Reviews from the state */}
           <div className={styles.reviewsListContainer}>
             {!!reviews && reviews.map(review => (
               <ReviewItem
                 key={review?.id}
+                reviewId={review?.id}
+                userId={review?.userId}
                 rating={review?.rating}
                 author={review?.author}
                 description={review?.description}
                 date={Number(review?.createdAt)}
+                imageUrls={review?.imageUrls ?? []}
+                onDelete={handleDeleteReview}
               />
             ))}
+
             {(!reviews || reviews.length === 0) && (
-              <p style={{ color: 'var(--color-text)', opacity: 0.7, fontStyle: 'italic'}}>
+              <p style={{ color: 'var(--color-text)', opacity: 0.7, fontStyle: 'italic' }}>
                 No reviews yet. Be the first to add one!
               </p>
             )}
-
           </div>
 
-
-          {/* Add Review Form */}
-          <ReviewForm diningHallSlug={diningHallSlug}/>
+          <ReviewForm diningHallSlug={diningHallSlug} />
         </div>
       </div>
     </div>

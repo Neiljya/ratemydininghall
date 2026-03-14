@@ -12,7 +12,7 @@ export const reviewType = `
         createdAt: String!
         rating: Int!
         status: String
-        userId: ID
+        userId: String
 
         # for selecting if its a dining hall rating or menu item rating
         targetType: ReviewTargetType!
@@ -27,6 +27,7 @@ export const reviewType = `
         imageUrl: String
         menuItemId: String
         captchaToken: String!
+        imageUrls: [String!]
         userId: String      
     }
     type PendingReviewResult {

@@ -80,7 +80,7 @@ export const mutationResolvers = {
             const response = await fetch(vercelBlobAPI, {
                 method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${process.env.VERCEL_BLOB_TOKEN}`,
+                    Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -99,7 +99,7 @@ export const mutationResolvers = {
             return {
                 uploadUrl: url,
                 key: pathname,
-                publicUrl: null
+                publicUrl: pathname,
             };
         },
 
@@ -124,6 +124,7 @@ export const mutationResolvers = {
                 targetType,
                 menuItemId: targetType === 'MENU_ITEM' ? reviewData.menuItemId : null,
                 userId: user?.id ?? null,
+                imageUrls: reviewData.imageUrls ?? [],
             };
 
             const id = await ReviewDataService.submitPendingReview(db, doc);
@@ -150,6 +151,7 @@ export const mutationResolvers = {
                 userId: pending.userId ?? null,
                 targetType,
                 menuItemId,
+                imageUrls: pending.imageUrls ?? [],
             };
 
             await ctx.db.collection(COLLECTIONS.REVIEWS).insertOne(acceptedDoc);
@@ -185,6 +187,7 @@ export const mutationResolvers = {
                 userId: accepted.userId ?? null,
                 targetType,
                 menuItemId,
+                imageUrls: accepted.imageUrls ?? [],
             };
 
             await ctx.db.collection(COLLECTIONS.PENDING_REVIEWS).insertOne(pendingDoc);

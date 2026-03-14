@@ -11,7 +11,7 @@
 export const mutationType = `
     type Mutation {
         createReviewUploadUrl(
-            diningHallId: ID!
+            diningHallId: String!
             filename: String!
             contentType: String!
         ): ReviewUploadUrl!
@@ -22,7 +22,7 @@ export const mutationType = `
             author: String!
             description: String!
             rating: Int!
-            imageUrl: String
+            imageUrls: [String!]
         ): Review!
 
         deleteReview(id: ID!): Boolean!

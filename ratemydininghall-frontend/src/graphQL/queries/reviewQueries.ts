@@ -10,6 +10,7 @@ export const getAllReviewsQuery = `
         status
         targetType
         menuItemId
+        userId
     }
 }`;
 
@@ -25,6 +26,7 @@ export const getReviewsByHallQuery = `
             status
             targetType
             menuItemId
+            userId
         }
 }`;
 
@@ -40,6 +42,7 @@ export const getMyReviewsQuery = `
             status
             targetType
             menuItemId
+            userId
         }
     }
 `;
@@ -52,3 +55,21 @@ export const submitPendingReviewMutation = `
     }
   }
 `;
+
+export const createReviewUploadUrlMutation = `
+      mutation CreateReviewUploadUrl(
+        $diningHallId: String!
+        $filename: String!
+        $contentType: String!
+      ) {
+        createReviewUploadUrl(
+          diningHallId: $diningHallId
+          filename: $filename
+          contentType: $contentType
+        ) {
+          uploadUrl
+          key
+          publicUrl
+        }
+      }
+`

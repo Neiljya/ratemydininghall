@@ -9,6 +9,7 @@ import {
   UPDATE_MENU_ITEM,
   DELETE_MENU_ITEM,
   DELETE_ALL_MENU_ITEMS_BY_HALL,
+  deleteReviewMutation
 } from "./adminMutations";
 
 export type CreateDiningHallInput = {
@@ -94,4 +95,8 @@ export async function deleteAllMenuItemsByHall(diningHallSlug: string, token?: s
     { diningHallSlug },
     token
   );
+}
+
+export async function deleteReview(id: string, token?: string | null) {
+  return graphQLRequest(deleteReviewMutation, { id }, token);
 }

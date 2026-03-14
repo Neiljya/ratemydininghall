@@ -7,6 +7,7 @@ export type ReviewTargetType = 'DINING_HALL' | 'MENU_ITEM';
 
 export interface Review {
     id: string;
+    imageUrls: string[]; // new field for review images
     diningHallSlug?: string;
     author: string;
     description: string;
@@ -15,6 +16,7 @@ export interface Review {
     status?: string | null;
     targetType?: ReviewTargetType;
     menuItemId?: string | null;
+    userId?: string | null;
 }
 
 export type NewReviewInput = Omit<Review, 'id' | 'createdAt'> & {
@@ -80,6 +82,8 @@ export const fetchReviews = createAsyncThunk<ReviewState>(
             createdAt: String(new Date(review.createdAt).getTime()),
             targetType: review.targetType ?? (review.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
             menuItemId: review.menuItemId ?? null,
+            imageUrls: review.imageUrls || [],
+            userId: review.userId ?? null,
         });
     }
 
@@ -106,7 +110,9 @@ export const fetchReviewsByHall = createAsyncThunk<
       rating: review.rating,
       createdAt: String(new Date(review.createdAt).getTime()),
       targetType: review.targetType ?? (review.menuItemId ? 'MENU_ITEM' : 'DINING_HALL'),
+      userId: review.userId ?? null,
       menuItemId: review.menuItemId ?? null,
+    imageUrls: review.imageUrls || [],
     }));
 
     return { diningHallSlug, reviews };
@@ -127,6 +133,17 @@ const reviewSlice = createSlice({
         setReviews(_, action: PayloadAction<ReviewState>) {
             // replace state in Redux store
             return action.payload; 
+        },
+
+        removeReview: (state, action: PayloadAction<string>) => {
+            const deletedReviewId = action.payload;
+            for (const hall in state) {
+                if (Array.isArray(state[hall])) {
+                    state[hall] = state[hall].filter(
+                        (review) => review.id !== deletedReviewId
+                    );
+                }
+            }
         },
 
         setReviewsForHall(
@@ -159,5 +176,5 @@ const reviewSlice = createSlice({
     },
 });
 
-export const { addReview, setReviews } = reviewSlice.actions;
+export const { addReview, setReviews, removeReview } = reviewSlice.actions;
 export default reviewSlice.reducer;

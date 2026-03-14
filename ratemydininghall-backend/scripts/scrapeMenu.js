@@ -27,28 +27,28 @@ const DAY_RANGE = [0, 1, 2, 3, 4, 5, 6];
  * CHANGE ONLY THIS BLOCK for a new dining hall
  */
 const VENUE_CONFIG = {
-  venueName: 'Makai',
-  diningHallSlug: 'makai',
-  outputFileName: 'makai_menu_items.json',
+  venueName: 'Rooftop',
+  diningHallSlug: 'rooftop',
+  outputFileName: 'rooftop_menu_items.json',
 
   urlBuilder: (dayNum) =>
     `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`,
 
   categoryMap: {
-    'makai base': 'Base',
-    'the makai base': 'Base',
-    'makai bowls': 'Bowls',
-    'the makai bowls': 'Bowls',
-    'makai finishers': 'Finishers',
-    'the makai finishers': 'Finishers',
-    'makai green bowls': 'Green Bowls',
-    'the makai green bowls': 'Green Bowls',
-    'makai protein': 'Protein',
-    'the makai protein': 'Protein',
-    'makai sauces': 'Sauces',
-    'the makai sauces': 'Sauces',
-    'makai toppings': 'Toppings',
-    'the makai toppings': 'Toppings'
+    'rooftop desserts': 'Desserts',
+    'the rooftop desserts': 'Desserts',
+    'rooftop beverages': 'Beverages',
+    'the rooftop beverages': 'Beverages',
+    'rooftop cold sides': 'Cold Sides',
+    'the rooftop cold sides': 'Cold Sides',
+    'rooftop hot sides': 'Hot Sides',
+    'the rooftop hot sides': 'Hot Sides',
+    'rooftop loaded': 'Loaded',
+    'the rooftop loaded': 'Loaded',
+    'rooftop sandwiches': 'Sandwiches',
+    'the rooftop sandwiches': 'Sandwiches',
+    'rooftop sauces': 'Sauces',
+    'the rooftop sauces': 'Sauces'
   }
 };
 

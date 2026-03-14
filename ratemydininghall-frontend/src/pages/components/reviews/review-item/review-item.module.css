@@ -1,16 +1,14 @@
 .container {
-  /* A. The Gradient Background */
   background: var(--color-card-gradient);
-  
-  /* B. Clean Layout Styling (matches Admin Panel cards) */
   border: 1px solid var(--color-border-soft);
   border-radius: 16px;
   padding: 16px 20px;
   margin-bottom: 12px;
-  
-  /* Subtle depth */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Removed default overflow:hidden so the dropdown can escape the card bounds */
+  max-height: 800px; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease;
 }
 
 .container:hover {
@@ -18,11 +16,31 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
+/* --- The Magic Exit Animation --- */
+.exiting {
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-color: transparent;
+  pointer-events: none;
+  overflow: hidden; /* Only hide overflow while it collapses */
+}
+
+/* --- Layout --- */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 10px;
+}
+
+.headerRight {
+  display: flex;
+  position: relative; /* This is the anchor for the absolute menu */
+  align-items: center;
 }
 
 .metaInfo {
@@ -48,5 +66,140 @@
   color: var(--color-text);
   font-size: 14px;
   line-height: 1.5;
-  white-space: pre-wrap; /* Preserves paragraphs/line breaks in review */
+  white-space: pre-wrap; 
+}
+
+.menuContainer {
+  position: absolute;
+  bottom: 22px; 
+  right: 0px;  
+  z-index: 10;
+}
+.dotsButton {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 2px; 
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  opacity: 20%;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none; /* Prevents accidentally highlighting the icon text */
+}
+
+.dotsButton:focus {
+  outline: none;
+}
+
+.dotsButton:hover {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%; /* Dropdown opens downward from the dots */
+  right: 0;
+  margin-top: 4px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 140px;
+  z-index: 10;
+  animation: popIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.dropdownItem {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #c62828;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.dropdownItem:hover {
+  background: #fff5f5;
+}
+
+/* --- Confirmation State Inside Dropdown --- */
+.confirmState {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confirmText {
+  font-size: 0.8rem;
+  color: #4a5568;
+  font-weight: 600;
+  text-align: center;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 6px;
+}
+
+.yesBtn, .cancelBtn {
+  flex: 1;
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.yesBtn {
+  background: #c62828;
+  color: white;
+}
+
+.yesBtn:hover {
+  background: #b71c1c;
+}
+
+.cancelBtn {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.cancelBtn:hover {
+  background: #e2e8f0;
+}
+
+/* --- Images --- */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.reviewImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  display: block;
 }

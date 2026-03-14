@@ -3,7 +3,7 @@ export type CreateReviewArgs = {
     author: string;
     description: string;
     rating: number;
-    imageUrl?: string | null;
+    imageUrls?: string[] | null;
 };
 
 export type CreateReviewUploadUrlArgs = {
@@ -23,7 +23,7 @@ export type SubmitPendingReviewArgs = {
         author: string;
         description: string;
         rating: number;
-        imageUrl?: string | null;
+        imageUrls?: string[] | null;
         menuItemId?: string | null;
         captchaToken: string;
         userId?: string | null; 

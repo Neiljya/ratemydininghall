@@ -8,6 +8,7 @@ export const getPendingReviewsQuery = `
       rating
       createdAt
       status
+      userId
     }
   }
 `;
@@ -22,6 +23,7 @@ export const getAcceptedReviewsQuery = `
       rating
       createdAt
       status
+      userId
     }
   }
 `;

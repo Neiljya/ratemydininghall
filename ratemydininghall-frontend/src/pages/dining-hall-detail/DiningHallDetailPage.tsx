@@ -189,7 +189,7 @@ export default function DiningHallDetailPage() {
           <div className={styles.reviewListContainer}>
             <div className={styles.reviewList}>
               {activeReviews.map((r: any) => (
-                <ReviewItem key={r.id} rating={r.rating} author={r.author} description={r.description} date={Number(r.createdAt)} />
+                <ReviewItem key={r.id} reviewId={r.id} rating={r.rating} author={r.author} description={r.description} date={Number(r.createdAt)} />
               ))}
               {activeReviews.length === 0 && <div className={styles.muted}>No reviews yet.</div>}
             </div>
