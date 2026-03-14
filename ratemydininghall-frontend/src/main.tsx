@@ -14,7 +14,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <ClerkProvider 
+      publishableKey={PUBLISHABLE_KEY}
+      domain={import.meta.env.PROD ? "ratemydininghall.cc" : undefined}
+      >
         <div className={theme.themeVars}>
             <App />
         </div>
