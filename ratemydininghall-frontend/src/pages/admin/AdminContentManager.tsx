@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectDiningHalls } from "@redux/dining-hall-slice/diningHallSelectors";
 import { fetchDiningHalls } from "@redux/dining-hall-slice/diningHallSlice";
+import { useAuth } from "@clerk/react-router"; // 1. Import useAuth
 
 import Notification, { type NotificationVariant } from "@components/notifications/Notification";
 import CustomSelect from "@components/ui/custom-select/CustomSelect";
@@ -136,6 +137,7 @@ const TagSelector = ({
 export default function AdminContentManager() {
   const dispatch = useAppDispatch();
   const halls = useAppSelector(selectDiningHalls);
+  const { getToken } = useAuth(); // 2. Extract getToken
 
   const [tab, setTab] = useState<Tab>("addHall");
   const [saving, setSaving] = useState(false);
@@ -174,10 +176,8 @@ export default function AdminContentManager() {
     if (!file) return;
 
     const reader = new FileReader();
-    console.log('file: ', file);
 
     reader.onload = async (e) => {
-      console.log('reader loaded');
       try {
         const jsonContent = e.target?.result;
         if (typeof jsonContent !== 'string') return;
@@ -195,28 +195,21 @@ export default function AdminContentManager() {
         if (!confirm) return;
 
         setSaving(true);
+        const token = await getToken(); // Fetch token for batch upload
 
         const itemsByHall: Record<string, any[]> = {};
 
         data.forEach((item: any) => {
           const slug = item?.diningHallSlug;
-
-          if (!slug || !validSlugs.has(slug)) {
-            return;
-          }
+          if (!slug || !validSlugs.has(slug)) return;
 
           if (!itemsByHall[slug]) {
             itemsByHall[slug] = [];
           }
-
           const toUpload = mapToCreateMenuItemInput(slug, item);
-
           itemsByHall[slug].push(toUpload);
         })
 
-
-        // using for of to await for the uploads sequentially
-        // not using forEach because it doesn't wait for promises
         for (const slug of Object.keys(itemsByHall)) {
           try {
             const res = await dispatch(fetchMenuItemsByHall(slug)).unwrap();
@@ -228,22 +221,14 @@ export default function AdminContentManager() {
 
             const filteredItems = itemsByHall[slug].filter((newItem) => {
               const normalizedName = newItem.name.toLowerCase().trim();
-
-              // skip already existing items so we dont override them
-              if (existingNames.has(normalizedName)) {
-                return false;
-              }
-
-              return true;
+              return !existingNames.has(normalizedName);
             });
 
-            await createMenuItemsBatch(slug, filteredItems);
+            await createMenuItemsBatch(slug, filteredItems, token); // Pass token
           } catch (e: any) {
             console.log(`${slug} had an error when creating menu items batch`, e);
           }
         }
-
-        console.log('itemsByHall: ', itemsByHall);
 
         showNotif("success", "Successfully updated batch JSON");
 
@@ -282,13 +267,14 @@ export default function AdminContentManager() {
 
     setSaving(true);
     try {
+      const token = await getToken(); // Get token
       await createDiningHall({
         name: newHall.name.trim(),
         slug: newHall.slug.trim(),
         imageUrl: newHall.imageUrl.trim() || null,
         description: newHall.description.trim() || null,
         parentHallSlug: newHall.parentHallSlug.trim() || null,
-      });
+      }, token); // Pass token
 
       showNotif("success", "Dining hall created.");
       setNewHall({ name: "", slug: "", imageUrl: "", description: "", parentHallSlug: "" });
@@ -341,6 +327,7 @@ export default function AdminContentManager() {
 
     setSaving(true);
     try {
+      const token = await getToken(); // Get token
       await updateDiningHall({
         id: selectedHall.id,
         name: editHall.name.trim(),
@@ -348,7 +335,7 @@ export default function AdminContentManager() {
         imageUrl: editHall.imageUrl.trim() || null,
         description: editHall.description.trim() || null,
         parentHallSlug: editHall.parentHallSlug.trim() || null,
-      });
+      }, token); // Pass token
 
       showNotif("success", "Dining hall updated.");
       dispatch(fetchDiningHalls());
@@ -365,7 +352,8 @@ export default function AdminContentManager() {
     if (!ok) return;
     setSaving(true);
     try {
-      await deleteDiningHall(selectedHall.id);
+      const token = await getToken(); // Get token
+      await deleteDiningHall(selectedHall.id, token); // Pass token
       showNotif("success", "Dining hall deleted.");
       setSelectedHallId("");
       dispatch(fetchDiningHalls());
@@ -431,7 +419,8 @@ export default function AdminContentManager() {
 
     setSaving(true);
     try {
-      await createMenuItemsBatch(slug, cleaned);
+      const token = await getToken(); // Get token
+      await createMenuItemsBatch(slug, cleaned, token); // Pass token
       showNotif("success", `Uploaded ${cleaned.length} menu item(s).`);
       setDrafts([{ name: "", description: "", imageUrl: "", tags: [], category: "", price: "", calories: "", protein: "", carbs: "", fat: "" }]);
       dispatch(fetchMenuItemsByHall(slug));
@@ -469,7 +458,6 @@ export default function AdminContentManager() {
     tags: [],
     price: "",
     category: "",
-
     calories: "",
     protein: "",
     carbs: "",
@@ -502,6 +490,7 @@ export default function AdminContentManager() {
 
     setSaving(true);
     try {
+      const token = await getToken(); // Get token
       await updateMenuItem(editItemId, {
         name: editItemForm.name.trim(),
         description: editItemForm.description.trim() || null,
@@ -515,7 +504,7 @@ export default function AdminContentManager() {
           carbs: toNullableNum(editItemForm.carbs),
           fat: toNullableNum(editItemForm.fat),
         },
-      });
+      }, token); // Pass token
 
       showNotif("success", "Menu item updated.");
       dispatch(fetchMenuItemsByHall(itemsHallSlug));
@@ -533,7 +522,8 @@ export default function AdminContentManager() {
 
     setSaving(true);
     try {
-      await deleteMenuItem(editItemId);
+      const token = await getToken(); // Get token
+      await deleteMenuItem(editItemId, token); // Pass token
       showNotif("success", "Menu item deleted.");
       setEditItemId("");
       dispatch(fetchMenuItemsByHall(itemsHallSlug));
@@ -566,38 +556,31 @@ export default function AdminContentManager() {
         </button>
       </div>
 
-      {/* ADD HALL */}
       {tab === "addHall" && (
         <div className={styles.panel}>
           <h3 className={styles.panelTitle}>Add Dining Hall</h3>
-
           <div className={styles.grid2}>
             <div className={styles.field}>
               <label className={styles.label}>Name</label>
               <input className={styles.input} value={newHall.name} onChange={(e) => setNewHall((p) => ({ ...p, name: e.target.value }))} placeholder="e.g. 64 Degrees" />
             </div>
-
             <div className={styles.field}>
               <label className={styles.label}>Slug</label>
               <input className={styles.input} value={newHall.slug} onChange={(e) => setNewHall((p) => ({ ...p, slug: e.target.value }))} placeholder="e.g. 64-degrees" />
             </div>
           </div>
-
           <div className={styles.field}>
             <label className={styles.label}>Parent Hall Slug (optional)</label>
             <input className={styles.input} value={newHall.parentHallSlug} onChange={(e) => setNewHall((p) => ({ ...p, parentHallSlug: e.target.value }))} placeholder="e.g. ventanas (leave blank for none)" />
           </div>
-
           <div className={styles.field}>
             <label className={styles.label}>Image URL</label>
             <input className={styles.input} value={newHall.imageUrl} onChange={(e) => setNewHall((p) => ({ ...p, imageUrl: e.target.value }))} />
           </div>
-
           <div className={styles.field}>
             <label className={styles.label}>Description</label>
             <textarea className={styles.textarea} rows={3} value={newHall.description} onChange={(e) => setNewHall((p) => ({ ...p, description: e.target.value }))} />
           </div>
-
           <div className={styles.actionsRow}>
             <button className={styles.primaryBtn} type="button" disabled={saving} onClick={createHall}>
               {saving ? "Saving..." : "Create Dining Hall"}
@@ -606,16 +589,13 @@ export default function AdminContentManager() {
         </div>
       )}
 
-      {/* MANAGE HALLS */}
       {tab === "manageHalls" && (
         <div className={styles.panel}>
           <h3 className={styles.panelTitle}>Edit / Delete Dining Halls</h3>
-
           <div className={styles.field}>
             <label className={styles.label}>Select Hall</label>
             <CustomSelect options={hallOptions} value={selectedHallId} onChange={setSelectedHallId} placeholder="-- Choose a hall to edit --" />
           </div>
-
           {!selectedHall ? (
             <div className={styles.muted}>Please select a dining hall above.</div>
           ) : (
@@ -625,28 +605,23 @@ export default function AdminContentManager() {
                   <label className={styles.label}>Name</label>
                   <input className={styles.input} value={editHall.name} onChange={(e) => setEditHall((p) => ({ ...p, name: e.target.value }))} />
                 </div>
-
                 <div className={styles.field}>
                   <label className={styles.label}>Slug</label>
                   <input className={styles.input} value={editHall.slug} onChange={(e) => setEditHall((p) => ({ ...p, slug: e.target.value }))} />
                 </div>
               </div>
-
               <div className={styles.field}>
                 <label className={styles.label}>Parent Hall Slug (optional)</label>
                 <input className={styles.input} value={editHall.parentHallSlug} onChange={(e) => setEditHall((p) => ({ ...p, parentHallSlug: e.target.value }))} placeholder="e.g. ventanas (leave blank for none)" />
               </div>
-
               <div className={styles.field}>
                 <label className={styles.label}>Image URL</label>
                 <input className={styles.input} value={editHall.imageUrl} onChange={(e) => setEditHall((p) => ({ ...p, imageUrl: e.target.value }))} />
               </div>
-
               <div className={styles.field}>
                 <label className={styles.label}>Description</label>
                 <textarea className={styles.textarea} rows={3} value={editHall.description} onChange={(e) => setEditHall((p) => ({ ...p, description: e.target.value }))} />
               </div>
-
               <div className={styles.actionsRow}>
                 <button className={styles.dangerBtn} type="button" disabled={saving} onClick={removeHall}>
                   Delete Hall
@@ -660,11 +635,9 @@ export default function AdminContentManager() {
         </div>
       )}
 
-      {/* MENU ITEMS */}
       {tab === "menuItems" && (
         <div className={styles.panel}>
           <h3 className={styles.panelTitle}>Menu Items Manager</h3>
-
           <div className={styles.field}>
             <label className={styles.label}>Select Dining Hall</label>
             <CustomSelect options={hallSlugOptions} value={itemsHallSlug} onChange={setItemsHallSlug} placeholder="-- Choose a hall --" />
@@ -677,27 +650,21 @@ export default function AdminContentManager() {
                 <input className={styles.input} placeholder="Item Name" value={d.name} onChange={(e) => updateDraft(idx, { name: e.target.value })} />
                 <input className={styles.input} placeholder="Image URL (optional)" value={d.imageUrl} onChange={(e) => updateDraft(idx, { imageUrl: e.target.value })} />
               </div>
-
               <div className={styles.grid2}>
                 <input className={styles.input} placeholder="Price (e.g. 4.99)" value={d.price} onChange={(e) => updateDraft(idx, { price: e.target.value })} />
-                <input className={styles.input} placeholder="Category (e.g. Entree)" value={d.category} onChange={(e) => updateDraft(idx, { category: e.target.value })} /> {/* ✅ Added */}
+                <input className={styles.input} placeholder="Category (e.g. Entree)" value={d.category} onChange={(e) => updateDraft(idx, { category: e.target.value })} />
               </div>
-
               <input className={styles.input} placeholder="Description" value={d.description} onChange={(e) => updateDraft(idx, { description: e.target.value })} />
               <div className={styles.field}>
-                <label className={styles.label} style={{ fontSize: "0.85rem" }}>
-                  Tags
-                </label>
+                <label className={styles.label} style={{ fontSize: "0.85rem" }}>Tags</label>
                 <TagSelector selected={d.tags} onChange={(newTags) => updateDraft(idx, { tags: newTags })} />
               </div>
-
               <div className={styles.macroRow}>
                 <input className={styles.input} placeholder="Cals" value={d.calories} onChange={(e) => updateDraft(idx, { calories: e.target.value })} />
                 <input className={styles.input} placeholder="Protein" value={d.protein} onChange={(e) => updateDraft(idx, { protein: e.target.value })} />
                 <input className={styles.input} placeholder="Carbs" value={d.carbs} onChange={(e) => updateDraft(idx, { carbs: e.target.value })} />
                 <input className={styles.input} placeholder="Fat" value={d.fat} onChange={(e) => updateDraft(idx, { fat: e.target.value })} />
               </div>
-
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <button className={styles.iconBtn} type="button" onClick={() => removeDraftRow(idx)} disabled={drafts.length === 1}>
                   Delete Row ✕
@@ -718,32 +685,15 @@ export default function AdminContentManager() {
           <div style={{ marginTop: '40px', borderTop: '2px dashed #eee', paddingTop: '20px' }}>
             <h4 className={styles.subTitle}>Bulk Upload from Scraper JSON</h4>
             <p className={styles.muted} style={{ textAlign: 'left', marginBottom: '10px' }}>
-              Upload a <code>menu_items.json</code> file generated by the scraper. This will validate slugs and auto-assign items to the correct dining hall.
+              Upload a <code>menu_items.json</code> file generated by the scraper.
             </p>
-
-            <input
-              type="file"
-              accept=".json"
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-              onChange={handleFileUpload}
-            />
-
-            <button
-              className={styles.primaryBtn}
-              style={{ backgroundColor: '#7c3aed', borderColor: '#7c3aed' }}
-              type="button"
-              disabled={saving}
-              onClick={() => fileInputRef.current?.click()}
-            >
+            <input type="file" accept=".json" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileUpload} />
+            <button className={styles.primaryBtn} style={{ backgroundColor: '#7c3aed', borderColor: '#7c3aed' }} type="button" disabled={saving} onClick={() => fileInputRef.current?.click()}>
               {saving ? "Uploading..." : "Select JSON File"}
             </button>
           </div>
 
-          <h4 className={styles.subTitle} style={{ marginTop: "40px" }}>
-            Edit Existing Items
-          </h4>
-
+          <h4 className={styles.subTitle} style={{ marginTop: "40px" }}>Edit Existing Items</h4>
           {!itemsHallSlug ? (
             <div className={styles.muted}>Select a dining hall above.</div>
           ) : itemsStatus === "loading" ? (
@@ -754,79 +704,29 @@ export default function AdminContentManager() {
                 <label className={styles.label}>Select Item to Edit</label>
                 <CustomSelect options={itemOptions} value={editItemId} onChange={setEditItemId} placeholder="-- Choose item --" />
               </div>
-
               {!editItemId ? (
                 <div className={styles.muted}>Pick a menu item to edit details.</div>
               ) : (
                 <div style={{ marginTop: "20px", borderTop: "1px solid var(--color-border-soft)", paddingTop: "20px" }}>
                   <div className={styles.grid2}>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Name</label>
-                      <input className={styles.input} value={editItemForm.name} onChange={(e) => setEditItemForm((p) => ({ ...p, name: e.target.value }))} />
-                    </div>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Image URL</label>
-                      <input className={styles.input} value={editItemForm.imageUrl} onChange={(e) => setEditItemForm((p) => ({ ...p, imageUrl: e.target.value }))} />
-                    </div>
+                    <div className={styles.field}><label className={styles.label}>Name</label><input className={styles.input} value={editItemForm.name} onChange={(e) => setEditItemForm((p) => ({ ...p, name: e.target.value }))} /></div>
+                    <div className={styles.field}><label className={styles.label}>Image URL</label><input className={styles.input} value={editItemForm.imageUrl} onChange={(e) => setEditItemForm((p) => ({ ...p, imageUrl: e.target.value }))} /></div>
                   </div>
-
                   <div className={styles.grid2}>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Price</label>
-                      <input
-                        className={styles.input}
-                        placeholder="e.g. 4.99"
-                        value={editItemForm.price}
-                        onChange={(e) => setEditItemForm((p) => ({ ...p, price: e.target.value }))}
-                      />
-                    </div>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Category</label>
-                      <input
-                        className={styles.input}
-                        placeholder="e.g. Entree"
-                        value={editItemForm.category}
-                        onChange={(e) => setEditItemForm((p) => ({ ...p, category: e.target.value }))}
-                      />
-                    </div>
+                    <div className={styles.field}><label className={styles.label}>Price</label><input className={styles.input} value={editItemForm.price} onChange={(e) => setEditItemForm((p) => ({ ...p, price: e.target.value }))} /></div>
+                    <div className={styles.field}><label className={styles.label}>Category</label><input className={styles.input} value={editItemForm.category} onChange={(e) => setEditItemForm((p) => ({ ...p, category: e.target.value }))} /></div>
                   </div>
-
-                  <div className={styles.field}>
-                    <label className={styles.label}>Description</label>
-                    <textarea className={styles.textarea} rows={2} value={editItemForm.description} onChange={(e) => setEditItemForm((p) => ({ ...p, description: e.target.value }))} />
-                  </div>
-
-                  <div className={styles.field}>
-                    <label className={styles.label}>Tags</label>
-                    <TagSelector selected={editItemForm.tags} onChange={(newTags) => setEditItemForm((p) => ({ ...p, tags: newTags }))} />
-                  </div>
-
+                  <div className={styles.field}><label className={styles.label}>Description</label><textarea className={styles.textarea} rows={2} value={editItemForm.description} onChange={(e) => setEditItemForm((p) => ({ ...p, description: e.target.value }))} /></div>
+                  <div className={styles.field}><label className={styles.label}>Tags</label><TagSelector selected={editItemForm.tags} onChange={(newTags) => setEditItemForm((p) => ({ ...p, tags: newTags }))} /></div>
                   <div className={styles.macroRow2}>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Cals</label>
-                      <input className={styles.input} value={editItemForm.calories} onChange={(e) => setEditItemForm((p) => ({ ...p, calories: e.target.value }))} />
-                    </div>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Protein</label>
-                      <input className={styles.input} value={editItemForm.protein} onChange={(e) => setEditItemForm((p) => ({ ...p, protein: e.target.value }))} />
-                    </div>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Carbs</label>
-                      <input className={styles.input} value={editItemForm.carbs} onChange={(e) => setEditItemForm((p) => ({ ...p, carbs: e.target.value }))} />
-                    </div>
-                    <div className={styles.field}>
-                      <label className={styles.label}>Fat</label>
-                      <input className={styles.input} value={editItemForm.fat} onChange={(e) => setEditItemForm((p) => ({ ...p, fat: e.target.value }))} />
-                    </div>
+                    <div className={styles.field}><label className={styles.label}>Cals</label><input className={styles.input} value={editItemForm.calories} onChange={(e) => setEditItemForm((p) => ({ ...p, calories: e.target.value }))} /></div>
+                    <div className={styles.field}><label className={styles.label}>Protein</label><input className={styles.input} value={editItemForm.protein} onChange={(e) => setEditItemForm((p) => ({ ...p, protein: e.target.value }))} /></div>
+                    <div className={styles.field}><label className={styles.label}>Carbs</label><input className={styles.input} value={editItemForm.carbs} onChange={(e) => setEditItemForm((p) => ({ ...p, carbs: e.target.value }))} /></div>
+                    <div className={styles.field}><label className={styles.label}>Fat</label><input className={styles.input} value={editItemForm.fat} onChange={(e) => setEditItemForm((p) => ({ ...p, fat: e.target.value }))} /></div>
                   </div>
-
                   <div className={styles.actionsRow}>
-                    <button className={styles.dangerBtn} type="button" disabled={saving} onClick={removeMenuItem}>
-                      Delete Item
-                    </button>
-                    <button className={styles.primaryBtn} type="button" disabled={saving} onClick={saveMenuItemEdits}>
-                      {saving ? "Saving..." : "Save Changes"}
-                    </button>
+                    <button className={styles.dangerBtn} type="button" disabled={saving} onClick={removeMenuItem}>Delete Item</button>
+                    <button className={styles.primaryBtn} type="button" disabled={saving} onClick={saveMenuItemEdits}>{saving ? "Saving..." : "Save Changes"}</button>
                   </div>
                 </div>
               )}

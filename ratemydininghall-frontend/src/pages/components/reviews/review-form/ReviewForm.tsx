@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { DiningHall } from '@redux/dining-hall-slice/diningHallSlice';
 import styles from '../../../styles/review-form.module.css'
 import containerStyles from '@containerStyles/globalContainer.module.css';
@@ -9,6 +9,7 @@ import { submitPendingReview } from '@graphQL/mutations/submitPendingReview';
 import Notification, { type NotificationVariant } from '@components/notifications/Notification';
 import { useNavigate } from 'react-router-dom';
 import CaptchaProtection, { type CaptchaRef } from '@components/captchas/CaptchaProtection';
+import { useUser, useAuth } from '@clerk/react-router';
 
 export type ReviewFormSource = 'topbar' | 'modal' | 'inline';
 
@@ -23,14 +24,6 @@ interface ReviewFormProps {
     menuItemId?: string | null;
 }
 
-// // Placeholder dining halls data for test
-// const DINING_HALLS = [
-//     { id: '1', name: 'Bistro', image: 'https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior' },
-//     { id: '2', name: 'Harvest Kitchen', image: 'https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior' },
-//     { id: '3', name: 'Ocean View Terrace', image: 'https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior' },
-//     { id: '4', name: 'Canyon Vista', image: 'https://images.squarespace-cdn.com/content/v1/57e94430d2b8579f31ebcc38/1528371545872-6211WXGHXMLN7CMLV44J/UCSD+The+Bistro+interior' },
-// ];
-
 function ReviewForm({
     diningHallSlug = '',
     diningHalls = [],
@@ -39,9 +32,11 @@ function ReviewForm({
     showClose = false,
     menuItemId = null
 }: ReviewFormProps) {
-    const [rating, setRating] = useState<number>(0);
+    const { user, isLoaded, isSignedIn } = useUser();
+    const { getToken } = useAuth();
+    const navigate = useNavigate();
 
-    // eventually, once accounts are implemented, we can get the user's name from state
+    const [rating, setRating] = useState<number>(0);
     const [reviewerName, setReviewerName] = useState<string>('');
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
     const [selectedHall, setSelectedHall] = useState<string>(diningHallSlug);
@@ -60,10 +55,18 @@ function ReviewForm({
         variant: 'info',
     });
 
-    const navigate = useNavigate();
     const showNotif = (variant: NotificationVariant, message: string) => {
         setNotif({ show: true, variant, message });
     };
+
+    // Auto-fill strictly with the Clerk username
+    useEffect(() => {
+        if (isLoaded && isSignedIn && user?.username) {
+            setReviewerName(`@${user.username}`);
+        } else {
+            setReviewerName('');
+        }
+    }, [isLoaded, isSignedIn, user]);
 
     const canViewMenu =
     source === 'modal'
@@ -76,20 +79,22 @@ function ReviewForm({
     source === 'topbar' ? selectedHall : diningHallSlug;
 
     const handleViewMenu = () => {
-    if (!viewMenuSlug) return;
-    onClose?.(); // close modal if provided
-    navigate(`/dining-hall/${viewMenuSlug}`);
+        if (!viewMenuSlug) return;
+        onClose?.(); 
+        navigate(`/dining-hall/${viewMenuSlug}`);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        // prevent refreshing the page
         e.preventDefault();
-        setSubmitting(true);
 
-        // captcha needs to be filled before submitting
+        // Security Guard
+        if (!isSignedIn) {
+            showNotif('error', 'You must be signed in to submit a review.');
+            return;
+        }
+
         if (!captchaToken) {
             showNotif('error', 'Please verify that you are a human');
-            setSubmitting(false);
             return;
         }
 
@@ -97,35 +102,25 @@ function ReviewForm({
 
         if (!hallSlugToUse) {
             showNotif('error', 'Please select a dining hall to review.');
-            setSubmitting(false);
             return;
         }
 
         if (rating < 1 || rating > 5) {
             showNotif('error', 'Please provide a rating between 1 and 5 stars.');
-            setSubmitting(false);
             return;
         }
 
         if (!description.trim()) {
             showNotif('error', 'Please provide a description for your review.');
-            setSubmitting(false);
             return;
         }
 
-        const authorToUse = isAnonymous ? 'Anonymous' : (reviewerName.trim() || 'Anonymous');
+        setSubmitting(true);
+        const authorToUse = isAnonymous ? 'Anonymous' : (reviewerName || 'Anonymous');
+        
         try {
-            // //disabling in prod for now
-            // if (!import.meta.env.PROD) {
-            //     await submitPendingReview({
-            //         diningHallSlug: hallSlugToUse,
-            //         author: authorToUse,
-            //         description: description.trim(),
-            //         rating,
-            //         menuItemId: menuItemId ?? null,
-            //         captchaToken
-            //     });
-            // }
+            const token = await getToken();
+
             await submitPendingReview({
                 diningHallSlug: hallSlugToUse,
                 author: authorToUse,
@@ -133,12 +128,13 @@ function ReviewForm({
                 rating,
                 menuItemId: menuItemId ?? null,
                 captchaToken
-            });
+            }, token);
 
             showNotif('success', 'Review submitted for approval!');
             setDescription('')
             setRating(0);
-
+            
+            setIsAnonymous(false); 
             captchaRef.current?.reset();
         } catch (error: any) {
             console.error(error);
@@ -198,32 +194,31 @@ function ReviewForm({
                     <StarSelector value={rating} onChange={setRating} />
                 </div>
                 
-                {/* Reviewer Name Input (optional) */}
+                {/* Locked Reviewer Name Input */}
                 <div className={styles.formGroup}>
-                    <label className={styles.label} htmlFor="reviewerName">Name (optional)</label>
+                    <label className={styles.label} htmlFor="reviewerName">Name</label>
                     <input
                         id="reviewerName"
                         type="text"
                         className={styles.reviewerNameInput}
-                        placeholder={!isAnonymous ? "Your display name" : "Anonymous User"}
-                        value={isAnonymous ? '' : reviewerName}
-                        onChange={(e) => setReviewerName(e.target.value)}
-                        disabled={isAnonymous}
+                        placeholder={
+                            isAnonymous 
+                                ? "Anonymous User" 
+                                : (isSignedIn ? "Your Username" : "Sign in to use your name")
+                        }
+                        value={isAnonymous ? 'Anonymous' : reviewerName}
+                        disabled={true} 
                     />
                 </div>
 
-                {/* Anonymous checkbox */}
                 <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="anonymousToggle" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <input
                     id="anonymousToggle"
                     type="checkbox"
                     checked={isAnonymous}
-                    onChange={(e) => {
-                        const checked = e.target.checked;
-                        setIsAnonymous(checked);
-                        if (checked) setReviewerName('');
-                    }}
+                    onChange={(e) => setIsAnonymous(e.target.checked)}
+                    disabled={!isSignedIn}
                     style={{ marginRight: 8 }}
                     />
                     Post as Anonymous
@@ -239,11 +234,12 @@ function ReviewForm({
                     </div>
                     <textarea
                         className={styles.reviewTextarea}
-                        placeholder="Short note about your experience"
+                        placeholder={isSignedIn ? "Short note about your experience" : "Please sign in to write a review"}
                         rows={4}
                         value={description}
                         maxLength={MAX_CHARS}
                         onChange={(e) => setDescription(e.target.value)}
+                        disabled={!isSignedIn}
                     />
                 </div>
 
@@ -253,13 +249,27 @@ function ReviewForm({
             />
 
             <div className={styles.buttonRow}>
-                <button
-                    type="submit"
-                    className={styles.submitButton}
-                    disabled={submitting}
-                >
-                    {submitting ? 'Submitting...' : 'Submit Review'}
-                </button>
+                {isSignedIn ? (
+                    <button
+                        type="submit"
+                        className={styles.submitButton}
+                        disabled={submitting}
+                    >
+                        {submitting ? 'Submitting...' : 'Submit Review'}
+                    </button>
+                ) : (
+                    <button
+                        type="button"
+                        className={styles.submitButton}
+                        style={{ background: 'var(--color-primary-dark, #005ea2)' }}
+                        onClick={() => {
+                            onClose?.();
+                            navigate('/login');
+                        }}
+                    >
+                        Sign in to Post
+                    </button>
+                )}
 
                 {canViewMenu && (
                     <button

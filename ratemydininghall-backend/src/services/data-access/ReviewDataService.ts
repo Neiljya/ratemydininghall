@@ -19,7 +19,7 @@ export const ReviewDataService = {
     },
 
     submitPendingReview: async (db: any, reviewDoc: any) => {
-        const result = await db.collections(COLLECTIONS.PENDING_REVIEWS).insertOne(reviewDoc);
+        const result = await db.collection(COLLECTIONS.PENDING_REVIEWS).insertOne(reviewDoc);
         return result.insertedId.toString();
     }
 

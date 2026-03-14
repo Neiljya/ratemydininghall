@@ -26,5 +26,6 @@ export type SubmitPendingReviewArgs = {
         imageUrl?: string | null;
         menuItemId?: string | null;
         captchaToken: string;
+        userId?: string | null; 
     };
 };

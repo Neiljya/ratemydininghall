@@ -153,6 +153,17 @@ export const queryResolvers = {
             }));
         },
 
+        myReviews: async (_parent: any, _args: any, { db, user }: YogaContext) => {
+            if (!user || !user.id) {
+                throw new Error("You must be logged in to view your reviews.");
+            }
+
+            return await db.collection(COLLECTIONS.REVIEWS)
+                .find({ userId: user.id })
+                .sort({ createdAt: -1 }) // Show newest first
+                .toArray();
+        },
+
         ...authResolvers.Query,
     },
 };

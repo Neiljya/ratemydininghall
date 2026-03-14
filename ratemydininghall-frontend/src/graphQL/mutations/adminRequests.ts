@@ -45,26 +45,26 @@ export type UpdateDiningHallInput = {
   parentHallSlug?: string | null;
 };
 
-export async function createDiningHall(input: CreateDiningHallInput) {
-  return graphQLRequest(CREATE_DINING_HALL, { input });
+export async function createDiningHall(input: CreateDiningHallInput, token?: string | null) {
+  return graphQLRequest(CREATE_DINING_HALL, { input }, token);
 }
 
-export async function createMenuItemsBatch(diningHallSlug: string, items: CreateMenuItemInput[]) {
+export async function createMenuItemsBatch(diningHallSlug: string, items: CreateMenuItemInput[], token?: string | null) {
   return graphQLRequest(CREATE_MENU_ITEMS_BATCH, {
     input: { diningHallSlug, items },
-  });
+  }, token);
 }
 
-export async function createMenuItemsIndividually(items: CreateMenuItemInput[]) {
-  await Promise.all(items.map((input) => graphQLRequest(CREATE_MENU_ITEM, { input })));
+export async function createMenuItemsIndividually(items: CreateMenuItemInput[], token?: string | null) {
+  await Promise.all(items.map((input) => graphQLRequest(CREATE_MENU_ITEM, { input }, token)));
 }
 
-export async function updateDiningHall(input: UpdateDiningHallInput) {
-  return graphQLRequest(UPDATE_DINING_HALL, { input });
+export async function updateDiningHall(input: UpdateDiningHallInput, token?: string | null) {
+  return graphQLRequest(UPDATE_DINING_HALL, { input }, token);
 }
 
-export async function deleteDiningHall(id: string) {
-  return graphQLRequest(DELETE_DINING_HALL, { id });
+export async function deleteDiningHall(id: string, token?: string | null) {
+  return graphQLRequest(DELETE_DINING_HALL, { id }, token);
 }
 
 export type UpdateMenuItemInput = {
@@ -77,10 +77,12 @@ export type UpdateMenuItemInput = {
   tags?: string[] | null;
 };
 
-export async function updateMenuItem(id: string, input: UpdateMenuItemInput) {
-  return graphQLRequest(UPDATE_MENU_ITEM, { id, input });
+// Fixed: Added token as third parameter
+export async function updateMenuItem(id: string, input: UpdateMenuItemInput, token?: string | null) {
+  return graphQLRequest(UPDATE_MENU_ITEM, { id, input }, token);
 }
 
-export async function deleteMenuItem(id: string) {
-  return graphQLRequest(DELETE_MENU_ITEM, { id });
+// Fixed: Added token as second parameter
+export async function deleteMenuItem(id: string, token?: string | null) {
+  return graphQLRequest(DELETE_MENU_ITEM, { id }, token);
 }

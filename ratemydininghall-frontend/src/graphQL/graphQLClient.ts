@@ -18,12 +18,21 @@ const GRAPHQL_ENDPOINT =
  */
 export async function graphQLRequest<TData>(
         query: string,
-        variables?: Record<string, any>
+        variables?: Record<string, any>,
+        token?: string | null // optional so we can pass token for auth
     ): Promise<TData> {
+
+        const headers: Record<string, string> = {
+            'Content-Type': 'application/json',
+        };
+
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
         const response = await fetch(GRAPHQL_ENDPOINT, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include', // for cookies
+            headers,
             body: JSON.stringify({ query, variables }),
         });
 

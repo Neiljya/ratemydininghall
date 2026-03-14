@@ -108,7 +108,7 @@ export const mutationResolvers = {
         async submitPendingReview(
             _parent: unknown,
             { input }: SubmitPendingReviewArgs,
-            { db }: YogaContext
+            { db, user }: YogaContext
         ) {
             const {
                 captchaToken,
@@ -125,6 +125,7 @@ export const mutationResolvers = {
                 status: 'pending',
                 targetType,
                 menuItemId: targetType === 'MENU_ITEM' ? reviewData.menuItemId : null,
+                userId: user?.id ?? null,
             };
 
             const id = await ReviewDataService.submitPendingReview(db, doc);

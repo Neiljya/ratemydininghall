@@ -6,15 +6,20 @@ import { store } from './redux/store';
 import App from './App'
 import theme from '@globalStyles/theme/theme.module.css';
 import { BrowserRouter } from 'react-router-dom';
+import { ClerkProvider } from '@clerk/react-router';
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <div className={theme.themeVars}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <div className={theme.themeVars}>
+            <App />
+        </div>
+      </ClerkProvider>
+      </BrowserRouter>
     </Provider>
   </StrictMode>,
 )

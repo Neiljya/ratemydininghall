@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import containerStyles from "@containerStyles/globalContainer.module.css";
 import styles from "./admin-panel.module.css";
+import { useAuth } from "@clerk/react-router";
 
 import { graphQLRequest } from "@graphQL/graphQLClient";
 import { getPendingReviewsQuery, getAcceptedReviewsQuery } from "@graphQL/queries/adminQueries";
@@ -52,6 +53,7 @@ function normalizeOps(ops: ChangeOp[]) {
 
 export default function AdminPanelPage() {
   type AdminTab = 'moderation' | 'content';
+  const { getToken } = useAuth();
   const [tab, setTab] = useState<AdminTab>('moderation');
   const [serverPending, setServerPending] = useState<Review[]>([]);
   const [serverAccepted, setServerAccepted] = useState<Review[]>([]);
@@ -74,8 +76,19 @@ export default function AdminPanelPage() {
     setErr(null);
 
     try {
-      const pendingList = await graphQLRequest<{ pendingReviews: Review[] }>(getPendingReviewsQuery);
-      const acceptedList = await graphQLRequest<{ acceptedReviews: Review[] }>(getAcceptedReviewsQuery);
+      const token = await getToken();
+
+      const pendingList = await graphQLRequest<{ pendingReviews: Review[] }>(
+          getPendingReviewsQuery, 
+          undefined, // no variables for this query
+          token      // <--- Inject token here
+      );
+      
+      const acceptedList = await graphQLRequest<{ acceptedReviews: Review[] }>(
+          getAcceptedReviewsQuery, 
+          undefined, 
+          token      // <--- Inject token here
+      );
 
       const p = pendingList.pendingReviews ?? [];
       const a = acceptedList.acceptedReviews ?? [];
@@ -148,17 +161,18 @@ export default function AdminPanelPage() {
 
     try {
       const normalized = normalizeOps(ops);
+      const token = await getToken();
 
       // run sequentially so its easier to debug
       for (const op of normalized) {
         if (op.type === "APPROVE") {
-          await graphQLRequest(approvePendingReviewMutation, { id: op.id });
+          await graphQLRequest(approvePendingReviewMutation, { id: op.id }, token);
         } else if (op.type === "REJECT") {
-          await graphQLRequest(rejectPendingReviewMutation, { id: op.id });
+          await graphQLRequest(rejectPendingReviewMutation, { id: op.id }, token);
         } else if (op.type === "MOVE_BACK") {
-          await graphQLRequest(moveAcceptedToPendingMutation, { id: op.id });
+          await graphQLRequest(moveAcceptedToPendingMutation, { id: op.id }, token);
         } else if (op.type === "DELETE") {
-          await graphQLRequest(deleteReviewMutation, { id: op.id });
+          await graphQLRequest(deleteReviewMutation, { id: op.id }, token);
         }
       }
 

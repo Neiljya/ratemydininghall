@@ -28,6 +28,22 @@ export const getReviewsByHallQuery = `
         }
 }`;
 
+export const getMyReviewsQuery = `
+    query GetMyReviews {
+        myReviews {
+            id
+            diningHallSlug
+            author
+            description
+            createdAt
+            rating
+            status
+            targetType
+            menuItemId
+        }
+    }
+`;
+
 export const submitPendingReviewMutation = `
   mutation SubmitPendingReview($input: SubmitPendingReviewInput!) {
     submitPendingReview(input: $input) {

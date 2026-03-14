@@ -2,6 +2,7 @@ import { createYoga, createSchema } from 'graphql-yoga';
 import { YogaContext } from '../src/types/yogaContext';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { getDb } from '../src/db/mongo';
+import { clerkClient } from '@clerk/clerk-sdk-node';
 
 import { diningHallType } from '../src/schema/diningHallType';
 import { reviewType } from '../src/schema/reviewType';
@@ -48,18 +49,40 @@ const yoga = createYoga<YogaContext>({
 
     context: async ({req, res}) => {
         const db = await getDb('ratemydininghall-ucsd');
-
-        const cookies = parse(req.headers.cookie ?? '');
-        const access = cookies['access_token'];
-
+        const authHeader = req.headers?.authorization || (req.headers && req.headers['authorization']);
         let user: YogaContext['user'] = null;
-        if (access) {
+
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+            const token = authHeader.split(' ')[1];
+
             try {
-                user = verifyAccessToken(access)
-            } catch {
+                const decoded = await clerkClient.verifyToken(token, {
+                    secretKey: process.env.CLERK_SECRET_KEY as string,
+                } as any);
+
+                const clerkUser = await clerkClient.users.getUser(decoded.sub);
+
+                user = {
+                    id: clerkUser.id,
+                    role: (clerkUser.publicMetadata?.role as 'admin' | 'user') || 'user',
+                };
+            } catch (err) {
+                console.error('Clerk auth error: ', err);
+                console.error(err);
                 user = null;
             }
         }
+        // const cookies = parse(req.headers.cookie ?? '');
+        // const access = cookies['access_token'];
+
+        // let user: YogaContext['user'] = null;
+        // if (access) {
+        //     try {
+        //         user = verifyAccessToken(access)
+        //     } catch {
+        //         user = null;
+        //     }
+        // }
         return { req, res, db, user };
     }
 });

@@ -25,14 +25,10 @@ export const reviewType = `
         description: String!
         rating: Int!
         imageUrl: String
-
-        # for selecting if its a dining hall rating or menu item rating
-        menuItemId: ID
-
-        # captcha verification
+        menuItemId: String
         captchaToken: String!
+        userId: String      
     }
-
     type PendingReviewResult {
         ok: Boolean!
         id: ID!

@@ -6,24 +6,27 @@ import globalContainerStyles from '@containerStyles/globalContainer.module.css';
 import popupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 import ReviewForm from '@components/reviews/review-form/ReviewForm';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@redux/hooks';
-import { logout } from '@redux/auth-slice/authSlice';
-import { selectIsAuthed, selectIsAdmin, selectAuthLoading } from '@redux/auth-slice/authSelectors';
+
+// 1. Import Clerk hooks
+import { useAuth, useUser } from '@clerk/react-router';
+
 import logoucsd from '../../../assets/logoucsd.png';
 import { clearCache } from '@utils/cache';
 
 function Topbar() {
-    // Fetch dining halls from redux store, we only need to fetch it once here and pass it down
     const diningHalls = useSelector(selectDiningHalls);
     const navigate = useNavigate();
+    
     const [isReviewFormOpen, setReviewFormOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [isMobileHidden, setIsMobileHidden] = useState(false);
 
-    const dispatch = useAppDispatch();
-    const isAuthed = useAppSelector(selectIsAuthed);
-    const isAdmin = useAppSelector(selectIsAdmin);
-    const authLoading = useAppSelector(selectAuthLoading);
+    // 2. Use Clerk instead of Redux
+    const { isLoaded, isSignedIn, signOut } = useAuth();
+    const { user } = useUser();
+
+    // 3. Derive admin status from Clerk's secure publicMetadata
+    const isAdmin = user?.publicMetadata?.role === 'admin';
 
     const handleClearCache = () => {
         clearCache();
@@ -46,16 +49,13 @@ function Topbar() {
     }
 
     const handleAuthButton = async () => {
-        if (!isAuthed) {
+        if (!isSignedIn) {
             navigate('/login');
             return;
         }
 
-        try {
-            await dispatch(logout()).unwrap();
-        } finally {
-            navigate('/');
-        }
+        await signOut();
+        navigate('/');
     };
 
     return (
@@ -113,6 +113,12 @@ function Topbar() {
                         </button>
                     )}
 
+                    {isSignedIn && (
+                        <button className={styles.btn} onClick={() => navigate('/profile')}>
+                            Profile
+                        </button>
+                    )}
+
                     <button
                         className={`${styles.btn} ${styles.btnPrimary}`}
                         onClick={handleOpenReviewForm}
@@ -126,9 +132,9 @@ function Topbar() {
                 <button
                     className={`${styles.btn} ${styles.btnGhost}`}
                     onClick={handleAuthButton}
-                    disabled={authLoading}
+                    disabled={!isLoaded} 
                 >
-                    {isAuthed ? (authLoading ? '...' : 'Logout') : 'Login'}
+                    {isSignedIn ? (!isLoaded ? '...' : 'Logout') : 'Login'}
                 </button>
             </div>
         </div>
