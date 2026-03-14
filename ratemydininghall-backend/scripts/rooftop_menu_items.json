@@ -1,0 +1,1378 @@
+[
+  {
+    "id": "1567658788",
+    "sourceMenuItemId": "1567658788",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.915Z"
+  },
+  {
+    "id": "the-rooftop-beverages-fountain-beverage",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": null,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.915Z"
+  },
+  {
+    "id": "1567659020",
+    "sourceMenuItemId": "1567659020",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:22.514Z"
+  },
+  {
+    "id": "1567659264",
+    "sourceMenuItemId": "1567659264",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:33.974Z"
+  },
+  {
+    "id": "1567659552",
+    "sourceMenuItemId": "1567659552",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:44.969Z"
+  },
+  {
+    "id": "1567659840",
+    "sourceMenuItemId": "1567659840",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:56.385Z"
+  },
+  {
+    "id": "1567660128",
+    "sourceMenuItemId": "1567660128",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:31:07.868Z"
+  },
+  {
+    "id": "1567660416",
+    "sourceMenuItemId": "1567660416",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:31:18.886Z"
+  },
+  {
+    "id": "1567658772",
+    "sourceMenuItemId": "1567658772",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Bacon",
+    "description": "2 Slices Pork Bacon",
+    "price": 3.5,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 222,
+      "protein": 20.9,
+      "carbs": 0,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T08:30:10.908Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-bacon",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Bacon",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.911Z"
+  },
+  {
+    "id": "103611",
+    "sourceMenuItemId": "103611",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Bacon",
+    "description": "2 Slices Pork Bacon",
+    "price": 3.5,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 222,
+      "protein": 20.9,
+      "carbs": 0,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T08:30:22.510Z"
+  },
+  {
+    "id": "1567658773",
+    "sourceMenuItemId": "1567658773",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "Mix of fresh seasonal fruits",
+    "price": 3.75,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 11.2,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T08:30:10.911Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-fresh-fruit-salad",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.912Z"
+  },
+  {
+    "id": "103559",
+    "sourceMenuItemId": "103559",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "Mix of fresh seasonal fruits",
+    "price": 3.75,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 11.2,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T08:30:22.511Z"
+  },
+  {
+    "id": "1567658774",
+    "sourceMenuItemId": "1567658774",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fried Egg",
+    "description": "Whole egg, cooked to order.",
+    "price": 2.25,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 75,
+      "protein": 6.7,
+      "carbs": 0.4,
+      "fat": 5.3
+    },
+    "updatedAt": "2026-03-14T08:30:10.912Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-fried-egg",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fried Egg",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.912Z"
+  },
+  {
+    "id": "102970",
+    "sourceMenuItemId": "102970",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fried Egg",
+    "description": "Whole egg, cooked to order.",
+    "price": 2.25,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 75,
+      "protein": 6.7,
+      "carbs": 0.4,
+      "fat": 5.3
+    },
+    "updatedAt": "2026-03-14T08:30:22.511Z"
+  },
+  {
+    "id": "1567658775",
+    "sourceMenuItemId": "1567658775",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Hash Brown Triangles",
+    "description": "Crispy fried potato cakes.",
+    "price": 4,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 322,
+      "protein": 2,
+      "carbs": 22.3,
+      "fat": 26.3
+    },
+    "updatedAt": "2026-03-14T08:30:10.913Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-hash-brown-triangles",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Hash Brown Triangles",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.913Z"
+  },
+  {
+    "id": "103561",
+    "sourceMenuItemId": "103561",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Hash Brown Triangles",
+    "description": "Crispy fried potato cakes.",
+    "price": 4,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 322,
+      "protein": 2,
+      "carbs": 22.3,
+      "fat": 26.3
+    },
+    "updatedAt": "2026-03-14T08:30:22.512Z"
+  },
+  {
+    "id": "1567658776",
+    "sourceMenuItemId": "1567658776",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Soft Scrambled Eggs",
+    "description": "Scrambled Eggs",
+    "price": 3,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 159,
+      "protein": 12.5,
+      "carbs": 0,
+      "fat": 10.9
+    },
+    "updatedAt": "2026-03-14T08:30:10.914Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-soft-scrambled-eggs",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Soft Scrambled Eggs",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.914Z"
+  },
+  {
+    "id": "1567654871",
+    "sourceMenuItemId": "1567654871",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Soft Scrambled Eggs",
+    "description": "Scrambled Eggs",
+    "price": 3,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 159,
+      "protein": 12.5,
+      "carbs": 0,
+      "fat": 10.9
+    },
+    "updatedAt": "2026-03-14T08:30:22.513Z"
+  },
+  {
+    "id": "1567658777",
+    "sourceMenuItemId": "1567658777",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Veggie Sausage",
+    "description": "Vegan veggie sausage.",
+    "price": 2,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 140,
+      "protein": 15.9,
+      "carbs": 7,
+      "fat": 7
+    },
+    "updatedAt": "2026-03-14T08:30:10.914Z"
+  },
+  {
+    "id": "rooftop-breakfast-a-la-carte-veggie-sausage",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Veggie Sausage",
+    "description": "",
+    "price": null,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.915Z"
+  },
+  {
+    "id": "103567",
+    "sourceMenuItemId": "103567",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Veggie Sausage",
+    "description": "Vegan veggie sausage.",
+    "price": 2,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 140,
+      "protein": 15.9,
+      "carbs": 7,
+      "fat": 7
+    },
+    "updatedAt": "2026-03-14T08:30:22.513Z"
+  },
+  {
+    "id": "1567658786",
+    "sourceMenuItemId": "1567658786",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "Carolina BBQ Sauce",
+    "description": "tangy and mustardy Carolina BBQ sauce.",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 71,
+      "protein": 0.1,
+      "carbs": 18.2,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T08:30:10.923Z"
+  },
+  {
+    "id": "the-rooftop-sauces-carolina-bbq-sauce",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "Carolina BBQ Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.923Z"
+  },
+  {
+    "id": "1567659028",
+    "sourceMenuItemId": "1567659028",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "Carolina BBQ Sauce",
+    "description": "tangy and mustardy Carolina BBQ sauce.",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 71,
+      "protein": 0.1,
+      "carbs": 18.2,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T08:30:22.522Z"
+  },
+  {
+    "id": "1567658787",
+    "sourceMenuItemId": "1567658787",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "House BBQ Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 118,
+      "protein": 0,
+      "carbs": 30.2,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.923Z"
+  },
+  {
+    "id": "the-rooftop-sauces-house-bbq-sauce",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "House BBQ Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.923Z"
+  },
+  {
+    "id": "1567659029",
+    "sourceMenuItemId": "1567659029",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Sauces",
+    "name": "House BBQ Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 118,
+      "protein": 0,
+      "carbs": 30.2,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:22.522Z"
+  },
+  {
+    "id": "1567658762",
+    "sourceMenuItemId": "1567658762",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Apple Cobbler French Toast",
+    "description": "French toast topped with apple cinnamon topping and cobbler crumble.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 680,
+      "protein": 16.6,
+      "carbs": 101.9,
+      "fat": 14.9
+    },
+    "updatedAt": "2026-03-14T08:30:10.916Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-apple-cobbler-french-toast",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Apple Cobbler French Toast",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.916Z"
+  },
+  {
+    "id": "1567659004",
+    "sourceMenuItemId": "1567659004",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Apple Cobbler French Toast",
+    "description": "French toast topped with apple cinnamon topping and cobbler crumble.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 680,
+      "protein": 16.6,
+      "carbs": 101.9,
+      "fat": 14.9
+    },
+    "updatedAt": "2026-03-14T08:30:22.515Z"
+  },
+  {
+    "id": "1567658763",
+    "sourceMenuItemId": "1567658763",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Chocolate Chip Pancakes",
+    "description": "Home made choco chip pancakes served with chocolate sauce and whipped cream.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 639,
+      "protein": 9.6,
+      "carbs": 90.5,
+      "fat": 27.2
+    },
+    "updatedAt": "2026-03-14T08:30:10.916Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-chocolate-chip-pancakes",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Chocolate Chip Pancakes",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.916Z"
+  },
+  {
+    "id": "1567659005",
+    "sourceMenuItemId": "1567659005",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Chocolate Chip Pancakes",
+    "description": "Home made choco chip pancakes served with chocolate sauce and whipped cream.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 639,
+      "protein": 9.6,
+      "carbs": 90.5,
+      "fat": 27.2
+    },
+    "updatedAt": "2026-03-14T08:30:22.516Z"
+  },
+  {
+    "id": "1567658764",
+    "sourceMenuItemId": "1567658764",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Hot Honey Chicken Sandwich",
+    "description": "Brioche bun with fried chicken fritters, a fried egg, spicy mayo and hot honey",
+    "price": 9.25,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 1102,
+      "protein": 35.9,
+      "carbs": 87.7,
+      "fat": 64.9
+    },
+    "updatedAt": "2026-03-14T08:30:10.917Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-hot-honey-chicken-sandwich",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Hot Honey Chicken Sandwich",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.917Z"
+  },
+  {
+    "id": "1567659006",
+    "sourceMenuItemId": "1567659006",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Hot Honey Chicken Sandwich",
+    "description": "Brioche bun with fried chicken fritters, a fried egg, spicy mayo and hot honey",
+    "price": 9.25,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 1102,
+      "protein": 35.9,
+      "carbs": 87.7,
+      "fat": 64.9
+    },
+    "updatedAt": "2026-03-14T08:30:22.517Z"
+  },
+  {
+    "id": "1567658765",
+    "sourceMenuItemId": "1567658765",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Loaded Breakfast Sandwich",
+    "description": "Texas toast with pork sausage, bacon, American cheese, fried egg and hot honey",
+    "price": 9.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 950,
+      "protein": 49.5,
+      "carbs": 77.7,
+      "fat": 49.6
+    },
+    "updatedAt": "2026-03-14T08:30:10.918Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-loaded-breakfast-sandwich",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Loaded Breakfast Sandwich",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.918Z"
+  },
+  {
+    "id": "1567659007",
+    "sourceMenuItemId": "1567659007",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Loaded Breakfast Sandwich",
+    "description": "Texas toast with pork sausage, bacon, American cheese, fried egg and hot honey",
+    "price": 9.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 950,
+      "protein": 49.5,
+      "carbs": 77.7,
+      "fat": 49.6
+    },
+    "updatedAt": "2026-03-14T08:30:22.518Z"
+  },
+  {
+    "id": "1567658766",
+    "sourceMenuItemId": "1567658766",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Mosaic Brunch",
+    "description": "Your choice of pancakes and meat served with scrambled eggs",
+    "price": 10,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 679,
+      "protein": 24.5,
+      "carbs": 56.5,
+      "fat": 38.5
+    },
+    "updatedAt": "2026-03-14T08:30:10.919Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-mosaic-brunch",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Mosaic Brunch",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.919Z"
+  },
+  {
+    "id": "1567659008",
+    "sourceMenuItemId": "1567659008",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Mosaic Brunch",
+    "description": "Your choice of pancakes and meat served with scrambled eggs",
+    "price": 10,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 679,
+      "protein": 24.5,
+      "carbs": 56.5,
+      "fat": 38.5
+    },
+    "updatedAt": "2026-03-14T08:30:22.519Z"
+  },
+  {
+    "id": "1567658767",
+    "sourceMenuItemId": "1567658767",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pork Belly Hash and Eggs",
+    "description": "Crispy pork belly and smoked brisket hash, mixed vegetables topped with a fried egg",
+    "price": 8,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "egg"
+    ],
+    "macros": {
+      "calories": 446,
+      "protein": 17.4,
+      "carbs": 33.4,
+      "fat": 26.2
+    },
+    "updatedAt": "2026-03-14T08:30:10.919Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-pork-belly-hash-and-eggs",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pork Belly Hash and Eggs",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.919Z"
+  },
+  {
+    "id": "1567659009",
+    "sourceMenuItemId": "1567659009",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pork Belly Hash and Eggs",
+    "description": "Crispy pork belly and smoked brisket hash, mixed vegetables topped with a fried egg",
+    "price": 8,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "egg"
+    ],
+    "macros": {
+      "calories": 446,
+      "protein": 17.4,
+      "carbs": 33.4,
+      "fat": 26.2
+    },
+    "updatedAt": "2026-03-14T08:30:22.519Z"
+  },
+  {
+    "id": "1567658768",
+    "sourceMenuItemId": "1567658768",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pulled Pork Hashbrown Benedict",
+    "description": "Hash browns topped with pulled pork, poached eggs, green hollandaise saice and corn salsa",
+    "price": 13,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 970,
+      "protein": 53.5,
+      "carbs": 32.5,
+      "fat": 70.3
+    },
+    "updatedAt": "2026-03-14T08:30:10.920Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-pulled-pork-hashbrown-benedict",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pulled Pork Hashbrown Benedict",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.920Z"
+  },
+  {
+    "id": "1567659010",
+    "sourceMenuItemId": "1567659010",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pulled Pork Hashbrown Benedict",
+    "description": "Hash browns topped with pulled pork, poached eggs, green hollandaise saice and corn salsa",
+    "price": 13,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 970,
+      "protein": 53.5,
+      "carbs": 32.5,
+      "fat": 70.3
+    },
+    "updatedAt": "2026-03-14T08:30:22.520Z"
+  },
+  {
+    "id": "1567658769",
+    "sourceMenuItemId": "1567658769",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brisket Nachos",
+    "description": "Tortilla chips topped with BBQ brisket chili, velveeta nacho cheese sauce, corn salsa, sliced jalapenos and serrano cilantro creme garnished with chopped cilantro",
+    "price": 8.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1098,
+      "protein": 20.4,
+      "carbs": 99.6,
+      "fat": 71.1
+    },
+    "updatedAt": "2026-03-14T08:30:10.921Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-rooftop-brisket-nachos",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brisket Nachos",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.921Z"
+  },
+  {
+    "id": "1567659011",
+    "sourceMenuItemId": "1567659011",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brisket Nachos",
+    "description": "Tortilla chips topped with BBQ brisket chili, velveeta nacho cheese sauce, corn salsa, sliced jalapenos and serrano cilantro creme garnished with chopped cilantro",
+    "price": 8.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1098,
+      "protein": 20.4,
+      "carbs": 99.6,
+      "fat": 71.1
+    },
+    "updatedAt": "2026-03-14T08:30:22.520Z"
+  },
+  {
+    "id": "1567658770",
+    "sourceMenuItemId": "1567658770",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brunch Burger",
+    "description": "Brioche bun with a beef patty, hash brown triangles, a fried egg, tomato jam and BBQ mayo",
+    "price": 14,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1103,
+      "protein": 45.7,
+      "carbs": 76.8,
+      "fat": 68.9
+    },
+    "updatedAt": "2026-03-14T08:30:10.921Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-rooftop-brunch-burger",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brunch Burger",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.922Z"
+  },
+  {
+    "id": "1567659012",
+    "sourceMenuItemId": "1567659012",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brunch Burger",
+    "description": "Brioche bun with a beef patty, hash brown triangles, a fried egg, tomato jam and BBQ mayo",
+    "price": 14,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1103,
+      "protein": 45.7,
+      "carbs": 76.8,
+      "fat": 68.9
+    },
+    "updatedAt": "2026-03-14T08:30:22.521Z"
+  },
+  {
+    "id": "1567658771",
+    "sourceMenuItemId": "1567658771",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Root Vegetable Hash & Egg",
+    "description": "Hash of potatoes, yams, butternut squash, parsnips, onions, chard, and fresno chiles topped with a fried egg and green onion",
+    "price": 5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 198,
+      "protein": 8.5,
+      "carbs": 25.5,
+      "fat": 7.4
+    },
+    "updatedAt": "2026-03-14T08:30:10.922Z"
+  },
+  {
+    "id": "the-rooftop-breakfast-specials-root-vegetable-hash-egg",
+    "sourceMenuItemId": null,
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Root Vegetable Hash & Egg",
+    "description": "",
+    "price": null,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T08:30:10.922Z"
+  },
+  {
+    "id": "1567659013",
+    "sourceMenuItemId": "1567659013",
+    "diningHallSlug": "rooftop",
+    "parentHall": "Rooftop",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Root Vegetable Hash & Egg",
+    "description": "Hash of potatoes, yams, butternut squash, parsnips, onions, chard, and fresno chiles topped with a fried egg and green onion",
+    "price": 5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 198,
+      "protein": 8.5,
+      "carbs": 25.5,
+      "fat": 7.4
+    },
+    "updatedAt": "2026-03-14T08:30:22.521Z"
+  }
+]

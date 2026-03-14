@@ -1,6 +1,5 @@
 import { ObjectId } from "mongodb";
 import type { YogaContext } from '../types/yogaContext'
-import { authResolvers } from "./auth";
 import { COLLECTIONS } from "../db/collections";
 
 // export const queryResolvers = {
@@ -163,7 +162,5 @@ export const queryResolvers = {
                 .sort({ createdAt: -1 }) // Show newest first
                 .toArray();
         },
-
-        ...authResolvers.Query,
     },
 };

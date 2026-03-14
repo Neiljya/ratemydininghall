@@ -94,3 +94,9 @@ export const DELETE_MENU_ITEM = `
     deleteMenuItem(id: $id)
   }
 `;
+
+export const DELETE_ALL_MENU_ITEMS_BY_HALL = `
+  mutation DeleteAllMenuItemsByHall($diningHallSlug: String!) {
+    deleteAllMenuItemsByHall(diningHallSlug: $diningHallSlug)
+  }
+`;

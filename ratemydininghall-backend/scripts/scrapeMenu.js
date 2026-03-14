@@ -4,263 +4,339 @@ const fs = require('fs');
 const path = require('path');
 
 const TAG_MAP = {
-    "Vegetarian": "vegetarian",
-    "Vegan": "vegan",
-    "Halal": "halal",
-    "Contains Peanuts": "peanut",
-    "Contains Gluten": "gluten",
-    "Contains Dairy": "dairy",
-    "Contains Soy": "soy",
-    "Contains Eggs": "egg",
-    "Contains Tree Nuts": "tree_nut",
-    "Contains Fish": "fish",
-    "Contains Shellfish": "shellfish",
-    "Contains Wheat": "wheat",
-    "Contains Sesame": "sesame",
-    "Contains Meat": "meat"
+  "Vegetarian": "vegetarian",
+  "Vegan": "vegan",
+  "Halal": "halal",
+  "Contains Peanuts": "peanut",
+  "Contains Gluten": "gluten",
+  "Contains Dairy": "dairy",
+  "Contains Soy": "soy",
+  "Contains Eggs": "egg",
+  "Contains Tree Nuts": "tree_nut",
+  "Contains Fish": "fish",
+  "Contains Shellfish": "shellfish",
+  "Contains Wheat": "wheat",
+  "Contains Sesame": "sesame",
+  "Contains Meat": "meat"
 };
 
-const VENUES = [
-    {
-        name: '64 Degrees',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=64&subLocNum=00&locDetID=18&dayNum=0'
-    },
-    {
-        name: 'Pines',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=01&subLocNum=00&locDetID=01&dayNum=0'
-    },
-    {
-        name: 'OceanView',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=05&subLocNum=00&locDetID=05&dayNum=0'
-    },
-    {
-        name: 'Canyon Vista',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=24&subLocNum=00&locDetID=24&dayNum=0'
-    },
-    {
-        name: 'Foodworx',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=11&subLocNum=00&locDetID=11&dayNum=0'
-    },
-    {
-        name: 'The Bistro',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=27&subLocNum=00&locDetID=27&dayNum=0'
-    },
-    {
-        name: 'Cafe Ventanas',
-        url: 'https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=18&subLocNum=00&locDetID=18&dayNum=0'
-    }
-];
-
 const BASE_URL = 'https://hdh-web.ucsd.edu';
+const DAY_RANGE = [0, 1, 2, 3, 4, 5, 6];
+
+function buildRooftopUrl(dayNum) {
+  return `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`;
+}
 
 function createSlug(text) {
-    return text
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\-\-+/g, '-');
+  return String(text || '')
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-');
+}
+
+function normalizeText(text) {
+  return String(text || '').replace(/\s+/g, ' ').trim();
 }
 
 function parseMacroValue(text) {
-    if (!text) return 0;
-    const match = text.match(/(\d+(\.\d+)?)/);
-    return match ? parseFloat(match[0]) : 0;
+  if (!text) return 0;
+  const match = String(text).match(/(\d+(\.\d+)?)/);
+  return match ? parseFloat(match[0]) : 0;
 }
 
-function determineCategory(stationName) {
-    if (!stationName) return "Entree";
-
-    const cleaned = stationName.replace(/\s+/g, ' ').trim();
-    const cleanName = cleaned.replace(/Menu$/i, '').trim();
-
-    const parts = cleanName.split(' ');
-
-    if (parts.length > 0) {
-        let lastWord = parts[parts.length - 1];
-
-        if (lastWord.toLowerCase() === 'special') return "Entree";
-
-        if (['grill', 'wok', 'salad', 'deli'].includes(lastWord.toLowerCase())) {
-        }
-
-        return lastWord; // Returns "Plates", "Sides", "Soups", "Bowls", etc.
-    }
-
-    return "Entree";
+function normalizePrice(text) {
+  const cleaned = normalizeText(text);
+  if (!cleaned || /call for price/i.test(cleaned)) return null;
+  const n = parseFloat(cleaned.replace('$', ''));
+  return Number.isFinite(n) ? n : null;
 }
 
-// 3. SCRAPER: Fetches Macros AND Tags from Detail Page
+function dedupeArray(arr) {
+  return Array.from(new Set((arr || []).filter(Boolean)));
+}
+
+function determineRooftopCategory(stationName) {
+  const normalized = normalizeText(stationName).toLowerCase();
+
+  const stationCategoryMap = {
+    'rooftop desserts': 'Desserts',
+    'the rooftop desserts': 'Desserts',
+    'rooftop beverages': 'Beverages',
+    'the rooftop beverages': 'Beverages',
+    'rooftop cold sides': 'Cold Sides',
+    'the rooftop cold sides': 'Cold Sides',
+    'rooftop hot sides': 'Hot Sides',
+    'the rooftop hot sides': 'Hot Sides',
+    'rooftop loaded': 'Loaded',
+    'the rooftop loaded': 'Loaded',
+    'rooftop sandwiches': 'Sandwiches',
+    'the rooftop sandwiches': 'Sandwiches',
+    'rooftop sauces': 'Sauces',
+    'the rooftop sauces': 'Sauces'
+  };
+
+  return stationCategoryMap[normalized] || normalizeText(stationName) || 'Entree';
+}
+
+function getUniqueKey(item) {
+  return item.sourceMenuItemId || createSlug(`${item.parentHall}-${item.station}-${item.name}`);
+}
+
+function extractInlineTagsFromRow($, $row) {
+  const tags = [];
+
+  $row.find('img[alt], img[title]').each((_, el) => {
+    const raw =
+      normalizeText($(el).attr('alt')) ||
+      normalizeText($(el).attr('title'));
+
+    const cleaned = raw
+      .replace(/^Image:\s*/i, '')
+      .replace(/^Legend:\s*/i, '')
+      .replace(/\s+Icon$/i, '')
+      .trim();
+
+    if (TAG_MAP[cleaned]) tags.push(TAG_MAP[cleaned]);
+  });
+
+  $row.find('span').each((_, el) => {
+    const txt = normalizeText($(el).text());
+    if (TAG_MAP[txt]) tags.push(TAG_MAP[txt]);
+  });
+
+  return dedupeArray(tags);
+}
+
 async function scrapeItemDetails(detailUrl) {
-    try {
-        const { data } = await axios.get(detailUrl);
-        const $ = cheerio.load(data);
+  try {
+    const { data } = await axios.get(detailUrl);
+    const $ = cheerio.load(data);
 
-        let macros = { protein: 0, carbs: 0, fat: 0 };
-        let tags = [];
+    const macros = { protein: 0, carbs: 0, fat: 0 };
+    const tags = [];
 
-        // --- PART A: SCRAPE MACROS ---
-        $('td').each((_, el) => {
-            const text = $(el).text().replace(/\s+/g, ' ').trim();
-            if (text.match(/^Total Fat/i)) {
-                macros.fat = parseMacroValue(text);
-            }
-            else if (text.match(/^Tot\.? Carb\.?/i) || text.match(/^Total Carbohydrate/i)) {
-                macros.carbs = parseMacroValue(text);
-            }
-            else if (text.match(/^Protein/i)) {
-                macros.protein = parseMacroValue(text);
-            }
-        });
+    $('td').each((_, el) => {
+      const text = normalizeText($(el).text());
 
-        // --- PART B: SCRAPE TAGS (ALLERGENS) ---
-        $('#allergens .card-footer span').each((_, el) => {
-            const rawTagText = $(el).text().trim();
+      if (/^Total Fat/i.test(text)) {
+        macros.fat = parseMacroValue(text);
+      } else if (/^Tot\.? Carb\.?/i.test(text) || /^Total Carbohydrate/i.test(text)) {
+        macros.carbs = parseMacroValue(text);
+      } else if (/^Protein/i.test(text)) {
+        macros.protein = parseMacroValue(text);
+      }
+    });
 
-            // Check mapping (Using the specific TAG_MAP above)
-            if (TAG_MAP[rawTagText]) {
-                tags.push(TAG_MAP[rawTagText]);
-            }
-        });
+    $('#allergens .card-footer span, #allergens span, .card-footer span').each((_, el) => {
+      const rawTagText = normalizeText($(el).text());
+      if (TAG_MAP[rawTagText]) {
+        tags.push(TAG_MAP[rawTagText]);
+      }
+    });
 
-        return { macros, tags };
-
-    } catch (error) {
-        if (detailUrl) {
-            console.warn(`    Could not fetch details from ${detailUrl}: ${error.message}`);
-        }
-        return {
-            macros: { protein: 0, carbs: 0, fat: 0 },
-            tags: []
-        };
-    }
+    return {
+      macros,
+      tags: dedupeArray(tags),
+    };
+  } catch (error) {
+    console.warn(`Could not fetch details from ${detailUrl}: ${error.message}`);
+    return {
+      macros: { protein: 0, carbs: 0, fat: 0 },
+      tags: [],
+    };
+  }
 }
 
 async function processInBatches(items, batchSize, taskFn) {
-    let results = [];
-    for (let i = 0; i < items.length; i += batchSize) {
-        const batch = items.slice(i, i + batchSize);
-        const batchResults = await Promise.all(batch.map(taskFn));
-        results = [...results, ...batchResults];
-    }
-    return results;
+  const results = [];
+  for (let i = 0; i < items.length; i += batchSize) {
+    const batch = items.slice(i, i + batchSize);
+    const batchResults = await Promise.all(batch.map(taskFn));
+    results.push(...batchResults);
+  }
+  return results;
 }
 
-async function scrapeVenue(venue) {
-    try {
-        console.log(`Fetching menu for ${venue.name}...`);
-        const { data } = await axios.get(venue.url);
-        const $ = cheerio.load(data);
-        const initialItems = [];
+function findRooftopSection($) {
+  let rooftopSection = null;
 
-        $('.menu-category-section').each((_, stationEl) => {
-            const $station = $(stationEl);
-
-            // clean the text for the station name
-            const stationName = $station.find('.accordion-header h3').text().replace(/\s+/g, ' ').trim();
-            const stationSlug = createSlug(stationName);
-
-            // 4. DETERMINE CATEGORY (e.g. "Vibe Sides" -> "Sides")
-            const category = determineCategory(stationName);
-
-            $station.find('.station-list .d-none.d-lg-block').each((_, rowEl) => {
-                const $row = $(rowEl);
-                const $nameLink = $row.find('a.sublocsitem');
-                const name = $nameLink.text().trim();
-                const href = $nameLink.attr('href');
-
-                let menuItemId = null;
-                let detailUrl = null;
-
-                if (href) {
-                    const idMatch = href.match(/id=(\d+)/);
-                    if (idMatch) menuItemId = idMatch[1];
-
-                    if (href.startsWith('http')) {
-                        detailUrl = href;
-                    } else {
-                        detailUrl = BASE_URL + (href.startsWith('/') ? '' : '/') + href;
-                    }
-                }
-
-                const description = $row.find('.proI span').text().trim();
-                const calsText = $row.find('.cals').text().trim();
-                const calories = parseInt(calsText) || 0;
-
-                const priceText = $row.find('.item-price').text().trim();
-                const price = priceText ? parseFloat(priceText.replace('$', '')) : null;
-
-                if (name) {
-                    initialItems.push({
-                        basicInfo: {
-                            id: menuItemId,
-                            diningHallSlug: stationSlug,
-                            parentHall: venue.name,
-                            name: name,
-                            description: description,
-                            price: price,
-                            baseCalories: calories,
-                            category: category,
-                            imageUrl: null,
-                            updatedAt: new Date().toISOString()
-                        },
-                        detailUrl: detailUrl
-                    });
-                }
-            });
-        });
-
-        console.log(`    Found ${initialItems.length} items. Fetching macros & tags...`);
-
-        // Second Pass: Fetch Macros AND Tags
-        const enrichedItems = await processInBatches(initialItems, 10, async (itemWrapper) => {
-            const { basicInfo, detailUrl } = itemWrapper;
-
-            let details = {
-                macros: { protein: 0, carbs: 0, fat: 0 },
-                tags: []
-            };
-
-            if (detailUrl) {
-                details = await scrapeItemDetails(detailUrl);
-            }
-
-            return {
-                ...basicInfo,
-                tags: details.tags,
-                macros: {
-                    calories: basicInfo.baseCalories,
-                    protein: details.macros.protein,
-                    carbs: details.macros.carbs,
-                    fat: details.macros.fat
-                }
-            };
-        });
-
-        return enrichedItems;
-
-    } catch (error) {
-        console.error(`    Error scraping ${venue.name}: ${error.message}`);
-        return [];
+  $('.menu-category-section').each((_, el) => {
+    const heading = normalizeText($(el).find('h3').first().text());
+    if (heading.toLowerCase() === 'rooftop') {
+      rooftopSection = el;
+      return false;
     }
+  });
+
+  return rooftopSection;
+}
+
+function collectRooftopItemsFromSection($, rooftopSectionEl) {
+  const initialItems = [];
+  const $section = $(rooftopSectionEl);
+
+  let currentStation = '';
+
+  // Walk descendants in DOM order so each item inherits the latest #### header
+  $section.find('h4, a.sublocsitem').each((_, el) => {
+    const $el = $(el);
+
+    if ($el.is('h4')) {
+      currentStation = normalizeText($el.text());
+      return;
+    }
+
+    if ($el.is('a.sublocsitem')) {
+      const name = normalizeText($el.text());
+      if (!name) return;
+
+      const rowEl = $el.closest('tr, li, .row, .media, .d-none.d-lg-block');
+      const $row = rowEl.length ? rowEl : $el.parent();
+
+      const href = $el.attr('href');
+      let menuItemId = null;
+      let detailUrl = null;
+
+      if (href) {
+        const idMatch = href.match(/id=(\d+)/);
+        if (idMatch) menuItemId = idMatch[1];
+
+        detailUrl = href.startsWith('http')
+          ? href
+          : `${BASE_URL}${href.startsWith('/') ? '' : '/'}${href}`;
+      }
+
+      const description =
+        normalizeText($row.find('.proI span').first().text()) ||
+        normalizeText($row.find('.description, .desc').first().text()) ||
+        '';
+
+      const calsText =
+        normalizeText($row.find('.cals').first().text()) ||
+        normalizeText($row.text().match(/\b\d+\s*Cals\b/i)?.[0] || '');
+
+      const calories = parseInt(calsText, 10) || 0;
+
+      const priceText =
+        normalizeText($row.find('.item-price').first().text()) ||
+        normalizeText($row.text().match(/\$\s*\d+(\.\d+)?/i)?.[0] || '') ||
+        (/call for price/i.test($row.text()) ? 'Call for Price' : '');
+
+      const price = normalizePrice(priceText);
+      const station = currentStation || 'Rooftop Menu';
+      const category = determineRooftopCategory(station);
+      const inlineTags = extractInlineTagsFromRow($, $row);
+
+      initialItems.push({
+        basicInfo: {
+          id: menuItemId || createSlug(`${station}-${name}`),
+          sourceMenuItemId: menuItemId,
+          diningHallSlug: 'rooftop',
+          parentHall: 'Rooftop',
+          station,
+          name,
+          description,
+          price,
+          baseCalories: calories,
+          category,
+          imageUrl: null,
+          updatedAt: new Date().toISOString(),
+        },
+        inlineTags,
+        detailUrl,
+      });
+    }
+  });
+
+  return initialItems;
+}
+
+async function scrapeRooftopOnly(url) {
+  console.log(`Fetching: ${url}`);
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+
+  const rooftopSection = findRooftopSection($);
+  if (!rooftopSection) {
+    console.log('  No Rooftop section found on this page.');
+    return [];
+  }
+
+  const initialItems = collectRooftopItemsFromSection($, rooftopSection);
+
+  console.log(`  Found ${initialItems.length} Rooftop items. Fetching details...`);
+
+  const enrichedItems = await processInBatches(initialItems, 10, async (itemWrapper) => {
+    const { basicInfo, detailUrl, inlineTags } = itemWrapper;
+
+    let details = {
+      macros: { protein: 0, carbs: 0, fat: 0 },
+      tags: [],
+    };
+
+    if (detailUrl) {
+      details = await scrapeItemDetails(detailUrl);
+    }
+
+    return {
+      id: basicInfo.id,
+      sourceMenuItemId: basicInfo.sourceMenuItemId,
+      diningHallSlug: basicInfo.diningHallSlug,
+      parentHall: basicInfo.parentHall,
+      station: basicInfo.station,
+      name: basicInfo.name,
+      description: basicInfo.description,
+      price: basicInfo.price,
+      category: basicInfo.category,
+      imageUrl: basicInfo.imageUrl,
+      tags: dedupeArray([...(inlineTags || []), ...(details.tags || [])]),
+      macros: {
+        calories: basicInfo.baseCalories,
+        protein: details.macros.protein,
+        carbs: details.macros.carbs,
+        fat: details.macros.fat,
+      },
+      updatedAt: basicInfo.updatedAt,
+    };
+  });
+
+  return enrichedItems;
 }
 
 async function run() {
-    let allMenuItems = [];
+  try {
+    const uniqueItems = new Map();
 
-    for (const venue of VENUES) {
-        const venueItems = await scrapeVenue(venue);
-        allMenuItems = [...allMenuItems, ...venueItems];
+    for (const dayNum of DAY_RANGE) {
+      console.log(`\nScraping dayNum=${dayNum}...`);
+      const items = await scrapeRooftopOnly(buildRooftopUrl(dayNum));
+
+      for (const item of items) {
+        const uniqueKey = getUniqueKey(item);
+        if (!uniqueItems.has(uniqueKey)) {
+          uniqueItems.set(uniqueKey, item);
+        }
+      }
     }
 
-    const outputPath = path.join(__dirname, 'menu_items.json');
-    fs.writeFileSync(outputPath, JSON.stringify(allMenuItems, null, 2));
+    const finalItems = Array.from(uniqueItems.values()).sort((a, b) => {
+      const catCmp = String(a.category || '').localeCompare(String(b.category || ''));
+      if (catCmp !== 0) return catCmp;
+      return String(a.name || '').localeCompare(String(b.name || ''));
+    });
+
+    const outputPath = path.join(__dirname, 'rooftop_menu_items.json');
+    fs.writeFileSync(outputPath, JSON.stringify(finalItems, null, 2));
 
     console.log('\n-----------------------------------');
-    console.log(`Scraping Done!`);
-    console.log(`Total Items: ${allMenuItems.length}`);
-    console.log(`Saved at: ${outputPath}`);
+    console.log('Rooftop scraping done');
+    console.log(`Unique Rooftop items: ${finalItems.length}`);
+    console.log(`Saved JSON to: ${outputPath}`);
+  } catch (error) {
+    console.error('Scrape failed:', error.message);
+  }
 }
 
 run();

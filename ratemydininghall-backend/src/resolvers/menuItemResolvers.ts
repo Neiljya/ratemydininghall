@@ -159,6 +159,12 @@ export const menuItemResolvers = {
             return res.deletedCount === 1;  
         },
 
+        async deleteAllMenuItemsByHall(_p: unknown, { diningHallSlug }: { diningHallSlug: string }, { db, user }: YogaContext) {
+            if (!user || user.role !== 'admin') throw new Error('Unauthorized');
+            const res = await db.collection(COLLECTIONS.MENU_ITEMS).deleteMany({ diningHallSlug });
+            return res.deletedCount > 0;
+        },
+
         async updateMenuItem(
         _p: unknown,
         {

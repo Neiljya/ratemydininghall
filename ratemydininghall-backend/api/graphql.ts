@@ -12,16 +12,12 @@ import { menuItemType } from '../src/schema/menuItemType';
 import { queryResolvers } from '../src/resolvers/queries';
 import { mutationType } from '../src/schema/mutationType';
 import { mutationResolvers } from '../src/resolvers/mutations';
-import { authResolvers } from '../src/resolvers/auth';
 import { menuItemResolvers } from '../src/resolvers/menuItemResolvers';
-
-import { verifyAccessToken } from '../src/auth/jwt';
-import { parse } from 'cookie';
 import { authType } from '../src/schema/authType';
 
 // Combine all type definitions into a single schema
 const typeDefs = [diningHallType, reviewType, queryType, authType, mutationType, menuItemType];
-const resolvers = [queryResolvers, mutationResolvers, authResolvers, menuItemResolvers];
+const resolvers = [queryResolvers, mutationResolvers, menuItemResolvers];
 const schema = createSchema<YogaContext>({ typeDefs, resolvers })
 
 /**

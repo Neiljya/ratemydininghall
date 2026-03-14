@@ -61,5 +61,6 @@ export const menuItemType = `
         createMenuItem(input: CreateMenuItemInput!): MenuItem!
         updateMenuItem(id: ID!, input: UpdateMenuItemInput!): MenuItem!
         deleteMenuItem(id: ID!): Boolean!
+        deleteAllMenuItemsByHall(diningHallSlug: String!): Boolean!
     }
 `;

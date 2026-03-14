@@ -22,6 +22,7 @@ import {
   createMenuItemsBatch,
   updateMenuItem,
   deleteMenuItem,
+  deleteAllMenuItemsByHall,
   type CreateMenuItemInput,
 } from "@graphQL/mutations/adminRequests";
 
@@ -70,6 +71,8 @@ const TagSelector = ({
   const removeTag = (id: string) => {
     onChange(selected.filter((t) => t !== id));
   };
+
+
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
@@ -158,18 +161,20 @@ export default function AdminContentManager() {
       diningHallSlug: slug,
       name: info.name?.trim(),
       description: info.description || null,
-      price: typeof info.price === 'number' ? info.price : null,
+      price: typeof info.price === "number" ? info.price : null,
       imageUrl: info.imageUrl || null,
-      category: 'Entree',
+      category: typeof info.category === "string" && info.category.trim()
+        ? info.category.trim()
+        : null,
       tags: Array.isArray(info.tags) ? info.tags : [],
       macros: {
-        calories: typeof macros.calories === 'number' ? Math.round(macros.calories) : null,
-        protein: typeof macros.protein === 'number' ? Math.round(macros.protein) : null,
-        carbs: typeof macros.carbs === 'number' ? Math.round(macros.carbs) : null,
-        fat: typeof macros.fat === 'number' ? Math.round(macros.fat) : null
-      }
-    }
-  }
+        calories: typeof macros.calories === "number" ? Math.round(macros.calories) : null,
+        protein: typeof macros.protein === "number" ? Math.round(macros.protein) : null,
+        carbs: typeof macros.carbs === "number" ? Math.round(macros.carbs) : null,
+        fat: typeof macros.fat === "number" ? Math.round(macros.fat) : null,
+      },
+    };
+  };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -243,6 +248,35 @@ export default function AdminContentManager() {
 
     reader.readAsText(file);
   }
+
+    const removeAllMenuItems = async () => {
+    const slug = itemsHallSlug.trim();
+
+    if (!slug) {
+      showNotif("error", "Select a dining hall first.");
+      return;
+    }
+
+    const hallName = halls.find((h: any) => h.slug === slug)?.name || slug;
+    const ok = window.confirm(
+      `Delete ALL menu items for "${hallName}"?\n\nThis cannot be undone.`
+    );
+
+    if (!ok) return;
+
+    setSaving(true);
+    try {
+      const token = await getToken();
+      await deleteAllMenuItemsByHall(slug, token);
+      showNotif("success", `Deleted all menu items for ${hallName}.`);
+      setEditItemId("");
+      dispatch(fetchMenuItemsByHall(slug));
+    } catch (e: any) {
+      showNotif("error", e?.message ?? "Failed to delete all menu items");
+    } finally {
+      setSaving(false);
+    }
+  };
   // -------------------------
   // ADD HALL
   // -------------------------
@@ -642,7 +676,16 @@ export default function AdminContentManager() {
             <label className={styles.label}>Select Dining Hall</label>
             <CustomSelect options={hallSlugOptions} value={itemsHallSlug} onChange={setItemsHallSlug} placeholder="-- Choose a hall --" />
           </div>
-
+          <div className={styles.actionsRow} style={{ marginTop: "10px" }}>
+            <button
+              className={styles.dangerBtn}
+              type="button"
+              disabled={saving || !itemsHallSlug}
+              onClick={removeAllMenuItems}
+            >
+              {saving ? "Working..." : "Delete All Menu Items"}
+            </button>
+          </div>
           <h4 className={styles.subTitle}>Batch Upload New Items</h4>
           {drafts.map((d, idx) => (
             <div key={idx} className={styles.itemRow}>

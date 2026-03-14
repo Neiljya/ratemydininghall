@@ -8,6 +8,7 @@ import {
   DELETE_DINING_HALL,
   UPDATE_MENU_ITEM,
   DELETE_MENU_ITEM,
+  DELETE_ALL_MENU_ITEMS_BY_HALL,
 } from "./adminMutations";
 
 export type CreateDiningHallInput = {
@@ -85,4 +86,12 @@ export async function updateMenuItem(id: string, input: UpdateMenuItemInput, tok
 // Fixed: Added token as second parameter
 export async function deleteMenuItem(id: string, token?: string | null) {
   return graphQLRequest(DELETE_MENU_ITEM, { id }, token);
+}
+
+export async function deleteAllMenuItemsByHall(diningHallSlug: string, token?: string | null) {
+  return graphQLRequest(
+    DELETE_ALL_MENU_ITEMS_BY_HALL,
+    { diningHallSlug },
+    token
+  );
 }

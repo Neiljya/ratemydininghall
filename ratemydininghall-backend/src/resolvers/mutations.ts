@@ -1,7 +1,5 @@
-import { put, del } from '@vercel/blob';
 import { ObjectId } from 'mongodb';
 import { YogaContext } from '../types/yogaContext';
-import { authResolvers } from './auth';
 import { COLLECTIONS } from '../db/collections';
 import { ReviewDataService } from '../services/data-access/ReviewDataService';
 import { verifyCaptcha } from '../utils/verifyCaptcha';
@@ -356,8 +354,6 @@ export const mutationResolvers = {
             return { ok: true, createdIds: Object.values(res.insertedIds).map((x) => x.toString()) };
         },
 
-
-        ...authResolvers.Mutation,
     },
 
 
