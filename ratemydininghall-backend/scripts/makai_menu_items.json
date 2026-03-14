@@ -1,0 +1,954 @@
+[
+  {
+    "id": "1567658819",
+    "sourceMenuItemId": "1567658819",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Base",
+    "name": "Brown Rice Shari",
+    "description": "",
+    "price": null,
+    "category": "Base",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 214,
+      "protein": 3.8,
+      "carbs": 40.3,
+      "fat": 1.3
+    },
+    "updatedAt": "2026-03-14T09:00:24.663Z"
+  },
+  {
+    "id": "1567658820",
+    "sourceMenuItemId": "1567658820",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Base",
+    "name": "Mixed Greens Base",
+    "description": "",
+    "price": null,
+    "category": "Base",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 6,
+      "protein": 0.2,
+      "carbs": 1.2,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.665Z"
+  },
+  {
+    "id": "1567658821",
+    "sourceMenuItemId": "1567658821",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Base",
+    "name": "Steamed Rice",
+    "description": "",
+    "price": null,
+    "category": "Base",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 283,
+      "protein": 0.9,
+      "carbs": 10.9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.666Z"
+  },
+  {
+    "id": "1567658814",
+    "sourceMenuItemId": "1567658814",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Bowls",
+    "name": "Cali Poke Rice Bowl",
+    "description": "Salmon, krab, cucumber, seaweed, carrots, edamame, avocado, lava sauce and spicy mayo",
+    "price": 11.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 832,
+      "protein": 21.9,
+      "carbs": 97.3,
+      "fat": 36.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.666Z"
+  },
+  {
+    "id": "1567658815",
+    "sourceMenuItemId": "1567658815",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Bowls",
+    "name": "Chimichurri Octopus Rice Bowl",
+    "description": "Steamed rice with chimichurri octopus, radish, carrots, green onions, kimchi, cucumber, sliced jalapenos and spicy mayo",
+    "price": 16,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "shellfish"
+    ],
+    "macros": {
+      "calories": 885,
+      "protein": 25.3,
+      "carbs": 76.3,
+      "fat": 48.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.667Z"
+  },
+  {
+    "id": "1567658816",
+    "sourceMenuItemId": "1567658816",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Bowls",
+    "name": "Lava Poke Rice Bowl",
+    "description": "Ahi tuna, spicy tuna, spicy krab with cucumber, pickled ginger, radish, edamame, jalapeno, spicy lava sauce and cilantro",
+    "price": 11.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 631,
+      "protein": 32.2,
+      "carbs": 100.9,
+      "fat": 10
+    },
+    "updatedAt": "2026-03-14T09:00:24.668Z"
+  },
+  {
+    "id": "1567658817",
+    "sourceMenuItemId": "1567658817",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Bowls",
+    "name": "Lilo Poke Rice Bowl",
+    "description": "Tofu, cucumbers, seaweed salad, edamame, avocado, red cabbage, carrots and cilantro with ponzu sauce",
+    "price": 11.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 540,
+      "protein": 18.4,
+      "carbs": 81.7,
+      "fat": 12.5
+    },
+    "updatedAt": "2026-03-14T09:00:24.675Z"
+  },
+  {
+    "id": "1567658818",
+    "sourceMenuItemId": "1567658818",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Bowls",
+    "name": "Makai Poke Rice Bowl",
+    "description": "Ahi tuna, salmon, red cabbage, cucumber, carrot, edamame and seaweed salad with makai house sauce and sesame seeds",
+    "price": 11.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 670,
+      "protein": 30.5,
+      "carbs": 90.1,
+      "fat": 17.9
+    },
+    "updatedAt": "2026-03-14T09:00:24.676Z"
+  },
+  {
+    "id": "1567658845",
+    "sourceMenuItemId": "1567658845",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Finishers",
+    "name": "Chopped Cilantro",
+    "description": "",
+    "price": null,
+    "category": "Finishers",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 7,
+      "protein": 0.2,
+      "carbs": 0.3,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.676Z"
+  },
+  {
+    "id": "1567658846",
+    "sourceMenuItemId": "1567658846",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Finishers",
+    "name": "Crispy Onion",
+    "description": "",
+    "price": null,
+    "category": "Finishers",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 162,
+      "protein": 0,
+      "carbs": 16.2,
+      "fat": 12.2
+    },
+    "updatedAt": "2026-03-14T09:00:24.677Z"
+  },
+  {
+    "id": "1567658847",
+    "sourceMenuItemId": "1567658847",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Finishers",
+    "name": "Nori Strips",
+    "description": "",
+    "price": null,
+    "category": "Finishers",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 1,
+      "protein": 0,
+      "carbs": 0.1,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.678Z"
+  },
+  {
+    "id": "1567658848",
+    "sourceMenuItemId": "1567658848",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Finishers",
+    "name": "Wonton Strips",
+    "description": "",
+    "price": null,
+    "category": "Finishers",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 74,
+      "protein": 0.3,
+      "carbs": 1.5,
+      "fat": 0.8
+    },
+    "updatedAt": "2026-03-14T09:00:24.678Z"
+  },
+  {
+    "id": "1567658873",
+    "sourceMenuItemId": "1567658873",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Green Bowls",
+    "name": "Cali Greens Bowl",
+    "description": "salmon, krab, cucumber, seaweed, carrots, edamame, avocado, lava sauce and spicy mayo",
+    "price": 11.5,
+    "category": "Green Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 561,
+      "protein": 17.2,
+      "carbs": 37.4,
+      "fat": 36.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.679Z"
+  },
+  {
+    "id": "1567658874",
+    "sourceMenuItemId": "1567658874",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Green Bowls",
+    "name": "Chimichurri Octopus Greens Bowl",
+    "description": "Mixed greens with chimichurri octopus, radish, carrots, green onions, kimchi, cucumber, sliced jalapenos and spicy mayo",
+    "price": 16,
+    "category": "Green Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "shellfish"
+    ],
+    "macros": {
+      "calories": 609,
+      "protein": 20.3,
+      "carbs": 15.2,
+      "fat": 48.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.679Z"
+  },
+  {
+    "id": "1567658875",
+    "sourceMenuItemId": "1567658875",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Green Bowls",
+    "name": "Lava Poke Greens Bowl",
+    "description": "Ahi tuna, spicy tuna, spicy krab with cucumber, pickled ginger, radish, edamame, jalapeno, spicy lava sauce and cilantro",
+    "price": 11.5,
+    "category": "Green Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 360,
+      "protein": 27.5,
+      "carbs": 40.9,
+      "fat": 10
+    },
+    "updatedAt": "2026-03-14T09:00:24.680Z"
+  },
+  {
+    "id": "1567658876",
+    "sourceMenuItemId": "1567658876",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Green Bowls",
+    "name": "Lilo Poke Greens Bowl",
+    "description": "Tofu, cucumbers, seaweed salad, edamame, avocado, red cabbage, carrots and cilantro with ponzu sauce",
+    "price": 11.5,
+    "category": "Green Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 270,
+      "protein": 13.7,
+      "carbs": 21.7,
+      "fat": 12.5
+    },
+    "updatedAt": "2026-03-14T09:00:24.680Z"
+  },
+  {
+    "id": "1567658877",
+    "sourceMenuItemId": "1567658877",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Green Bowls",
+    "name": "Makai Poke Greens Bowl",
+    "description": "Ahi tuna, salmon, red cabbage, cucumber, carrot, edamame and seaweed salad with makai house sauce and sesame seeds",
+    "price": 11.5,
+    "category": "Green Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 400,
+      "protein": 25.8,
+      "carbs": 30.1,
+      "fat": 18
+    },
+    "updatedAt": "2026-03-14T09:00:24.681Z"
+  },
+  {
+    "id": "1567658822",
+    "sourceMenuItemId": "1567658822",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Protein",
+    "name": "Makai Ahi Tuna",
+    "description": "",
+    "price": 5,
+    "category": "Protein",
+    "imageUrl": null,
+    "tags": [
+      "fish"
+    ],
+    "macros": {
+      "calories": 46,
+      "protein": 6.9,
+      "carbs": 0,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.681Z"
+  },
+  {
+    "id": "1567658823",
+    "sourceMenuItemId": "1567658823",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Protein",
+    "name": "Makai Grilled Octopus",
+    "description": "Grilled octopus marinated and brushed with a spicy orange marinade.",
+    "price": 5,
+    "category": "Protein",
+    "imageUrl": null,
+    "tags": [
+      "shellfish"
+    ],
+    "macros": {
+      "calories": 60,
+      "protein": 5.8,
+      "carbs": 1.6,
+      "fat": 3.3
+    },
+    "updatedAt": "2026-03-14T09:00:24.682Z"
+  },
+  {
+    "id": "1567658824",
+    "sourceMenuItemId": "1567658824",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Protein",
+    "name": "Salmon Poke",
+    "description": "",
+    "price": 5,
+    "category": "Protein",
+    "imageUrl": null,
+    "tags": [
+      "fish"
+    ],
+    "macros": {
+      "calories": 59,
+      "protein": 5.8,
+      "carbs": 0,
+      "fat": 3.8
+    },
+    "updatedAt": "2026-03-14T09:00:24.682Z"
+  },
+  {
+    "id": "1567658825",
+    "sourceMenuItemId": "1567658825",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Protein",
+    "name": "Spicy Tuna",
+    "description": "",
+    "price": 3,
+    "category": "Protein",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 46,
+      "protein": 6.5,
+      "carbs": 0.2,
+      "fat": 0.9
+    },
+    "updatedAt": "2026-03-14T09:00:24.683Z"
+  },
+  {
+    "id": "1567658826",
+    "sourceMenuItemId": "1567658826",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Protein",
+    "name": "Tofu Cubes",
+    "description": "Fresh tofu cubes.",
+    "price": 3,
+    "category": "Protein",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 47,
+      "protein": 4.7,
+      "carbs": 1.3,
+      "fat": 2.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.683Z"
+  },
+  {
+    "id": "1567658840",
+    "sourceMenuItemId": "1567658840",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Sauces",
+    "name": "Bang Bang Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 158,
+      "protein": 0,
+      "carbs": 3.3,
+      "fat": 16.5
+    },
+    "updatedAt": "2026-03-14T09:00:24.684Z"
+  },
+  {
+    "id": "1567658841",
+    "sourceMenuItemId": "1567658841",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Sauces",
+    "name": "House Makai Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 67,
+      "protein": 0.5,
+      "carbs": 8.3,
+      "fat": 2.8
+    },
+    "updatedAt": "2026-03-14T09:00:24.685Z"
+  },
+  {
+    "id": "1567658842",
+    "sourceMenuItemId": "1567658842",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Sauces",
+    "name": "Lava Sauce",
+    "description": "Sweet garlic soy sauce with chile.",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 47,
+      "protein": 1.1,
+      "carbs": 10.9,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.686Z"
+  },
+  {
+    "id": "1567658843",
+    "sourceMenuItemId": "1567658843",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Sauces",
+    "name": "Ponzu Sauce",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "soy",
+      "sesame",
+      "vegan"
+    ],
+    "macros": {
+      "calories": 25,
+      "protein": 1,
+      "carbs": 5.5,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.687Z"
+  },
+  {
+    "id": "1567658844",
+    "sourceMenuItemId": "1567658844",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Sauces",
+    "name": "Wasabi Creme",
+    "description": "",
+    "price": null,
+    "category": "Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 142,
+      "protein": 0.4,
+      "carbs": 3.5,
+      "fat": 14.5
+    },
+    "updatedAt": "2026-03-14T09:00:24.687Z"
+  },
+  {
+    "id": "1567658827",
+    "sourceMenuItemId": "1567658827",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Avocado",
+    "description": "",
+    "price": 1.5,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 62,
+      "protein": 0.6,
+      "carbs": 2.3,
+      "fat": 5.7
+    },
+    "updatedAt": "2026-03-14T09:00:24.688Z"
+  },
+  {
+    "id": "1567658828",
+    "sourceMenuItemId": "1567658828",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Edamame",
+    "description": "Edamame, Salad Bar",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 33,
+      "protein": 3.2,
+      "carbs": 2.2,
+      "fat": 1.3
+    },
+    "updatedAt": "2026-03-14T09:00:24.688Z"
+  },
+  {
+    "id": "1567658829",
+    "sourceMenuItemId": "1567658829",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Jalapenos",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 8,
+      "protein": 0.2,
+      "carbs": 1.8,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T09:00:24.689Z"
+  },
+  {
+    "id": "1567658830",
+    "sourceMenuItemId": "1567658830",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Pickled Ginger",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 19,
+      "protein": 0,
+      "carbs": 3.8,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.690Z"
+  },
+  {
+    "id": "1567658831",
+    "sourceMenuItemId": "1567658831",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Pickled Red Onion",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 13,
+      "protein": 0.3,
+      "carbs": 3,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.691Z"
+  },
+  {
+    "id": "1567658832",
+    "sourceMenuItemId": "1567658832",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Radish",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 5,
+      "protein": 0.2,
+      "carbs": 1,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.691Z"
+  },
+  {
+    "id": "1567658833",
+    "sourceMenuItemId": "1567658833",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Seaweed Salad",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 29,
+      "protein": 0.2,
+      "carbs": 4.8,
+      "fat": 1.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.692Z"
+  },
+  {
+    "id": "1567658834",
+    "sourceMenuItemId": "1567658834",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Shredded Carrots",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 14,
+      "protein": 0.3,
+      "carbs": 2.7,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.692Z"
+  },
+  {
+    "id": "1567658835",
+    "sourceMenuItemId": "1567658835",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Sliced Cucumbers",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 3,
+      "protein": 0.1,
+      "carbs": 0.6,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T09:00:24.693Z"
+  },
+  {
+    "id": "1567658836",
+    "sourceMenuItemId": "1567658836",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Sliced Green Onion",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 2,
+      "protein": 0.5,
+      "carbs": 2.1,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T09:00:24.693Z"
+  },
+  {
+    "id": "1567658837",
+    "sourceMenuItemId": "1567658837",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Spicy Krab Mixture",
+    "description": "",
+    "price": 2,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 62,
+      "protein": 1.5,
+      "carbs": 7,
+      "fat": 3.4
+    },
+    "updatedAt": "2026-03-14T09:00:24.694Z"
+  },
+  {
+    "id": "1567658838",
+    "sourceMenuItemId": "1567658838",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Surimi Mix",
+    "description": "",
+    "price": 2,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 60,
+      "protein": 1.5,
+      "carbs": 6.7,
+      "fat": 3.4
+    },
+    "updatedAt": "2026-03-14T09:00:24.695Z"
+  },
+  {
+    "id": "1567658839",
+    "sourceMenuItemId": "1567658839",
+    "diningHallSlug": "makai",
+    "parentHall": "Makai",
+    "station": "Makai Toppings",
+    "name": "Wasabi",
+    "description": "",
+    "price": null,
+    "category": "Toppings",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 36,
+      "protein": 0,
+      "carbs": 4.9,
+      "fat": 1.2
+    },
+    "updatedAt": "2026-03-14T09:00:24.695Z"
+  }
+]

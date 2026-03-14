@@ -23,9 +23,62 @@ const TAG_MAP = {
 const BASE_URL = 'https://hdh-web.ucsd.edu';
 const DAY_RANGE = [0, 1, 2, 3, 4, 5, 6];
 
-function buildRooftopUrl(dayNum) {
-  return `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`;
-}
+/**
+ * CHANGE ONLY THIS BLOCK for a new dining hall
+ */
+const VENUE_CONFIG = {
+  venueName: 'Makai',
+  diningHallSlug: 'makai',
+  outputFileName: 'makai_menu_items.json',
+
+  urlBuilder: (dayNum) =>
+    `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`,
+
+  categoryMap: {
+    'makai base': 'Base',
+    'the makai base': 'Base',
+    'makai bowls': 'Bowls',
+    'the makai bowls': 'Bowls',
+    'makai finishers': 'Finishers',
+    'the makai finishers': 'Finishers',
+    'makai green bowls': 'Green Bowls',
+    'the makai green bowls': 'Green Bowls',
+    'makai protein': 'Protein',
+    'the makai protein': 'Protein',
+    'makai sauces': 'Sauces',
+    'the makai sauces': 'Sauces',
+    'makai toppings': 'Toppings',
+    'the makai toppings': 'Toppings'
+  }
+};
+
+/**
+ * Example swap:
+ *
+ * const VENUE_CONFIG = {
+ *   venueName: 'Rooftop',
+ *   diningHallSlug: 'rooftop',
+ *   outputFileName: 'rooftop_menu_items.json',
+ *   urlBuilder: (dayNum) =>
+ *     `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`,
+ *   categoryMap: {
+ *     'rooftop desserts': 'Desserts',
+ *     'the rooftop desserts': 'Desserts',
+ *     'rooftop beverages': 'Beverages',
+ *     'the rooftop beverages': 'Beverages',
+ *     'rooftop cold sides': 'Cold Sides',
+ *     'the rooftop cold sides': 'Cold Sides',
+ *     'rooftop hot sides': 'Hot Sides',
+ *     'the rooftop hot sides': 'Hot Sides',
+ *     'rooftop loaded': 'Loaded',
+ *     'the rooftop loaded': 'Loaded',
+ *     'rooftop sandwiches': 'Sandwiches',
+ *     'the rooftop sandwiches': 'Sandwiches',
+ *     'rooftop sauces': 'Sauces',
+ *     'the rooftop sauces': 'Sauces'
+ *   }
+ * };
+ */
 
 function createSlug(text) {
   return String(text || '')
@@ -38,6 +91,14 @@ function createSlug(text) {
 
 function normalizeText(text) {
   return String(text || '').replace(/\s+/g, ' ').trim();
+}
+
+function normalizeItemName(name) {
+  return String(name || '')
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, ' ')
+    .replace(/[^\w\s]/g, '');
 }
 
 function parseMacroValue(text) {
@@ -57,31 +118,30 @@ function dedupeArray(arr) {
   return Array.from(new Set((arr || []).filter(Boolean)));
 }
 
-function determineRooftopCategory(stationName) {
+function getCategory(stationName, config) {
   const normalized = normalizeText(stationName).toLowerCase();
-
-  const stationCategoryMap = {
-    'rooftop desserts': 'Desserts',
-    'the rooftop desserts': 'Desserts',
-    'rooftop beverages': 'Beverages',
-    'the rooftop beverages': 'Beverages',
-    'rooftop cold sides': 'Cold Sides',
-    'the rooftop cold sides': 'Cold Sides',
-    'rooftop hot sides': 'Hot Sides',
-    'the rooftop hot sides': 'Hot Sides',
-    'rooftop loaded': 'Loaded',
-    'the rooftop loaded': 'Loaded',
-    'rooftop sandwiches': 'Sandwiches',
-    'the rooftop sandwiches': 'Sandwiches',
-    'rooftop sauces': 'Sauces',
-    'the rooftop sauces': 'Sauces'
-  };
-
-  return stationCategoryMap[normalized] || normalizeText(stationName) || 'Entree';
+  return config.categoryMap?.[normalized] || normalizeText(stationName) || 'Entree';
 }
 
+/**
+ * Dedupe by item name only.
+ * If the same item name appears with different IDs across days,
+ * it will only be kept once.
+ */
 function getUniqueKey(item) {
-  return item.sourceMenuItemId || createSlug(`${item.parentHall}-${item.station}-${item.name}`);
+  return normalizeItemName(item.name);
+}
+
+function getItemCompletenessScore(item) {
+  return (
+    (item.description ? 1 : 0) +
+    (item.price != null ? 1 : 0) +
+    ((item.tags || []).length > 0 ? 1 : 0) +
+    ((item.macros?.calories ?? 0) > 0 ? 1 : 0) +
+    ((item.macros?.protein ?? 0) > 0 ? 1 : 0) +
+    ((item.macros?.carbs ?? 0) > 0 ? 1 : 0) +
+    ((item.macros?.fat ?? 0) > 0 ? 1 : 0)
+  );
 }
 
 function extractInlineTagsFromRow($, $row) {
@@ -159,27 +219,26 @@ async function processInBatches(items, batchSize, taskFn) {
   return results;
 }
 
-function findRooftopSection($) {
-  let rooftopSection = null;
+function findVenueSection($, venueName) {
+  let venueSection = null;
 
   $('.menu-category-section').each((_, el) => {
     const heading = normalizeText($(el).find('h3').first().text());
-    if (heading.toLowerCase() === 'rooftop') {
-      rooftopSection = el;
+    if (heading.toLowerCase() === venueName.toLowerCase()) {
+      venueSection = el;
       return false;
     }
   });
 
-  return rooftopSection;
+  return venueSection;
 }
 
-function collectRooftopItemsFromSection($, rooftopSectionEl) {
+function collectVenueItemsFromSection($, sectionEl, config) {
   const initialItems = [];
-  const $section = $(rooftopSectionEl);
+  const $section = $(sectionEl);
 
   let currentStation = '';
 
-  // Walk descendants in DOM order so each item inherits the latest #### header
   $section.find('h4, a.sublocsitem').each((_, el) => {
     const $el = $(el);
 
@@ -225,16 +284,16 @@ function collectRooftopItemsFromSection($, rooftopSectionEl) {
         (/call for price/i.test($row.text()) ? 'Call for Price' : '');
 
       const price = normalizePrice(priceText);
-      const station = currentStation || 'Rooftop Menu';
-      const category = determineRooftopCategory(station);
+      const station = currentStation || `${config.venueName} Menu`;
+      const category = getCategory(station, config);
       const inlineTags = extractInlineTagsFromRow($, $row);
 
       initialItems.push({
         basicInfo: {
           id: menuItemId || createSlug(`${station}-${name}`),
           sourceMenuItemId: menuItemId,
-          diningHallSlug: 'rooftop',
-          parentHall: 'Rooftop',
+          diningHallSlug: config.diningHallSlug,
+          parentHall: config.venueName,
           station,
           name,
           description,
@@ -253,20 +312,20 @@ function collectRooftopItemsFromSection($, rooftopSectionEl) {
   return initialItems;
 }
 
-async function scrapeRooftopOnly(url) {
+async function scrapeVenueForDay(url, config) {
   console.log(`Fetching: ${url}`);
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
 
-  const rooftopSection = findRooftopSection($);
-  if (!rooftopSection) {
-    console.log('  No Rooftop section found on this page.');
+  const venueSection = findVenueSection($, config.venueName);
+  if (!venueSection) {
+    console.log(`  No ${config.venueName} section found on this page.`);
     return [];
   }
 
-  const initialItems = collectRooftopItemsFromSection($, rooftopSection);
+  const initialItems = collectVenueItemsFromSection($, venueSection, config);
 
-  console.log(`  Found ${initialItems.length} Rooftop items. Fetching details...`);
+  console.log(`  Found ${initialItems.length} ${config.venueName} items. Fetching details...`);
 
   const enrichedItems = await processInBatches(initialItems, 10, async (itemWrapper) => {
     const { basicInfo, detailUrl, inlineTags } = itemWrapper;
@@ -305,17 +364,27 @@ async function scrapeRooftopOnly(url) {
   return enrichedItems;
 }
 
-async function run() {
+async function run(config) {
   try {
     const uniqueItems = new Map();
 
     for (const dayNum of DAY_RANGE) {
-      console.log(`\nScraping dayNum=${dayNum}...`);
-      const items = await scrapeRooftopOnly(buildRooftopUrl(dayNum));
+      console.log(`\nScraping ${config.venueName} dayNum=${dayNum}...`);
+      const items = await scrapeVenueForDay(config.urlBuilder(dayNum), config);
 
       for (const item of items) {
         const uniqueKey = getUniqueKey(item);
+
         if (!uniqueItems.has(uniqueKey)) {
+          uniqueItems.set(uniqueKey, item);
+          continue;
+        }
+
+        const existing = uniqueItems.get(uniqueKey);
+        const existingScore = getItemCompletenessScore(existing);
+        const newScore = getItemCompletenessScore(item);
+
+        if (newScore > existingScore) {
           uniqueItems.set(uniqueKey, item);
         }
       }
@@ -327,16 +396,16 @@ async function run() {
       return String(a.name || '').localeCompare(String(b.name || ''));
     });
 
-    const outputPath = path.join(__dirname, 'rooftop_menu_items.json');
+    const outputPath = path.join(__dirname, config.outputFileName);
     fs.writeFileSync(outputPath, JSON.stringify(finalItems, null, 2));
 
     console.log('\n-----------------------------------');
-    console.log('Rooftop scraping done');
-    console.log(`Unique Rooftop items: ${finalItems.length}`);
+    console.log(`${config.venueName} scraping done`);
+    console.log(`Unique ${config.venueName} items: ${finalItems.length}`);
     console.log(`Saved JSON to: ${outputPath}`);
   } catch (error) {
     console.error('Scrape failed:', error.message);
   }
 }
 
-run();
+run(VENUE_CONFIG);
