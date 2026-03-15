@@ -115,18 +115,25 @@
   border: 1px solid var(--color-border-soft, #e5e7eb);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.02);
-  overflow: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  min-height: 60px; 
+  
+  /* 1. Make the entire panel scrollable */
+  overflow-y: auto; 
+  
+  /* 2. Hide the scrollbar completely */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.rightPanel::-webkit-scrollbar {
+  display: none;
 }
 
 .panelHeader {
-    margin-bottom: 20px;
-    flex-shrink: 0;
-    border-bottom: 1px solid var(--color-border-soft, #e5e7eb);
-    padding-bottom: 16px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border-soft, #e5e7eb);
+  padding-bottom: 16px;
 }
 
 .panelTitle {
@@ -137,48 +144,47 @@
 }
 
 .panelSubtitle {
-    margin: 0;
-    font-size: 14px;
-    color: var(--color-text, #333);
-    opacity: 0.8;
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text, #333);
+  opacity: 0.8;
 }
 
 .tagRow {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;     
+  margin-top: 1rem;    
   margin-bottom: 1.5rem; 
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border-soft, #e5e7eb); 
 }
 
 .reviewListContainer {
-  flex: 1; 
-  overflow-y: auto;
-  padding-right: 4px;
-  margin-bottom: 10px; 
-  min-height: 60px; 
+  /* Let it expand naturally to fit all reviews without internal scrolling */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-soft, #e5e7eb) transparent;
+  margin-bottom: 20px; 
 }
-.reviewListContainer::-webkit-scrollbar { width: 6px; }
-.reviewListContainer::-webkit-scrollbar-track { background: transparent; }
-.reviewListContainer::-webkit-scrollbar-thumb { background-color: var(--color-border-soft, #e5e7eb); border-radius: 10px; }
 
 .reviewList {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-bottom: 16px; 
+}
+
+.reviewList > * {
+  /* CRITICAL: Prevents flexbox from crushing the review cards! */
+  flex-shrink: 0; 
 }
 
 .formContainer {
-    flex-shrink: 0;
-    margin-bottom: 0;
-    padding-top: 16px; 
-    border-top: none;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding-top: 16px; 
+  border-top: none;
 }
 
 .muted {
@@ -252,6 +258,14 @@
     padding: 20px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.25); 
     border-radius: 16px; 
+    
+    /* Ensure the mobile popup stays clean too */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .rightPanel.mobilePopup::-webkit-scrollbar {
+    display: none;
   }
 
   .mobileCloseBtn {

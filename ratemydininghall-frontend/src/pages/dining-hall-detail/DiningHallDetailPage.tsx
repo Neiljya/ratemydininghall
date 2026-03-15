@@ -137,12 +137,14 @@ export default function DiningHallDetailPage() {
               Today's Menu
             </div>
             <div style={{ width: '160px' }}>
-              <CustomSelect
+            <CustomSelect
                 placeholder="Sort..."
                 value={sortBy}
                 onChange={setSortBy}
                 options={[
                   { value: 'default', label: 'Default' },
+                  { value: 'rating-desc', label: 'Highest Rated' }, // <-- ADDED
+                  { value: 'rating-asc', label: 'Lowest Rated' },   // <-- ADDED
                   { value: 'protein-desc', label: 'High Protein' },
                   { value: 'calories-asc', label: 'Low Cal' },
                   { value: 'calories-desc', label: 'High Cal' },
