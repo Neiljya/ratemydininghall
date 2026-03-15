@@ -1,0 +1,1774 @@
+[
+  {
+    "id": "102133",
+    "sourceMenuItemId": "102133",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Bacon",
+    "description": "Side, Bacon (2)",
+    "price": 3.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 313,
+      "protein": 20.9,
+      "carbs": 0,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T23:23:28.235Z"
+  },
+  {
+    "id": "100272",
+    "sourceMenuItemId": "100272",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Bacon Slice",
+    "description": "Pork bacon",
+    "price": 1.75,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 156,
+      "protein": 10.4,
+      "carbs": 0,
+      "fat": 13
+    },
+    "updatedAt": "2026-03-14T23:23:05.956Z"
+  },
+  {
+    "id": "102029",
+    "sourceMenuItemId": "102029",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Chocolate Banana Overnight Oats",
+    "description": "Chocolate Banana Overnight Oats",
+    "price": 5.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 429,
+      "protein": 9.9,
+      "carbs": 56.2,
+      "fat": 21.7
+    },
+    "updatedAt": "2026-03-14T23:23:28.236Z"
+  },
+  {
+    "id": "102136",
+    "sourceMenuItemId": "102136",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Farmers Avocado Toast",
+    "description": "Toasted multigrain bread, seasoned avocado, cheddar cheese, tomato, and hard boiled egg",
+    "price": 6.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 426,
+      "protein": 16.6,
+      "carbs": 46.1,
+      "fat": 20.1
+    },
+    "updatedAt": "2026-03-14T23:23:28.236Z"
+  },
+  {
+    "id": "102090",
+    "sourceMenuItemId": "102090",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "Mix of fresh seasonal fruits",
+    "price": 3.75,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 44,
+      "protein": 0.7,
+      "carbs": 11.2,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T23:23:28.237Z"
+  },
+  {
+    "id": "100273",
+    "sourceMenuItemId": "100273",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Fried Egg",
+    "description": "Whole egg, cooked to order.",
+    "price": 2.25,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 82,
+      "protein": 7.1,
+      "carbs": 0.4,
+      "fat": 5.6
+    },
+    "updatedAt": "2026-03-14T23:23:05.963Z"
+  },
+  {
+    "id": "102141",
+    "sourceMenuItemId": "102141",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "House Potatoes",
+    "description": "Diced potatoes with garlic, onion, peppers, onion, and herbs",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 109,
+      "protein": 2,
+      "carbs": 17,
+      "fat": 4.2
+    },
+    "updatedAt": "2026-03-14T23:23:28.238Z"
+  },
+  {
+    "id": "102142",
+    "sourceMenuItemId": "102142",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "JUST Scrambled Vegan Eggs",
+    "description": "Vegan scrambled 'JUST' eggs",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 169,
+      "protein": 13.9,
+      "carbs": 2.8,
+      "fat": 12.8
+    },
+    "updatedAt": "2026-03-14T23:23:28.238Z"
+  },
+  {
+    "id": "102144",
+    "sourceMenuItemId": "102144",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Pork Sausage Links",
+    "description": "Ground pork, herbs and spices in a natural casing.",
+    "price": 2,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 171,
+      "protein": 7.1,
+      "carbs": 0,
+      "fat": 16.1
+    },
+    "updatedAt": "2026-03-14T23:23:28.239Z"
+  },
+  {
+    "id": "102094",
+    "sourceMenuItemId": "102094",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Scrambled Egg Whites",
+    "description": "Scrambled egg whites",
+    "price": 3,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 51,
+      "protein": 9.8,
+      "carbs": 1.6,
+      "fat": 0.3
+    },
+    "updatedAt": "2026-03-14T23:23:28.253Z"
+  },
+  {
+    "id": "102005",
+    "sourceMenuItemId": "102005",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Scrambled Eggs",
+    "description": "Scrambled Eggs",
+    "price": 3,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 132,
+      "protein": 11.2,
+      "carbs": 1.9,
+      "fat": 8.6
+    },
+    "updatedAt": "2026-03-14T23:23:28.253Z"
+  },
+  {
+    "id": "102150",
+    "sourceMenuItemId": "102150",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Steel Cut Oatmeal",
+    "description": "Hot steel cut oats with your choice of toppings",
+    "price": 3.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 115,
+      "protein": 3.6,
+      "carbs": 22.4,
+      "fat": 1.5
+    },
+    "updatedAt": "2026-03-14T23:23:28.254Z"
+  },
+  {
+    "id": "102096",
+    "sourceMenuItemId": "102096",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Tater Tots",
+    "description": "Side, Fried Tater Tots",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 398,
+      "protein": 3.9,
+      "carbs": 36.9,
+      "fat": 27.7
+    },
+    "updatedAt": "2026-03-14T23:23:28.255Z"
+  },
+  {
+    "id": "102097",
+    "sourceMenuItemId": "102097",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Toast (Sourdough, Wheat, English Muffin)",
+    "description": "Side, Assorted Toast",
+    "price": 1.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 114,
+      "protein": 4,
+      "carbs": 21.5,
+      "fat": 1.6
+    },
+    "updatedAt": "2026-03-14T23:23:28.255Z"
+  },
+  {
+    "id": "102008",
+    "sourceMenuItemId": "102008",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast a la Carte",
+    "name": "Veggie Sausage",
+    "description": "Vegan sausage patty.",
+    "price": 2,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 139,
+      "protein": 15.9,
+      "carbs": 7,
+      "fat": 7
+    },
+    "updatedAt": "2026-03-14T23:23:28.256Z"
+  },
+  {
+    "id": "102159",
+    "sourceMenuItemId": "102159",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Belgian Waffle",
+    "description": "Made to order Belgium waffle",
+    "price": 6,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 319,
+      "protein": 6.4,
+      "carbs": 63.8,
+      "fat": 3.2
+    },
+    "updatedAt": "2026-03-14T23:23:28.256Z"
+  },
+  {
+    "id": "102105",
+    "sourceMenuItemId": "102105",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Buttermilk Pancakes",
+    "description": "3 Buttermilk Pancakes",
+    "price": 6,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 92,
+      "protein": 1.6,
+      "carbs": 19.2,
+      "fat": 0.9
+    },
+    "updatedAt": "2026-03-14T23:23:28.257Z"
+  },
+  {
+    "id": "102106",
+    "sourceMenuItemId": "102106",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Challah French Toast",
+    "description": "Grilled custard battered Challah French toast with a sprinkle of powdered sugar.",
+    "price": 6,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 446,
+      "protein": 15.2,
+      "carbs": 73.6,
+      "fat": 7.9
+    },
+    "updatedAt": "2026-03-14T23:23:28.257Z"
+  },
+  {
+    "id": "102162",
+    "sourceMenuItemId": "102162",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Chocolate Strawberry Belgian Waffle",
+    "description": "Belgium waffle with topped with chocolate chips, strawberry topping, and whipped cream",
+    "price": 7,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 505,
+      "protein": 8.1,
+      "carbs": 92.4,
+      "fat": 12.5
+    },
+    "updatedAt": "2026-03-14T23:23:28.258Z"
+  },
+  {
+    "id": "102164",
+    "sourceMenuItemId": "102164",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Plant Based Bulgogi Fried Rice",
+    "description": "Stir fried jasmine rice with plant based bulgogi, topped with green onion and crunchy garlic chili oil",
+    "price": 7.5,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 613,
+      "protein": 19.5,
+      "carbs": 60.5,
+      "fat": 33.8
+    },
+    "updatedAt": "2026-03-14T23:23:28.258Z"
+  },
+  {
+    "id": "102167",
+    "sourceMenuItemId": "102167",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Cravings",
+    "name": "Spam Fried Rice with Egg",
+    "description": "Stir-fried jasmine rice with diced spam, fried egg,, thinly sliced green onions, and crunchy chili garlic oil.",
+    "price": 8,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 556,
+      "protein": 19.7,
+      "carbs": 48.9,
+      "fat": 31.4
+    },
+    "updatedAt": "2026-03-14T23:23:28.258Z"
+  },
+  {
+    "id": "102169",
+    "sourceMenuItemId": "102169",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Bacon Cheese Croissant",
+    "description": "Bacon, fried egg, and American cheese on a buttered croissant.",
+    "price": 8,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 565,
+      "protein": 23.8,
+      "carbs": 28.4,
+      "fat": 40.8
+    },
+    "updatedAt": "2026-03-14T23:23:28.259Z"
+  },
+  {
+    "id": "102170",
+    "sourceMenuItemId": "102170",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Bacon Spinach & Egg White Sandwich",
+    "description": "Scrambled egg whites with spinach and mozzarella cheese on a whole wheat English muffin",
+    "price": 6.5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 279,
+      "protein": 19.9,
+      "carbs": 25.5,
+      "fat": 11.3
+    },
+    "updatedAt": "2026-03-14T23:23:28.259Z"
+  },
+  {
+    "id": "102171",
+    "sourceMenuItemId": "102171",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Egg Cheese Croissant",
+    "description": "Fried egg with American cheese on toasted buttered croissant",
+    "price": 6.5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 484,
+      "protein": 18.7,
+      "carbs": 28.4,
+      "fat": 33.7
+    },
+    "updatedAt": "2026-03-14T23:23:28.260Z"
+  },
+  {
+    "id": "102172",
+    "sourceMenuItemId": "102172",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Egg Muffin",
+    "description": "Fried egg with American cheese on toasted English muffin",
+    "price": 5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 316,
+      "protein": 15.9,
+      "carbs": 24.7,
+      "fat": 17.6
+    },
+    "updatedAt": "2026-03-14T23:23:28.260Z"
+  },
+  {
+    "id": "102173",
+    "sourceMenuItemId": "102173",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Pambazo Breakfast Sandwich",
+    "description": "Telera bread with black beans and soyrizo potato filling, dipped in pambazo sauce then griddled and topped with lettuce, lime crema, queso fresco cheese and a fried egg",
+    "price": 7,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 679,
+      "protein": 27.8,
+      "carbs": 86,
+      "fat": 26.7
+    },
+    "updatedAt": "2026-03-14T23:23:28.260Z"
+  },
+  {
+    "id": "102174",
+    "sourceMenuItemId": "102174",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Sausage Cheese Croissant",
+    "description": "Fried egg with American cheese on toasted buttered croissant",
+    "price": 8,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 573,
+      "protein": 25.6,
+      "carbs": 28.3,
+      "fat": 40.6
+    },
+    "updatedAt": "2026-03-14T23:23:28.261Z"
+  },
+  {
+    "id": "102175",
+    "sourceMenuItemId": "102175",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Sausage Egg Muffin",
+    "description": "Fried egg and turkey sausage patty with American cheese on toasted English muffin.",
+    "price": 6.5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 405,
+      "protein": 22.8,
+      "carbs": 24.6,
+      "fat": 24.5
+    },
+    "updatedAt": "2026-03-14T23:23:28.261Z"
+  },
+  {
+    "id": "102176",
+    "sourceMenuItemId": "102176",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Sausage Spinach & Egg White Sandwich",
+    "description": "Scrambled egg whites and sausage with spinach and mozzarella cheese on a whole wheat English muffin",
+    "price": 6.5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 288,
+      "protein": 21.9,
+      "carbs": 25.6,
+      "fat": 11.2
+    },
+    "updatedAt": "2026-03-14T23:23:28.262Z"
+  },
+  {
+    "id": "102177",
+    "sourceMenuItemId": "102177",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Spinach & Egg White Sandwich",
+    "description": "Scrambled egg whites with spinach and mozzarella cheese on a whole wheat English muffin",
+    "price": 5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 199,
+      "protein": 14.9,
+      "carbs": 25.6,
+      "fat": 4.3
+    },
+    "updatedAt": "2026-03-14T23:23:28.262Z"
+  },
+  {
+    "id": "102178",
+    "sourceMenuItemId": "102178",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Veg Sausage Cheese Croissant",
+    "description": "Plant based sausage patty, fried egg, and American cheese on a buttered croissant",
+    "price": 8,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 623,
+      "protein": 34.8,
+      "carbs": 35.4,
+      "fat": 40.6
+    },
+    "updatedAt": "2026-03-14T23:23:28.262Z"
+  },
+  {
+    "id": "102179",
+    "sourceMenuItemId": "102179",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Sandwiches",
+    "name": "Veg Sausage Spinach & Egg White Sandwich",
+    "description": "Scrambled egg whites with spinach and mozzarella cheese on a whole wheat English muffin",
+    "price": 6.5,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 338,
+      "protein": 30.9,
+      "carbs": 32.6,
+      "fat": 11.3
+    },
+    "updatedAt": "2026-03-14T23:23:28.263Z"
+  },
+  {
+    "id": "102180",
+    "sourceMenuItemId": "102180",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Breakfast Specials",
+    "name": "Chocolate Chip Pancakes",
+    "description": "3 buttermilk pancakes with chocolate chips.",
+    "price": 7,
+    "category": "Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 295,
+      "protein": 5,
+      "carbs": 59.5,
+      "fat": 4.1
+    },
+    "updatedAt": "2026-03-14T23:23:28.263Z"
+  },
+  {
+    "id": "100275",
+    "sourceMenuItemId": "100275",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Build Your Own",
+    "name": "American Cheese",
+    "description": "American Cheese",
+    "price": 1,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 75,
+      "protein": 3.8,
+      "carbs": 0.8,
+      "fat": 6.8
+    },
+    "updatedAt": "2026-03-14T23:23:05.963Z"
+  },
+  {
+    "id": "100276",
+    "sourceMenuItemId": "100276",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Build Your Own",
+    "name": "Beef Patty",
+    "description": "Halal ground beef smash patty",
+    "price": null,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 360,
+      "protein": 24.4,
+      "carbs": 0,
+      "fat": 28.4
+    },
+    "updatedAt": "2026-03-14T23:23:05.964Z"
+  },
+  {
+    "id": "100277",
+    "sourceMenuItemId": "100277",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Build Your Own",
+    "name": "Chipotle Black Bean Patty",
+    "description": "Chipotle Black Bean Patty",
+    "price": null,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 170,
+      "protein": 15.1,
+      "carbs": 26.1,
+      "fat": 5
+    },
+    "updatedAt": "2026-03-14T23:23:05.965Z"
+  },
+  {
+    "id": "100278",
+    "sourceMenuItemId": "100278",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Build Your Own",
+    "name": "Grilled Chicken Breast",
+    "description": "Cooked chicken marinated in oil with garlic, salt and pepper.",
+    "price": 6.75,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 269,
+      "protein": 26.6,
+      "carbs": 1.5,
+      "fat": 17.7
+    },
+    "updatedAt": "2026-03-14T23:23:05.965Z"
+  },
+  {
+    "id": "100280",
+    "sourceMenuItemId": "100280",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Build Your Own",
+    "name": "Turkey Patty",
+    "description": "Pepper Garlic Turkey Burger",
+    "price": null,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 240,
+      "protein": 30,
+      "carbs": 2,
+      "fat": 12
+    },
+    "updatedAt": "2026-03-14T23:23:05.966Z"
+  },
+  {
+    "id": "100281",
+    "sourceMenuItemId": "100281",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Burger Styles",
+    "name": "California Burger",
+    "description": "Brioche bun with a smashed beef patty, jalapeno crème, avocado, crispy fried onions, and tomato jam.",
+    "price": 11,
+    "category": "Burger Styles",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 914,
+      "protein": 32.7,
+      "carbs": 59.3,
+      "fat": 59.1
+    },
+    "updatedAt": "2026-03-14T23:23:05.967Z"
+  },
+  {
+    "id": "100282",
+    "sourceMenuItemId": "100282",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Burgers",
+    "name": "Black Bean Chipotle Burger",
+    "description": "Chipotle black bean patty with lettuce, tomato, pickle and tangy burger sauce on a vegan bun.",
+    "price": 9.75,
+    "category": "Burgers",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 443,
+      "protein": 18.3,
+      "carbs": 77.8,
+      "fat": 14.7
+    },
+    "updatedAt": "2026-03-14T23:23:05.968Z"
+  },
+  {
+    "id": "100283",
+    "sourceMenuItemId": "100283",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Burgers",
+    "name": "Mornay Mushroom Burger",
+    "description": "Burger with choice of bun, choice of patty and roasted garlic aoili, sauteed mushrooms, mornay sauce and crispy onions",
+    "price": 10,
+    "category": "Burgers",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 894,
+      "protein": 38,
+      "carbs": 58.7,
+      "fat": 54.6
+    },
+    "updatedAt": "2026-03-14T23:23:05.969Z"
+  },
+  {
+    "id": "100284",
+    "sourceMenuItemId": "100284",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Burgers",
+    "name": "Plant Based Crispy Chikn Sandwich",
+    "description": "Crispy breaded beyond chickn with pickles and vegan chipotle aioli on a bun",
+    "price": 9,
+    "category": "Burgers",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 582,
+      "protein": 13.8,
+      "carbs": 62.7,
+      "fat": 32.7
+    },
+    "updatedAt": "2026-03-14T23:23:05.970Z"
+  },
+  {
+    "id": "100285",
+    "sourceMenuItemId": "100285",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Burgers",
+    "name": "Triton Cheeseburger",
+    "description": "Brioche bun with tangy sauce, a smashed halal beef patty, American cheese, lettuce, tomato and pickles",
+    "price": 9.75,
+    "category": "Burgers",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 771,
+      "protein": 36,
+      "carbs": 53.9,
+      "fat": 45.7
+    },
+    "updatedAt": "2026-03-14T23:23:05.970Z"
+  },
+  {
+    "id": "100292",
+    "sourceMenuItemId": "100292",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Black Bean Chipotle Burger Combo",
+    "description": "Chipotle black bean patty with lettuce, tomato, pickle and tangy burger sauce on a plant based bun served with a side of fried potato wedges and a fountain drink.",
+    "price": 14,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 773,
+      "protein": 22.4,
+      "carbs": 122.8,
+      "fat": 28.5
+    },
+    "updatedAt": "2026-03-14T23:23:05.971Z"
+  },
+  {
+    "id": "102181",
+    "sourceMenuItemId": "102181",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Café Breakfast Combo",
+    "description": "2 eggs cooked your way with potatoes, choice of meat, and toast",
+    "price": 9.5,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 992,
+      "protein": 43,
+      "carbs": 59.1,
+      "fat": 66.4
+    },
+    "updatedAt": "2026-03-14T23:23:28.264Z"
+  },
+  {
+    "id": "100293",
+    "sourceMenuItemId": "100293",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Chicken Tender Combo",
+    "description": "Crispy breaded chicken tenders served with a side of fries and a fountain drink",
+    "price": 12,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 845,
+      "protein": 32.9,
+      "carbs": 68.4,
+      "fat": 48.4
+    },
+    "updatedAt": "2026-03-14T23:23:05.972Z"
+  },
+  {
+    "id": "100294",
+    "sourceMenuItemId": "100294",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Crispy Chicken Sandwich Combo",
+    "description": "Crispy breaded chicken breast with tangy sauce, pickles, and tomato on a brioche bun served with a side of fried potato wedges and a fountain drink",
+    "price": 14,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 1245,
+      "protein": 33.4,
+      "carbs": 119.5,
+      "fat": 70.6
+    },
+    "updatedAt": "2026-03-14T23:23:05.973Z"
+  },
+  {
+    "id": "102182",
+    "sourceMenuItemId": "102182",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Triton Breakfast Combo",
+    "description": "2 eggs your way with 2 buttermilk pancakes and your choice of meat.",
+    "price": 9,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 664,
+      "protein": 38.4,
+      "carbs": 39.2,
+      "fat": 39
+    },
+    "updatedAt": "2026-03-14T23:23:28.264Z"
+  },
+  {
+    "id": "100295",
+    "sourceMenuItemId": "100295",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Combos",
+    "name": "Triton Cheeseburger Combo",
+    "description": "Brioche bun with tangy sauce, a smashed halal beef patty, American cheese, lettuce, tomato and pickles served with a side of fried potato wedges and a fountain drink",
+    "price": 14,
+    "category": "Combos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 1103,
+      "protein": 40,
+      "carbs": 99.1,
+      "fat": 59.6
+    },
+    "updatedAt": "2026-03-14T23:23:05.973Z"
+  },
+  {
+    "id": "100297",
+    "sourceMenuItemId": "100297",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Chocolate Cake Cone",
+    "description": "Chocolate soft serve ice cream in a small cake cone",
+    "price": 2.25,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 145,
+      "protein": 3,
+      "carbs": 24,
+      "fat": 4.4
+    },
+    "updatedAt": "2026-03-14T23:23:05.974Z"
+  },
+  {
+    "id": "100298",
+    "sourceMenuItemId": "100298",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Chocolate Chunk Cookie",
+    "description": "David's Double Chocolate Chip Cookie",
+    "price": 2.75,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 369,
+      "protein": 4,
+      "carbs": 52,
+      "fat": 18
+    },
+    "updatedAt": "2026-03-14T23:23:05.974Z"
+  },
+  {
+    "id": "100299",
+    "sourceMenuItemId": "100299",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Chocolate Ice Cream Shake",
+    "description": "Chocolate soft serve ice cream shake",
+    "price": 5.5,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 335,
+      "protein": 7.9,
+      "carbs": 53.2,
+      "fat": 11.8
+    },
+    "updatedAt": "2026-03-14T23:23:05.975Z"
+  },
+  {
+    "id": "100300",
+    "sourceMenuItemId": "100300",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Chocolate Waffle Cone",
+    "description": "Chocolate soft serve ice cream in a waffle cone",
+    "price": 3.5,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 319,
+      "protein": 6.9,
+      "carbs": 58.2,
+      "fat": 7.9
+    },
+    "updatedAt": "2026-03-14T23:23:05.975Z"
+  },
+  {
+    "id": "100302",
+    "sourceMenuItemId": "100302",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Ginger Snap Milkshake",
+    "description": "Vanilla soft serve blended with ginger snap cookie bits, molasses, cinnamon, and ginger, topped with whipped cream, caramel sauce, ground cinnamon & ginger, and a ginger snap cookie",
+    "price": 6.5,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 617,
+      "protein": 9.3,
+      "carbs": 94.9,
+      "fat": 20.8
+    },
+    "updatedAt": "2026-03-14T23:23:05.976Z"
+  },
+  {
+    "id": "100303",
+    "sourceMenuItemId": "100303",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Oatmeal Raisin Cookie",
+    "description": "David's Oatmeal Raisin Cookie",
+    "price": 2.75,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 350,
+      "protein": 5,
+      "carbs": 52,
+      "fat": 15
+    },
+    "updatedAt": "2026-03-14T23:23:05.976Z"
+  },
+  {
+    "id": "100305",
+    "sourceMenuItemId": "100305",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Vanilla Cake Cone",
+    "description": "Vanilla soft serve ice cream in a small cake cone",
+    "price": 2.25,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 145,
+      "protein": 3,
+      "carbs": 22.5,
+      "fat": 4.4
+    },
+    "updatedAt": "2026-03-14T23:23:05.977Z"
+  },
+  {
+    "id": "100306",
+    "sourceMenuItemId": "100306",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Vanilla Ice Cream Shake",
+    "description": "Vanilla ice cream shake",
+    "price": 5.5,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 335,
+      "protein": 7.9,
+      "carbs": 49.3,
+      "fat": 11.8
+    },
+    "updatedAt": "2026-03-14T23:23:05.977Z"
+  },
+  {
+    "id": "100307",
+    "sourceMenuItemId": "100307",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "Vanilla Waffle Cone",
+    "description": "Vanilla soft serve ice cream in a waffle cone",
+    "price": 3.5,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 319,
+      "protein": 6.9,
+      "carbs": 55.8,
+      "fat": 7.9
+    },
+    "updatedAt": "2026-03-14T23:23:05.978Z"
+  },
+  {
+    "id": "100308",
+    "sourceMenuItemId": "100308",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Desserts",
+    "name": "White Chocolate Macadamia Cookie",
+    "description": "David's White Chocolate Chip Macadamia Nut Cookie",
+    "price": 2.75,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 400,
+      "protein": 5,
+      "carbs": 47,
+      "fat": 23
+    },
+    "updatedAt": "2026-03-14T23:23:05.978Z"
+  },
+  {
+    "id": "100309",
+    "sourceMenuItemId": "100309",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Extras",
+    "name": "Avocado",
+    "description": "Avocado, Pulp",
+    "price": 1.5,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 62,
+      "protein": 0.6,
+      "carbs": 2.3,
+      "fat": 5.7
+    },
+    "updatedAt": "2026-03-14T23:23:05.979Z"
+  },
+  {
+    "id": "100336",
+    "sourceMenuItemId": "100336",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Buffalo Chicken Wing Basket",
+    "description": "Crispy fried wings tossed in buffalo sauce served with a side of fried potato wedges and ranch dressing",
+    "price": 12,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 1040,
+      "protein": 44.2,
+      "carbs": 23.6,
+      "fat": 86.1
+    },
+    "updatedAt": "2026-03-14T23:23:05.979Z"
+  },
+  {
+    "id": "100337",
+    "sourceMenuItemId": "100337",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Cajun Grilled Chicken Sandwich",
+    "description": "Grilled Cajun seasoned chicken breast with pepperjack cheese, green chile, chipotle aioli, lettuce and tomato on toasted sourdough bread",
+    "price": 9,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 654,
+      "protein": 39.7,
+      "carbs": 54,
+      "fat": 29.6
+    },
+    "updatedAt": "2026-03-14T23:23:05.980Z"
+  },
+  {
+    "id": "100338",
+    "sourceMenuItemId": "100338",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Crispy Chicken Sandwich",
+    "description": "Crispy breaded chicken breast with pickles, tangy Pines sauce and tomato on a brioche bun.",
+    "price": 9.25,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 919,
+      "protein": 29.4,
+      "carbs": 74.7,
+      "fat": 57
+    },
+    "updatedAt": "2026-03-14T23:23:05.980Z"
+  },
+  {
+    "id": "100339",
+    "sourceMenuItemId": "100339",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Fish and Chips",
+    "description": "Crispy battered fish filets and fried potato wedges served with roasted garlic aioli and lemon wedge.",
+    "price": 10,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 833,
+      "protein": 18.6,
+      "carbs": 44.7,
+      "fat": 61.2
+    },
+    "updatedAt": "2026-03-14T23:23:05.981Z"
+  },
+  {
+    "id": "100341",
+    "sourceMenuItemId": "100341",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Mornay Chili Cheese Dog",
+    "description": "Beef hot dog in a bun topped with chili, mornay sauce, and crispy onions",
+    "price": 8,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 514,
+      "protein": 20.7,
+      "carbs": 35.4,
+      "fat": 33
+    },
+    "updatedAt": "2026-03-14T23:23:05.981Z"
+  },
+  {
+    "id": "100344",
+    "sourceMenuItemId": "100344",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Three Cheese Grilled Cheese",
+    "description": "Grilled herb buttered sourdough with pepper jack, provolone, and cheddar cheeses, pickles and garlic aioli.",
+    "price": 6.5,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 808,
+      "protein": 23.6,
+      "carbs": 51.3,
+      "fat": 57.1
+    },
+    "updatedAt": "2026-03-14T23:23:05.982Z"
+  },
+  {
+    "id": "100345",
+    "sourceMenuItemId": "100345",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sandwiches & More",
+    "name": "Triton Hot Dog",
+    "description": "Grilled beef hot dog served on a bun.",
+    "price": 5.5,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 285,
+      "protein": 10.2,
+      "carbs": 22.7,
+      "fat": 17.9
+    },
+    "updatedAt": "2026-03-14T23:23:05.982Z"
+  },
+  {
+    "id": "100349",
+    "sourceMenuItemId": "100349",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sides",
+    "name": "Caesar Side Salad",
+    "description": "Romaine and spring greens with parmesan cheese, croutons, and caesar dressing",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "fish",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 200,
+      "protein": 5.1,
+      "carbs": 15.2,
+      "fat": 15
+    },
+    "updatedAt": "2026-03-14T23:23:05.983Z"
+  },
+  {
+    "id": "100351",
+    "sourceMenuItemId": "100351",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sides",
+    "name": "Chicken Tenders",
+    "description": "Crispy breaded chicken tenders",
+    "price": 9,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 536,
+      "protein": 30,
+      "carbs": 24.3,
+      "fat": 35.9
+    },
+    "updatedAt": "2026-03-14T23:23:05.983Z"
+  },
+  {
+    "id": "100353",
+    "sourceMenuItemId": "100353",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sides",
+    "name": "Curly Fries",
+    "description": "Side, Curly Fries",
+    "price": 4,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 474,
+      "protein": 2,
+      "carbs": 44.5,
+      "fat": 32
+    },
+    "updatedAt": "2026-03-14T23:23:05.984Z"
+  },
+  {
+    "id": "100354",
+    "sourceMenuItemId": "100354",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sides",
+    "name": "Fried Potato Wedges",
+    "description": "Deep fried potato wedges",
+    "price": 4,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 298,
+      "protein": 4.1,
+      "carbs": 36.5,
+      "fat": 13.8
+    },
+    "updatedAt": "2026-03-14T23:23:05.984Z"
+  },
+  {
+    "id": "100359",
+    "sourceMenuItemId": "100359",
+    "diningHallSlug": "triton-grill",
+    "parentHall": "TritonGrill",
+    "station": "Sides",
+    "name": "Serrano Pesto Grilled Vegetables",
+    "description": "Grilled broccolini, carrots, cauliflower and roasted butternut squash drizzled with serrano pesto",
+    "price": 3.75,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 314,
+      "protein": 3.5,
+      "carbs": 10.7,
+      "fat": 31
+    },
+    "updatedAt": "2026-03-14T23:23:05.985Z"
+  }
+]

@@ -1,0 +1,1381 @@
+[
+  {
+    "id": "100264",
+    "sourceMenuItemId": "100264",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Bowls",
+    "name": "Birria Bowl",
+    "description": "Shredded beef birria over Mexican white rice and black beans with lettuce, pico de gallo, chipotle-lime crema, and cotija cheese.",
+    "price": 9.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 484,
+      "protein": 24,
+      "carbs": 48.6,
+      "fat": 24.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.600Z"
+  },
+  {
+    "id": "100266",
+    "sourceMenuItemId": "100266",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Bowls",
+    "name": "Carnitas Bowl",
+    "description": "Pork carnitas over Mexican white rice and black beans with lettuce, pico de gallo, cotija cheese, and chipotle lime crema",
+    "price": 9.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "dairy"
+    ],
+    "macros": {
+      "calories": 476,
+      "protein": 27,
+      "carbs": 44.6,
+      "fat": 23.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.603Z"
+  },
+  {
+    "id": "100267",
+    "sourceMenuItemId": "100267",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Bowls",
+    "name": "Chicken Al Pastor Bowl",
+    "description": "Tangy chicken al pastor over Mexican white rice and black beans with lettuce, pico de gallo, chipotle-lime crema, and cotija cheese",
+    "price": 9.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "dairy"
+    ],
+    "macros": {
+      "calories": 369,
+      "protein": 20.9,
+      "carbs": 47.8,
+      "fat": 12.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.604Z"
+  },
+  {
+    "id": "100271",
+    "sourceMenuItemId": "100271",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Bowls",
+    "name": "Mushroom Asada Bowl",
+    "description": "Mushroom carnitas over Mexican white rice and black beans with lettuce, pico de gallo, and chipotle lime crema.",
+    "price": 8,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 335,
+      "protein": 10.3,
+      "carbs": 48.8,
+      "fat": 14.2
+    },
+    "updatedAt": "2026-03-14T23:05:24.604Z"
+  },
+  {
+    "id": "102133",
+    "sourceMenuItemId": "102133",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Bacon",
+    "description": "Side, Bacon (2)",
+    "price": 3.5,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 313,
+      "protein": 20.9,
+      "carbs": 0,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T23:05:44.342Z"
+  },
+  {
+    "id": "102090",
+    "sourceMenuItemId": "102090",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "Mix of fresh seasonal fruits",
+    "price": 3.75,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 44,
+      "protein": 0.7,
+      "carbs": 11.2,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T23:05:44.343Z"
+  },
+  {
+    "id": "102091",
+    "sourceMenuItemId": "102091",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Fried Egg",
+    "description": "Whole egg, cooked to order.",
+    "price": 2.25,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 82,
+      "protein": 7.1,
+      "carbs": 0.4,
+      "fat": 5.6
+    },
+    "updatedAt": "2026-03-14T23:05:44.343Z"
+  },
+  {
+    "id": "102142",
+    "sourceMenuItemId": "102142",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "JUST Scrambled Vegan Eggs",
+    "description": "Vegan scrambled 'JUST' eggs",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 169,
+      "protein": 13.9,
+      "carbs": 2.8,
+      "fat": 12.8
+    },
+    "updatedAt": "2026-03-14T23:05:44.343Z"
+  },
+  {
+    "id": "102144",
+    "sourceMenuItemId": "102144",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Pork Sausage Links",
+    "description": "Ground pork, herbs and spices in a natural casing.",
+    "price": 2,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 171,
+      "protein": 7.1,
+      "carbs": 0,
+      "fat": 16.1
+    },
+    "updatedAt": "2026-03-14T23:05:44.344Z"
+  },
+  {
+    "id": "102094",
+    "sourceMenuItemId": "102094",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Scrambled Egg Whites",
+    "description": "Scrambled egg whites",
+    "price": 3,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 51,
+      "protein": 9.8,
+      "carbs": 1.6,
+      "fat": 0.3
+    },
+    "updatedAt": "2026-03-14T23:05:44.344Z"
+  },
+  {
+    "id": "102005",
+    "sourceMenuItemId": "102005",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Scrambled Eggs",
+    "description": "Scrambled Eggs",
+    "price": 3,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 132,
+      "protein": 11.2,
+      "carbs": 1.9,
+      "fat": 8.6
+    },
+    "updatedAt": "2026-03-14T23:05:44.345Z"
+  },
+  {
+    "id": "102096",
+    "sourceMenuItemId": "102096",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast a la Carte",
+    "name": "Tater Tots",
+    "description": "Side, Fried Tater Tots",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 398,
+      "protein": 3.9,
+      "carbs": 36.9,
+      "fat": 27.7
+    },
+    "updatedAt": "2026-03-14T23:05:44.345Z"
+  },
+  {
+    "id": "102155",
+    "sourceMenuItemId": "102155",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Burrito",
+    "name": "Bacon Green Chile Breakfast Burrito",
+    "description": "Breakfast burrito with bacon, black beans, scrambled eggs, tater tots, cheddar jack cheese, and green hatch chili salsa.",
+    "price": 9,
+    "category": "Breakfast Burrito",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 980,
+      "protein": 41.9,
+      "carbs": 81.6,
+      "fat": 58.3
+    },
+    "updatedAt": "2026-03-14T23:05:44.346Z"
+  },
+  {
+    "id": "102156",
+    "sourceMenuItemId": "102156",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Burrito",
+    "name": "Green Chile Breakfast Burrito",
+    "description": "Breakfast burrito with black beans, scrambled eggs, tater tots, cheddar jack cheese, and green hatch chili salsa.",
+    "price": 7.5,
+    "category": "Breakfast Burrito",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 859,
+      "protein": 31.8,
+      "carbs": 81.7,
+      "fat": 49.2
+    },
+    "updatedAt": "2026-03-14T23:05:44.346Z"
+  },
+  {
+    "id": "100274",
+    "sourceMenuItemId": "100274",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Burrito",
+    "name": "Pico de Gallo",
+    "description": "Salsa, Pico de Gallo",
+    "price": null,
+    "category": "Breakfast Burrito",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 6,
+      "protein": 0.3,
+      "carbs": 1.5,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.605Z"
+  },
+  {
+    "id": "102157",
+    "sourceMenuItemId": "102157",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Burrito",
+    "name": "Sausage Green Chile Breakfast Burrito",
+    "description": "Breakfast burrito with sausage, black beans, scrambled eggs, tater tots, cheddar jack cheese, and green hatch chili salsa.",
+    "price": 9,
+    "category": "Breakfast Burrito",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1030,
+      "protein": 38.9,
+      "carbs": 81.6,
+      "fat": 65.3
+    },
+    "updatedAt": "2026-03-14T23:05:44.346Z"
+  },
+  {
+    "id": "102158",
+    "sourceMenuItemId": "102158",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Burrito",
+    "name": "Soyrizo Potato Breakfast Burrito",
+    "description": "Breakfast burrito w/ soyrizo potatoes, vegan cheese, Just Eggs, black beans, pico and sala chile de árbol.",
+    "price": 9,
+    "category": "Breakfast Burrito",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 708,
+      "protein": 25.2,
+      "carbs": 86.1,
+      "fat": 34.1
+    },
+    "updatedAt": "2026-03-14T23:05:44.347Z"
+  },
+  {
+    "id": "102163",
+    "sourceMenuItemId": "102163",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Cravings",
+    "name": "Longaniza Verde Breakfast Sopes",
+    "description": "Sopes topped with black beans, longaniza sausage en salsa verde, a fried egg, lime crema, queso fresco, and onion",
+    "price": 9,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 899,
+      "protein": 37.4,
+      "carbs": 85,
+      "fat": 49.6
+    },
+    "updatedAt": "2026-03-14T23:05:44.347Z"
+  },
+  {
+    "id": "102165",
+    "sourceMenuItemId": "102165",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Cravings",
+    "name": "Pork Belly Breakfast Special Plate",
+    "description": "Pork belly in salsa verde served with black beans, fried eggs, and corn tortillas",
+    "price": 7,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "egg"
+    ],
+    "macros": {
+      "calories": 558,
+      "protein": 25.2,
+      "carbs": 25.2,
+      "fat": 41.1
+    },
+    "updatedAt": "2026-03-14T23:05:44.348Z"
+  },
+  {
+    "id": "102166",
+    "sourceMenuItemId": "102166",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Cravings",
+    "name": "Soyrizo Fritatta Plate",
+    "description": "Soyrizo fritatta topped with salsa verde served with black beans, house potatoes, and a fried serrano",
+    "price": 9.5,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 396,
+      "protein": 17.1,
+      "carbs": 34.8,
+      "fat": 25.9
+    },
+    "updatedAt": "2026-03-14T23:05:44.348Z"
+  },
+  {
+    "id": "102168",
+    "sourceMenuItemId": "102168",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Cravings",
+    "name": "Vegetarian Breakfast Sopes",
+    "description": "Two sopes topped with black beans, a fried egg, lime crema, avocado salsa, and queso fresco",
+    "price": 8,
+    "category": "Breakfast Cravings",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 704,
+      "protein": 28.8,
+      "carbs": 77.8,
+      "fat": 34.8
+    },
+    "updatedAt": "2026-03-14T23:05:44.348Z"
+  },
+  {
+    "id": "102173",
+    "sourceMenuItemId": "102173",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Breakfast Sandwiches",
+    "name": "Pambazo Breakfast Sandwich",
+    "description": "Telera bread with black beans and soyrizo potato filling, dipped in pambazo sauce then griddled and topped with lettuce, lime crema, queso fresco cheese and a fried egg",
+    "price": 7,
+    "category": "Breakfast Sandwiches",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 679,
+      "protein": 27.8,
+      "carbs": 86,
+      "fat": 26.7
+    },
+    "updatedAt": "2026-03-14T23:05:44.349Z"
+  },
+  {
+    "id": "100286",
+    "sourceMenuItemId": "100286",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Baja Fish Burrito",
+    "description": "Crispy battered fish with green cabbage, pico de gallo, black beans, Mexican white rice, salsa verde in a tortilla",
+    "price": 11.25,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 837,
+      "protein": 36.4,
+      "carbs": 115,
+      "fat": 28.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.606Z"
+  },
+  {
+    "id": "100287",
+    "sourceMenuItemId": "100287",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Beans and Cheese Burrito",
+    "description": "Refried black beans and shredded cheddar jack cheese wrapped in a 12\" tortilla",
+    "price": 6.75,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 740,
+      "protein": 37.2,
+      "carbs": 72.7,
+      "fat": 40.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.607Z"
+  },
+  {
+    "id": "100288",
+    "sourceMenuItemId": "100288",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Birria Burrito",
+    "description": "Shredded beef birria, black beans, Mexican white rice, lettuce, pico de gallo, and cotija cheese in a 12\" tortilla",
+    "price": 9.5,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 862,
+      "protein": 37,
+      "carbs": 114.5,
+      "fat": 32.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.607Z"
+  },
+  {
+    "id": "100289",
+    "sourceMenuItemId": "100289",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Chicken Al Pastor Burrito",
+    "description": "Tangy chicken al pastor, Mexican white rice, black beans, lettuce, pico de gallo, and chipotle-lime crema in a 12\" tortilla.",
+    "price": 9.75,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 654,
+      "protein": 28.4,
+      "carbs": 95.8,
+      "fat": 20.3
+    },
+    "updatedAt": "2026-03-14T23:05:24.612Z"
+  },
+  {
+    "id": "100290",
+    "sourceMenuItemId": "100290",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Mushroom Asada Burrito",
+    "description": "Mushroom carnitas, Mexican white rice, black beans, lettuce, pico de gallo, in a tortilla.",
+    "price": 9,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 569,
+      "protein": 17.3,
+      "carbs": 95.2,
+      "fat": 16.9
+    },
+    "updatedAt": "2026-03-14T23:05:24.612Z"
+  },
+  {
+    "id": "100291",
+    "sourceMenuItemId": "100291",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Burritos",
+    "name": "Pork Carnitas Burrito",
+    "description": "Shredded pork carnitas, black beans, Mexican white rice, lettuce, pico de gallo, and cotija cheese in a tortilla",
+    "price": 9.75,
+    "category": "Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 715,
+      "protein": 34.1,
+      "carbs": 91.2,
+      "fat": 26.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.613Z"
+  },
+  {
+    "id": "100296",
+    "sourceMenuItemId": "100296",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Desserts",
+    "name": "Arroz Con Leche",
+    "description": "Rice pudding sweetened with condensed milk with raisins and cinnamon",
+    "price": 3.75,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 264,
+      "protein": 6.5,
+      "carbs": 49.3,
+      "fat": 4.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.613Z"
+  },
+  {
+    "id": "100301",
+    "sourceMenuItemId": "100301",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Desserts",
+    "name": "Churro Cheesecake",
+    "description": "Churro seasoned cheesecake",
+    "price": 3.75,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 403,
+      "protein": 7,
+      "carbs": 43.8,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.614Z"
+  },
+  {
+    "id": "100310",
+    "sourceMenuItemId": "100310",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Chile de Arbol Salsa",
+    "description": "Salsa, Chile de Arbol",
+    "price": null,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 13,
+      "protein": 0.4,
+      "carbs": 2.8,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T23:05:24.615Z"
+  },
+  {
+    "id": "100311",
+    "sourceMenuItemId": "100311",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Cilantro and Onions",
+    "description": "Vegetable, Cilantro & Onion",
+    "price": null,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 10,
+      "protein": 0.4,
+      "carbs": 2.4,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.615Z"
+  },
+  {
+    "id": "100312",
+    "sourceMenuItemId": "100312",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Escabeche",
+    "description": "Pickled carrots, onions, cauliflower, and arbol peppers",
+    "price": null,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 33,
+      "protein": 0.7,
+      "carbs": 4.7,
+      "fat": 1.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.616Z"
+  },
+  {
+    "id": "100313",
+    "sourceMenuItemId": "100313",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Guacamole",
+    "description": "Mashed avocado, tomatoes, onions, cilantro, jalapeno peppers, lime juice, and salt",
+    "price": 1.5,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 46,
+      "protein": 0.5,
+      "carbs": 2.1,
+      "fat": 4.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.616Z"
+  },
+  {
+    "id": "100314",
+    "sourceMenuItemId": "100314",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Salsa Verde",
+    "description": "Salsa, Verde Cruda",
+    "price": null,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 9,
+      "protein": 0.3,
+      "carbs": 1.8,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T23:05:24.617Z"
+  },
+  {
+    "id": "100315",
+    "sourceMenuItemId": "100315",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Extras",
+    "name": "Tropical Habanero Salsa",
+    "description": "Salsa, Habanero Tropical",
+    "price": null,
+    "category": "Extras",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 13,
+      "protein": 0.2,
+      "carbs": 3.5,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T23:05:24.617Z"
+  },
+  {
+    "id": "100316",
+    "sourceMenuItemId": "100316",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Loaded",
+    "name": "Birria Fries",
+    "description": "Crispy fries with shredded beef birria, spicy jalapeno cheese sauce, lime crema, guacamole, pico de gallo, and cotija cheese",
+    "price": 12.25,
+    "category": "Loaded",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 845,
+      "protein": 21.4,
+      "carbs": 58.7,
+      "fat": 58.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.618Z"
+  },
+  {
+    "id": "100317",
+    "sourceMenuItemId": "100317",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Loaded",
+    "name": "Carnitas Fries",
+    "description": "Crispy fries with juicy home made carnitas, guac, spicy jalapeno cheese sauce, lime crema, guac, pico and cotija cheese",
+    "price": 12.25,
+    "category": "Loaded",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 784,
+      "protein": 23.9,
+      "carbs": 52.2,
+      "fat": 53.2
+    },
+    "updatedAt": "2026-03-14T23:05:24.618Z"
+  },
+  {
+    "id": "100318",
+    "sourceMenuItemId": "100318",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Loaded",
+    "name": "Cheese Fries",
+    "description": "Cheese fries with guacamole, chipotle lime crema, and pico de gallo",
+    "price": 7.5,
+    "category": "Loaded",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 581,
+      "protein": 5.2,
+      "carbs": 51.5,
+      "fat": 39.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.619Z"
+  },
+  {
+    "id": "100319",
+    "sourceMenuItemId": "100319",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Loaded",
+    "name": "Chicken Al Pastor Fries",
+    "description": "Crispy fries with tangy chicken al pastor, spicy jalapeno cheese sauce, lime crema, guacamole, pico de gallo, and cotija cheese",
+    "price": 11.25,
+    "category": "Loaded",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 683,
+      "protein": 18.1,
+      "carbs": 56.9,
+      "fat": 42.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.619Z"
+  },
+  {
+    "id": "100320",
+    "sourceMenuItemId": "100320",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Loaded",
+    "name": "Mushroom Asada Fries",
+    "description": "Crispy fries with mushroom carnitas, spicy jalapeno cheese sauce, lime crema, guacamole, and pico de gallo",
+    "price": 11.25,
+    "category": "Loaded",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 641,
+      "protein": 7.3,
+      "carbs": 56.3,
+      "fat": 43.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.620Z"
+  },
+  {
+    "id": "100321",
+    "sourceMenuItemId": "100321",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Nachos",
+    "name": "Birria Nachos",
+    "description": "Fried tortilla chips topped with shredded beef birria, spicy jalapeno cheese sauce, black beans, chipotle-lime crema, pico de gallo, guacamole, and cotija cheese",
+    "price": 11.25,
+    "category": "Nachos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 730,
+      "protein": 26.3,
+      "carbs": 73.8,
+      "fat": 40.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.620Z"
+  },
+  {
+    "id": "100322",
+    "sourceMenuItemId": "100322",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Nachos",
+    "name": "Carnitas Nachos",
+    "description": "Nachos with jalapeno cheese, black beans, carnitas, chipotle lime crema, pico de gallo, guacamole, and cotija cheese",
+    "price": 11.25,
+    "category": "Nachos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 634,
+      "protein": 28.3,
+      "carbs": 68.5,
+      "fat": 30.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.621Z"
+  },
+  {
+    "id": "100323",
+    "sourceMenuItemId": "100323",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Nachos",
+    "name": "Cheese Nachos",
+    "description": "Cheese nachos with black beans, jalapeno cheese sauce, chipotle lime crema, pico de gallo, guacamole, and cotija cheese served over crispy tortilla chips",
+    "price": 7.25,
+    "category": "Nachos",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 516,
+      "protein": 11.8,
+      "carbs": 64.7,
+      "fat": 27.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.621Z"
+  },
+  {
+    "id": "100324",
+    "sourceMenuItemId": "100324",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Nachos",
+    "name": "Mushroom Asada Nachos",
+    "description": "Fried tortilla chips topped with mushroom asada, spicy jalapeno cheese sauce, black beans, chipotle-lime crema, pico de gallo, guacamole, and cotija cheese",
+    "price": 10.25,
+    "category": "Nachos",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 492,
+      "protein": 11.6,
+      "carbs": 72.6,
+      "fat": 21.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.622Z"
+  },
+  {
+    "id": "100325",
+    "sourceMenuItemId": "100325",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Nachos",
+    "name": "Pollo Al Pastor Nachos",
+    "description": "Fried tortilla chips topped with tangy chicken al pastor, spicy jalapeno cheese sauce, black beans, chipotle-lime crema, pico de gallo, guacamole, and cotija cheese",
+    "price": 10.25,
+    "category": "Nachos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 528,
+      "protein": 22.2,
+      "carbs": 71.8,
+      "fat": 19.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.622Z"
+  },
+  {
+    "id": "100326",
+    "sourceMenuItemId": "100326",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Quesadillas",
+    "name": "Birria Quesadilla",
+    "description": "Grilled tortilla with shredded quesadilla cheese and shredded beef birria served with lettuce, guacamole, and birria consomme",
+    "price": 11,
+    "category": "Quesadillas",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 937,
+      "protein": 45.2,
+      "carbs": 64.6,
+      "fat": 59.3
+    },
+    "updatedAt": "2026-03-14T23:05:24.623Z"
+  },
+  {
+    "id": "100327",
+    "sourceMenuItemId": "100327",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Quesadillas",
+    "name": "Carnitas Quesadilla",
+    "description": "Grilled tortilla with pork carnitas and melted cheese served with lettuce and guacamole",
+    "price": 10,
+    "category": "Quesadillas",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 948,
+      "protein": 49.1,
+      "carbs": 62.3,
+      "fat": 59.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.624Z"
+  },
+  {
+    "id": "100328",
+    "sourceMenuItemId": "100328",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Quesadillas",
+    "name": "Cheese Quesadilla",
+    "description": "Grilled tortilla with melted quesadilla cheese served with lettuce and guacamole",
+    "price": 6.5,
+    "category": "Quesadillas",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 746,
+      "protein": 30.3,
+      "carbs": 61.6,
+      "fat": 46.1
+    },
+    "updatedAt": "2026-03-14T23:05:24.624Z"
+  },
+  {
+    "id": "100329",
+    "sourceMenuItemId": "100329",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Quesadillas",
+    "name": "Chicken Al Pastor Quesadilla",
+    "description": "Grilled tortilla with shredded quesadilla cheese and tangy chicken al pastor served with lettuce and guacamole",
+    "price": 10,
+    "category": "Quesadillas",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 842,
+      "protein": 43,
+      "carbs": 65.6,
+      "fat": 48.8
+    },
+    "updatedAt": "2026-03-14T23:05:24.625Z"
+  },
+  {
+    "id": "100330",
+    "sourceMenuItemId": "100330",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Quesadillas",
+    "name": "Mushroom Asada Quesadilla",
+    "description": "Grilled tortilla with seasoned sauteed mushrooms and shredded queso quesadilla cheese served with lettuce and guacamole",
+    "price": 9,
+    "category": "Quesadillas",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 806,
+      "protein": 32.4,
+      "carbs": 66.4,
+      "fat": 50
+    },
+    "updatedAt": "2026-03-14T23:05:24.625Z"
+  },
+  {
+    "id": "100352",
+    "sourceMenuItemId": "100352",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Sides",
+    "name": "Chips and Salsa",
+    "description": "Crispy fried corn tortillas with salsa of customer's choice",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 190,
+      "protein": 2.6,
+      "carbs": 32.5,
+      "fat": 6.7
+    },
+    "updatedAt": "2026-03-14T23:05:24.626Z"
+  },
+  {
+    "id": "100355",
+    "sourceMenuItemId": "100355",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Sides",
+    "name": "Frijoles Negros",
+    "description": "Beans, Frijoles Negros",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 58,
+      "protein": 4,
+      "carbs": 11,
+      "fat": 2.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.626Z"
+  },
+  {
+    "id": "100358",
+    "sourceMenuItemId": "100358",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Sides",
+    "name": "Mexican White Rice",
+    "description": "Toasted long grain rice cooked with garlic, onion, corn, and epazote",
+    "price": 2.5,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 143,
+      "protein": 2.5,
+      "carbs": 27.7,
+      "fat": 2.5
+    },
+    "updatedAt": "2026-03-14T23:05:24.627Z"
+  },
+  {
+    "id": "100368",
+    "sourceMenuItemId": "100368",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Tacos",
+    "name": "Beef Birria Tacos",
+    "description": "3 tacos with shredded beef birria, avocado, onion, and cilantro on corn tortillas, served with tortilla chips and birria consomme",
+    "price": 7,
+    "category": "Tacos",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 514,
+      "protein": 15.6,
+      "carbs": 62.6,
+      "fat": 21
+    },
+    "updatedAt": "2026-03-14T23:05:24.627Z"
+  },
+  {
+    "id": "100369",
+    "sourceMenuItemId": "100369",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Tacos",
+    "name": "Carnitas Tacos",
+    "description": "3 tacos of pork carnitas with guacamole, onion and cilantro on corn tortilla served with tortilla chips",
+    "price": 7,
+    "category": "Tacos",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 607,
+      "protein": 21,
+      "carbs": 71.2,
+      "fat": 24.6
+    },
+    "updatedAt": "2026-03-14T23:05:24.628Z"
+  },
+  {
+    "id": "100370",
+    "sourceMenuItemId": "100370",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Tacos",
+    "name": "Chicken Al Pastor Tacos",
+    "description": "3 tacos with tangy chicken al pastor, guacamole, onion, and cilantro on corn tortillas, served with tortilla chips",
+    "price": 7,
+    "category": "Tacos",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 520,
+      "protein": 16,
+      "carbs": 73.9,
+      "fat": 15.9
+    },
+    "updatedAt": "2026-03-14T23:05:24.628Z"
+  },
+  {
+    "id": "100371",
+    "sourceMenuItemId": "100371",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Tacos",
+    "name": "Mushroom Asada Tacos",
+    "description": "3 tacos of mushroom carnitas, guacamole and cilantro and onion relish in corn tortillas served with tortilla chips",
+    "price": 5.5,
+    "category": "Tacos",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 490,
+      "protein": 7.3,
+      "carbs": 74.6,
+      "fat": 16.9
+    },
+    "updatedAt": "2026-03-14T23:05:24.629Z"
+  },
+  {
+    "id": "100372",
+    "sourceMenuItemId": "100372",
+    "diningHallSlug": "64degrees-taqueria",
+    "parentHall": "Taqueria",
+    "station": "Tacos",
+    "name": "San Diego Fish Tacos",
+    "description": "San Diego style fish tacos with seared zarandeado fish, cabbage, pickled onion, and cilantro served with tortilla chips",
+    "price": 8,
+    "category": "Tacos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "fish",
+      "egg"
+    ],
+    "macros": {
+      "calories": 714,
+      "protein": 26.4,
+      "carbs": 76.1,
+      "fat": 33.4
+    },
+    "updatedAt": "2026-03-14T23:05:24.630Z"
+  }
+]

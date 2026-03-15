@@ -27,31 +27,21 @@ const DAY_RANGE = [0, 1, 2, 3, 4, 5, 6];
  * CHANGE ONLY THIS BLOCK for a new dining hall
  */
 const VENUE_CONFIG = {
-  venueName: 'Rooftop',
-  diningHallSlug: 'rooftop',
-  outputFileName: 'rooftop_menu_items.json',
+  venueName: 'Garden Bar',
+  diningHallSlug: 'garden-bar',
+  outputFileName: 'garden_bar_menu_items.json',
 
   urlBuilder: (dayNum) =>
-    `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLoc=01&locDetID=25&dayNum=${dayNum}`,
+    `https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=64&locDetID=18&dayNum=${dayNum}`,
 
   categoryMap: {
-    'rooftop desserts': 'Desserts',
-    'the rooftop desserts': 'Desserts',
-    'rooftop beverages': 'Beverages',
-    'the rooftop beverages': 'Beverages',
-    'rooftop cold sides': 'Cold Sides',
-    'the rooftop cold sides': 'Cold Sides',
-    'rooftop hot sides': 'Hot Sides',
-    'the rooftop hot sides': 'Hot Sides',
-    'rooftop loaded': 'Loaded',
-    'the rooftop loaded': 'Loaded',
-    'rooftop sandwiches': 'Sandwiches',
-    'the rooftop sandwiches': 'Sandwiches',
-    'rooftop sauces': 'Sauces',
-    'the rooftop sauces': 'Sauces'
+    'beverages': 'Beverages',
+    'salads': 'Salads',
+    'sandwiches and more': 'Sandwiches & More',
+    'sides': 'Sides',
+    'soups': 'Soups',
   }
 };
-
 /**
  * Example swap:
  *

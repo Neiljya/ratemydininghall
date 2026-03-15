@@ -1,0 +1,703 @@
+[
+  {
+    "id": "100364",
+    "sourceMenuItemId": "100364",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Bulgogi Beef Bowl with Kimchi Fried Rice",
+    "description": "Thinly sliced marinated Korean beef served with wok fried vegetables over kimchi fried rice with choice of finishing sauce",
+    "price": 9,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 562,
+      "protein": 19.9,
+      "carbs": 66.6,
+      "fat": 24.5
+    },
+    "updatedAt": "2026-03-14T23:33:05.786Z"
+  },
+  {
+    "id": "100265",
+    "sourceMenuItemId": "100265",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Bulgogi Beef Bowl with Rice",
+    "description": "Thinly sliced marinated Korean beef served with wok fried vegetables over rice with choice of finishing sauce",
+    "price": 9,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 691,
+      "protein": 24.9,
+      "carbs": 79.4,
+      "fat": 31.1
+    },
+    "updatedAt": "2026-03-14T23:33:05.789Z"
+  },
+  {
+    "id": "103013",
+    "sourceMenuItemId": "103013",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Chicken Inasal Bowl with Garlic Fried Rice",
+    "description": "Filipino chicken inasal served with wok fried vegetables with garlic fried rice",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy"
+    ],
+    "macros": {
+      "calories": 641,
+      "protein": 27.8,
+      "carbs": 70.9,
+      "fat": 27.3
+    },
+    "updatedAt": "2026-03-14T23:33:23.689Z"
+  },
+  {
+    "id": "102889",
+    "sourceMenuItemId": "102889",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Chicken Inasal Bowl with Rice",
+    "description": "Filipino chicken inasal served with wok fried vegetables with jasmine rice",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy"
+    ],
+    "macros": {
+      "calories": 627,
+      "protein": 27.7,
+      "carbs": 71.7,
+      "fat": 25.3
+    },
+    "updatedAt": "2026-03-14T23:33:23.689Z"
+  },
+  {
+    "id": "102890",
+    "sourceMenuItemId": "102890",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Coconut Shrimp Bowl with Garlic Fried Rice",
+    "description": "Shrimp, butternut squash, and long beans sauteed in a spicy coconut sauce garnished with cilantro served with wok fried vegetables over garlic fried rice",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "shellfish"
+    ],
+    "macros": {
+      "calories": 674,
+      "protein": 15.6,
+      "carbs": 72.6,
+      "fat": 36.4
+    },
+    "updatedAt": "2026-03-14T23:33:23.690Z"
+  },
+  {
+    "id": "102891",
+    "sourceMenuItemId": "102891",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Coconut Shrimp Bowl with Rice",
+    "description": "Shrimp, butternut squash, and long beans sauteed in a spicy coconut sauce garnished with cilantro served with wok fried vegetables over jasmine rice",
+    "price": 9,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "shellfish"
+    ],
+    "macros": {
+      "calories": 660,
+      "protein": 15.6,
+      "carbs": 73.4,
+      "fat": 34.4
+    },
+    "updatedAt": "2026-03-14T23:33:23.690Z"
+  },
+  {
+    "id": "100365",
+    "sourceMenuItemId": "100365",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Dakgangjeong Chicken Bowl with Kimchi Fried Rice",
+    "description": "Crispy Korean fried chicken glazed in a sweet, tangy, and spicy sauce served with wok fried vegetables over kimchi fried rice with choice of finishing sauce",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "egg",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 615,
+      "protein": 19.1,
+      "carbs": 93.8,
+      "fat": 19.7
+    },
+    "updatedAt": "2026-03-14T23:33:05.789Z"
+  },
+  {
+    "id": "100268",
+    "sourceMenuItemId": "100268",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Dakgangjeong Chicken Bowl with Rice",
+    "description": "Crispy Korean fried chicken glazed in a sweet, tangy, and spicy sauce served with wok fried vegetables over rice with choice of finishing sauce",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 567,
+      "protein": 17.9,
+      "carbs": 85.5,
+      "fat": 18.7
+    },
+    "updatedAt": "2026-03-14T23:33:05.790Z"
+  },
+  {
+    "id": "100366",
+    "sourceMenuItemId": "100366",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Dobu Jorim Tofu Bowl with Kimchi Fried Rice",
+    "description": "Korean style fried tofu in a spicy sauce served with wok fried vegetables over rice with choice of finishing sauce",
+    "price": 7.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 604,
+      "protein": 20,
+      "carbs": 80.9,
+      "fat": 23.9
+    },
+    "updatedAt": "2026-03-14T23:33:05.791Z"
+  },
+  {
+    "id": "100269",
+    "sourceMenuItemId": "100269",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Dobu Jorim Tofu Bowl with Rice",
+    "description": "Korean style fried tofu in a spicy sauce served with wok fried vegetables over rice with choice of finishing sauce",
+    "price": 7.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 555,
+      "protein": 18.7,
+      "carbs": 72.7,
+      "fat": 22.8
+    },
+    "updatedAt": "2026-03-14T23:33:05.791Z"
+  },
+  {
+    "id": "102892",
+    "sourceMenuItemId": "102892",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Glazed Pork belly Bowl with Garlic Fried Rice",
+    "description": "Savory glazed grilled pork belly served with wok fried vegetables over garlic fried rice",
+    "price": 9,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy"
+    ],
+    "macros": {
+      "calories": 1077,
+      "protein": 19.6,
+      "carbs": 78.6,
+      "fat": 76.7
+    },
+    "updatedAt": "2026-03-14T23:33:23.691Z"
+  },
+  {
+    "id": "102893",
+    "sourceMenuItemId": "102893",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Glazed Pork Belly Bowl with Rice",
+    "description": "Savory glazed grilled pork belly served with wok fried vegetables over jasmine rice",
+    "price": 9,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy"
+    ],
+    "macros": {
+      "calories": 1063,
+      "protein": 19.5,
+      "carbs": 79.3,
+      "fat": 74.7
+    },
+    "updatedAt": "2026-03-14T23:33:23.691Z"
+  },
+  {
+    "id": "100367",
+    "sourceMenuItemId": "100367",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Korean Chicken Bowl with Kimchi Fried Rice",
+    "description": "Grilled Korean chicken served with wok fried vegetables served over kimchi fried rice with choice of finishing sauce",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 611,
+      "protein": 30.4,
+      "carbs": 76,
+      "fat": 19.6
+    },
+    "updatedAt": "2026-03-14T23:33:05.792Z"
+  },
+  {
+    "id": "100270",
+    "sourceMenuItemId": "100270",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Korean Chicken Bowl with Rice",
+    "description": "Grilled Korean chicken served with wok fried vegetables served over rice with choice of finishing sauce",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 562,
+      "protein": 29.1,
+      "carbs": 67.8,
+      "fat": 18.6
+    },
+    "updatedAt": "2026-03-14T23:33:05.793Z"
+  },
+  {
+    "id": "102900",
+    "sourceMenuItemId": "102900",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Tofu Sisig Bowl with Garlic Fried Rice",
+    "description": "Savory tofu and mushrooms served with wok fried vegetables over garlic fried rice",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 573,
+      "protein": 22.4,
+      "carbs": 70.8,
+      "fat": 24.4
+    },
+    "updatedAt": "2026-03-14T23:33:23.692Z"
+  },
+  {
+    "id": "102901",
+    "sourceMenuItemId": "102901",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Bowls",
+    "name": "Tofu Sisig Bowl with Rice",
+    "description": "Savory tofu and mushrooms served with wok fried vegetables over jasmine rice",
+    "price": 8.5,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 559,
+      "protein": 22.3,
+      "carbs": 71.6,
+      "fat": 22.4
+    },
+    "updatedAt": "2026-03-14T23:33:23.692Z"
+  },
+  {
+    "id": "100279",
+    "sourceMenuItemId": "100279",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Build Your Own",
+    "name": "Half Rice and Half Kimchi Fried Rice",
+    "description": "Base, Half & Half Korean",
+    "price": 3.75,
+    "category": "Build Your Own",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 286,
+      "protein": 6.5,
+      "carbs": 62.3,
+      "fat": 0.5
+    },
+    "updatedAt": "2026-03-14T23:33:05.793Z"
+  },
+  {
+    "id": "100304",
+    "sourceMenuItemId": "100304",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Desserts",
+    "name": "Sesame Balls",
+    "description": "Deep fried sesame balls",
+    "price": 4,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "sesame"
+    ],
+    "macros": {
+      "calories": 386,
+      "protein": 10.6,
+      "carbs": 53.2,
+      "fat": 17.6
+    },
+    "updatedAt": "2026-03-14T23:33:05.794Z"
+  },
+  {
+    "id": "102934",
+    "sourceMenuItemId": "102934",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Desserts",
+    "name": "Taho",
+    "description": "Silky soft tofu topped with tapioca pearls and a brown sugar syrup",
+    "price": 4,
+    "category": "Desserts",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 221,
+      "protein": 6.7,
+      "carbs": 40.6,
+      "fat": 4
+    },
+    "updatedAt": "2026-03-14T23:33:23.692Z"
+  },
+  {
+    "id": "100350",
+    "sourceMenuItemId": "100350",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Chicken Potstickers",
+    "description": "2 fried chicken potstickers",
+    "price": 3.75,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 89,
+      "protein": 4.4,
+      "carbs": 13.6,
+      "fat": 1.6
+    },
+    "updatedAt": "2026-03-14T23:33:05.794Z"
+  },
+  {
+    "id": "102993",
+    "sourceMenuItemId": "102993",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Garlic Fried Rice",
+    "description": "Garlic fried rice",
+    "price": 3.75,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 217,
+      "protein": 4.7,
+      "carbs": 45.2,
+      "fat": 1.6
+    },
+    "updatedAt": "2026-03-14T23:33:23.693Z"
+  },
+  {
+    "id": "102994",
+    "sourceMenuItemId": "102994",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Half Rice and Half Garlic Fried Rice",
+    "description": "Half portion each of garlic fried rice and steamed jasmine rice",
+    "price": 3.75,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 247,
+      "protein": 5.6,
+      "carbs": 51.3,
+      "fat": 2.2
+    },
+    "updatedAt": "2026-03-14T23:33:23.694Z"
+  },
+  {
+    "id": "100356",
+    "sourceMenuItemId": "100356",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Kimchi Fried Rice",
+    "description": "Rice stir fried with kimchi, vegetables and soy sauce",
+    "price": 6,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "fish",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 155,
+      "protein": 3.6,
+      "carbs": 33.3,
+      "fat": 0.5
+    },
+    "updatedAt": "2026-03-14T23:33:05.795Z"
+  },
+  {
+    "id": "100357",
+    "sourceMenuItemId": "100357",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Korean Sticky Wings",
+    "description": "Crispy chicken wings tossed in sticky Korean sweet and spicy sauce",
+    "price": 9.5,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 574,
+      "protein": 44.3,
+      "carbs": 11.6,
+      "fat": 38.7
+    },
+    "updatedAt": "2026-03-14T23:33:05.795Z"
+  },
+  {
+    "id": "100360",
+    "sourceMenuItemId": "100360",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Steamed Pork Bun",
+    "description": "Steamed BBQ pork bun topped with garlic chili oil and green onion",
+    "price": 6,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "shellfish",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 329,
+      "protein": 7.1,
+      "carbs": 35.2,
+      "fat": 18
+    },
+    "updatedAt": "2026-03-14T23:33:05.796Z"
+  },
+  {
+    "id": "100361",
+    "sourceMenuItemId": "100361",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Vegetable Spring Rolls",
+    "description": "2 crispy fried vegetable spring rolls",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 81,
+      "protein": 2,
+      "carbs": 14.2,
+      "fat": 1.1
+    },
+    "updatedAt": "2026-03-14T23:33:05.796Z"
+  },
+  {
+    "id": "100362",
+    "sourceMenuItemId": "100362",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Sides",
+    "name": "Winter Wok Vegetables",
+    "description": "Winter wok fried vegetables tossed in our house wok soy sauce",
+    "price": 3.75,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 159,
+      "protein": 2.2,
+      "carbs": 8.4,
+      "fat": 14
+    },
+    "updatedAt": "2026-03-14T23:33:05.797Z"
+  },
+  {
+    "id": "103026",
+    "sourceMenuItemId": "103026",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Wings",
+    "name": "Garlic Chicken Wings",
+    "description": "Crispy fried wings tossed in seasoning and garlic chips",
+    "price": 9.5,
+    "category": "Wings",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 854,
+      "protein": 50.2,
+      "carbs": 9.6,
+      "fat": 68.8
+    },
+    "updatedAt": "2026-03-14T23:33:23.695Z"
+  },
+  {
+    "id": "100347",
+    "sourceMenuItemId": "100347",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Wok Sauces",
+    "name": "Dragon Sauce",
+    "description": "Sweet garlic soy sauce with chilies",
+    "price": null,
+    "category": "Wok Sauces",
+    "imageUrl": null,
+    "tags": [
+      "soy"
+    ],
+    "macros": {
+      "calories": 36,
+      "protein": 0.9,
+      "carbs": 8.8,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T23:33:05.799Z"
+  },
+  {
+    "id": "100348",
+    "sourceMenuItemId": "100348",
+    "diningHallSlug": "wok-this-way",
+    "parentHall": "Wok",
+    "station": "Wok Sauces",
+    "name": "Lemongrass Ponzu Sauce",
+    "description": "Sauce, Lemongrass Ponzu",
+    "price": null,
+    "category": "Wok Sauces",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 25,
+      "protein": 1,
+      "carbs": 5.7,
+      "fat": 0.1
+    },
+    "updatedAt": "2026-03-14T23:33:05.800Z"
+  }
+]

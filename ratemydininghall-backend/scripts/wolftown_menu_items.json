@@ -1,0 +1,751 @@
+[
+  {
+    "id": "1568165576",
+    "sourceMenuItemId": "1568165576",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Beverages",
+    "name": "Fountain Beverage",
+    "description": "",
+    "price": 3,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 33,
+      "protein": 0,
+      "carbs": 9,
+      "fat": 0
+    },
+    "updatedAt": "2026-03-14T22:55:39.377Z"
+  },
+  {
+    "id": "1568165555",
+    "sourceMenuItemId": "1568165555",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast A La Carte",
+    "name": "Cantina Beans",
+    "description": "Pinto and refried beans stewed with onion, jalapeno, tomato, soyrizo, and spices",
+    "price": 3.75,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 86,
+      "protein": 4.4,
+      "carbs": 13,
+      "fat": 1.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.378Z"
+  },
+  {
+    "id": "1568165558",
+    "sourceMenuItemId": "1568165558",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast A La Carte",
+    "name": "Tater Tots",
+    "description": "Crispy fried potato barrels.",
+    "price": 4,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 475,
+      "protein": 3.9,
+      "carbs": 36.9,
+      "fat": 27.7
+    },
+    "updatedAt": "2026-03-14T22:55:39.379Z"
+  },
+  {
+    "id": "1568165559",
+    "sourceMenuItemId": "1568165559",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast A La Carte",
+    "name": "Turkey Sausage Patty",
+    "description": "Roasted turkey sausage patty.",
+    "price": 2,
+    "category": "Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 90,
+      "protein": 6.9,
+      "carbs": 0,
+      "fat": 6.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.380Z"
+  },
+  {
+    "id": "1568165551",
+    "sourceMenuItemId": "1568165551",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Specials",
+    "name": "Carne Asada Loaded Tots",
+    "description": "Tater tots topped with beef carne asada, scrambled eggs, cheese, chipotle lime crema, and pico de gallo",
+    "price": 12,
+    "category": "Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 1137,
+      "protein": 47.7,
+      "carbs": 52.9,
+      "fat": 84.1
+    },
+    "updatedAt": "2026-03-14T22:55:39.383Z"
+  },
+  {
+    "id": "1568165552",
+    "sourceMenuItemId": "1568165552",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Specials",
+    "name": "Longaniza Sausage Loaded Tots",
+    "description": "Tater tots topped with longaniza sausage, scrambled eggs, cheese, chipotle lime crema, and pico de gallo",
+    "price": 11,
+    "category": "Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 1407,
+      "protein": 47.6,
+      "carbs": 56.3,
+      "fat": 113.2
+    },
+    "updatedAt": "2026-03-14T22:55:39.384Z"
+  },
+  {
+    "id": "1568165553",
+    "sourceMenuItemId": "1568165553",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Specials",
+    "name": "Mushroom Fajita Loaded Tots",
+    "description": "Tater tots topped with mushroom fajitas, scrambled eggs, cheese, chipotle lime crema, and pico de gallo",
+    "price": 11,
+    "category": "Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 1066,
+      "protein": 28.7,
+      "carbs": 59.7,
+      "fat": 83.2
+    },
+    "updatedAt": "2026-03-14T22:55:39.384Z"
+  },
+  {
+    "id": "1568165554",
+    "sourceMenuItemId": "1568165554",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Specials",
+    "name": "Pork Belly Loaded Tots",
+    "description": "Tater tots topped with roasted pork belly, scrambled eggs, cheese, chipotle lime crema, and pico de gallo",
+    "price": 11,
+    "category": "Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 1437,
+      "protein": 43.3,
+      "carbs": 52.4,
+      "fat": 120.7
+    },
+    "updatedAt": "2026-03-14T22:55:39.385Z"
+  },
+  {
+    "id": "1568165570",
+    "sourceMenuItemId": "1568165570",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Bacon",
+    "description": "2 Slices Pork Bacon",
+    "price": 3.5,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 222,
+      "protein": 20.9,
+      "carbs": 0,
+      "fat": 26.1
+    },
+    "updatedAt": "2026-03-14T22:55:39.366Z"
+  },
+  {
+    "id": "1568165571",
+    "sourceMenuItemId": "1568165571",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fresh Fruit Salad",
+    "description": "Mix of fresh seasonal fruits",
+    "price": 3.75,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 45,
+      "protein": 0.7,
+      "carbs": 11.2,
+      "fat": 0.2
+    },
+    "updatedAt": "2026-03-14T22:55:39.369Z"
+  },
+  {
+    "id": "1568165572",
+    "sourceMenuItemId": "1568165572",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Fried Egg",
+    "description": "Whole egg, cooked to order.",
+    "price": 2.25,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 75,
+      "protein": 7.1,
+      "carbs": 0.4,
+      "fat": 5.6
+    },
+    "updatedAt": "2026-03-14T22:55:39.369Z"
+  },
+  {
+    "id": "1568165573",
+    "sourceMenuItemId": "1568165573",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Hash Brown Triangles",
+    "description": "Crispy fried potato cakes.",
+    "price": 4,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 322,
+      "protein": 2,
+      "carbs": 22.3,
+      "fat": 26.3
+    },
+    "updatedAt": "2026-03-14T22:55:39.370Z"
+  },
+  {
+    "id": "1568165574",
+    "sourceMenuItemId": "1568165574",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Soft Scrambled Eggs",
+    "description": "Scrambled Eggs",
+    "price": 3,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "egg"
+    ],
+    "macros": {
+      "calories": 159,
+      "protein": 12.5,
+      "carbs": 0,
+      "fat": 10.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.371Z"
+  },
+  {
+    "id": "1568165575",
+    "sourceMenuItemId": "1568165575",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Rooftop Breakfast A La Carte",
+    "name": "Veggie Sausage",
+    "description": "Vegan veggie sausage.",
+    "price": 2,
+    "category": "Rooftop Breakfast A La Carte",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 140,
+      "protein": 15.9,
+      "carbs": 7,
+      "fat": 7
+    },
+    "updatedAt": "2026-03-14T22:55:39.371Z"
+  },
+  {
+    "id": "1568165560",
+    "sourceMenuItemId": "1568165560",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Apple Cobbler French Toast",
+    "description": "French toast topped with apple cinnamon topping and cobbler crumble.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 680,
+      "protein": 16.6,
+      "carbs": 101.9,
+      "fat": 14.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.372Z"
+  },
+  {
+    "id": "1568165561",
+    "sourceMenuItemId": "1568165561",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Chocolate Chip Pancakes",
+    "description": "Home made choco chip pancakes served with chocolate sauce and whipped cream.",
+    "price": 7,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 639,
+      "protein": 9.6,
+      "carbs": 90.5,
+      "fat": 27.2
+    },
+    "updatedAt": "2026-03-14T22:55:39.372Z"
+  },
+  {
+    "id": "1568165562",
+    "sourceMenuItemId": "1568165562",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Hot Honey Chicken Sandwich",
+    "description": "Brioche bun with fried chicken fritters, a fried egg, spicy mayo and hot honey",
+    "price": 9.25,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 1102,
+      "protein": 35.9,
+      "carbs": 87.7,
+      "fat": 64.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.373Z"
+  },
+  {
+    "id": "1568165563",
+    "sourceMenuItemId": "1568165563",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Loaded Breakfast Sandwich",
+    "description": "Texas toast with pork sausage, bacon, American cheese, fried egg and hot honey",
+    "price": 9.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 950,
+      "protein": 49.5,
+      "carbs": 77.7,
+      "fat": 49.6
+    },
+    "updatedAt": "2026-03-14T22:55:39.373Z"
+  },
+  {
+    "id": "1568165564",
+    "sourceMenuItemId": "1568165564",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Mosaic Brunch",
+    "description": "Your choice of pancakes and meat served with scrambled eggs",
+    "price": 10,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 679,
+      "protein": 24.5,
+      "carbs": 56.5,
+      "fat": 38.5
+    },
+    "updatedAt": "2026-03-14T22:55:39.374Z"
+  },
+  {
+    "id": "1568165565",
+    "sourceMenuItemId": "1568165565",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pork Belly Hash and Eggs",
+    "description": "Crispy pork belly and smoked brisket hash, mixed vegetables topped with a fried egg",
+    "price": 8,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "egg"
+    ],
+    "macros": {
+      "calories": 446,
+      "protein": 17.4,
+      "carbs": 33.4,
+      "fat": 26.2
+    },
+    "updatedAt": "2026-03-14T22:55:39.374Z"
+  },
+  {
+    "id": "1568165566",
+    "sourceMenuItemId": "1568165566",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Pulled Pork Hashbrown Benedict",
+    "description": "Hash browns topped with pulled pork, poached eggs, green hollandaise saice and corn salsa",
+    "price": 13,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 970,
+      "protein": 53.5,
+      "carbs": 32.5,
+      "fat": 70.3
+    },
+    "updatedAt": "2026-03-14T22:55:39.375Z"
+  },
+  {
+    "id": "1568165567",
+    "sourceMenuItemId": "1568165567",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brisket Nachos",
+    "description": "Tortilla chips topped with BBQ brisket chili, velveeta nacho cheese sauce, corn salsa, sliced jalapenos and serrano cilantro creme garnished with chopped cilantro",
+    "price": 8.5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1098,
+      "protein": 20.4,
+      "carbs": 99.6,
+      "fat": 71.1
+    },
+    "updatedAt": "2026-03-14T22:55:39.375Z"
+  },
+  {
+    "id": "1568165568",
+    "sourceMenuItemId": "1568165568",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Rooftop Brunch Burger",
+    "description": "Brioche bun with a beef patty, hash brown triangles, a fried egg, tomato jam and BBQ mayo",
+    "price": 14,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1103,
+      "protein": 45.7,
+      "carbs": 76.8,
+      "fat": 68.9
+    },
+    "updatedAt": "2026-03-14T22:55:39.376Z"
+  },
+  {
+    "id": "1568165569",
+    "sourceMenuItemId": "1568165569",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "The Rooftop Breakfast Specials",
+    "name": "Root Vegetable Hash & Egg",
+    "description": "Hash of potatoes, yams, butternut squash, parsnips, onions, chard, and fresno chiles topped with a fried egg and green onion",
+    "price": 5,
+    "category": "The Rooftop Breakfast Specials",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 198,
+      "protein": 8.5,
+      "carbs": 25.5,
+      "fat": 7.4
+    },
+    "updatedAt": "2026-03-14T22:55:39.377Z"
+  },
+  {
+    "id": "1568165577",
+    "sourceMenuItemId": "1568165577",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Carne Asada Breakfast Burrito",
+    "description": "Seasoned beef carne asada, scrambled eggs, tater tots, and cheddar jack cheese wrapped in a tortilla",
+    "price": 10.5,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1016,
+      "protein": 53.4,
+      "carbs": 72.5,
+      "fat": 57.3
+    },
+    "updatedAt": "2026-03-14T22:55:39.380Z"
+  },
+  {
+    "id": "1568166064",
+    "sourceMenuItemId": "1568166064",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Chipotle Breakfast Burrito",
+    "description": "Cantina beans, scrambled eggs, bacon, cheese, fried tortilla strips, and pico de gallo wrapped and served in a tortilla",
+    "price": 9.5,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1126,
+      "protein": 52.4,
+      "carbs": 89.2,
+      "fat": 63
+    },
+    "updatedAt": "2026-03-14T22:55:59.838Z"
+  },
+  {
+    "id": "1568165578",
+    "sourceMenuItemId": "1568165578",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Egg, Bean & Cheese Burrito",
+    "description": "Burrito with eggs, cheddar jack cheese, refried beans, tater tots on choice of tortilla",
+    "price": 7,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1140,
+      "protein": 36.4,
+      "carbs": 100.8,
+      "fat": 68
+    },
+    "updatedAt": "2026-03-14T22:55:39.381Z"
+  },
+  {
+    "id": "1568165579",
+    "sourceMenuItemId": "1568165579",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Mushroom Fajita Breakfast Burrito",
+    "description": "Mushroom fajitas, scrambled eggs, tater tots, and cheese wrapped and served in a tortilla",
+    "price": 9.5,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 935,
+      "protein": 32.4,
+      "carbs": 79.8,
+      "fat": 56.1
+    },
+    "updatedAt": "2026-03-14T22:55:39.381Z"
+  },
+  {
+    "id": "1568165580",
+    "sourceMenuItemId": "1568165580",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Pork Belly Banhrito",
+    "description": "Roasted pork belly, steamed rice, pickled banh mi salad, hoisin mayo, cilantro and sriracha aioli wrapped and served in a tortilla",
+    "price": 9,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 1223,
+      "protein": 29.9,
+      "carbs": 108,
+      "fat": 71.8
+    },
+    "updatedAt": "2026-03-14T22:55:39.382Z"
+  },
+  {
+    "id": "1568165581",
+    "sourceMenuItemId": "1568165581",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Pork Belly Breakfast Burrito",
+    "description": "Roasted pork belly, scrambled eggs, tater tots, cheddar jack cheese, wrapped in a wheat tortilla",
+    "price": 9,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 1329,
+      "protein": 46.1,
+      "carbs": 74,
+      "fat": 94.6
+    },
+    "updatedAt": "2026-03-14T22:55:39.382Z"
+  },
+  {
+    "id": "1568165582",
+    "sourceMenuItemId": "1568165582",
+    "diningHallSlug": "wolftown",
+    "parentHall": "Wolftown",
+    "station": "Wolftown Breakfast Burritos",
+    "name": "Sausage Breakfast Burrito",
+    "description": "Turkey sausage, scrambled eggs, tater tots, cheddar jack cheese, and pico de gallo wrapped in a wheat tortilla",
+    "price": 8.5,
+    "category": "Wolftown Breakfast Burritos",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 990,
+      "protein": 36,
+      "carbs": 73.1,
+      "fat": 61.5
+    },
+    "updatedAt": "2026-03-14T22:55:39.383Z"
+  }
+]

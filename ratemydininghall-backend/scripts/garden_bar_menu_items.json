@@ -1,0 +1,507 @@
+[
+  {
+    "id": "100260",
+    "sourceMenuItemId": "100260",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Beverages",
+    "name": "Matcha Milk Tea Boba",
+    "description": "Sweetened matcha tea with milk and boba pearls served over ice",
+    "price": 5.75,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 293,
+      "protein": 10,
+      "carbs": 52.4,
+      "fat": 5
+    },
+    "updatedAt": "2026-03-14T23:39:42.031Z"
+  },
+  {
+    "id": "100261",
+    "sourceMenuItemId": "100261",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Beverages",
+    "name": "Milk Tea Boba",
+    "description": "Sweet black tea with milk and boba pearls served over ice",
+    "price": 5,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [
+      "dairy"
+    ],
+    "macros": {
+      "calories": 254,
+      "protein": 3.9,
+      "carbs": 56.5,
+      "fat": 2
+    },
+    "updatedAt": "2026-03-14T23:39:42.038Z"
+  },
+  {
+    "id": "100262",
+    "sourceMenuItemId": "100262",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Beverages",
+    "name": "Oat Milk Tea Boba",
+    "description": "Sweet black tea with oat milk and boba pearls served over ice",
+    "price": 5.5,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [],
+    "macros": {
+      "calories": 249,
+      "protein": 0.8,
+      "carbs": 56.9,
+      "fat": 2.5
+    },
+    "updatedAt": "2026-03-14T23:39:42.039Z"
+  },
+  {
+    "id": "100263",
+    "sourceMenuItemId": "100263",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Beverages",
+    "name": "Taro Milk Tea Boba",
+    "description": "Sweetened taro milk and boba pearls served over ice",
+    "price": 5.75,
+    "category": "Beverages",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 245,
+      "protein": 0.2,
+      "carbs": 55.5,
+      "fat": 4
+    },
+    "updatedAt": "2026-03-14T23:39:42.040Z"
+  },
+  {
+    "id": "100331",
+    "sourceMenuItemId": "100331",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Salads",
+    "name": "64 Caesar Salad",
+    "description": "Baby kale, tomato and blistered bell pepper blend, edamame, parmesan crisps, roasted chickpeas and caesar dressing",
+    "price": 8.5,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "fish",
+      "egg"
+    ],
+    "macros": {
+      "calories": 520,
+      "protein": 15.8,
+      "carbs": 22.9,
+      "fat": 45.2
+    },
+    "updatedAt": "2026-03-14T23:39:42.040Z"
+  },
+  {
+    "id": "100332",
+    "sourceMenuItemId": "100332",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Salads",
+    "name": "Blackened Chicken Salad",
+    "description": "Spring mix, romaine mix, blackened chicken, pickled onions, candied bacon, feta cheese, and cherry tomatoes tossed in jalapeno ranch",
+    "price": 10.5,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 594,
+      "protein": 31.4,
+      "carbs": 21.3,
+      "fat": 43.3
+    },
+    "updatedAt": "2026-03-14T23:39:42.041Z"
+  },
+  {
+    "id": "100333",
+    "sourceMenuItemId": "100333",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Salads",
+    "name": "Chicken Chop Salad",
+    "description": "Romaine lettuce, hardboiled eggs, spiced candied bacon, roasted corn, tarragon chicken, and jalapeno cilantro ranch topped with avocado and goat cheese",
+    "price": 11,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "egg"
+    ],
+    "macros": {
+      "calories": 737,
+      "protein": 43.5,
+      "carbs": 22.8,
+      "fat": 53.8
+    },
+    "updatedAt": "2026-03-14T23:39:42.042Z"
+  },
+  {
+    "id": "100334",
+    "sourceMenuItemId": "100334",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Salads",
+    "name": "Mandarin Chicken Salad",
+    "description": "Romaine lettuce, napa cabbage with bean sprouts, carrot, red pepper, chopped chicken, mandarin oranges and sesame seeds in a sesame ginger dressing",
+    "price": 9,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "gluten",
+      "sesame"
+    ],
+    "macros": {
+      "calories": 504,
+      "protein": 23.9,
+      "carbs": 29.3,
+      "fat": 32.7
+    },
+    "updatedAt": "2026-03-14T23:39:42.042Z"
+  },
+  {
+    "id": "100335",
+    "sourceMenuItemId": "100335",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Salads",
+    "name": "Quinoa Root Salad",
+    "description": "Roasted potatoes and beets, cucumbers, quinoa, raisins, mandarin oranges, and pepitas tossed with a lemon fig vinaigrette",
+    "price": 7.5,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "vegan"
+    ],
+    "macros": {
+      "calories": 453,
+      "protein": 7.5,
+      "carbs": 53.2,
+      "fat": 24.6
+    },
+    "updatedAt": "2026-03-14T23:39:42.043Z"
+  },
+  {
+    "id": "100340",
+    "sourceMenuItemId": "100340",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Sandwiches & More",
+    "name": "Lemon Chicken Salad Sandwich",
+    "description": "Hoagie roll with tarragon chicken, spring mix, sliced red & green bell peppers and lemon leek dressing",
+    "price": 9.5,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 448,
+      "protein": 16.5,
+      "carbs": 51.9,
+      "fat": 19.5
+    },
+    "updatedAt": "2026-03-14T23:39:42.044Z"
+  },
+  {
+    "id": "100342",
+    "sourceMenuItemId": "100342",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Sandwiches & More",
+    "name": "Roasted Tomato Caprese Sandwich",
+    "description": "Hoagie roll with spinach pesto, roasted garlic tomato confit, baby arugula, marinated cucumber and fresh mozzarella",
+    "price": 9.5,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 411,
+      "protein": 16.9,
+      "carbs": 46.4,
+      "fat": 17.8
+    },
+    "updatedAt": "2026-03-14T23:39:42.045Z"
+  },
+  {
+    "id": "100343",
+    "sourceMenuItemId": "100343",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Sandwiches & More",
+    "name": "Thai Tuna Salad Sandwich",
+    "description": "Sourdough bread with Thai tuna salad, sweet chile mayo sauce and green leaf lettuce",
+    "price": 8,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "soy",
+      "wheat",
+      "fish",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 668,
+      "protein": 20,
+      "carbs": 54.1,
+      "fat": 39.1
+    },
+    "updatedAt": "2026-03-14T23:39:42.045Z"
+  },
+  {
+    "id": "100346",
+    "sourceMenuItemId": "100346",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Sandwiches & More",
+    "name": "Turkey Club Sandwich",
+    "description": "Carved roasted turkey, bacon, lettuce, red onion, Granny Smith apple, cheddar cheese, and cranberry spread on a hoagie roll",
+    "price": 12,
+    "category": "Sandwiches & More",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 542,
+      "protein": 32.5,
+      "carbs": 65.9,
+      "fat": 16.2
+    },
+    "updatedAt": "2026-03-14T23:39:42.046Z"
+  },
+  {
+    "id": "100349",
+    "sourceMenuItemId": "100349",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Sides",
+    "name": "Caesar Side Salad",
+    "description": "Romaine and spring greens with parmesan cheese, croutons, and caesar dressing",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "fish",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 200,
+      "protein": 5.1,
+      "carbs": 15.2,
+      "fat": 15
+    },
+    "updatedAt": "2026-03-14T23:39:42.046Z"
+  },
+  {
+    "id": "106958",
+    "sourceMenuItemId": "106958",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Albondigas Soup",
+    "description": "Savory tomato based soup with meatballs garnished with cilantro and lime",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 266,
+      "protein": 11.8,
+      "carbs": 19.1,
+      "fat": 17.1
+    },
+    "updatedAt": "2026-03-14T23:40:18.566Z"
+  },
+  {
+    "id": "100363",
+    "sourceMenuItemId": "100363",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Beef Chili Bowl",
+    "description": "Mild spicy beef chili, served with cheese and green onions",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy"
+    ],
+    "macros": {
+      "calories": 563,
+      "protein": 37.2,
+      "carbs": 22.9,
+      "fat": 35.5
+    },
+    "updatedAt": "2026-03-14T23:39:42.047Z"
+  },
+  {
+    "id": "104996",
+    "sourceMenuItemId": "104996",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Broccoli Cheddar Soup",
+    "description": "Creamy broccoli and cheddar cheese soup with onion and garlic",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 292,
+      "protein": 10.6,
+      "carbs": 17.3,
+      "fat": 19.9
+    },
+    "updatedAt": "2026-03-14T23:40:08.662Z"
+  },
+  {
+    "id": "103009",
+    "sourceMenuItemId": "103009",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Hot and Sour Soup",
+    "description": "Thick soup made with aromatics, sriracha, soy sauce and rice vinegar with mushrooms, kale and diced tofu",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "soy"
+    ],
+    "macros": {
+      "calories": 137,
+      "protein": 8.8,
+      "carbs": 14.6,
+      "fat": 5.9
+    },
+    "updatedAt": "2026-03-14T23:39:59.295Z"
+  },
+  {
+    "id": "103010",
+    "sourceMenuItemId": "103010",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "House Chicken Noodle Soup",
+    "description": "Chicken broth with chicken, egg noodles, carrots, celery, onion and fresh herbs",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 153,
+      "protein": 10.3,
+      "carbs": 13.7,
+      "fat": 5.6
+    },
+    "updatedAt": "2026-03-14T23:39:59.296Z"
+  },
+  {
+    "id": "110931",
+    "sourceMenuItemId": "110931",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Seafood Chowder",
+    "description": "Creamy fish stew with potatoes, carrot, celery, onion, corn and fresh herbs",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "fish",
+      "shellfish",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 222,
+      "protein": 12.5,
+      "carbs": 19.8,
+      "fat": 9.7
+    },
+    "updatedAt": "2026-03-14T23:40:38.034Z"
+  },
+  {
+    "id": "101292",
+    "sourceMenuItemId": "101292",
+    "diningHallSlug": "garden-bar",
+    "parentHall": "Garden Bar",
+    "station": "Soups",
+    "name": "Tomato and Red Pepper Bisque",
+    "description": "Red bell pepper pureed with roma tomatoes, heavy cream, tomato paste, celery, carrot, onion",
+    "price": 4.75,
+    "category": "Soups",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy"
+    ],
+    "macros": {
+      "calories": 350,
+      "protein": 3.7,
+      "carbs": 21.3,
+      "fat": 27.5
+    },
+    "updatedAt": "2026-03-14T23:39:50.154Z"
+  }
+]

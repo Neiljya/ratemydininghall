@@ -1,0 +1,273 @@
+[
+  {
+    "id": "101184",
+    "sourceMenuItemId": "101184",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Blistered Tomato Fettuccini Alfredo",
+    "description": "Fettuccini, spinach and cherry tomato cooked in alfredo sauce topped with shredded parmesan",
+    "price": 10,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 436,
+      "protein": 14.2,
+      "carbs": 79.9,
+      "fat": 9.1
+    },
+    "updatedAt": "2026-03-14T23:36:12.216Z"
+  },
+  {
+    "id": "100663",
+    "sourceMenuItemId": "100663",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Roasted Garlic Alfredo Fettuccine",
+    "description": "Fettucine pasta with broccoli, spinach and roasted garlic alfredo sauce topped with shredded parmesan cheese and parsley",
+    "price": 10,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 804,
+      "protein": 16.6,
+      "carbs": 69.9,
+      "fat": 51.4
+    },
+    "updatedAt": "2026-03-14T23:36:04.045Z"
+  },
+  {
+    "id": "101192",
+    "sourceMenuItemId": "101192",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Spaghetti Fra Diavolo",
+    "description": "Neapolitan pasta, spicy tomato sauce with fresh oregano and basil",
+    "price": 8.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegan",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 345,
+      "protein": 11.2,
+      "carbs": 67.4,
+      "fat": 4.8
+    },
+    "updatedAt": "2026-03-14T23:36:12.218Z"
+  },
+  {
+    "id": "100664",
+    "sourceMenuItemId": "100664",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Spaghetti Marinara",
+    "description": "Spaghetti pasta, marinara sauce, parmesan cheese and parsley with choice of protein",
+    "price": 8.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 557,
+      "protein": 14.1,
+      "carbs": 68.7,
+      "fat": 28.2
+    },
+    "updatedAt": "2026-03-14T23:36:04.048Z"
+  },
+  {
+    "id": "100665",
+    "sourceMenuItemId": "100665",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Spinach Pesto Rotini",
+    "description": "Rotini pasta served with fresh spinach pesto, green peas, sundried tomatoes, parmesan cheese, basil, and your choice of protein.",
+    "price": 10.75,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 718,
+      "protein": 21.2,
+      "carbs": 83.2,
+      "fat": 37.1
+    },
+    "updatedAt": "2026-03-14T23:36:04.049Z"
+  },
+  {
+    "id": "101193",
+    "sourceMenuItemId": "101193",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Bowls",
+    "name": "Sundried Tomato Pesto Rotini",
+    "description": "Rotini with sundried tomatoes, spinach, and sundried tomato pesto sauce topped with parmesan cheese and parsley",
+    "price": 11,
+    "category": "Bowls",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 914,
+      "protein": 25,
+      "carbs": 90.7,
+      "fat": 56.1
+    },
+    "updatedAt": "2026-03-14T23:36:12.225Z"
+  },
+  {
+    "id": "100720",
+    "sourceMenuItemId": "100720",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Plates",
+    "name": "Lasagna with Meat Sauce",
+    "description": "Pasta sheets layered with beef and sausage, mozzarella and ricotta and topped with meat sauce",
+    "price": 10.5,
+    "category": "Plates",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "wheat",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 875,
+      "protein": 43.1,
+      "carbs": 41.8,
+      "fat": 62.5
+    },
+    "updatedAt": "2026-03-14T23:36:04.050Z"
+  },
+  {
+    "id": "100732",
+    "sourceMenuItemId": "100732",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Salads",
+    "name": "Caprese Side Salad",
+    "description": "Spring mix, grape tomatoes, fresh mozzarella and basil tossed in caprese dressing",
+    "price": 5.5,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "dairy"
+    ],
+    "macros": {
+      "calories": 175,
+      "protein": 5.6,
+      "carbs": 8.1,
+      "fat": 14
+    },
+    "updatedAt": "2026-03-14T23:36:04.052Z"
+  },
+  {
+    "id": "102970",
+    "sourceMenuItemId": "102970",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Salads",
+    "name": "Pesto Pasta Side Salad",
+    "description": "Rotini tossed with arugula, cherry tomatoes, garbanzo beans, pepitas, parmesan cheese, and pesto sauce",
+    "price": 4.5,
+    "category": "Salads",
+    "imageUrl": null,
+    "tags": [
+      "vegetarian",
+      "dairy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 317,
+      "protein": 10.5,
+      "carbs": 26.8,
+      "fat": 20.6
+    },
+    "updatedAt": "2026-03-14T23:36:21.019Z"
+  },
+  {
+    "id": "100750",
+    "sourceMenuItemId": "100750",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Sides",
+    "name": "Caesar Side Salad",
+    "description": "Romaine and spring greens with parmesan cheese, croutons, and caesar dressing",
+    "price": 3,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "fish",
+      "egg",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 200,
+      "protein": 5.1,
+      "carbs": 15.2,
+      "fat": 15
+    },
+    "updatedAt": "2026-03-14T23:36:04.052Z"
+  },
+  {
+    "id": "100760",
+    "sourceMenuItemId": "100760",
+    "diningHallSlug": "al-dente",
+    "parentHall": "Al Dente",
+    "station": "Sides",
+    "name": "Roasted Garlic Breadsticks",
+    "description": "Bread sticks baked with garlic aioli spread and parmesan cheese",
+    "price": 2.25,
+    "category": "Sides",
+    "imageUrl": null,
+    "tags": [
+      "dairy",
+      "soy",
+      "wheat",
+      "gluten"
+    ],
+    "macros": {
+      "calories": 209,
+      "protein": 5.9,
+      "carbs": 25.8,
+      "fat": 8.7
+    },
+    "updatedAt": "2026-03-14T23:36:04.053Z"
+  }
+]

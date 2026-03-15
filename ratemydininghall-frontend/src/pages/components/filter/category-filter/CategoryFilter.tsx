@@ -1,17 +1,17 @@
 import Pill from '@components/ui/pill/Pill';
 import styles from './category-filter.module.css';
-import { useDraggableScroll } from '@hooks/useDraggableScroll'; // Import the hook
+import { useDraggableScroll } from '@hooks/useDraggableScroll'; 
 
 interface CategoryFilterProps {
   categories: string[];
-  selectedCategory: string;
-  onSelectCategory: (category: string) => void;
+  selectedCategories: string[]; // <-- Now an array
+  onToggleCategory: (category: string) => void; // <-- Changed to toggle
 }
 
 export default function CategoryFilter({
   categories,
-  selectedCategory,
-  onSelectCategory
+  selectedCategories,
+  onToggleCategory
 }: CategoryFilterProps) {
 
   const { scrollRef, events } = useDraggableScroll();
@@ -25,16 +25,23 @@ export default function CategoryFilter({
         ref={scrollRef}
         {...events}
       >
-        {categories.map((cat) => (
-          <div key={cat} className={styles.pillWrapper}>
-            <Pill
-              label={cat}
-              size="sm"
-              selected={selectedCategory === cat}
-              onClick={() => onSelectCategory(cat)}
-            />
-          </div>
-        ))}
+        {categories.map((cat) => {
+          // 'All' is selected if the array is empty, otherwise check if the category is in the array
+          const isSelected = cat === 'All' 
+            ? selectedCategories.length === 0 
+            : selectedCategories.includes(cat);
+
+          return (
+            <div key={cat} className={styles.pillWrapper}>
+              <Pill
+                label={cat}
+                size="sm"
+                selected={isSelected}
+                onClick={() => onToggleCategory(cat)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

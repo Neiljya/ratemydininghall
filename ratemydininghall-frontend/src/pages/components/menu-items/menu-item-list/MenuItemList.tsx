@@ -9,8 +9,9 @@ interface MenuItemListProps {
   selectedId?: string | null;
   onSelect?: (item: MenuItem) => void;
   searchQuery: string;
-  selectedCategory: string;
-  selectedTags: string[];
+  selectedCategories: string[]; 
+  includedTags: string[]; // <-- Replaced selectedTags
+  excludedTags: string[]; // <-- New exclusion array
   sortBy: string;
 }
 
@@ -19,8 +20,9 @@ export default function MenuItemList({
   selectedId,
   onSelect,
   searchQuery,
-  selectedCategory,
-  selectedTags,
+  selectedCategories, 
+  includedTags,
+  excludedTags,
   sortBy
 }: MenuItemListProps) {
   const { items, status } = useMenuItems(diningHallSlug);
@@ -29,6 +31,7 @@ export default function MenuItemList({
     if (!items) return [];
     let list = [...items];
 
+    // 1. Search Query Filter
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       list = list.filter(item => 
@@ -37,17 +40,30 @@ export default function MenuItemList({
       );
     }
 
-    if (selectedCategory !== 'All') {
-      list = list.filter(item => item.category === selectedCategory);
+    // 2. Category Filter
+    if (selectedCategories.length > 0) {
+      list = list.filter(item => item.category && selectedCategories.includes(item.category));
     }
 
-    if (selectedTags.length > 0) {
+    // 3. Filter OUT (Allergens/Ingredients to avoid)
+    if (excludedTags.length > 0) {
       list = list.filter(item => {
-        if (!item.tags || item.tags.length === 0) return true;
-        return !item.tags.some(tag => selectedTags.includes(tag));
+        if (!item.tags || item.tags.length === 0) return true; // Safe if it has no tags
+        // If the item contains ANY of the excluded tags, drop it
+        return !item.tags.some(tag => excludedTags.includes(tag));
       });
     }
 
+    // 4. Filter IN (Dietary preferences)
+    if (includedTags.length > 0) {
+      list = list.filter(item => {
+        if (!item.tags || item.tags.length === 0) return false;
+        // Keep it if it matches AT LEAST ONE of the included dietary tags
+        return includedTags.some(tag => item.tags!.includes(tag));
+      });
+    }
+
+    // 5. Sorting
     switch (sortBy) {
       case 'protein-desc': return list.sort((a, b) => (b.macros?.protein || 0) - (a.macros?.protein || 0));
       case 'calories-asc': return list.sort((a, b) => (a.macros?.calories || 0) - (b.macros?.calories || 0));
@@ -56,11 +72,9 @@ export default function MenuItemList({
       case 'fat-asc': return list.sort((a, b) => (a.macros?.fat || 0) - (b.macros?.fat || 0));
       default: return list;
     }
-  }, [items, searchQuery, selectedCategory, selectedTags, sortBy]);
+  }, [items, searchQuery, selectedCategories, includedTags, excludedTags, sortBy]); 
 
-  if (status === 'loading') {
-    return <div className={styles.muted}>Loading menu items…</div>;
-  }
+  if (status === 'loading') return <div className={styles.muted}>Loading menu items…</div>;
 
   return (
     <div className={styles.menuList}>

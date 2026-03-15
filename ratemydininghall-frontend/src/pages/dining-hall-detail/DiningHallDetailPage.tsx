@@ -20,18 +20,24 @@ import type { MenuItem } from '@redux/menu-item-slice/menuItemTypes';
 import { TAG_REGISTRY } from 'src/constants/tags';
 import globalPopupStyles from '@globalStyles/popup-styles/popupStyles.module.css';
 
+// The tags we want to filter IN (everything else defaults to filter OUT)
+const DIETARY_TAGS = ['vegan', 'vegetarian', 'halal'];
+
 export default function DiningHallDetailPage() {
   const { slug = '' } = useParams();
   
   useMenuItemsBootstrap(slug);
-  // generates filter options (categories/tags) for the UI
   const { items } = useMenuItems(slug);
   const reviewsByHall = useAppSelector(selectReviews);
+  
   const [isClosing, setIsClosing] = useState(false);
   const [selected, setSelected] = useState<MenuItem | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  
+  // Split Filters
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [includedTags, setIncludedTags] = useState<string[]>([]);
+  const [excludedTags, setExcludedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>('default');
 
   const availableCategories = useMemo(() => {
@@ -41,13 +47,21 @@ export default function DiningHallDetailPage() {
     return Array.from(cats);
   }, [items]);
 
-  const availableTags = useMemo(() => {
-    if (!items) return [];
+  const { availableDietary, availableAllergens } = useMemo(() => {
+    if (!items) return { availableDietary: [], availableAllergens: [] };
     const tags = new Set<string>();
     items.forEach(item => {
       item.tags?.forEach(tagId => { if (TAG_REGISTRY[tagId]) tags.add(tagId); });
     });
-    return Array.from(tags).sort((a, b) => TAG_REGISTRY[a].localeCompare(TAG_REGISTRY[b]));
+    
+    // Sort them alphabetically by their display name first
+    const allTags = Array.from(tags).sort((a, b) => TAG_REGISTRY[a].localeCompare(TAG_REGISTRY[b]));
+    
+    // Split them into two arrays
+    return {
+      availableDietary: allTags.filter(t => DIETARY_TAGS.includes(t)),
+      availableAllergens: allTags.filter(t => !DIETARY_TAGS.includes(t))
+    };
   }, [items]);
 
   const hallReviews = useMemo(() => {
@@ -63,8 +77,26 @@ export default function DiningHallDetailPage() {
 
   const activeReviews = selected ? menuItemReviews : hallReviews;
 
-  const toggleTag = (tag: string) => {
-    setSelectedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
+  // Toggle Handlers
+  const toggleCategory = (cat: string) => {
+    if (cat === 'All') {
+      setSelectedCategories([]); 
+      return;
+    }
+    setSelectedCategories(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]);
+  };
+
+  const toggleIncluded = (tag: string) => {
+    setIncludedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
+  };
+
+  const toggleExcluded = (tag: string) => {
+    setExcludedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
+  };
+
+  const handleClearTags = () => {
+    setIncludedTags([]);
+    setExcludedTags([]);
   };
 
   const handleCloseMobile = () => {
@@ -124,17 +156,20 @@ export default function DiningHallDetailPage() {
           {/* Category Tabs */}
           <CategoryFilter 
             categories={availableCategories} 
-            selectedCategory={selectedCategory} 
-            onSelectCategory={setSelectedCategory} 
+            selectedCategories={selectedCategories} 
+            onToggleCategory={toggleCategory} 
           />
 
           <div className={styles.contentSplit}>
             {/* Tag Filters */}
             <TagFilterWidget
-              availableTags={availableTags}
-              selectedTags={selectedTags}
-              onToggleTag={toggleTag}
-              onClear={() => setSelectedTags([])}
+              dietaryTags={availableDietary}
+              allergenTags={availableAllergens}
+              includedTags={includedTags}
+              excludedTags={excludedTags}
+              onToggleIncluded={toggleIncluded}
+              onToggleExcluded={toggleExcluded}
+              onClear={handleClearTags}
             />
 
             <MenuItemList 
@@ -142,8 +177,9 @@ export default function DiningHallDetailPage() {
               selectedId={selected?.id}
               onSelect={setSelected}
               searchQuery={searchQuery}
-              selectedCategory={selectedCategory}
-              selectedTags={selectedTags}
+              selectedCategories={selectedCategories}
+              includedTags={includedTags}
+              excludedTags={excludedTags}
               sortBy={sortBy}
             />
           </div>
