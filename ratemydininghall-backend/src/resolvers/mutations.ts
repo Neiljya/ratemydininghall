@@ -19,6 +19,8 @@ import type { CreateReviewArgs } from '../types/review';
 import type { CreateReviewUploadUrlArgs } from '../types/review';
 import type { SubmitPendingReviewArgs } from '../types/review';
 
+import clerkClient from '@clerk/clerk-sdk-node';
+
 const vercelBlobAPI = 'https://api.vercel.com/v2/blob/upload-url';
 
 type ReviewTargetType = 'DINING_HALL' | 'MENU_ITEM';
@@ -364,5 +366,21 @@ export const mutationResolvers = {
 
 };
 
+export const typeResolvers = {
+    Review: {
+        author: async (parent: any) => {
+            if (parent.userId) {
+                try {
+                    const user = await clerkClient.users.getUser(parent.userId);
+                    return user.username || user.firstName || 'Anonymous';
+                } catch (err) {
+                    console.error('Error fetching user for review author:', err);
+                    return parent.author || 'Deleted User';
+                }
+            }
 
+            return parent.author || 'Anonymous';
+        }
+    }
+};
 

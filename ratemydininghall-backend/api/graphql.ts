@@ -14,10 +14,11 @@ import { mutationType } from '../src/schema/mutationType';
 import { mutationResolvers } from '../src/resolvers/mutations';
 import { menuItemResolvers } from '../src/resolvers/menuItemResolvers';
 import { authType } from '../src/schema/authType';
+import { typeResolvers } from '../src/resolvers/types';
 
 // Combine all type definitions into a single schema
 const typeDefs = [diningHallType, reviewType, queryType, authType, mutationType, menuItemType];
-const resolvers = [queryResolvers, mutationResolvers, menuItemResolvers];
+const resolvers = [queryResolvers, mutationResolvers, menuItemResolvers, typeResolvers];
 const schema = createSchema<YogaContext>({ typeDefs, resolvers })
 
 /**
